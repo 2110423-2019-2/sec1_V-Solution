@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../App.scss';
 const Profile = () => {
     return (
         <div class='row'>

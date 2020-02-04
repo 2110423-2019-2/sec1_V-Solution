@@ -9,8 +9,8 @@ function Item(img, name) {
                     <h5 class="card-title">{name}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <div class="edit-store-button">
-                        <a href="#" class="btn btn-outline-success edit-launch-botton">Launch</a>
-                        <a href="#" class="btn btn-outline-warning">Reserve</a>
+                        <button href="" class="btn btn-outline-success edit-launch-botton">Launch</button>
+                        <button href="" class="btn btn-outline-warning">Reserve</button>
                     </div>
 
                 </div>
