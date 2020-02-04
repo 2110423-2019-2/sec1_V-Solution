@@ -1,5 +1,4 @@
 .bg {
-
   min-height: 100%;
   min-width: 1024px;
 
@@ -12,11 +11,9 @@
   top: 0;
   left: 0;
   z-index: -1;
-
 }
 
 .page {
-
   min-height: 100%;
   min-width: 960px;
 
@@ -25,5 +22,49 @@
   top: 0;
   left: 0;
   z-index: -1;
+}
 
+@mixin text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #5e5757;
+}
+
+.card {
+  width: 16rem;
+  height: 25rem;
+  margin-left: 10px;
+  margin-bottom: 25px;
+  margin-right: 10px;
+}
+
+.pic-card {
+  max-height: 10rem;
+}
+
+.edit-store-title {
+  @include text;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.edit-store-button {
+  position: absolute;
+  bottom: 0;
+}
+
+.btn{
+  margin-bottom: 15px;
+}
+
+.edit-launch-botton {
+  margin-right: 20px;
 }
