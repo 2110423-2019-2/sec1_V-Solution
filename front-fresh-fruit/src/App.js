@@ -1,8 +1,11 @@
 import React from 'react';
 import './App.css';
-import HomeBackGround from './pictures/background.png'
-import Navi from './web-components/Navigationbar'
-
+import Navi from './web-components/Navigationbar';
+import Register from './Page/Register';
+import Profile from './Page/Profile';
+import Seller from './Page/Seller';
+import Signin from './Page/Signin';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function App() {
   return (
 
@@ -12,28 +15,17 @@ function App() {
 
       <Navi />
 
+      <Router>
       {/* body part */}
-      <div className = "bg" style={{backgroundImage:  `url(${HomeBackGround})`,
-                  backgroundPosition: 'center',
-                  backgroundSize: 'cover',
-                  backgroundRepeat: 'no-repeat',
-      }}>
+        <Switch>
+              <Route exact path='/' component={Register} />
+              <Route path='/profile' component={Profile} />
+              <Route path='/seller' component={Seller}/>
+              <Route path='/register' component={Register} />
+              <Route path='/signin' component={Signin} />
+          </Switch>
+      </Router>  
 
-        <div className = "page" style={{backgroundColor:"white", width:"1250px", marginLeft:"150px",
-                                        marginRight:"200px", opacity:0.85}}>
-
-              {/* Head */}
-
-              <div>
-                    <h1 style={{marginLeft:"50px", color:"darkblue", marginTop:"75px"}}>Register as customer</h1>
-              </div>
-
-              {/* Body */}
-              
-
-        </div>
-          
-      </div>
       
       
     </div>
