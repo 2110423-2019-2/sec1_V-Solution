@@ -1,0 +1,60 @@
+.bg {
+
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+}
+
+.thaifont{
+  font-family: 'Kanit', sans-serif;
+  text-align: center;
+}
+.page {
+
+  min-height: 100%;
+  min-width: 960px;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+}
+
+.row {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.col {
+  width: 50px
+}
+
+.container {
+  text-align: left;
+}
+
+.inputfield {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+a {
+  color: white;
+}
+
+.uploadPic {
+  color: white;
+
+}
