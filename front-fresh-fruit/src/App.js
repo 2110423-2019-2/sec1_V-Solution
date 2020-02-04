@@ -1,25 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import HomeBackGround from './pictures/background.png'
+import Navi from './web-components/Navigationbar'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div>
+
+      {/* navigation bar */}
+
+      <Navi />
+
+      {/* body part */}
+      <div className = "bg" style={{backgroundImage:  `url(${HomeBackGround})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+      }}>
+
+        <div className = "page" style={{backgroundColor:"white", width:"1250px", marginLeft:"150px",
+                                        marginRight:"200px", opacity:0.85}}>
+
+              {/* Head */}
+
+              <div>
+                    <h1 style={{marginLeft:"50px", color:"darkblue", marginTop:"75px"}}>Register as customer</h1>
+              </div>
+
+              {/* Body */}
+              
+
+        </div>
+          
+      </div>
+      
+      
     </div>
+
   );
 }
 
