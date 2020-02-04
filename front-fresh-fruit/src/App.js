@@ -27,7 +27,7 @@ function App() {
               <Route path='/profile' component={Profile} />
               <Route path='/seller' component={Seller}/>
               <Route path='/register' component={Register} />
-              <Route path='/signin' component={Signin} />
+              <Route path='/Signin' component={Signin} />
               <Route path='/addItem' component={AddItem} />
               <Route path='/store' component={Store} />
               <Route path='/EditProfile' component={EditProfile}/>

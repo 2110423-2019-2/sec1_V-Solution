@@ -1,9 +1,11 @@
 import React from 'react';
-
+import Loginform from '../web-components/Loginform';
 const Signin = () => {
     return (
         <div>
-            <h1>This is in signin</h1>
+        
+          <Loginform/>
+         
         </div>
     );
 };
