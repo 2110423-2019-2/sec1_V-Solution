@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import Navi from './web-components/Navigationbar';
 import Register from './Page/Register';
 import Profile from './Page/Profile';
