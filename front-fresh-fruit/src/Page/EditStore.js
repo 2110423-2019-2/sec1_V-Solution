@@ -53,7 +53,7 @@ const EditStore = () => {
         <div >
             <div class="edit-store-title">Your products</div>
             <div class="container">
-                <div class="row">
+                <div class="row row-card">
                     {items.map((item) => Item(item.img,item.name))}
                 </div>
             </div>

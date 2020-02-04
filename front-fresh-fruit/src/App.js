@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import Navi from './web-components/Navigationbar';
 import Register from './Page/Register';
+import RegisterSeller from './Page/RegisterSeller';
 import Profile from './Page/Profile';
 import Seller from './Page/Seller';
 import Signin from './Page/Signin';
@@ -17,16 +18,16 @@ function App() {
     <div>
 
       {/* navigation bar */}
-
-      <Navi />
+      
 
       <Router>
       {/* body part */}
         <Switch>
-              <Route exact path='/' component={Register} />
+              <Route exact path='/' component={RegisterSeller} />
               <Route path='/profile' component={Profile} />
               <Route path='/seller' component={Seller}/>
               <Route path='/register' component={Register} />
+              <Route path='/registerSeller' component={RegisterSeller} />
               <Route path='/Signin' component={Signin} />
               <Route path='/addItem' component={AddItem} />
               <Route path='/store' component={Store} />
