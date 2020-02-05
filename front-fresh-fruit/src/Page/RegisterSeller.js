@@ -12,10 +12,6 @@ const RegisterSeller = () => {
 
         <div>
 
-            {/* navigation bar */}
-
-            <Navigationbar />
-
             {/* end navigation bar */}
 
             {/* body part */}

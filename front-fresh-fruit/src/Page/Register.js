@@ -14,7 +14,7 @@ const Register = () => {
 
             {/* navigation bar */}
 
-            <Navigationbar />
+            
 
             {/* end navigation bar */}
 
