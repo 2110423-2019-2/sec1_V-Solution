@@ -9,8 +9,8 @@ function Item(img, name) {
                     <h5 class="card-title">{name}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <div class="edit-store-button">
-                        <button href="" class="btn btn-outline-success edit-launch-botton">Launch</button>
-                        <button href="" class="btn btn-outline-warning">Reserve</button>
+                        <button href="" class="btn btn-edit btn-outline-success edit-launch-botton">Launch</button>
+                        <button href="" class="btn btn-edit btn-outline-warning">Reserve</button>
                     </div>
 
                 </div>
@@ -42,7 +42,7 @@ const EditStore = () => {
             'isReservable': false,
             'isLaunch': false
         }, {
-            'img': 'https://lh3.googleusercontent.com/proxy/r2ndY41plr6o69rdRxqGUNjdBcK3Z3q54Cz6XK-WLTe_VhpvK4UXlhl_mIF2JlsQHwAue_VtMaRJ2wJqnQXu6Hj9SkPo7KvEllfA4Q',
+            'img': 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTNlsCsrIpGEwT5RKBZA1L9IfTyuCMut0xpGMdVRpL8N_g_6aoV',
             'name': 'orange',
             'isReservable': false,
             'isLaunch': false
