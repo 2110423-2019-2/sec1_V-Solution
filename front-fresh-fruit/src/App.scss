@@ -80,7 +80,7 @@
   margin-top: 30px;
 }
 
-.row {
+.rowKuy {
   text-align: center;
 }
 
@@ -105,3 +105,27 @@ a {
   color: white;
 
 }
+//--------------------------------------for Profile page--------------------------------------------
+.profileCover{
+  max-height: 30%;
+  min-width: 100%;
+  position: absolute;
+  z-index: -1;
+  
+  
+}
+.profilePic{
+  border: 0.5px solid black;
+  background-color: #FFFFFF;
+  height: 150px;
+  border-radius:50%;
+  width: 150px;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+
+
+
+
+//--------------------------------------end Profile page--------------------------------------------
