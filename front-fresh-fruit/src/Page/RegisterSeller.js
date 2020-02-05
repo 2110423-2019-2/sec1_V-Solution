@@ -2,11 +2,11 @@ import React from 'react';
 import '../App.scss';
 import HomeBackGround from '../pictures/background.png';
 import Navigationbar from '../web-components/Navigationbar';
-import Informationform from '../web-components/Informationform'
+import InformationformSeller from '../web-components/InformationformSeller'
 import Logo from '../pictures/logo.png'
 import Userimg from '../pictures/user.png'
 
-const Register = () => {
+const RegisterSeller = () => {
 
     return (
 
@@ -34,20 +34,22 @@ const Register = () => {
 
                     <div style={{display:"flex"}}>
 
-                         <img className = "img" style={{width:"140px", height:"140px", marginTop:"65px", marginLeft:"60px"}} src={Logo}                     alt="fresh fruit logo" />
+                         <img className = "img" style={{width:"140px", height:"140px", marginTop:"45px", marginLeft:"60px"}} src={Logo}                     alt="fresh fruit logo" />
 
-                        <h1 style={{fontWeight:"bold", marginLeft: "75px", color: "darkblue", marginTop: "115px" }}>Register as customer</h1>
+                        <h1 style={{fontWeight:"bold", marginLeft: "75px", color: "darkblue", marginTop: "95px" }}>Register as seller</h1>
 
                     </div>
 
                     {/* Body */}
                     
-                    <div className = "row">
+                    <div className = "row" style = {{textAlign: "center", marginTop: "15px"}}>
 
                         
 
                         <div style = {{width:"550px"}}>
-                            
+
+                            <div>
+
                             <img style = {{paddingTop: "70px"}} src={Userimg} alt="User" />
 
                             <div>
@@ -59,11 +61,15 @@ const Register = () => {
                                 </button>
                             </div>
 
+                            </div>
+                            
+                            
+
                         </div>
 
-                        <div class = "col">
+                        <div class = "col col-form-width">
                             
-                            <Informationform />
+                            <InformationformSeller />
 
                         </div>
 
@@ -92,4 +98,4 @@ const Register = () => {
     );
 };
         
-export default Register;
+export default RegisterSeller;

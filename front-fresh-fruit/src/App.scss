@@ -1,5 +1,4 @@
 .bg {
-
   min-height: 100%;
   min-width: 1024px;
 
@@ -14,8 +13,10 @@
   z-index: -1;
 
 }
+
 .thaifont{
   font-family: 'Kanit', sans-serif;
+  text-align: center;
 }
 .page {
 
@@ -27,5 +28,80 @@
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+@mixin text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #5e5757;
+}
+
+.card {
+  width: 16rem;
+  height: 25rem;
+  margin-left: 10px;
+  margin-bottom: 25px;
+  margin-right: 10px;
+}
+
+.pic-card {
+  max-height: 10rem;
+}
+
+.edit-store-title {
+  @include text;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.edit-store-button {
+  position: absolute;
+  bottom: 0;
+}
+
+.btn{
+  margin-bottom: 15px;
+}
+
+.edit-launch-botton {
+  margin-right: 20px;
+
+}
+
+.row-card {
+  margin-top: 30px;
+}
+
+.row {
+  text-align: center;
+}
+
+.col-form-width {
+  width: 50px
+}
+
+.container {
+  text-align: left;
+}
+
+.inputfield {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+a {
+  color: white;
+}
+
+.uploadPic {
+  color: white;
 
 }

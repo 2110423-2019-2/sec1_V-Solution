@@ -6,14 +6,23 @@ function Navigationbar() {
 
     return (
   
-      <div style={{height:"50px", backgroundColor: `rgb(${rgb})`}}>
+      <div className = "nav" style={{height:"40px", backgroundColor: `rgb(${rgb})`}}>
   
-        <nav class="nav justify-content-center">
-          <a class="nav-link active" href="/seller">Go to seller</a>
-          <a class="nav-link" href="/">Go to HomePage</a>
-          <a class="nav-link disabled" href="#">Disabled link</a>
-        </nav>
+        <div>
+
+          <span className = "thaifont" style={{color: "white", fontWeight:"bold", fontSize:"20px", marginLeft:"35px", paddingTop: "5px"}}>Fresh Fruit Co.ltd: 087-765-XXXX
+          </span>
+
+          <span className = "thaifont" style={{color: "white", fontWeight:"bold", fontSize:"20px", paddingLeft:"1050px"}}><a href="#">
+            
+            For Staff
+          </a>
+          </span>
+          
+
+        </div>
         
+
       </div>
   
     );
