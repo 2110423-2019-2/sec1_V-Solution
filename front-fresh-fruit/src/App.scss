@@ -16,7 +16,6 @@
 
 .thaifont{
   font-family: 'Kanit', sans-serif;
-  text-align: center;
 }
 .page {
 
@@ -123,8 +122,12 @@ a {
   margin-top: 10%;
   margin-left: 10%;
 }
-
-
+.logoAndEditInProfile{
+  float:right;
+}
+#editInProfile{
+  margin-left:5px;
+}
 
 
 

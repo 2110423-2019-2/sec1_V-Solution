@@ -18,7 +18,7 @@ function App() {
     <div>
 
       {/* navigation bar */}
-      
+      <Navi/>
 
       <Router>
       {/* body part */}
