@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.scss';
 import Navi from './web-components/Navigationbar';
 import Home from './Page/HomePage';
 import Register from './Page/Register';
@@ -11,7 +10,6 @@ import Store from './Page/Store';
 import AddItem from './Page/AddItem';
 import EditProfile from './Page/EditProfile';
 import EditStore from './Page/EditStore';
-import Home from './Page/Home';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function App() {
@@ -24,7 +22,7 @@ function App() {
       <Router>
       {/* body part */}
         <Switch>
-              <Route exact path='/' component={Home} />
+              <Route exact path='/' component={RegisterSeller} />
               <Route path='/profile' component={Profile} />
               <Route path='/seller' component={Seller}/>
               <Route path='/register' component={Register} />
