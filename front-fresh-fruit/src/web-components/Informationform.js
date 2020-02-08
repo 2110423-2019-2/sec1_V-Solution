@@ -39,9 +39,9 @@ function Informationform() {
 
             <br />
 
-            <label>
+            <label style={{border: "solid black 2px"}}>
                 <span style={{color:"red"}}>*</span>Email:
-                <input style = {{marginLeft:"55px"}} className = "inputfield" type="text" name="name"
+                <input style = {{marginLeft:"50px"}} className = "inputfield" type="text" name="name"
                 placeholder = "someone@hotmail.com" />
             </label>
 
