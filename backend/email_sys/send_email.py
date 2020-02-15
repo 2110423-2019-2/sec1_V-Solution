@@ -1,7 +1,7 @@
 import os
 import smtplib
 import imghdr
-import config
+from . import config
 from email.message import EmailMessage
 
 def send_email(receiver, subject, txtbody, htmlbody):

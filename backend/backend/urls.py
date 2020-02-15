@@ -17,8 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from product import views
 
+from .views import login
+from .views import sample_api
+from profile.views import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/login', login),
+    path('api/sampleapi', sample_api),
+    path('api/register', register),
+    path('verify/<str:token>/', verify_email) ,
     path('api/product_list',views.product_list) ,
     path('api/product_list/<int:pk>/',views.product_detail)
 ]

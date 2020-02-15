@@ -3,3 +3,6 @@ backend/backend/__pycache__/
 backend/frontend/__pycache__/
 backend/users/__pycache__/
 backend/product/__pycache__/
+backend/email_sys/__pycache__/
+backend/email_sys/config.py
+.vscode/
