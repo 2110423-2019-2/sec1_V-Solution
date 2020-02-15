@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/login', login),
     path('api/sampleapi', sample_api),
-    path('api/register', register)
+    path('api/register', register),
+    path('verify/<str:token>/', verify_email)
 ]

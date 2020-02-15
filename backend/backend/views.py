@@ -36,5 +36,7 @@ def sample_api(request):
     token = Token.objects.get(key=token_string)
     user = token.user
     user_profile = Profile.objects.get(user=user)
+    if not user_profile.is_active:
+        return Response({'result': 'User is not authenticate.'}, status=HTTP_200_OK)
     data = {'sample_data': user_profile.storeName}
     return Response(data, status=HTTP_200_OK)

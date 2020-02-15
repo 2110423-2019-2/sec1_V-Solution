@@ -8,10 +8,15 @@ class Profile(models.Model):
         ('M', 'Male'),
         ('F', 'Female'),
     )
+    USER_TYPES = {
+        ('C', 'Customer'),
+        ('S', 'Seller'),
+        ('M', 'Moderator')
+    }
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_type = models.CharField(max_length=1, choices=USER_TYPES, blank=True)
 
-    storeName = models.CharField(max_length=20, blank=True)
     firstName = models.CharField(max_length=20, blank=True)
     lastName = models.CharField(max_length=20, blank=True)
     address = models.TextField(max_length=500, blank=True)
@@ -20,20 +25,10 @@ class Profile(models.Model):
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 
     bio = models.TextField(max_length=500, blank=True)
+    storeName = models.CharField(max_length=20, blank=True)
 
     is_active = models.BooleanField(default=False)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
-
-'''
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
-'''
