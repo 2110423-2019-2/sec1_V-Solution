@@ -9,6 +9,7 @@ from rest_framework.status import (
     HTTP_200_OK
 )
 from rest_framework.response import Response
+from profile.models import Profile
 
 
 @csrf_exempt
@@ -25,5 +26,15 @@ def login(request):
         return Response({'error': 'Invalid Credentials'},
                         status=HTTP_404_NOT_FOUND)
     token, _ = Token.objects.get_or_create(user=user)
-    return Response({'token': token.key},
+    return Response({'token': token.key, 'id': token.user_id},
                     status=HTTP_200_OK)
+
+@csrf_exempt
+@api_view(["GET"])
+def sample_api(request):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+    user_profile = Profile.objects.get(user=user)
+    data = {'sample_data': user_profile.storeName}
+    return Response(data, status=HTTP_200_OK)

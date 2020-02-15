@@ -11,11 +11,11 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    storeName = models.CharField(max_length=20)
-    firstName = models.CharField(max_length=20)
-    lastName = models.CharField(max_length=20)
+    storeName = models.CharField(max_length=20, blank=True)
+    firstName = models.CharField(max_length=20, blank=True)
+    lastName = models.CharField(max_length=20, blank=True)
     address = models.TextField(max_length=500, blank=True)
-    tel = models.CharField(max_length=10)
+    tel = models.CharField(max_length=10, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 
@@ -27,6 +27,7 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
+'''
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -35,3 +36,4 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+'''
