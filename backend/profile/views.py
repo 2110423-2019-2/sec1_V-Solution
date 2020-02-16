@@ -10,6 +10,7 @@ from rest_framework.status import (
 )
 from rest_framework.response import Response
 
+import json
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
@@ -32,11 +33,16 @@ def register(request):
         )
         user.save()
 
+        first_name = request.data.get("first_name")
+        last_name = request.data.get("last_name")
         gender = request.data.get("gender")
+        nat_id = request.data.get("nat_id")
 
         new_profile = Profile.objects.create(
             user = user,
             gender = gender,
+            first_name = first_name,
+            last_name = last_name,
             user_type = 'C'
         )
 

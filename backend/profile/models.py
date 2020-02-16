@@ -17,15 +17,16 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     user_type = models.CharField(max_length=1, choices=USER_TYPES, blank=True)
 
-    firstName = models.CharField(max_length=20, blank=True)
-    lastName = models.CharField(max_length=20, blank=True)
+    first_name = models.CharField(max_length=20, blank=True)
+    last_name = models.CharField(max_length=20, blank=True)
     address = models.TextField(max_length=500, blank=True)
     tel = models.CharField(max_length=10, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 
     bio = models.TextField(max_length=500, blank=True)
-    storeName = models.CharField(max_length=20, blank=True)
+    store_name = models.CharField(max_length=20, blank=True)
+    nat_id = models.CharField(max_length=13, blank=True)
 
     is_active = models.BooleanField(default=False)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)

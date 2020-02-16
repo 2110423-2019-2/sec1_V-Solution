@@ -25,7 +25,7 @@ def login(request):
     if not user:
         return Response({'error': 'Invalid Credentials'},
                         status=HTTP_404_NOT_FOUND)
-    token, _ = Token.objects.get_or_create(user=user)
+    token, _ = Token.objects.get(user=user)
     return Response({'token': token.key, 'id': token.user_id},
                     status=HTTP_200_OK)
 
@@ -38,5 +38,5 @@ def sample_api(request):
     user_profile = Profile.objects.get(user=user)
     if not user_profile.is_active:
         return Response({'result': 'User is not authenticate.'}, status=HTTP_200_OK)
-    data = {'sample_data': user_profile.storeName}
+    data = {'sample_data': user_profile.store_name}
     return Response(data, status=HTTP_200_OK)
