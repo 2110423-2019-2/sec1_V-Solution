@@ -21,41 +21,64 @@ from email_sys import send_email
 @api_view(["POST"])
 @permission_classes((AllowAny,))
 def register(request):
-    username = request.data.get("username")
-    password = request.data.get("password")
-    email = request.data.get("email")
+    json_data = json.loads(request.body)
+    try:
+        username = json_data['username']
+        password = json_data['password']
+        email = json_data['email']
 
-    if not User.objects.filter(username=username).exists():
-        user = User.objects.create_user(
-            username = username,
-            password = password,
-            email = email
-        )
-        user.save()
+        first_name = json_data['first_name']
+        last_name = json_data['last_name']
+        address = json_data['address']
+        tel = json_data['tel']
+        birth_date = json_data['birth_date']
+        gender = json_data['gender']
+        nat_id = json_data['nat_id']
+        #Optional
+        if 'avatar' in json_data:
+            avatar = json_data['avatar']
 
-        first_name = request.data.get("first_name")
-        last_name = request.data.get("last_name")
-        gender = request.data.get("gender")
-        nat_id = request.data.get("nat_id")
+        #META
+        user_type = json_data['user_type']
+        if not (user_type in ['C', 'S']):
+            return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
-        new_profile = Profile.objects.create(
-            user = user,
-            gender = gender,
-            first_name = first_name,
-            last_name = last_name,
-            user_type = 'C'
-        )
+        if not User.objects.filter(username=username).exists():
+            user = User.objects.create_user(
+                username = username,
+                password = password,
+                email = email
+            )
+            user.save()
 
-        token, _ = Token.objects.get_or_create(user=user)
+            new_profile = Profile.objects.create(
+                user = user,
+                first_name = first_name,
+                last_name = last_name,
+                address = address,
+                tel = tel,
+                birth_date = birth_date,
+                gender = gender,
+                nat_id = nat_id,
 
-        '''
-        #email verification is in here
-        text = "http://127.0.0.1:8000/verify/" + token.key
-        send_email.send_email(email, 'Confirm your Freshfruit registeration', text, text)
-        '''
+                user_type = user_type,
+            )
+            if 'avatar' in json_data:
+                new_profile.avatar = avatar
+                new_profile.save()
 
-        return Response({'result': 'Registeration complete'},status=HTTP_200_OK)
-    return Response({'result': 'Username already existed.'},status=HTTP_200_OK)
+            token, _ = Token.objects.get_or_create(user=user)
+
+            '''
+            #email verification is in here
+            text = "http://127.0.0.1:8000/verify/" + token.key
+            send_email.send_email(email, 'Confirm your Freshfruit registeration', text, text)
+            '''
+
+            return Response({'result': 'Registeration complete'},status=HTTP_200_OK)
+        return Response({'result': 'Username already existed.'},status=HTTP_200_OK)
+    except KeyError:
+        return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
 @api_view(["GET"])
 @permission_classes((AllowAny,))
