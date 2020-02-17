@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.db import models
+from djongo import models
 from pygments.lexers import get_all_lexers
 from pygments.styles import get_all_styles
 
@@ -26,5 +26,7 @@ class Product(models.Model):
     deliverCompany = models.CharField(max_length=20)
     deliverPrice  = models.FloatField()
 
+    def __str__(self):
+        return f'{self.productName}'
 
 

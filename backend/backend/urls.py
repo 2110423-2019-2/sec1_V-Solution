@@ -26,7 +26,7 @@ urlpatterns = [
     path('api/login', login),
     path('api/sampleapi', sample_api),
     path('api/register', register),
-    path('api/getuser', get_user_data),
+    path('api/getuser/<str:username>/', get_user_data),
     path('verify/<str:token>/', verify_email) ,
     path('api/product_list',views.product_list) ,
     path('api/product_list/<int:pk>/',views.product_detail)

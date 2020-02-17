@@ -83,12 +83,13 @@ def register(request):
 @csrf_exempt
 @api_view(["GET"])
 @permission_classes((AllowAny,))
-def get_user_data(request):
-    request_username = request.data['username']
+def get_user_data(request, username):
+    request_username = username
 
-    user = User.objects.get(pk=request_username)
+    user = User.objects.get(username=request_username)
     user_profile = Profile.objects.get(user=user)
     data = {
+        'id' : user.id,
         'first_name' : user_profile.first_name,
         'last_name' : user_profile.last_name,
         'address' : user_profile.address,
