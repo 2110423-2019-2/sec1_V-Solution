@@ -1,90 +1,71 @@
 import React from 'react';
 import '../App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function InformationformSeller() {
-
-    
-  
+      
       return (
 
         <div>
 
         <form className="container">
-            <label style={{marginLeft:"6px"} }>
+
+        <div class="row"><div class="col" style={{textAlign: "left"}}><label style={{marginLeft:"6px"} }>
                 Error MSG:
                
-            </label>
+            </label></div></div>
 
-            <br />
-
-            <label>
+            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
                 <span style={{color:"red"}}>*</span>Username:
                 <input style = {{marginLeft:"22px"}} className = "inputfield" type="text" name="name" 
                 placeholder=""/>
-            </label>
+            </label></div></div>
 
-            <br />
 
-            <label>
+            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
                 <span style={{color:"red", marginTop: "5px"}}>*</span>Name:
                 <input style = {{marginLeft:"50px"}} className = "inputfield" type="text" name="name" />
-            </label>
+            </label></div></div>
 
-            <br />
-
-            <label>
+            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
                 <span style={{color:"red"}}>*</span>Surname:
                 <input  style = {{marginLeft:"30px"}} className = "inputfield" type="text" name="name" />
-            </label>
+            </label></div></div>
 
-            <br />
 
-            <label>
+            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
                 <span style={{color:"red"}}>*</span>Email:
                 <input style = {{marginLeft:"55px"}} className = "inputfield" type="text" name="name"
                 placeholder = "someone@hotmail.com" />
-            </label>
+            </label></div></div>
 
-            <br />
-
-            <label>
+            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
                <span style={{color:"red"}}>*</span>Password:
                 <input style = {{marginLeft:"27px"}} className = "inputfield" type="text" name="name" />
-                <label style={{marginLeft: "6px", color:"grey"}}>6 - 30 characters including alphabet and number</label>
-            </label>
+                <label style={{marginLeft: "6px", color:"grey"}}>between 6 - 30 characters including alphabet and number</label>
+            </label></div></div>
 
-            <br />
+            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
+                <span style={{color:"red"}}>*</span>Store name:
+                <input style = {{marginLeft:"13px"}} className = "inputfield" type="text" name="name"/>
+            </label></div></div>
 
-            <label>
-               <span style={{color:"red"}}>*</span>Store Name:
-                <input style = {{marginLeft:"12px"}} className = "inputfield" type="text" name="name" />
-            </label>
-
-            <br />
-
-            <label>
-            <span style={{color:"red"}}>*</span>Address:
+            <div class="row"><div class="col" style={{textAlign: "left"}}> <label style={{marginLeft: "7px"}}>
+                Address:
                 <input style = {{marginLeft:"38px"}} className = "inputfield" type="text" name="name" />
-            </label>
+            </label></div></div>
 
-            <br />
-
-            <label>
+            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
                 <span style={{color:"red"}}>*</span>Tel:
                 <input style = {{marginLeft:"74px"}} className = "inputfield" type="text" name="name" />
-            </label>
+            </label></div></div>
 
-            <br />
-
-            <label>
+            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
                 <span style={{color:"red"}}>*</span>Birthdate:
-                <input style = {{marginLeft:"30px"}} className = "inputfield" type="text" name="name" 
-                placeholder = "dd/mm/yyyy"/>
-            </label>
+                <input type='date'/>
+            </label></div></div>
 
-            <br />
-
-            <label>
+            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
             <span style={{color:"red"}}>*</span>Gender:
                <span style={{marginLeft: "70px"}}>
                    <tr>
@@ -98,14 +79,12 @@ function InformationformSeller() {
                        </td>
                    </tr>
                </span>
-            </label>
+            </label></div></div>
 
-            <br />
-
-            <label>
+            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
             <span style={{color:"red"}}>*</span>National ID:
                 <input style = {{marginLeft:"14px"}} className = "inputfield" type="text" name="name" />
-            </label>
+            </label></div></div>
             
         </form>
 

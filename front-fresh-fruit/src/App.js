@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.scss';
 import Navi from './web-components/Navigationbar';
+import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
 import Profile from './Page/Profile';
@@ -10,8 +10,7 @@ import Store from './Page/Store';
 import AddItem from './Page/AddItem';
 import EditProfile from './Page/EditProfile';
 import EditStore from './Page/EditStore';
-import Home from './Page/Home';
-
+import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function App() {
   return (
@@ -20,11 +19,10 @@ function App() {
 
       {/* navigation bar */}
       <Navi/>
-
       <Router>
       {/* body part */}
         <Switch>
-              <Route exact path='/' component={Home} />
+              <Route exact path='/' component={HomePage} />
               <Route path='/profile' component={Profile} />
               <Route path='/seller' component={Seller}/>
               <Route path='/register' component={Register} />

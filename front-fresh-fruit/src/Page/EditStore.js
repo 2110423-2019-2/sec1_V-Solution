@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function Item(img, name) {
     return (
         <div>
-            <div class="card col" >
+            <div class="card card-a col" >
                 <img src={img} class="card-img-top pic-card" alt="..." />
                 <div class="card-body">
                     <h5 class="card-title">{name}</h5>

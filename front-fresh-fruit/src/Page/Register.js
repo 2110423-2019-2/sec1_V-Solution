@@ -1,10 +1,10 @@
 import React from 'react';
 import '../App.scss';
 import HomeBackGround from '../pictures/background.png';
-import Navigationbar from '../web-components/Navigationbar';
 import Informationform from '../web-components/Informationform'
 import Logo from '../pictures/logo.png'
 import Userimg from '../pictures/user.png'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Register = () => {
 
@@ -12,78 +12,44 @@ const Register = () => {
 
         <div>
 
-            {/* navigation bar */}
-
-            
-
-            {/* end navigation bar */}
-
+           
             {/* body part */}
 
-            <div className="bg" style={{
-                backgroundImage: `url(${HomeBackGround})`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'}}>
+            <div class="container-fluid" style={{border: "solid black 2px", height: "1000px",backgroundImage: `url(${HomeBackGround})`}}>
 
-                <div className="page" style={{
-                    backgroundColor: "white", width: "1250px", marginLeft: "150px",
-                    marginRight: "200px", opacity: 0.75321}}>
-
-                    {/* Head */}
-
-                    <div style={{display:"flex"}}>
-
-                         <img className = "img" style={{width:"140px", height:"140px", marginTop:"65px", marginLeft:"60px"}} src={Logo}                     alt="fresh fruit logo" />
-
-                        <h1 style={{fontWeight:"bold", marginLeft: "75px", color: "darkblue", marginTop: "115px" }}>Register as customer</h1>
-
-                    </div>
-
-                    {/* Body */}
-                    
-                    <div className = "row">
-
-                        
-
-                        <div style = {{width:"550px"}}>
-                            
-                            <img style = {{paddingTop: "70px"}} src={Userimg} alt="User" />
-
-                            <div>
-                                <button class="btn" style={{marginTop:"20px"}}>
-
-                                    <span style = {{width:"200px", height:"43px", textAlign: "center",
-                                        fontSize:"25px"}} class="badge badge-secondary">Upload Picture</span>
-
-                                </button>
+                <div class="row">
+                    <div class="col" style={{border: "solid black 2px", textAlign: "center", marginLeft: "10%", marginRight: "10%", height: "1000px", backgroundColor: "white", opacity: "0.75"}}>
+                        <div class="row" style={{marginTop: "30px", height: "100px"}}>
+                            <div class="col-2" style={{border: "blue solid 2px"}}>
+                                <img src={Logo} alt = "logo" style={{width: "120px"}} />
+                            </div>  
+                            <div class="col-5" style={{border: "blue solid 2px"}}>
+                                <h1 style={{marginTop: "45px", color: "darkblue", fontWeight: "bold"}}>Register as customer</h1>
                             </div>
-
                         </div>
-
-                        <div class = "col">
-                            
-                            <Informationform />
-
+                        <div class="row" style={{marginTop: "90px"}}>
+                            <div class="col-4" style={{border: "red solid 2px"}}>
+                                <div class="row">
+                                    <div class="col" style={{border: "black solid 2px", marginTop: "50px"}}>
+                                        <img src={Userimg} alt="customer image"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"style={{border: "black solid 2px", marginTop: "20px"}}>
+                                        <h1>upload pic</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8" style={{border: "red solid 2px"}}>
+                                <Informationform />
+                            </div>
                         </div>
-
-
                     </div>
-
-                    {/* footer */}
-
-                    <button class="btn" style={{marginTop:"20px", marginLeft: "40%"}}>
-
-                        <span style = {{width:"150px", height:"40px", textAlign: "center",
-                            fontSize:"25px"}} class="badge badge-secondary">Submit</span>
-
-                    </button>
-                    
-
-
                 </div>
 
             </div>
+
+
 
             {/* end body part */}
 
