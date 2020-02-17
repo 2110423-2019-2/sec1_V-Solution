@@ -80,6 +80,27 @@ def register(request):
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
+@csrf_exempt
+@api_view(["GET"])
+@permission_classes((AllowAny,))
+def get_user_data(request):
+    request_username = request.data['username']
+
+    user = User.objects.get(pk=request_username)
+    user_profile = Profile.objects.get(user=user)
+    data = {
+        'first_name' : user_profile.first_name,
+        'last_name' : user_profile.last_name,
+        'address' : user_profile.address,
+        'tel' : user_profile.tel,
+        'birth_date' : user_profile.birth_date,
+        'gender' : user_profile.gender,
+        'bio' : user_profile.bio,
+        'store_name' : user_profile.store_name,
+        'nat_id' : user_profile.is_active,
+    }
+    return Response(data, status=HTTP_200_OK)
+
 @api_view(["GET"])
 @permission_classes((AllowAny,))
 def verify_email(request, token):
