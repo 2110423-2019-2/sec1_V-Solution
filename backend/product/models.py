@@ -10,12 +10,11 @@ STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
 
 # Create your models here.
 class Product(models.Model):
-    sellerID = models.IntegerField()
-    productID = models.IntegerField()
+    seller = models.ForeignKey(to='profile.Profile', null=True, on_delete=models.PROTECT)
     productName = models.CharField(max_length=50)
-    proDuctDesc = models.CharField(max_length=500)
-    category = models.CharField(max_length=20)
-    subcategory = models.CharField(max_length=20)
+    proDuctDesc = models.CharField(max_length=500, blank=True)
+    category = models.CharField(max_length=20, blank=True)
+    subcategory = models.CharField(max_length=20, blank=True)
     province = models.CharField(max_length=30)
     district = models.CharField(max_length=30)
     productType = models.CharField(max_length=1)
@@ -26,7 +25,8 @@ class Product(models.Model):
     deliverCompany = models.CharField(max_length=20)
     deliverPrice  = models.FloatField()
 
+    
     def __str__(self):
-        return f'{self.productName}'
+        return f'{self.seller.first_name} {self.seller.last_name} : {self.productName}'
 
 

@@ -102,6 +102,56 @@ def get_user_data(request, username):
     }
     return Response(data, status=HTTP_200_OK)
 
+@csrf_exempt
+@api_view(["POST"])
+def edit_user_data(request, username):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+    user_profile = Profile.objects.get(user=user)
+
+    if user.username != username:
+        return Response({'error': 'Invalid Credentials.'},status=HTTP_400_BAD_REQUEST)
+
+    json_data = json.loads(request.body)
+    try:
+        first_name = json_data['first_name']
+        last_name = json_data['last_name']
+        address = json_data['address']
+        tel = json_data['tel']
+        birth_date = json_data['birth_date']
+        gender = json_data['gender']
+        nat_id = json_data['nat_id']
+        if 'avatar' in json_data:
+            avatar = json_data['avatar']
+    except KeyError:
+        return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
+
+    user_profile.first_name = first_name
+    user_profile.last_name = last_name
+    user_profile.address = address
+    user_profile.tel = tel
+    user_profile.birth_date = birth_date
+    user_profile.gender = gender
+    user_profile.nat_id = nat_id
+    if 'avatar' in json_data:
+        user_profile.avatar = avatar
+    user_profile.save()
+
+    data = {
+        'id' : user.id,
+        'first_name' : user_profile.first_name,
+        'last_name' : user_profile.last_name,
+        'address' : user_profile.address,
+        'tel' : user_profile.tel,
+        'birth_date' : user_profile.birth_date,
+        'gender' : user_profile.gender,
+        'store_name' : user_profile.store_name,
+        'bio' : user_profile.bio,
+    }
+
+    return Response(data, status=HTTP_200_OK)
+
 @api_view(["GET"])
 @permission_classes((AllowAny,))
 def verify_email(request, token):

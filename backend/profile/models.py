@@ -25,14 +25,12 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 
-    bio = models.TextField(max_length=500, blank=True)
     store_name = models.CharField(max_length=20, blank=True)
+    bio = models.TextField(max_length=500, blank=True)
     nat_id = models.CharField(max_length=13, blank=True)
 
     is_active = models.BooleanField(default=False)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
-
-    products = models.ManyToManyField(Product)
 
     def __str__(self):
         return f'{self.user.username} Profile'

@@ -15,19 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from product import views
 
 from .views import login
-from .views import sample_api
 from profile.views import *
+from product.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/login', login),
-    path('api/sampleapi', sample_api),
     path('api/register', register),
     path('api/getuser/<str:username>/', get_user_data),
-    path('verify/<str:token>/', verify_email) ,
-    path('api/product_list',views.product_list) ,
-    path('api/product_list/<int:pk>/',views.product_detail)
+    path('api/edituser/<str:username>/', edit_user_data),
+    path('verify/<str:token>/', verify_email),
+    path('api/createproduct/', create_product)
 ]
