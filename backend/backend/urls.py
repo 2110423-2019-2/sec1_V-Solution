@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/getuser/<str:username>/', get_user_data),
     path('api/edituser/<str:username>/', edit_user_data),
     path('api/user/uploadimage/', upload_user_profile),
+    path('api/product/uploadimage', upload_product_image),
     path('verify/<str:token>/', verify_email),
     path('api/createproduct/', create_product)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

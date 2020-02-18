@@ -72,6 +72,20 @@ def create_product(request):
 
     return Response({'result': 'Successfully create product'},status=HTTP_200_OK)
 
+@csrf_exempt
+@api_view(["POST"])
+def upload_product_image(request, product_id):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+    user_profile = Profile.objects.get(user=user)
+
+    file = request.FILES['image']
+    product = Product.objects.get(pk=product_id)
+    product.image = file
+    product.save()
+    return Response(status=HTTP_200_OK)
+
 """def home(request) :
     if request.method == 'GET' :
         product_data = Product.objects.all()

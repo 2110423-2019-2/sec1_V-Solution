@@ -24,7 +24,7 @@ class Product(models.Model):
     unitOfAmount = models.CharField(max_length=20)
     deliverCompany = models.CharField(max_length=20)
     deliverPrice  = models.FloatField()
-
+    image = models.ImageField(upload_to='', null=True, blank=True)
     
     def __str__(self):
         return f'{self.seller.first_name} {self.seller.last_name} : {self.productName}'

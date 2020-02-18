@@ -16,6 +16,8 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from .models import Profile
 from email_sys import send_email
+from backend import settings
+import os
 
 @csrf_exempt
 @api_view(["POST"])
@@ -58,7 +60,6 @@ def register(request):
                 birth_date = birth_date,
                 gender = gender,
                 nat_id = nat_id,
-
                 user_type = user_type,
             )
             new_profile.save()
@@ -84,6 +85,10 @@ def get_user_data(request, username):
 
     user = User.objects.get(username=request_username)
     user_profile = Profile.objects.get(user=user)
+    if user_profile.avatar == None:
+        image = ''
+    else:
+        image = user_profile.avatar.url
     data = {
         'id' : user.id,
         'first_name' : user_profile.first_name,
@@ -95,6 +100,7 @@ def get_user_data(request, username):
         'bio' : user_profile.bio,
         'store_name' : user_profile.store_name,
         'nat_id' : user_profile.is_active,
+        'image' : image,
     }
     return Response(data, status=HTTP_200_OK)
 
