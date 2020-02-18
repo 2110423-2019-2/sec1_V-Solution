@@ -35,8 +35,6 @@ def register(request):
         gender = json_data['gender']
         nat_id = json_data['nat_id']
         #Optional
-        if 'avatar' in json_data:
-            avatar = json_data['avatar']
 
         #META
         user_type = json_data['user_type']
@@ -63,9 +61,7 @@ def register(request):
 
                 user_type = user_type,
             )
-            if 'avatar' in json_data:
-                new_profile.avatar = avatar
-                new_profile.save()
+            new_profile.save()
 
             token, _ = Token.objects.get_or_create(user=user)
 
@@ -122,8 +118,6 @@ def edit_user_data(request, username):
         birth_date = json_data['birth_date']
         gender = json_data['gender']
         nat_id = json_data['nat_id']
-        if 'avatar' in json_data:
-            avatar = json_data['avatar']
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
@@ -134,8 +128,6 @@ def edit_user_data(request, username):
     user_profile.birth_date = birth_date
     user_profile.gender = gender
     user_profile.nat_id = nat_id
-    if 'avatar' in json_data:
-        user_profile.avatar = avatar
     user_profile.save()
 
     data = {
@@ -151,6 +143,19 @@ def edit_user_data(request, username):
     }
 
     return Response(data, status=HTTP_200_OK)
+
+@csrf_exempt
+@api_view(["POST"])
+def upload_user_profile(request):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+    user_profile = Profile.objects.get(user=user)
+
+    file = request.FILES['image']
+    user_profile.avatar = file
+    user_profile.save()
+    return Response(status=HTTP_200_OK)
 
 @api_view(["GET"])
 @permission_classes((AllowAny,))

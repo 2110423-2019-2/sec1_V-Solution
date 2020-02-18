@@ -30,7 +30,7 @@ class Profile(models.Model):
     nat_id = models.CharField(max_length=13, blank=True)
 
     is_active = models.BooleanField(default=False)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    avatar = models.ImageField(upload_to='', null=True, blank=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
