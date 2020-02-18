@@ -21,8 +21,6 @@ from .models import Product
 from .serializers import ProductSerializer
 from profile.models import Profile
 
-# Create your views here.
-@csrf_exempt
 @api_view(["POST"])
 def create_product(request):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
@@ -72,7 +70,6 @@ def create_product(request):
 
     return Response({'result': 'Successfully create product'},status=HTTP_200_OK)
 
-@csrf_exempt
 @api_view(["POST"])
 def upload_product_image(request, product_id):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]

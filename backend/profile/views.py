@@ -19,7 +19,6 @@ from email_sys import send_email
 from backend import settings
 import os
 
-@csrf_exempt
 @api_view(["POST"])
 @permission_classes((AllowAny,))
 def register(request):
@@ -77,7 +76,6 @@ def register(request):
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
-@csrf_exempt
 @api_view(["GET"])
 @permission_classes((AllowAny,))
 def get_user_data(request, username):
@@ -104,7 +102,6 @@ def get_user_data(request, username):
     }
     return Response(data, status=HTTP_200_OK)
 
-@csrf_exempt
 @api_view(["POST"])
 def edit_user_data(request, username):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
@@ -150,7 +147,6 @@ def edit_user_data(request, username):
 
     return Response(data, status=HTTP_200_OK)
 
-@csrf_exempt
 @api_view(["POST"])
 def upload_user_profile(request):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]

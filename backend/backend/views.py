@@ -12,8 +12,6 @@ from rest_framework.response import Response
 from profile.models import Profile
 import json
 
-
-@csrf_exempt
 @api_view(["POST"])
 @permission_classes((AllowAny,))
 def login(request):
@@ -34,7 +32,6 @@ def login(request):
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
-@csrf_exempt
 @api_view(["GET"])
 def sample_api(request):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
