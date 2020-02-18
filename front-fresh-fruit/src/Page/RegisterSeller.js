@@ -35,7 +35,8 @@ const Register = () => {
                                 </div>
                                 <div class="row">
                                     <div class="col"style={{border: "black solid 2px", marginTop: "20px"}}>
-                                        <h1>upload pic</h1>
+                                        
+                                    <button type="button" class="btn btn-primary" style={{minWidth:'100%'}}>Upload</button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -44,8 +45,8 @@ const Register = () => {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col"style={{border: "black solid 2px", marginTop: "20px"}}>
-                                        <h1>upload pic</h1>
+                                    <div class="col" style={{border: "black solid 2px", marginTop: "20px"}}>
+                                        <button type="button" class="btn btn-primary" style={{minWidth:'100%'}}>Upload</button>
                                     </div>
                                 </div>
                             </div>

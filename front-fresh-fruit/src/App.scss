@@ -15,9 +15,9 @@
   z-index: -1;
 
 }
-/*{
-  font-family: 'Kanit', sans-serif;
-}*/
+*{
+  font-family: 'Roboto', sans-serif;;
+}
 
 .thaifont{
   font-family: 'Kanit', sans-serif;
@@ -140,3 +140,9 @@ a {
 
 
 //--------------------------------------end Profile page--------------------------------------------
+
+//--------------------------------------Register Seller page----------------------------------------
+#spaceRegForm{
+  position: absolute;
+  right:65%
+}
