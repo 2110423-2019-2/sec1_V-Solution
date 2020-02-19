@@ -3,8 +3,9 @@ import '../App.scss';
 import background from '../pictures/background.png';
 import ProfilePic from '../pictures/user.png';
 import UserContext from '../Context/UserContext';
-
+import {useHistory} from 'react-router-dom';
 const Profile = (props) => {
+    const history = useHistory();
     return (
         //style={{backgroundImage:`url(${background})`}}
         <div>
@@ -30,16 +31,29 @@ const Profile = (props) => {
                         <h3>Tel :</h3>
                         <h3>Birthdate :</h3>
                     </div>
+                    <div>{props.id}</div>
                     <div class='col-lg-10'>
                         <h3>{props.Address}</h3>
                         <h3>{props.Tel}</h3>
                         <h3>{props.Birthdate}</h3>
                     </div>
                 </div>
-                <UserContext.Consumer>
-                    {kkk => <div>{kkk}</div>}
-                </UserContext.Consumer>
                 
+            <UserContext.Consumer>
+                            {({isloggedin,setLogin,clearToken,usertoken}) => (
+                                <div>
+                                <h1>{String(isloggedin)}</h1>
+                                <h1>{usertoken}</h1>
+                                <button class='btn btn-primary'onClick={()=>{
+                                    
+                                    clearToken()
+                                    console.log(usertoken)
+                                    history.push('/')
+                                    
+                                }}>Log out</button>
+                                </div>
+                            )}
+                        </UserContext.Consumer>
             </div>
         </div>
 
