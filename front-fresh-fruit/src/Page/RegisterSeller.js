@@ -12,24 +12,6 @@ const Register = () => {
     return (
 
         <div>
-
-            {/* navigation bar */}
-
-            <div class="container-fluid">
-
-                <div class="row" style={{height: "40px", background: "green"}}>
-                    <div class="col">
-                        <h3 style={{fontWeight: "bold", fontsize: "20px", color: "white", textAlign: "left"}}>some text bra bra</h3>
-                    </div>
-                    <div class="col">
-                        <h3 style={{fontWeight: "bold", fontsize: "20px", color: "white", textAlign: "right"}}>For Staff</h3>
-                    </div>
-                </div>
-
-            </div>
-
-            {/* end navigation bar */}
-
             {/* body part */}
 
             <div class="container-fluid" style={{border: "solid black 2px", height: "1000px",backgroundImage: `url(${HomeBackGround})`}}>
@@ -53,7 +35,8 @@ const Register = () => {
                                 </div>
                                 <div class="row">
                                     <div class="col"style={{border: "black solid 2px", marginTop: "20px"}}>
-                                        <h1>upload pic</h1>
+                                        
+                                    <button type="button" class="btn btn-primary" style={{minWidth:'100%'}}>Upload</button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -62,8 +45,8 @@ const Register = () => {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col"style={{border: "black solid 2px", marginTop: "20px"}}>
-                                        <h1>upload pic</h1>
+                                    <div class="col" style={{border: "black solid 2px", marginTop: "20px"}}>
+                                        <button type="button" class="btn btn-primary" style={{minWidth:'100%'}}>Upload</button>
                                     </div>
                                 </div>
                             </div>

@@ -1,7 +1,9 @@
 import React from 'react';
 import Background from '../pictures/background.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import buttoncus from '../pictures/buttoncus.png';
 
+import buttonsell from '../pictures/buttonsell.png';
 
 const HomePage = () => {
 
@@ -11,46 +13,14 @@ const HomePage = () => {
       
       {/* ------------- header ------------------ */}
 
-      <div class="container-fluid">
-
-        <div class="row" style={{height: "40px", background: "green"}}>
-          <div class="col">
-            <h3 style={{fontWeight: "bold", fontsize: "20px", color: "white", textAlign: "right"}}>For Staff</h3>
-          </div>
-        </div>
-
-      </div>
 
       {/* -------------- body ------------------- */}
 
-      <div class="container-fluid">
-
-        <div class="row" style={{height: "110px"}}>
-          <div class="col-4" style={{marginTop: "20px"}}>
-              <h3 style={{textAlign: "right", marginTop: "32px"}}>Pic</h3>
-          </div>
-          <div class="col" style={{marginTop: "20px"}}>
-            <h3 style={{textAlign: "center", marginTop: "32px"}}>Home</h3>
-          </div>
-          <div class="col" style={{marginTop: "20px"}}>
-            <h3 style={{textAlign: "center", marginTop: "32px"}}>Search</h3>
-          </div>
-          <div class="col" style={{marginTop: "20px"}}>
-            <h3 style={{textAlign: "center", marginTop: "32px"}}>About Us</h3>
-          </div>
-          <div class="col" style={{marginTop: "20px"}}>
-            <h3 style={{textAlign: "center", marginTop: "32px"}}>Contact</h3>
-          </div>
-          <div class="col" style={{marginTop: "20px"}}>
-            <h3 style={{textAlign: "right", marginTop: "32px"}}>Login</h3>
-          </div>
-        </div>
-
-      </div>
+      
 
       {/* -------------- lower body part --------------------*/}
 
-      <div class="container-fluid" style={{backgroundImage: `url(${Background})`}}>
+      <div class="container-fluid" style={{backgroundImage: `url(${Background})`,}}>
 
         <div class="row" style={{height: "700px"}}>
 
@@ -66,11 +36,11 @@ const HomePage = () => {
               <div class="col" style={{textAlign: "center"}}><h1>Join us! Who are you?</h1></div>
             </div>
             <div class="row" style={{marginTop: "50px"}}>
-              <div class="col" style={{textAlign: "center", textAlign: "right", marginRight: "15px"}}><h1>pic1</h1></div>
-              <div class="col" style={{textAlign: "center", textAlign: "left", marginLeft: "15px"}}><h1>pic2</h1></div>
+              <div class="col" style={{textAlign: "center", textAlign: "right", marginRight: "15px"}}><a href='/register'><img src={buttoncus} style={{height:'100px',width:'150px'}}/></a></div>
+              <div class="col" style={{textAlign: "center", textAlign: "left", marginLeft: "15px"}}><a href='/registerSeller'><img src={buttonsell} style={{height:'100px',width:'150px'}}/></a></div>
             </div>
             <div class="row" style={{marginTop: "25px"}}>
-              <div class="col" style={{textAlign: "center"}}><h5>already have account? <a href="#">Login here</a></h5></div>
+              <div class="col" style={{textAlign: "center"}}><h5>already have account? <a href="/signin">Login here</a></h5></div>
             </div>
 
           </div>
@@ -83,7 +53,7 @@ const HomePage = () => {
 
       <div class="container-fluid" style={{backgroundColor: "green"}}>
 
-        <div class="row" style={{height: "250px"}}>
+        <div class="row" style={{height: "10%"}}>
           <div class="col">
             <div class="row">
               <h2 style={{color:"white", fontWeight: "bold", marginLeft: "20px", marginTop: "10px"}}>Customer Support</h2>

@@ -1,4 +1,5 @@
 @import './styles/home';
+@import './styles/edit-store';
 
 .bg {
   min-height: 100%;
@@ -14,6 +15,9 @@
   left: 0;
   z-index: -1;
 
+}
+*{
+  font-family: 'Roboto', sans-serif;;
 }
 
 .thaifont{
@@ -31,62 +35,18 @@
   left: 0;
   z-index: -1;
 }
+//---------------------------------------navbar-------------------------------------
+#logoInNavbar{
+  max-height:50px;
+  max-width:50px;
+}
+
 
 //---------------------------------------EditStore Page------------------------------
 
-@mixin text {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 14px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #5e5757;
-}
 
-.card {
-  width: 16rem;
-  height: 25rem;
-  margin-left: 10px;
-  margin-bottom: 25px;
-  margin-right: 10px;
-}
+//ของใครว่ะ55555 แก้ด้วยอย่าตั้งเป็น .card ไฟล์อื่นมันมีคนใช้ด้วย
 
-.pic-card {
-  max-height: 10rem;
-}
-
-.edit-store-title {
-  @include text;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.edit-store-button {
-  position: absolute;
-  bottom: 0;
-}
-
-.btn-edit{
-  margin-bottom: 15px;
-}
-
-.edit-launch-botton {
-  margin-right: 20px;
-
-}
-
-.row-card {
-  margin-top: 30px;
-}
-
-.col-form-width {
-  width: 50px
-}
 
 
 .inputfield {
@@ -130,3 +90,9 @@ a {
 
 
 //--------------------------------------end Profile page--------------------------------------------
+
+//--------------------------------------Register Seller page----------------------------------------
+#spaceRegForm{
+  position: absolute;
+  right:65%
+}

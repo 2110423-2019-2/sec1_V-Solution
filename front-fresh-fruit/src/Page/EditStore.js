@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function Item(img, name) {
     return (
         <div>
-            <div class="card col" >
+            <div class="card card-a col" >
                 <img src={img} class="card-img-top pic-card" alt="..." />
                 <div class="card-body">
                     <h5 class="card-title">{name}</h5>
@@ -48,13 +48,14 @@ const EditStore = () => {
             'isLaunch': false
         }
     ]
-    
+
     return (
         <div >
-            <div class="edit-store-title">Your products</div>
+
             <div class="container">
+                <div class="edit-store-title underline">Products(5)</div>
                 <div class="row row-card">
-                    {items.map((item) => Item(item.img,item.name))}
+                    {items.map((item) => Item(item.img, item.name))}
                 </div>
             </div>
         </div>
