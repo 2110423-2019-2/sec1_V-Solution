@@ -70,6 +70,32 @@ def create_product(request):
 
     return Response({'result': 'Successfully create product'},status=HTTP_200_OK)
 
+@api_view(['GET'])
+def get_product(request, product_id):
+    product = Product.objects.get(pk=product_id)
+    try:
+        image = product.image.url
+    except ValueError:
+        image = ''
+    data = {
+        "seller" = product.seller.id
+        "productName" = product['productName'],
+        "proDuctDesc" = product['proDuctDesc'],
+        "category" = product['category'],
+        "subcategory" = product['subcategory'],
+        "province" = product['province'],
+        "district" = product['district'],
+        "productType" = product['productType'],
+        "harvest_date" = product['harvest_date'],
+        "price" = product['price'],
+        "amount" = product['amount'],
+        "unitOfAmount" = product['unitOfAmount'],
+        "deliverCompany" = product['deliverCompany'],
+        "deliverPrice" = product['deliverPrice'],
+        "image" = image,
+    }
+    return Response(data, status=HTTP_200_OK)
+
 @api_view(["POST"])
 def upload_product_image(request, product_id):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]

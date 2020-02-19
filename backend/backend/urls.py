@@ -31,5 +31,6 @@ urlpatterns = [
     path('api/user/uploadimage/', upload_user_profile),
     path('api/product/uploadimage', upload_product_image),
     path('verify/<str:token>/', verify_email),
-    path('api/createproduct/', create_product)
+    path('api/createproduct/', create_product),
+    path('api/getproduct/<str:productid>', get_product)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
