@@ -12,6 +12,7 @@ import EditProfile from './Page/EditProfile';
 import EditStore from './Page/EditStore';
 
 
+
 import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function App() {
@@ -29,7 +30,7 @@ function App() {
       <Router>
       {/* body part */}
         <Switch>
-              <Route exact path='/' component={AddItem} />
+              <Route exact path='/' component={Home} />
               <Route path='/profile' component={Profile} />
               <Route path='/seller' component={Seller}/>
               <Route path='/register' component={Register} />
@@ -39,6 +40,7 @@ function App() {
               <Route path='/store' component={Store} />
               <Route path='/EditProfile' component={EditProfile}/>
               <Route path='/EditStore' component={EditStore}/>
+              <Route path='/addItem' component={AddItem}/>
           </Switch>
       </Router>  
   
