@@ -83,10 +83,10 @@ def get_user_data(request, username):
 
     user = User.objects.get(username=request_username)
     user_profile = Profile.objects.get(user=user)
-    if user_profile.avatar == None:
-        image = ''
-    else:
+    try:
         image = user_profile.avatar.url
+    except ValueError:
+        image = ''
     data = {
         'id' : user.id,
         'first_name' : user_profile.first_name,
