@@ -1,8 +1,21 @@
 import React,{useState} from 'react';
 
+function hi() {
+    console.log('a')
+}
+
+/*const option = {
+    methods: "POST",
+    body: JSON.stringify({'name': "great", 'age': 21})
+}
+
+const send = new Request('http://nutpattara.pythonanywhere.com/api/login', option)
+*/
+
 const Loginform = () => {
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
+
     
     
     return (
@@ -22,7 +35,8 @@ const Loginform = () => {
                         </div>
                             <a href="">Forgot Password?</a>
                             <div style={{float:'right'}}>
-                            <button herf="#"class="btn btn-outline-primary" style={{ marginRight: '10px' }}>Register</button>
+                            <button type="submit" class="btn btn-outline-primary"  style={{ marginRight: '10px' }}>Register</button>
+
                             <button type="submit" class="btn btn-primary" onClick={()=>{console.log(username);
                             console.log(password)
                             }}>Sign in</button>

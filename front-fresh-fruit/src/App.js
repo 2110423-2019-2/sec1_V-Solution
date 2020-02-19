@@ -11,6 +11,7 @@ import AddItem from './Page/AddItem';
 import EditProfile from './Page/EditProfile';
 import EditStore from './Page/EditStore';
 
+
 import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function App() {
@@ -21,16 +22,14 @@ function App() {
       {/* navigation bar */}
 
 
-      <Router>
+ 
       {/* body part */}
-        <Switch>
-              <Route exact path='/' component={Register} />
-        </Switch>
+      
       <Navi/>
       <Router>
       {/* body part */}
         <Switch>
-              <Route exact path='/' component={HomePage} />
+              <Route exact path='/' component={AddItem} />
               <Route path='/profile' component={Profile} />
               <Route path='/seller' component={Seller}/>
               <Route path='/register' component={Register} />
@@ -42,7 +41,7 @@ function App() {
               <Route path='/EditStore' component={EditStore}/>
           </Switch>
       </Router>  
-      </Router>
+  
 
       
       
