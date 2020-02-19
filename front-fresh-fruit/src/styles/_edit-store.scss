@@ -12,6 +12,13 @@
   color: #5e5757;
 }
 
+.head-newitem {
+  @include text();
+  margin-top: 30px;
+  margin-bottom: 40px;
+  justify-content: start;
+}
+
 .card-a {
   width: 16rem;
   height: 25rem;

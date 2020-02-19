@@ -1,76 +1,134 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.scss';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { Form, Col, Row, Button } from 'react-bootstrap'
 
-function addItemfrom() {
-      
-      return (
 
+function AddItemform() {
+    const [product, setProduct] = useState({
+        "product_name": "",
+        "product_desc":"",
+        "category": "",
+        "subcategory": "",
+        "province":"",
+        "district":"",
+        "product_type":"",
+        "harvest_date":"",
+        "price":"",
+        "amount":"",
+        "unit_of_amount":"",
+        "deliver_company":"",
+        "deliver_price":""
+    });
+
+    
+    const checkState = () => {
+        console.log("data: ",product)
+    }
+    
+    const handleChange = (e) => {
+        setProduct({ ...product, [e.target.name]: e.target.value })
+        console.log(product)
+    }
+
+    return (
         <div>
+            <Form>
+                <h3 class="head-newitem">Create new product</h3>
 
-        <form className="container" style={{fontSize:'16px'}}>
+                <Form.Group controlId="">
+                    <Form.Label>Product Name</Form.Label>
+                    <Form.Control placeholder="" name="product_name" onChange={e => handleChange(e)}/>
+                </Form.Group>
 
-       
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                Name:
-                <input style = {{marginLeft:"103px", width:"200px"}} className = "inputfield" type="text" name="name" 
-                placeholder=""/>
-            </label></div></div>
+                <Form.Group controlId="">
+                    <Form.Label>Describtion</Form.Label>
+                    <Form.Control placeholder="" name="product_desc" onChange={e => handleChange(e)}/>
+                </Form.Group>
 
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formCategory">
+                        <Form.Label>Category</Form.Label>
+                        <Form.Control as="select" name="category" onChange={e => handleChange(e)}>
+                            <option>Choose...</option>
+                            <option>Fruit</option>
+                            <option>Vegetable</option>
+                            <option>...</option>
+                        </Form.Control>
+                    </Form.Group>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                Description:
-                <span><textarea class="form-control" style={{marginLeft: "150px"}} id="exampleFormControlTextarea1" rows="2" cols="4"></textarea></span>
-            </label></div></div>
+                    <Form.Group as={Col} controlId="formSubCategory">
+                        <Form.Label>SubCategory</Form.Label>
+                        <Form.Control as="select" name="subcategory" onChange={e => handleChange(e)}>
+                            <option>Choose...</option>
+                            <option>Daily</option>
+                            <option>Weekly</option>
+                            <option>...</option>
+                        </Form.Control>
+                    </Form.Group>
+                </Form.Row>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                Category:
-                <input  style = {{marginLeft:"80px", width: "200px"}} className = "inputfield" type="text" name="name" />
-            </label></div></div>
+                <Form.Group controlId="formGridAddress1">
+                    <Form.Label>Province</Form.Label>
+                    <Form.Control placeholder="" name="province" onChange={e => handleChange(e)}/>
+                </Form.Group>
 
+                <Form.Group controlId="formGridAddress2">
+                    <Form.Label>District</Form.Label>
+                    <Form.Control placeholder="" name="district" onChange={e => handleChange(e)}/>
+                </Form.Group>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                Subcategory:
-                <input style = {{marginLeft:"55px", width: "200px"}} className = "inputfield" type="email" name="name"/>
-            </label></div></div>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formType">
+                        <Form.Label>Type</Form.Label>
+                        <Form.Control name="product_type" onChange={e => handleChange(e)}/>
+                    </Form.Group>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                Harvest Date:
-                <input style = {{marginLeft:"53px", width: "200px"}} className = "inputfield" type="password" name="name" />
-            </label></div></div>
+                    <Form.Group as={Col} controlId="formDate">
+                        <Form.Label>Harvest Date</Form.Label>
+                        <Form.Control name="harvest_date" onChange={e => handleChange(e)}/>
+                    </Form.Group>
+                </Form.Row>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                Price Amount:
-                <input style = {{marginLeft:"50px", width: "200px"}} className = "inputfield" type="text" name="name"/>
-            </label></div></div>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formPrice">
+                        <Form.Label>Price</Form.Label>
+                        <Form.Control name="price" onChange={e => handleChange(e)}/>
+                    </Form.Group>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}> <label>
-                Unit of Amount:
-                <input style = {{marginLeft:"40px", width: "200px"}} className = "inputfield" type="text" name="name"/>
-            </label></div></div>
+                    <Form.Group as={Col} controlId="formAmount">
+                        <Form.Label>Amount</Form.Label>
+                        <Form.Control name="amount" onChange={e => handleChange(e)}/>
+                    </Form.Group>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                Deliver Company:
-                <input style = {{marginLeft:"25px", width:"200px"}} className = "inputfield" type="text" name="name" />
-            </label></div></div>
+                    <Form.Group as={Col} controlId="unit">
+                        <Form.Label>Unit Of Amount</Form.Label>
+                        <Form.Control name="unit_of_amount" onChange={e => handleChange(e)}/>
+                    </Form.Group>
+                </Form.Row>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                Deliver Price:
-                <input style = {{marginLeft:"55px", width: "200px"}} className = "inputfield" type="text" name="name" />
-            </label></div></div>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="del_comp">
+                        <Form.Label>Deliver Company</Form.Label>
+                        <Form.Control name="deliver_company" onChange={e => handleChange(e)}/>
+                    </Form.Group>
 
+                    <Form.Group as={Col} controlId="del_price">
+                        <Form.Label>Deliver Price></Form.Label>
+                        <Form.Control name="deliver_price" onChange={e => handleChange(e)}/>
+                    </Form.Group>
+                </Form.Row>
 
-            <div class="row" ><div class="col" style={{textAlign: "left"}}><label>
-                Tag:
-                <input style = {{marginLeft:"120px", width: "200px"}} className = "inputfield" type="text" name="name" />
-            </label></div></div>
-            
-            
-        </form>
+                <Form.Group id="formGridCheckbox">
+                    <Form.Check type="checkbox" label="Confirm" />
+                </Form.Group>
 
+                <Button variant="primary" type="button" onClick={checkState}>
+                    Submit
+            </Button>
+            </Form>
         </div>
-        
-      );
-  }
-  
-  export default addItemfrom;
+
+    );
+}
+
+export default AddItemform;
