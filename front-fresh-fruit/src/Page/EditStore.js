@@ -48,13 +48,14 @@ const EditStore = () => {
             'isLaunch': false
         }
     ]
-    
+
     return (
         <div >
-            <div class="edit-store-title">Your products</div>
+
             <div class="container">
+                <div class="edit-store-title underline">Products(5)</div>
                 <div class="row row-card">
-                    {items.map((item) => Item(item.img,item.name))}
+                    {items.map((item) => Item(item.img, item.name))}
                 </div>
             </div>
         </div>
