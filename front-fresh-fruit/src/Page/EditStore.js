@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import {useHistory} from "react-router-dom";
+
 function Item(img, name) {
     return (
         <div>
@@ -19,7 +21,31 @@ function Item(img, name) {
     )
 }
 
+
+
 const EditStore = () => {
+    let history = useHistory();
+
+    function addNewItem() {
+        history.push('/addItem')
+    }
+
+    function LastItem() {
+        return (
+            <div>
+                <div class="card card-a col" >
+    
+                    <div class="card-body">
+                        <div style={{ color: "#ffec62" }}>
+                            <i class="fas fa-plus-circle fa-5x vertical-center" onClick={addNewItem}></i>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     const items = [
         {
             'img': 'https://f.btwcdn.com/store-34660/product/49e0623f-5e1d-9c4f-d254-5b7f69a49e9a.jpg',
@@ -56,6 +82,8 @@ const EditStore = () => {
                 <div class="edit-store-title underline">Products(5)</div>
                 <div class="row row-card">
                     {items.map((item) => Item(item.img, item.name))}
+                    {LastItem()}
+
                 </div>
             </div>
         </div>

@@ -41,6 +41,13 @@ font-size: 20px;
   bottom: 0;
 }
 
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
 .btn-edit {
   margin-bottom: 15px;
 }

@@ -37,7 +37,7 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <UserContext.Consumer>
-                    {kkk => <div>{kkk}</div>}
+                    {kkk => <div>{kkk.wtf}</div>}
                 </UserContext.Consumer>
                 
             </div>

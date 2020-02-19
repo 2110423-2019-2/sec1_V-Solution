@@ -7,7 +7,7 @@ const Profile = () => {
     //for setup fetch data
     return (
         //style={{backgroundImage:`url(${background})`}}
-        <UserContext.Provider value="kuy">
+        <UserContext.Provider value={{wtf:"wtf"}}>
             <div>
                 <ProfileComponent username='vachirachat' firstname='vachirachat' lastname='saw' Address='this is my address' Tel='this is my tel' Birthdate='this is my birthdate' />
             </div>
