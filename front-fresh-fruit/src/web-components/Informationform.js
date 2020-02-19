@@ -35,12 +35,13 @@ function Informationform() {
         await axios.post(url, data)
             .then((res) => {
                 setUser_token(res.data)
-                console.log(res)
+                checkState()
+                alert("wtf")
             })
             .catch((err) => {
                 console.log(err)
             })
-        alert("wtf")
+        
     }
 
     return (
