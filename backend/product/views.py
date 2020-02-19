@@ -78,7 +78,6 @@ def get_product(request, product_id):
     except ValueError:
         image = ''
     data = {
-        "seller" = product.seller,
         "productName" = product['productName'],
         "proDuctDesc" = product['proDuctDesc'],
         "category" = product['category'],
