@@ -79,16 +79,6 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'freshfruitdb',
-        'HOST' : '',
-    }
-}
-'''
-
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
