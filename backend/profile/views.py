@@ -98,6 +98,7 @@ def get_user_data(request, username):
         'bio' : user_profile.bio,
         'store_name' : user_profile.store_name,
         'nat_id' : user_profile.is_active,
+        'user_type' : user_profile.user_type,
         'image' : image,
     }
     return Response(data, status=HTTP_200_OK)
