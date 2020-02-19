@@ -78,20 +78,20 @@ def get_product(request, product_id):
     except ValueError:
         image = ''
     data = {
-        "productName" = product['productName'],
-        "proDuctDesc" = product['proDuctDesc'],
-        "category" = product['category'],
-        "subcategory" = product['subcategory'],
-        "province" = product['province'],
-        "district" = product['district'],
-        "productType" = product['productType'],
-        "harvest_date" = product['harvest_date'],
-        "price" = product['price'],
-        "amount" = product['amount'],
-        "unitOfAmount" = product['unitOfAmount'],
-        "deliverCompany" = product['deliverCompany'],
-        "deliverPrice" = product['deliverPrice'],
-        "image" = image,
+        "productName" : product['productName'],
+        "proDuctDesc" : product['proDuctDesc'],
+        "category" : product['category'],
+        "subcategory" : product['subcategory'],
+        "province" : product['province'],
+        "district" : product['district'],
+        "productType" : product['productType'],
+        "harvest_date" : product['harvest_date'],
+        "price" : product['price'],
+        "amount" : product['amount'],
+        "unitOfAmount" : product['unitOfAmount'],
+        "deliverCompany" : product['deliverCompany'],
+        "deliverPrice" : product['deliverPrice'],
+        "image" : image,
     }
     return Response(data, status=HTTP_200_OK)
 
