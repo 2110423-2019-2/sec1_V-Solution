@@ -2,6 +2,8 @@ import React from 'react';
 import '../App.scss';
 import background from '../pictures/background.png';
 import ProfilePic from '../pictures/user.png';
+import UserContext from '../Context/UserContext';
+
 const Profile = (props) => {
     return (
         //style={{backgroundImage:`url(${background})`}}
@@ -9,9 +11,6 @@ const Profile = (props) => {
             <div>
                 <img class='profileCover' src={background} />
                 <img class='profilePic' src={ProfilePic} />
-
-
-
             </div>
             <div class='container thaifont'>
                 <div class='row'>
@@ -37,8 +36,13 @@ const Profile = (props) => {
                         <h3>{props.Birthdate}</h3>
                     </div>
                 </div>
+                <UserContext.Consumer>
+                    {kkk => <div>{kkk}</div>}
+                </UserContext.Consumer>
+                
             </div>
         </div>
+
     );
 };
 

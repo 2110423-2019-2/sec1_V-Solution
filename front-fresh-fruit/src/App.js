@@ -10,44 +10,40 @@ import Store from './Page/Store';
 import AddItem from './Page/AddItem';
 import EditProfile from './Page/EditProfile';
 import EditStore from './Page/EditStore';
-
+import UserContext from './Context/UserContext';
 
 
 import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function App() {
   return (
-
     <div>
 
       {/* navigation bar */}
 
 
- 
-      {/* body part */}
-      
-      <Navi/>
-      <Router>
-      {/* body part */}
-        <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/profile' component={Profile} />
-              <Route path='/seller' component={Seller}/>
-              <Route path='/register' component={Register} />
-              <Route path='/registerSeller' component={RegisterSeller} />
-              <Route path='/Signin' component={Signin} />
-              <Route path='/addItem' component={AddItem} />
-              <Route path='/store' component={Store} />
-              <Route path='/EditProfile' component={EditProfile}/>
-              <Route path='/EditStore' component={EditStore}/>
-              <Route path='/addItem' component={AddItem}/>
-          </Switch>
-      </Router>  
-  
 
-      
-      
+      {/* body part */}
+
+      <Navi />
+      <Router>
+        {/* body part */}
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/profile' component={Profile} />
+          <Route path='/seller' component={Seller} />
+          <Route path='/register' component={Register} />
+          <Route path='/registerSeller' component={RegisterSeller} />
+          <Route path='/Signin' component={Signin} />
+          <Route path='/addItem' component={AddItem} />
+          <Route path='/store' component={Store} />
+          <Route path='/EditProfile' component={EditProfile} />
+          <Route path='/EditStore' component={EditStore} />
+          <Route path='/addItem' component={AddItem} />
+        </Switch>
+      </Router>
     </div>
+
 
   );
 }
