@@ -54,8 +54,8 @@ function App() {
           <Route exact path='/' component={Home} />
           {token!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Signin} />)}
           
-          <Route path='/seller' component={Seller} />
-          <Route path='/register' component={Register} />
+          <Route path='/seller' component={Home} />
+          <Route path='/register' component={Home} />
           <Route path='/registerSeller' component={RegisterSeller} />
           <Route path='/Signin' component={Signin} />
           <Route path='/store' component={Store} />

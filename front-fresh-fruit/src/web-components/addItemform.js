@@ -37,9 +37,11 @@ function AddItemform() {
     const history = useHistory();
     const onSubmit = async (e, usertoken) => {
         console.log(usertoken)
-        await axios.post(url, product, {
+        await axios.post(url,  {
             headers: {
                 'Authorization': `Token ${usertoken}`
+            },data:{
+                product
             }
         })
             .then((res) => {

@@ -79,7 +79,7 @@ const EditStore = () => {
         <div >
 
             <div class="container">
-                <div class="edit-store-title underline">Products(5)</div>
+                <div class="edit-store-title underline ">Products(5)</div>
                 <div class="row row-card">
                     {items.map((item) => Item(item.img, item.name))}
                     {LastItem()}

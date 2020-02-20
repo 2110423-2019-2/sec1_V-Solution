@@ -17,7 +17,7 @@ const Profile = (props) => {
                 <div class='row'>
                     <h1 class='col-lg-10 col-6'>{props.username}</h1>
                     <div class='logoAndEditInProfile col-lg-2 col-6'>
-                        <button type="button" class="btn btn-outline-info">logo</button>
+                        <button type="button" class="btn btn-outline-info">Logo</button>
                         <button id='editInProfile' type="button" class="btn btn-outline-info">Edit</button>
                     </div>
                 </div>
