@@ -46,12 +46,12 @@ function App() {
 
       {/* body part */}
 
-      <Navi />
+    
       <Router>
         {/* body part */}
         <Switch>
           <UserContext.Provider value={{google:'this is evil company',isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,usertoken:`${token}`,clearToken:clearToken,username:`${username}`,setUsername:handleSetUsername}}>
-          <Route exact path='/' component={Home} />
+          <Route exact path='/' component={EditProfile} />
           {token!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Signin} />)}
           
           <Route path='/seller' component={Seller} />
