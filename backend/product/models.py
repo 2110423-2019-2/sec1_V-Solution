@@ -13,7 +13,8 @@ class Product(models.Model):
     PRODUCT_TYPES = {
         ('A', 'Add'),
         ('L', 'Launch'),
-        ('R', 'Reserve')
+        ('R', 'Reserve'),
+        ('N', 'Not available')
     }
 
     seller = models.ForeignKey(to='profile.Profile', null=True, on_delete=models.PROTECT)

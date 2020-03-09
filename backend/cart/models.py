@@ -11,10 +11,9 @@ class Cart(models.Model):
     count = models.PositiveIntegerField(default=0)
     total = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
     updated = models.DateTimeField(auto_now=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return "User: {} has {} items in their cart. Their total is ${}".format(self.user, self.count, self.total)
+        return "User: {} has {} items in their cart. Their total is {} bath".format(self.user, self.count, self.total)
     
 class Entry(models.Model):
     product = models.ForeignKey(Product, null=True, on_delete='CASCADE')

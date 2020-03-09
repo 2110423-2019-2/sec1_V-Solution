@@ -101,13 +101,13 @@ def update_product(request, product_id, status):
     product = Product.objects.get(pk=product_id)
     if user_profile != product.seller:
         return Response({'error': 'Invalid credentials'}, status=HTTP_400_BAD_REQUEST)
-    if status.upper() in ['L', 'R']:
-        if product.productType == 'A':
+    if status.upper() in ['L', 'R', 'N']:
+        if product.productType == 'A' or status.upper() == 'N':
             product.productType = status.upper()
-        else:
-            return Response({'error': 'Invalid request'}, status=HTTP_400_BAD_REQUEST)
-    product.save()
-    return Response({'result': 'Successfully update product status'},status=HTTP_200_OK)
+            product.save()
+            return Response({'result': 'Successfully update product status'},status=HTTP_200_OK)
+
+    return Response({'error': 'Invalid request'}, status=HTTP_400_BAD_REQUEST)
 
 """def home(request) :
     if request.method == 'GET' :
