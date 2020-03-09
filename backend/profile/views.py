@@ -17,6 +17,8 @@ from django.contrib.auth.models import User
 from .models import Profile
 from email_sys import send_email
 from backend import settings
+from cart.models import Cart
+from cart.serializers import cart_to_dict
 import os
 
 @api_view(["POST"])
@@ -46,9 +48,13 @@ def register(request):
             user = User.objects.create_user(
                 username = username,
                 password = password,
-                email = email
+                email = email,
+                first_name = first_name,
+                last_name = last_name
             )
             user.save()
+
+            # models that are linked with user
 
             new_profile = Profile.objects.create(
                 user = user,
@@ -62,6 +68,10 @@ def register(request):
                 user_type = user_type,
             )
             new_profile.save()
+
+            new_cart = Cart.objects.create(
+                user = user
+            )
 
             token, _ = Token.objects.get_or_create(user=user)
 
@@ -174,3 +184,14 @@ def verify_email(request, token):
             return HttpResponse("<html><body>Verification successful.</body></html>")
     html = "<html><body>Token %s is not valid</body></html>" %token
     return HttpResponse(html)
+
+## Cart
+@api_view(["GET"])
+def get_user_cart(request):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+    user_cart = Cart.objects.get(user=user)
+    data = cart_to_dict(user_cart)
+
+    return Response(data, status=HTTP_200_OK)

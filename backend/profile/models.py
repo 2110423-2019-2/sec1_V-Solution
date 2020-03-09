@@ -15,7 +15,7 @@ class Profile(models.Model):
         ('M', 'Moderator')
     }
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Product, null=True, on_delete='CASCADE')
     user_type = models.CharField(max_length=1, choices=USER_TYPES, blank=True)
 
     first_name = models.CharField(max_length=20, blank=True)

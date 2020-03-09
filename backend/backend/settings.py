@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'profile',
     'product',
+    'cart',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

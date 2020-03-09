@@ -18,7 +18,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.http import request
 from django.http import HttpResponse , JsonResponse
 from .models import Product
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer, product_to_dict
 from profile.models import Profile
 
 @api_view(["POST"])
@@ -29,7 +29,7 @@ def create_product(request):
     user_profile = Profile.objects.get(user=user)
 
     if not user_profile.is_active:
-        return Response({'result': 'User is not authenticate.'}, status=HTTP_200_OK)
+        return Response({'result': 'User is not verify.'}, status=HTTP_200_OK)
     if user_profile.user_type != 'S':
         return Response({'result': 'User is not a Seller.'}, status=HTTP_200_OK)
 
@@ -73,26 +73,7 @@ def create_product(request):
 @api_view(['GET'])
 def get_product(request, product_id):
     product = Product.objects.get(pk=product_id)
-    try:
-        image = product.image.url
-    except ValueError:
-        image = ''
-    data = {
-        "productName" : product['productName'],
-        "proDuctDesc" : product['proDuctDesc'],
-        "category" : product['category'],
-        "subcategory" : product['subcategory'],
-        "province" : product['province'],
-        "district" : product['district'],
-        "productType" : product['productType'],
-        "harvest_date" : product['harvest_date'],
-        "price" : product['price'],
-        "amount" : product['amount'],
-        "unitOfAmount" : product['unitOfAmount'],
-        "deliverCompany" : product['deliverCompany'],
-        "deliverPrice" : product['deliverPrice'],
-        "image" : image,
-    }
+    product_to_dict(product)
     return Response(data, status=HTTP_200_OK)
 
 @api_view(["POST"])
