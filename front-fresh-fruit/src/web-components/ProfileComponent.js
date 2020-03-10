@@ -24,7 +24,7 @@ const Profile = (props) => {
                         <button id='editInProfile' type="button" class="btn btn-outline-info">Edit</button>
                     </div>
                 </div>
-                {/* <div class='row'>
+                 <div class='row'>
                     <h2>{props.firstname}</h2>
                     <h2 style={{ marginLeft: '10px' }}>{props.lastname}</h2>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react';
-import Background from '../pictures/background.png'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import homefruit from  '../pictures/homefruit.png';
 import buttoncus from '../pictures/buttoncus.png';
 
 import buttonsell from '../pictures/buttonsell.png';
@@ -9,7 +9,7 @@ const HomePage = () => {
 
     return (
 
-        <div>
+    <div>
       
       {/* ------------- header ------------------ */}
 
@@ -20,27 +20,19 @@ const HomePage = () => {
 
       {/* -------------- lower body part --------------------*/}
 
-      <div class="container-fluid" style={{backgroundImage: `url(${Background})`,}}>
+      <div class="container-fluid" style={{backgroundColor:"#6AC17D"}}>
 
         <div class="row" style={{height: "700px"}}>
 
           <div class="col">
 
-            <div class="row" style={{marginTop: "120px"}}>
-              <div class="col" style={{textAlign: "center"}}><h1>Welcome to FreshFruit</h1></div>
-            </div>
-            <div class="row" style={{marginTop: "20px"}}>
-              <div class="col" style={{textAlign: "center"}}><h5>Central of buy&sell fruit center</h5></div>
-            </div>
-            <div class="row" style={{marginTop: "50px"}}>
-              <div class="col" style={{textAlign: "center"}}><h1>Join us! Who are you?</h1></div>
-            </div>
-            <div class="row" style={{marginTop: "50px"}}>
-              <div class="col" style={{textAlign: "center", textAlign: "right", marginRight: "15px"}}><a href='/register'><img src={buttoncus} style={{height:'100px',width:'150px'}}/></a></div>
-              <div class="col" style={{textAlign: "center", textAlign: "left", marginLeft: "15px"}}><a href='/registerSeller'><img src={buttonsell} style={{height:'100px',width:'150px'}}/></a></div>
-            </div>
-            <div class="row" style={{marginTop: "25px"}}>
-              <div class="col" style={{textAlign: "center"}}><h5>already have account? <a href="/signin">Login here</a></h5></div>
+            <div class="row" style={{marginTop: "120px", marginLeft: "50px"}}>
+              <div class="col" style={{textAlign: "center"}}><img src={homefruit} style={{height:'400px',width:'600px'}}/></div>
+              <div class="col" style={{textAlign: "center", color:"white"}}><h1>Find Daily & Organic fruit</h1>
+                <h2>with</h2><h1>FRESHFRUIT</h1>
+                <input type="text" name="search" style={{marginTop:"40px", width:"500px", height:"45px", borderRadius:"20px"}}/>
+                <div style={{marginTop:"40px"}}><button style={{width:'120px', height:'40px', borderRadius:"20px"}}><a href='/SignUp'>Search</a></button></div>
+              </div>
             </div>
 
           </div>
@@ -51,7 +43,7 @@ const HomePage = () => {
 
       {/* --------------- footer part ----------------------- */}
 
-      <div class="container-fluid" style={{backgroundColor: "green"}}>
+      <div class="container-fluid" style={{backgroundColor: "black"}}>
 
         <div class="row" style={{height: "10%"}}>
           <div class="col">

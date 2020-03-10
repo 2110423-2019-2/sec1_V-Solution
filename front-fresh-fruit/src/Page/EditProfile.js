@@ -11,39 +11,39 @@ const EditProfile = () => {
                 
                 {/* head */}
 
-                <div style={{border: "solid black 2px", height: "293px", backgroundImage: `url(${Background})`,
+                <div style={{height: "293px", backgroundImage: `url(${Background})`,
                             backgroundRepeat: "no-repeat", backgroundSize: 'cover'}}>
 
                 </div>
         
                 {/* body */}
 
-                <div style={{border: "solid red 2px", height: "1650px", backgroundColor: "#E6FFEC"}}>
+                <div style={{height: "1650px", backgroundColor: "#E6FFEC"}}>
                     
                     <div class="row">
 
-                        <div class="col-3" style={{border: "solid black 2px"}}>
+                        <div class="col-3">
                             <img src={Logo} style={{width: "200px", marginTop: "-70px", marginLeft: "50px"}} />
                         </div>
-                        <div class="col"  style={{border: "solid black 2px",}}>
+                        <div class="col" >
                             <h1 style={{fontFamily: "Marker Felt", color:"#36368D", fontSize:"50px", marginTop:"40px", marginLeft:"30px"}}>
                                 GreatStorer</h1> 
                         </div>
 
-                        <div class="col-3"  style={{border: "solid black 2px",}}>
+                        <div class="col-3" >
                             <div class="row">
-                                <div class="col" style={{border:"solid black 2px"}}>
-                                    <h1 style={{marginLeft: "80px"}}>a</h1>
+                                <div class="col" >
+                                    <h1 style={{marginLeft: "80px"}}>pic</h1>
                                 </div>
-                                <div class="col" style={{border:"solid black 2px"}}>
-                                    <h1>b</h1>
+                                <div class="col" >
+                                    <h1>Edit</h1>
                                 </div>
                             </div>
                         </div>
 
                     </div>
 
-                    <div style={{border: "solid black 2px", height: "350px"}}>
+                    <div style={{height: "350px"}}>
                         
                         <div style={{marginTop: "50px"}}>
                             <div style={{marginLeft: "100px"}}>
@@ -57,7 +57,7 @@ const EditProfile = () => {
                         
                     </div>
 
-                    <div style={{border: "solid black 2px", height: "350px"}}>
+                    <div style={{height: "350px"}}>
                         
                         <div class = "row" style={{textAlign: "center", marginTop: "30px"}}>
                             <div class="col">
