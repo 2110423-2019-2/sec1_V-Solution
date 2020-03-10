@@ -5,7 +5,7 @@ function Footerbar() {
     return (
 
         <footer class="page-footer font-medium pt-4">
-          <div class="container">
+          <div class="container container-footer">
               
             <ul class="list-unstyled list-inline text-center">
               <li class="list-inline-item">
