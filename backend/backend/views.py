@@ -27,7 +27,7 @@ def login(request):
             return Response({'error': 'Invalid Credentials'},
                             status=HTTP_400_BAD_REQUEST)
         token, _ = Token.objects.get_or_create(user=user)
-        return Response({'token': token.key, 'id': token.user_id},
+        return Response({'token': token.key, 'id': token.user_id, 'username': username},
                         status=HTTP_200_OK)
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)

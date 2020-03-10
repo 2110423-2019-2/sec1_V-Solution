@@ -39,3 +39,5 @@ class Product(models.Model):
         return f'{self.seller.first_name} {self.seller.last_name} : {self.productName}'
 
 
+
+
