@@ -19,6 +19,7 @@ from django.http import HttpResponse , JsonResponse
 
 from .models import Entry
 from profile.models import Profile
+from product.models import Product
 from cart.models import Cart
 from cart.serializers import cart_to_list
 from product.utility import calculate_product_price
@@ -32,6 +33,7 @@ def add_entry(cart, product, amount):
 
     if old_entry:
         old_entry.quantity += amount
+        old_entry.save()
     else:
         entry = Entry.objects.create(
             product = product,
@@ -40,8 +42,8 @@ def add_entry(cart, product, amount):
         )
     
     cart.count += amount
-    cart.total_price += calculate_product_price(product) * amount
-    cart.total_deliver_price += product.deliverPrice * amount
+    cart.total_price += (calculate_product_price(product) * amount)
+    cart.total_deliver_price += (product.deliverPrice * amount)
 
     return cart
 
@@ -75,7 +77,7 @@ def add_product_to_cart(request):
     # Data
     try:
         product_id = json_data['id']
-        amount = json_data['amount']
+        amount = int(json_data['amount'])
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
@@ -86,7 +88,7 @@ def add_product_to_cart(request):
 
     return Response(data, status=HTTP_200_OK)
 
-## decrease entry
+## decrease entry NOT FINISH
 @api_view(["POST"])
 def remove_product_from_cart(request):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
@@ -109,7 +111,7 @@ def remove_product_from_cart(request):
     return Response(data, status=HTTP_200_OK)
 
 ## get cart
-@api_view(["POST"])
+@api_view(["GET"])
 def get_cart(request):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
     token = Token.objects.get(key=token_string)

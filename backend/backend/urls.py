@@ -30,7 +30,6 @@ urlpatterns = [
     path('api/edituser/<str:username>/', edit_user_data),
     path('api/user/uploadimage/', upload_user_profile),
     path('api/product/uploadimage', upload_product_image),
-    path('api/getcart', get_user_cart),
     path('verify/<str:token>/', verify_email),
     path('api/createproduct/', create_product),
     path('api/getproduct/<str:product_id>', get_product),

@@ -18,7 +18,7 @@ from .models import Profile
 from email_sys import send_email
 from backend import settings
 from cart.models import Cart
-from cart.serializers import cart_to_dict
+from cart.serializers import cart_to_list
 import os
 
 @api_view(["POST"])
@@ -76,7 +76,7 @@ def register(request):
             token, _ = Token.objects.get_or_create(user=user)
 
             '''
-            #email verification is in here
+            #email verification is in here BUGGED
             text = "http://127.0.0.1:8000/verify/" + token.key
             send_email.send_email(email, 'Confirm your Freshfruit registeration', text, text)
             '''
@@ -184,14 +184,3 @@ def verify_email(request, token):
             return HttpResponse("<html><body>Verification successful.</body></html>")
     html = "<html><body>Token %s is not valid</body></html>" %token
     return HttpResponse(html)
-
-## Cart
-@api_view(["GET"])
-def get_user_cart(request):
-    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
-    token = Token.objects.get(key=token_string)
-    user = token.user
-    user_cart = Cart.objects.get(user=user)
-    data = cart_to_dict(user_cart)
-
-    return Response(data, status=HTTP_200_OK)

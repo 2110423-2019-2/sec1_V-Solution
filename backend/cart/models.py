@@ -7,12 +7,12 @@ from pygments.styles import get_all_styles
 class Cart(models.Model):
     user = models.ForeignKey(User, null=True, blank=True, on_delete='CASCADE')
     count = models.PositiveIntegerField(default=0)
-    total_price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
-    total_deliver_price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
+    total_price = models.FloatField(default=0)
+    total_deliver_price = models.FloatField(default=0)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return "User: {} has {} items in their cart. Their total is {} bath".format(self.user, self.count, self.total)
+        return "User: {} has {} items in their cart. Their total is {} bath".format(self.user, self.count, self.total_price)
     
 class Entry(models.Model):
     product = models.ForeignKey(Product, null=True, on_delete='CASCADE')
@@ -20,4 +20,4 @@ class Entry(models.Model):
     quantity = models.PositiveIntegerField()
 
     def __str__(self):
-        return "This entry contains {} {}(s).".format(self.quantity, self.product.name)
+        return "This entry contains {} {}(s).".format(self.quantity, self.product.productName)
