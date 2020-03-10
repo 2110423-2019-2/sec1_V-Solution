@@ -23,6 +23,7 @@ from profile.views import *
 from product.views import *
 
 urlpatterns = [
+    path('verify/<str:token>/', verify_email),
     path('admin/', admin.site.urls),
     path('api/login', login),
     path('api/register', register),
@@ -30,7 +31,6 @@ urlpatterns = [
     path('api/edituser/<str:username>/', edit_user_data),
     path('api/user/uploadimage/', upload_user_profile),
     path('api/product/uploadimage', upload_product_image),
-    path('verify/<str:token>/', verify_email),
     path('api/createproduct/', create_product),
     path('api/allproduct/', get_all_product),
     path('api/getproduct/<str:product_id>', get_product),

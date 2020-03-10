@@ -60,6 +60,7 @@ def product_to_dict(product):
         "deliverCompany" : product.deliverCompany,
         "deliverPrice" : product.deliverPrice,
         "image" : image,
+        "product_type" : product.productType
     }
     return data
 

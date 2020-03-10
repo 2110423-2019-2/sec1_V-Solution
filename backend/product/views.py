@@ -67,6 +67,7 @@ def create_product(request):
         unitOfAmount = unitOfAmount,
         deliverCompany = deliverCompany,
         deliverPrice  = deliverPrice,
+        productType = "A"
     )
 
     return Response({'result': 'Successfully create product'},status=HTTP_200_OK)
@@ -125,7 +126,7 @@ def get_product_from_user(request, username):
 @api_view(['GET'])
 @permission_classes((AllowAny,))
 def get_all_product(request):
-    products = Product.objects.all().order_by('pk')
+    products = Product.objects.all().exclude(productType='A').order_by('pk')
     data = []
     for product in products: 
         data.append(product_to_dict(product))
