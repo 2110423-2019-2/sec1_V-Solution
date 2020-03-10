@@ -32,7 +32,9 @@ urlpatterns = [
     path('api/product/uploadimage', upload_product_image),
     path('verify/<str:token>/', verify_email),
     path('api/createproduct/', create_product),
+    path('api/allproduct/', get_all_product),
     path('api/getproduct/<str:product_id>', get_product),
+    path('api/getuserproduct/<str:username>', get_product_from_user),
     path('api/updateproduct/<str:product_id>/<str:status>', update_product),
     # Cart
     path('api/cart/', include('cart.urls'))

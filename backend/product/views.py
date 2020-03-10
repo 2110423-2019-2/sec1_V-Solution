@@ -19,6 +19,7 @@ from django.http import request
 from django.http import HttpResponse , JsonResponse
 from .models import Product
 from .serializers import ProductSerializer, product_to_dict
+from django.contrib.auth.models import User
 from profile.models import Profile
 
 @api_view(["POST"])
@@ -112,9 +113,19 @@ def update_product(request, product_id, status):
 
 @api_view(['GET'])
 @permission_classes((AllowAny,))
-def get_product_from_user(request, user_id):
-    user = User.objects.get(pk=user_id)
-    products = Product.objects.filter(user=user)
+def get_product_from_user(request, username):
+    user = User.objects.get(username=username)
+    profile = Profile.objects.get(user=user)
+    products = Product.objects.filter(seller=profile)
+    data = []
+    for product in products: 
+        data.append(product_to_dict(product))
+    return Response(data, status=HTTP_200_OK)
+
+@api_view(['GET'])
+@permission_classes((AllowAny,))
+def get_all_product(request):
+    products = Product.objects.all().order_by('pk')
     data = []
     for product in products: 
         data.append(product_to_dict(product))
