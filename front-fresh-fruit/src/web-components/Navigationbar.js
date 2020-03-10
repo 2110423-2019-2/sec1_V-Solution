@@ -1,40 +1,33 @@
 import React from 'react';
-import logo from '../pictures/logo.png';
+import Nav from 'react-bootstrap/Nav'
+import "../styles/_navbar.css"
+import Nav_logo from '../pictures/Nav_logo.png';
+import Nav_user from '../pictures/Nav_user.png';
+import Nav_bell from '../pictures/Nav_bell.png';
+import Nav_search from '../pictures/Nav_search.png';
+import Nav_cart from '../pictures/Nav_cart.png';
 
 function Navigationbar() {
 
-  let rgb = [96, 195, 50]
-
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      
-      <a class="navbar-brand" href="/" style={{marginLeft:'15%'}}><img src={logo} style={{width:'75px',height:'75px'}}/></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/editStore">Store</a>
-          </li>
-          <div class='row' style={{float:'right',right:'15%',marginLeft:'auto',position:'absolute'}}>
-          <li class="nav-item">
-            <a class="nav-link" href="/signin"><button type='button' class='btn btn-primary'>Login</button></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Register"><button type='button' class='btn btn-outline-primary'>Register</button></a>
-            
-          </li>
-          </div>
-        </ul>
-      </div>
-
-    </nav>  
-    );
+    <nav class="navbar navbar-light bg-light">
+      <a className="nav-title">
+        <img src={Nav_logo} width="50" height="50"></img>FreshFruit
+      </a>
+      <Nav className="justify-content-center">
+          <Nav.Link exact to="/" className="main-nav" activeClassName="main-nav-active">Home</Nav.Link>
+          <Nav.Link exact to="/Profile" className="main-nav" activeClassName="main-nav-active">Profile</Nav.Link>
+          <Nav.Link exact to="/Order" className="main-nav" activeClassName="main-nav-active">Your Order</Nav.Link>
+          <Nav.Link exact to="/Report" className="main-nav" activeClassName="main-nav-active">Report</Nav.Link>
+      </Nav>
+      <Nav className="justify-content-end">
+          <Nav.Link exact to="/"><img src={Nav_search} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+          <Nav.Link exact to="/Cart"><img src={Nav_cart} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+          <Nav.Link exact to="/"><img src={Nav_bell} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+          <Nav.Link exact to="/User"><img src={Nav_user} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+      </Nav>
+    </nav>
+  );
 }
 
 export default Navigationbar;
