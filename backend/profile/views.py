@@ -15,6 +15,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from .models import Profile
+from .serializers import profile_to_dict
 from email_sys import send_email
 from backend import settings
 from cart.models import Cart
@@ -111,6 +112,15 @@ def get_user_data(request, username):
         'user_type' : user_profile.user_type,
         'image' : image,
     }
+    return Response(data, status=HTTP_200_OK)
+
+@api_view(["GET"])
+def get_token_data(request):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+    user_profile = Profile.objects.get(user=user)
+    data = profile_to_dict(user_profile)
     return Response(data, status=HTTP_200_OK)
 
 @api_view(["POST"])

@@ -29,13 +29,15 @@ urlpatterns = [
     path('api/register', register),
     path('api/getuser/<str:username>/', get_user_data),
     path('api/edituser/<str:username>/', edit_user_data),
+    path('api/user/token/', get_token_data),
     path('api/user/uploadimage/', upload_user_profile),
     path('api/product/uploadimage', upload_product_image),
     path('api/createproduct/', create_product),
     path('api/allproduct/', get_all_product),
-    path('api/getproduct/<str:product_id>', get_product),
-    path('api/getuserproduct/<str:username>', get_product_from_user),
-    path('api/updateproduct/<str:product_id>/<str:status>', update_product),
+    path('api/getproduct/<str:product_id>/', get_product),
+    path('api/getuserproduct/<str:username>/', get_product_from_user),
+    path('api/updateproduct/<str:product_id>/<str:status>/', update_product),
+    path('api/editproduct/<str:product_id>/', edit_product),
     # Cart
     path('api/cart/', include('cart.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
