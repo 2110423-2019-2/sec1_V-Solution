@@ -67,7 +67,6 @@ def create_product(request):
         unitOfAmount = unitOfAmount,
         deliverCompany = deliverCompany,
         deliverPrice  = deliverPrice,
-        productType = "A"
     )
 
     return Response({'result': 'Successfully create product'},status=HTTP_200_OK)
@@ -117,7 +116,7 @@ def update_product(request, product_id, status):
 def get_product_from_user(request, username):
     user = User.objects.get(username=username)
     profile = Profile.objects.get(user=user)
-    products = Product.objects.filter(seller=profile)
+    products = Product.objects.filter(seller=profile).exclude(productType__in=['A', 'N'])
     data = []
     for product in products: 
         data.append(product_to_dict(product))
@@ -126,7 +125,7 @@ def get_product_from_user(request, username):
 @api_view(['GET'])
 @permission_classes((AllowAny,))
 def get_all_product(request):
-    products = Product.objects.all().exclude(productType='A').order_by('pk')
+    products = Product.objects.all().exclude(productType__in=['A', 'N']).order_by('pk')
     data = []
     for product in products: 
         data.append(product_to_dict(product))
