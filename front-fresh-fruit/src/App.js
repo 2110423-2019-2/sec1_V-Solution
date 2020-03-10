@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Navi from './web-components/Navigationbar';
 import Home from './Page/HomePage';
 import Register from './Page/Register';
@@ -16,10 +16,10 @@ import UserContext from './Context/UserContext';
 import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function App() {
-  const [isloggedin,setIsloggedin] = useState(false)
+  const [isloggedin,setIsloggedin] = useState(null)
   const [token,setToken] = useState("")
   function handleIsloggedin(){
-    if (isloggedin){
+    if (localStorage.getItem('Token')==null){
       setIsloggedin(false)
     }else{
       setIsloggedin(true)
@@ -28,26 +28,29 @@ function App() {
   }
   function handleSetToken(token){
     setToken(token);
+    localStorage.setItem('Token',token);
   }
   function clearToken(){
+    localStorage.removeItem('Token');
     setToken("");
   }
+  useEffect(()=>{
+    handleIsloggedin()
+  })
+  function getToken(){
+    return String(localStorage.getItem('Token'))
+  }
+  
   return (
     <div>
-
-      {/* navigation bar */}
-
-
-
-      {/* body part */}
 
       <Navi />
       <Router>
         {/* body part */}
         <Switch>
-          <UserContext.Provider value={{google:'this is evil company',isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,usertoken:`${token}`,clearToken:clearToken}}>
+          <UserContext.Provider value={{isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,clearToken:clearToken,getToken:getToken}}>
           <Route exact path='/' component={Home} />
-          {token!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
+          {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
           
           <Route path='/seller' component={Seller} />
           <Route path='/register' component={Register} />

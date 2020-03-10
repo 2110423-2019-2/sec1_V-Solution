@@ -1,11 +1,14 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import '../App.scss';
+import axios from 'axios';
 import background from '../pictures/background.png';
 import ProfilePic from '../pictures/user.png';
 import UserContext from '../Context/UserContext';
 import {useHistory} from 'react-router-dom';
 const Profile = (props) => {
     const history = useHistory();
+    console.log(props.id);
+    
     return (
         //style={{backgroundImage:`url(${background})`}}
         <div>
@@ -40,14 +43,14 @@ const Profile = (props) => {
                 </div>
                 
             <UserContext.Consumer>
-                            {({isloggedin,setLogin,clearToken,usertoken}) => (
+                            {({isloggedin,setLogin,clearToken,usertoken,getToken}) => (
                                 <div>
                                 <h1>{String(isloggedin)}</h1>
-                                <h1>{usertoken}</h1>
-                                <button class='btn btn-primary'onClick={()=>{
-                                    
+                                <h1>{getToken()}</h1>
+                                
+                                <button class='btn btn-primary' onClick={(e)=>{
+                                    e.preventDefault();
                                     clearToken()
-                                    console.log(usertoken)
                                     history.push('/')
                                     
                                 }}>Log out</button>
