@@ -36,7 +36,6 @@ function Informationform() {
             .then((res) => {
                 setUser_token(res.data)
                 checkState()
-                alert("wtf")
             })
             .catch((err) => {
                 console.log(err)

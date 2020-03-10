@@ -4,7 +4,7 @@ import axios from 'axios';
 import background from '../pictures/background.png';
 import ProfilePic from '../pictures/user.png';
 import UserContext from '../Context/UserContext';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 const Profile = (props) => {
     const history = useHistory();
     console.log(props.id);
@@ -20,11 +20,11 @@ const Profile = (props) => {
                 <div class='row'>
                     <h1 class='col-lg-10 col-6'>{props.username}</h1>
                     <div class='logoAndEditInProfile col-lg-2 col-6'>
-                        <button type="button" class="btn btn-outline-info">logo</button>
+                        <button type="button" class="btn btn-outline-info">Logo</button>
                         <button id='editInProfile' type="button" class="btn btn-outline-info">Edit</button>
                     </div>
                 </div>
-                <div class='row'>
+                {/* <div class='row'>
                     <h2>{props.firstname}</h2>
                     <h2 style={{ marginLeft: '10px' }}>{props.lastname}</h2>
                 </div>
