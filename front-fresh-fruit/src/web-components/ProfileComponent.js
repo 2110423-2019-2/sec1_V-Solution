@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.scss';
 import axios from 'axios';
 import background from '../pictures/background.png';
@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 const Profile = (props) => {
     const history = useHistory();
     console.log(props.id);
-    
+
     return (
         //style={{backgroundImage:`url(${background})`}}
         <div>
@@ -24,7 +24,7 @@ const Profile = (props) => {
                         <button id='editInProfile' type="button" class="btn btn-outline-info">Edit</button>
                     </div>
                 </div>
-                {/* <div class='row'>
+                <div class='row'>
                     <h2>{props.firstname}</h2>
                     <h2 style={{ marginLeft: '10px' }}>{props.lastname}</h2>
                 </div>
@@ -41,22 +41,22 @@ const Profile = (props) => {
                         <h3>{props.Birthdate}</h3>
                     </div>
                 </div>
-                
-            <UserContext.Consumer>
-                            {({isloggedin,setLogin,clearToken,usertoken,getToken}) => (
-                                <div>
-                                <h1>{String(isloggedin)}</h1>
-                                <h1>{getToken()}</h1>
-                                
-                                <button class='btn btn-primary' onClick={(e)=>{
-                                    e.preventDefault();
-                                    clearToken()
-                                    history.push('/')
-                                    
-                                }}>Log out</button>
-                                </div>
-                            )}
-                        </UserContext.Consumer>
+
+                <UserContext.Consumer>
+                    {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
+                        <div>
+                            <h1>{String(isloggedin)}</h1>
+                            <h1>{getToken()}</h1>
+
+                            <button class='btn btn-primary' onClick={(e) => {
+                                e.preventDefault();
+                                clearToken()
+                                history.push('/')
+
+                            }}>Log out</button>
+                        </div>
+                    )}
+                </UserContext.Consumer>
             </div>
         </div>
 

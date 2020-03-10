@@ -28,7 +28,7 @@ function App() {
     console.log(isloggedin)
   }
   function handleSetUsername(username){
-    setUsername(username);
+    // setUsername(username);
   }
   function handleSetToken(token){
     setToken(token);
@@ -48,17 +48,6 @@ function App() {
   return (
     <div>
 
-<<<<<<< HEAD
-      <Navi />
-||||||| merged common ancestors
-      {/* navigation bar */}
-
-
-
-      {/* body part */}
-
-      <Navi />
-=======
       {/* navigation bar */}
 
 
@@ -66,23 +55,12 @@ function App() {
       {/* body part */}
 
     
->>>>>>> c9dc48c8e65ecf4ad0ed0a2b03e6765d53217180
       <Router>
         {/* body part */}
         <Switch>
-<<<<<<< HEAD
-          <UserContext.Provider value={{isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,clearToken:clearToken,getToken:getToken}}>
-          <Route exact path='/' component={Home} />
-          {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
-||||||| merged common ancestors
-          <UserContext.Provider value={{google:'this is evil company',isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,usertoken:`${token}`,clearToken:clearToken}}>
-          <Route exact path='/' component={Home} />
-          {token!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
-=======
-          <UserContext.Provider value={{google:'this is evil company',isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,usertoken:`${token}`,clearToken:clearToken,username:`${username}`,setUsername:handleSetUsername}}>
+          <UserContext.Provider value={{google:'this is evil company',isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,usertoken:`${token}`,clearToken:clearToken,setUsername:handleSetUsername}}>
           <Route exact path='/' component={EditProfile} />
           {token!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Signin} />)}
->>>>>>> c9dc48c8e65ecf4ad0ed0a2b03e6765d53217180
           
           <Route path='/seller' component={Seller} />
           <Route path='/register' component={Register} />
