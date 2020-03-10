@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import ShowStore from '../web-components/ShowStore';
-import Informationform from '../web-components/Informationform';
+import EditProfileForm from '../web-components/EditProfileForm';
 const EditProfile = () => {
     const [data,setData] = useState({
         "user_type":'customer',
@@ -30,7 +30,7 @@ const EditProfile = () => {
         <div style={{paddingLeft:'25%',paddingRight:'auto'}}>
             <h1>Edit Profile</h1>
             <div class='.col-lg-8 .col-sm-12'>
-            <Informationform 
+            <EditProfileForm 
                 first_name={data['first_name']} 
                 last_name={data['last_name']} 
                 address={data['adderss']} 
