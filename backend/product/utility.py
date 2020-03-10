@@ -1,4 +1,4 @@
 from .models import Product
 
-def calculate_total():
-    return 1
+def calculate_product_price(product):
+    return product.price * product.amount

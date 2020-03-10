@@ -71,6 +71,7 @@ def create_product(request):
     return Response({'result': 'Successfully create product'},status=HTTP_200_OK)
 
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def get_product(request, product_id):
     product = Product.objects.get(pk=product_id)
     product_to_dict(product)

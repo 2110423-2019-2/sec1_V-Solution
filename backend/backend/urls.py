@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -34,5 +34,7 @@ urlpatterns = [
     path('verify/<str:token>/', verify_email),
     path('api/createproduct/', create_product),
     path('api/getproduct/<str:product_id>', get_product),
-    path('api/updateproduct/<str:product_id>/<str:status>', update_product)
+    path('api/updateproduct/<str:product_id>/<str:status>', update_product),
+    # Cart
+    path('api/cart/', include('cart.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
