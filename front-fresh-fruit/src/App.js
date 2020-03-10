@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import Navi from './web-components/Navigationbar';
+import Footer from './web-components/Footer';
 import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
@@ -48,19 +49,13 @@ function App() {
   return (
     <div>
 
-      {/* navigation bar */}
-
-
-
-      {/* body part */}
-
-    
+      <Navi />
       <Router>
         {/* body part */}
         <Switch>
-          <UserContext.Provider value={{google:'this is evil company',isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,usertoken:`${token}`,clearToken:clearToken,setUsername:handleSetUsername}}>
-          <Route exact path='/' component={EditProfile} />
-          {token!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Signin} />)}
+          <UserContext.Provider value={{isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,clearToken:clearToken,getToken:getToken}}>
+          <Route exact path='/' component={Home} />
+          {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
           
           <Route path='/seller' component={Seller} />
           <Route path='/register' component={Register} />
@@ -73,6 +68,7 @@ function App() {
           </UserContext.Provider>
         </Switch>
       </Router>
+      <Footer/>
     </div>
 
 
