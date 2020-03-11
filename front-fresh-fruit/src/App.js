@@ -20,6 +20,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function App() {
   const [isloggedin,setIsloggedin] = useState(null)
   const [token,setToken] = useState("")
+  const [userid,setUserid] = useState("")
+
   function handleIsloggedin(){
     if (localStorage.getItem('Token')==null){
       setIsloggedin(false)
@@ -31,13 +33,16 @@ function App() {
   function handleSetUsername(username){
     // setUsername(username);
   }
-  function handleSetToken(token){
+  function handleSetToken(token,userid){
     setToken(token);
     localStorage.setItem('Token',token);
+    setUserid(userid)
+    localStorage.setItem('Userid',userid);
   }
   function clearToken(){
-    localStorage.removeItem('Token');
+    localStorage.clear();
     setToken("");
+    setUserid("");
   }
   useEffect(()=>{
     handleIsloggedin()
@@ -45,7 +50,9 @@ function App() {
   function getToken(){
     return String(localStorage.getItem('Token'))
   }
-  
+  function getId(){
+    return String(localStorage.getItem('Userid'))
+  }
   return (
     <div>
 
@@ -53,7 +60,12 @@ function App() {
       <Router>
         {/* body part */}
         <Switch>
-          <UserContext.Provider value={{isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,clearToken:clearToken,getToken:getToken}}>
+          <UserContext.Provider value={{isloggedin:`${isloggedin}`,
+          setLogin:handleIsloggedin,
+          setToken:handleSetToken,
+          clearToken:clearToken,
+          getToken:getToken,getId:getId
+          }}>
           <Route exact path='/' component={Home} />
           {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
           
