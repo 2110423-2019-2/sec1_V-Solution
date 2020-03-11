@@ -14,11 +14,11 @@ function InformationformSeller() {
                     </div>
                 </div> */}
                 <div class="form-group row">
-                    <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
+                    <div class='col-form-label col-sm-2' style={{textAlign: "left"}}>
                         <label style={{ color: "red" }}>*</label><label>Username:</label>
                     </div>
                     <div class="col-sm-6">
-                            <input className = "form-control" type="text" name="name" placeholder=""/>
+                            <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }} placeholder=""/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -26,7 +26,7 @@ function InformationformSeller() {
                         <label style={{ color: "red" }}>*</label><label>Name:</label>
                     </div>
                     <div class="col-sm-6">
-                            <input className = "form-control" type="text" name="name" />
+                            <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }} />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -34,7 +34,7 @@ function InformationformSeller() {
                         <label style={{ color: "red" }}>*</label><label>Surname:</label>
                     </div>
                     <div class="col-sm-6">
-                        <input className = "form-control" type="text" name="name" />
+                        <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }} />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -42,7 +42,7 @@ function InformationformSeller() {
                         <label style={{color:"red"}}>*</label><label>Email:</label>
                     </div>
                     <div class="col-sm-6">
-                        <input className = "form-control" type="email" name="name" placeholder = "someone@hotmail.com" />
+                        <input className = "form-control" type="email" name="name" style={{ marginLeft: '10px' }} placeholder = "someone@hotmail.com" />
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@ function InformationformSeller() {
                         <label style={{color:"red"}}>*</label><label>Password:</label>
                     </div>
                     <div class="col-sm-6">
-                        <input  className = "form-control" type="password" name="name" />
+                        <input  className = "form-control" type="password" name="name" style={{ marginLeft: '10px' }} />
                         <small id='passwordHelp' class="form-text text-muted">between 6 - 30 characters including alphabet and number</small>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ function InformationformSeller() {
                         <label style={{color:"red"}}>*</label><label>Store name:</label>
                     </div>
                     <div class="col-sm-6">
-                        <input className = "form-control" type="text" name="name"/>
+                        <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }}/>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@ function InformationformSeller() {
                         <label style={{color:"red"}}>*</label><label>Address:</label>
                     </div>
                     <div class="col-sm-6">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" style={{ marginLeft: '10px' }} rows="3"></textarea>
                     </div>
                 </div>
 
@@ -79,7 +79,7 @@ function InformationformSeller() {
                         <label style={{color:"red"}}>*</label><label>Tel:</label>
                     </div>
                     <div class="col-sm-6">
-                        <input className = "form-control" type="text" name="name" />
+                        <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }} />
                     </div>
                 </div>
 
@@ -88,7 +88,7 @@ function InformationformSeller() {
                         <label style={{color:"red"}}>*</label><label>Birthdate:</label>
                     </div>
                     <div class="col-sm-6">
-                        <input className = "form-control" type='date'/>
+                        <input className = "form-control" type='date' style={{ marginLeft: '10px' }}/>
                     </div>   
                 </div>
 
@@ -113,7 +113,7 @@ function InformationformSeller() {
                         <label style={{color:"red"}}>*</label><label>National ID:</label>
                     </div>
                     <div class="col-sm-6">
-                            <input className = "form-control" type="text" name="name" />
+                            <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }} />
                     </div>
                 </div>
             
