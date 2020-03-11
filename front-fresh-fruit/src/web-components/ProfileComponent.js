@@ -23,7 +23,7 @@ const Profile = (props) => {
     //for setup fetch data
 
     const fetchUser = async () => {
-        const data = axios.get(url + props.username)
+        const data = await axios.get(url + localStorage.getItem('Username'))
             .then(function (res) {
                 console.log(res.data)
                 setFirst_name(res.data.first_name)
