@@ -5,22 +5,25 @@ import AddItemform from './web-components/AddItemform';
 import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
-import Profile from './Page/Profile';
+import ProfileCus from './Page/ProfileCus';
 import Seller from './Page/Seller';
 import Signin from './Page/Signin';
 import Store from './Page/Store';
 import AddItem from './Page/AddItem';
-import EditProfile from './Page/EditProfile';
+import ProfileSeller from './Page/ProfileSeller';
 import EditStore from './Page/EditStore';
 import UserContext from './Context/UserContext';
-
+import Profile from './Page/ProfileCus'
+import EditProfile from './Page/EditProfile'
 
 import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
 function App() {
   const [isloggedin, setIsloggedin] = useState(null)
   const [token, setToken] = useState("")
   const [userid, setUserid] = useState("")
+  const [username,setUsername] = useState("")
 
   function handleIsloggedin() {
     if (localStorage.getItem('Token') == null) {
@@ -28,10 +31,11 @@ function App() {
     } else {
       setIsloggedin(true)
     }
-    console.log(isloggedin)
+    console.log("Login ",isloggedin)
   }
   function handleSetUsername(username) {
-    // setUsername(username);
+     setUsername(username);
+     localStorage.setItem('Username', username)
   }
   function handleSetToken(token, userid) {
     setToken(token);
@@ -43,6 +47,7 @@ function App() {
     localStorage.clear();
     setToken(null);
     setUserid(null);
+    setIsloggedin(false);
   }
   useEffect(() => {
     handleIsloggedin()
@@ -53,6 +58,11 @@ function App() {
   function getId() {
     return String(localStorage.getItem('Userid'))
   }
+  function getUsername(){
+    return String(localStorage.getItem('Username'))
+  }
+
+
   return (
     <div>
 
@@ -64,8 +74,11 @@ function App() {
             isloggedin: `${isloggedin}`,
             setLogin: handleIsloggedin,
             setToken: handleSetToken,
+            setUsername: handleSetUsername,
             clearToken: clearToken,
-            getToken: getToken, getId: getId
+            getToken: getToken, 
+            getId: getId,
+            getUsername: getUsername
           }}>
             <Route exact path='/' component={Home} />
             {localStorage.getItem('Token') != null ? (<Route path='/profile' component={Profile} />) : (<Route path='/signin' component={Signin} />)}

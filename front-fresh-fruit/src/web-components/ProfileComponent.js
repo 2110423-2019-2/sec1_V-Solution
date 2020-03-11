@@ -1,79 +1,70 @@
 import React, { useState, useEffect } from 'react';
 import '../App.scss';
 import axios from 'axios';
-import background from '../pictures/background.png';
-import ProfilePic from '../pictures/user.png';
-import UserContext from '../Context/UserContext';
-import EditProfile from '../Page/EditStore';
+import Background from '../pictures/seller.jpg'
+import Mond from '../pictures/profile pic.png'
+import EditPic from '../pictures/edit.png'
 import { useHistory } from 'react-router-dom';
+import UserContext from '../Context/UserContext'
+
+const url = "http://127.0.0.1:8000/api/getuser/";
+
 const Profile = (props) => {
     const history = useHistory();
-    console.log(props.id);
-    const [data,setDate] = useState({
-        "user_type":'customer',
-        "first_name":"vachirachat",
-        "last_name":"sawaddiwat",
-        "address":'bangkok',
-        "tel":'xxx-xxx-xxxx',
-        "birth_date":"12/10/2062",
-        "gender":"male"
+    console.log(props);
 
-
-
+    const [userProfile, setUserProfile] = useState();
+    //for setup fetch data
+    useEffect(() => {
+        const data = axios.get(url+props.username)
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err))
     })
 
     return (
         //style={{backgroundImage:`url(${background})`}}
-        <div>
-            <div>
-                <img class='profileCover' src={background} />
-                <img class='profilePic' src={ProfilePic} />
-            </div>
-            <div class='container thaifont'>
-                <div class='row'>
-                    <h1 class='col-lg-10 col-6'>{props.username}</h1>
-                    <div class='logoAndEditInProfile col-lg-2 col-6'>
-                        <button type="button" class="btn btn-outline-info">Logo</button>
-                        <button id='editInProfile' class="btn btn-outline-info" onClick={()=>history.push("/EditProfile")}>Edit</button>
-                    </div>
-                </div>
-                <div class='row'>
-                    <h2>{data['first_name']}</h2>
-                    <h2 style={{ marginLeft: '10px' }}>{data['last_name']}</h2>
-                </div>
-                <div class='row'>
-                    <div class='col-lg-2 thaifont'>
-                        <h3>Address :</h3>
-                        <h3>Tel :</h3>
-                        <h3>Birthdate :</h3>
-                        <h3>Gender :</h3>
-                    </div>
-                    <div>{props.id}</div>
-                    <div class='col-lg-10'>
-                        <h3>{data['address']}</h3>
-                        <h3>{data['tel']}</h3>
-                        <h3>{data['birth_date']}</h3>
-                        <h3>{data['gender']}</h3>
-                    </div>
-                </div>
 
-                <UserContext.Consumer>
-                    {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
-                        <div>
-                            <h1>{String(isloggedin)}</h1>
-                            <h1>{getToken()}</h1>
+        <div class="container-fluid" style={{ backgroundColor: "#6AC17D" }}>
 
-                            <button class='btn btn-primary' onClick={(e) => {
-                                e.preventDefault();
-                                clearToken()
-                                history.push('/')
+            <div class="row" style={{ backgroundColor: "#6AC17D", height: "auto" }}>
 
-                            }}>Log out</button>
+                {/* body */}
+                <div class="card w-75">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src={Mond} class="profile-pic img-fluid  rounded " alt="Mond" />
                         </div>
-                    )}
-                </UserContext.Consumer>
+                        <div class="card-body col-sm-6">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <UserContext.Consumer>
+                                {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
+                                    <div>
+                                        <p class="card-text">Login status : {String(isloggedin)}</p>
+                                        <p class="card-text">token : {getToken()}</p>
+
+                                        <button class='btn btn-primary' onClick={(e) => {
+                                            e.preventDefault();
+                                            clearToken()
+                                            history.push('/')
+
+                                        }}>Log out</button>
+                                    </div>
+                                )}
+                            </UserContext.Consumer>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
             </div>
         </div>
+
+
+
+
 
     );
 };
