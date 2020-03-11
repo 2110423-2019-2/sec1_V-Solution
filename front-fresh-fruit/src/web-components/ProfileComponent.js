@@ -15,10 +15,17 @@ const Profile = (props) => {
 
     const [userProfile, setUserProfile] = useState();
     //for setup fetch data
-    useEffect(() => {
-        const data = axios.get(url+props.username)
-            .then((res) => console.log(res.data))
+
+    const fetchUser = async () => {
+        const data = axios.get(url + props.username)
+            .then((res) => setUserProfile(data.json))
             .catch((err) => console.log(err))
+        
+        
+    }
+
+    useEffect(() => {
+        fetchUser();
     })
 
     return (
@@ -35,7 +42,7 @@ const Profile = (props) => {
                             <img src={Mond} class="profile-pic img-fluid  rounded " alt="Mond" />
                         </div>
                         <div class="card-body col-sm-6">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">{userProfile}</h5>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                             <UserContext.Consumer>
                                 {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (

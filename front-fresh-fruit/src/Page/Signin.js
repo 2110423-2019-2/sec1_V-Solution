@@ -10,7 +10,7 @@ const Signin = () => {
 
   return (
     <UserContext.Consumer>
-      {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => isloggedin ? (
+      {() => localStorage.getItem('Token')!==null ? (
         <Redirect to={"/profile"} />
       ) : <div class="container-fluid" style={{ backgroundColor: "#6AC17D" }}>
           <div class="row" style={{ height: "700px" }}>
@@ -19,6 +19,11 @@ const Signin = () => {
         </div>
       }
     </UserContext.Consumer>
+    // <div class="container-fluid" style={{ backgroundColor: "#6AC17D" }}>
+    //   <div class="row" style={{ height: "700px" }}>
+    //     <Loginform />
+    //   </div>
+    // </div>
 
   );
 };
