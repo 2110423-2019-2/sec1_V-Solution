@@ -5,6 +5,8 @@ import UserContext from '../Context/UserContext';
 
 const Profile = (props) => {
     //for setup fetch data
+    
+
     return (
         //style={{backgroundImage:`url(${background})`}}
     

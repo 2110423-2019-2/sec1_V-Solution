@@ -22,11 +22,7 @@ const EditProfile = () => {
             console.log(err)
         })
         
-        
-        
         //have to fetch data with token and use useState for set up data
-    
-    
     
     
     })

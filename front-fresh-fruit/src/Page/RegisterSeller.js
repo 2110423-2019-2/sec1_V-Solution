@@ -14,10 +14,10 @@ const Register = () => {
         <div>
             {/* body part */}
 
-            <div class="container-fluid" style={{border: "solid black 2px", height: "1000px",backgroundImage: `url(${HomeBackGround})`}}>
+            <div class="container-fluid" style={{ height: "1000px",backgroundImage: `url(${HomeBackGround})`}}>
 
                 <div class="row">
-                    <div class="col" style={{border: "solid black 2px", textAlign: "center", marginLeft: "10%", marginRight: "10%", height: "1000px", backgroundColor: "white", opacity: "0.75"}}>
+                    <div class="col" style={{textAlign: "center", marginLeft: "10%", marginRight: "10%", height: "1000px", backgroundColor: "white", opacity: "0.75"}}>
                         <div class="row" style={{marginTop: "30px", height: "100px"}}>
                             <div class="col-2" style={{border: "blue solid 2px"}}>
                                 <img src={Logo} alt = "logo" style={{width: "120px"}} />
