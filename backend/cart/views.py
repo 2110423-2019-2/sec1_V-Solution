@@ -70,6 +70,11 @@ def decrease_entry(cart, product, amount):
     cart.save()
     return cart
 
+def clear_cart_entry(cart):
+    entries = Entry.objects.filter(cart=cart)
+    for entry in entries:
+        entry.delete()
+        return cart
 
 ## add entry
 @api_view(["POST"])
@@ -93,7 +98,7 @@ def add_product_to_cart(request):
 
     return Response(data, status=HTTP_200_OK)
 
-## decrease entry NOT FINISH
+## decrease entry
 @api_view(["POST"])
 def remove_product_from_cart(request):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
@@ -126,8 +131,28 @@ def get_cart(request):
     data = cart_to_list(cart)
     return Response(data, status=HTTP_200_OK)
 
-## remove entry
+## clear cart
+@api_view(["POST"])
+def clear_cart(request):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
 
-
+    ##
+    cart = Cart.objects.get(user=user)
+    data = clear_cart_entry(cart)
+    return Response(data, status=HTTP_200_OK)
 
 ## checkout - Sprint 3
+@api_view(["POST"])
+def cart_checkout(request):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+
+    cart = Cart.objects.get(user=user)
+    entries = Entry.objects.filter(cart=cart)
+    ## NOT FININSED
+
+    data = clear_cart_entry(cart)
+    return Response(data, status=HTTP_200_OK)
