@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../App.scss';
+// import '../App.scss';
+import '../styles/_informationform.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 const url = "http://127.0.0.1:8000/api/register"
@@ -113,11 +114,11 @@ function Informationform(props) {
                 <div class='form-group row'>
                     <legend class="col-form-label col-sm-2">Sex</legend>
                     <div class="col-sm-3">
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline" style={{paddingRight:'18px'}}>
                             <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="M" onChange={handleChange} />
                             <label class="form-check-label" for="inlineRadio1">Male</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline" style={{marginTop:'10px'}}>
                             <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="F" onChange={handleChange} />
                             <label class="form-check-label" for="inlineRadio2">Female</label>
                         </div>
@@ -132,10 +133,8 @@ function Informationform(props) {
                     </div></div>
 
                 <div class='col-sm-8'>
-                    <button type='submit' class='btn btn-primary' style={{ position: 'absolute', right: '0px' }} onClick={onSubmit}>Register</button>
+                    <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit}>Register</button>
                 </div>
-
-                <button type="button" class='btn btn-secondary' onClick={()=>checkState()}>Check State</button>
             </form>
 
         </div>

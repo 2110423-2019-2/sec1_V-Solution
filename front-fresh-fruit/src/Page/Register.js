@@ -1,48 +1,35 @@
 import React from 'react';
-import '../App.scss';
-
-import HomeBackGround from '../pictures/background.png';
+import '../styles/_register.css';
 import Informationform from '../web-components/Informationform'
-import Logo from '../pictures/logo.png'
-import Userimg from '../pictures/user.png'
+import Reg_user from '../pictures/Reg_user.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Register = () => {
 
     return (
         <div>
-
-            {/* body part */}
-
-            <div class="container-fluid" style={{ border: "solid black 2px", height: "1000px", backgroundImage: `url(${HomeBackGround})` }}>
-
+            <div class="container-fluid container-register">
                 <div class="row">
-                    <div class="col" style={{ border: "solid black 2px", textAlign: "center", marginLeft: "10%", marginRight: "10%", height: "1000px", backgroundColor: "rgb(255,255,255,0.7)" }}>
-                        <div class="row" style={{ marginTop: "30px", height: "100px" }}>
-                            <div class="col-2" style={{ border: "blue solid 2px" }}>
-                                <img src={Logo} alt="logo" style={{ width: "120px" }} />
-                            </div>
-                            <div class="col-5" style={{ border: "blue solid 2px" }}>
-                                <h1 style={{ marginTop: "45px", color: "darkblue", fontWeight: "bold" }}>Register as customer</h1>
-                            </div>
-                            <div class='col-5'>
-                                <a href="/registerSeller" class='btn btn-primary'>Register as Seller</a>
+                    <div class="col col-info">
+                        <div class="row form-title">
+                            <div class=" col-5">
+                                <h2>Register as customer</h2>
                             </div>
                         </div>
-                        <div class="row" style={{ marginTop: "90px" }}>
-                            <div class="col-4" style={{ border: "red solid 2px" }}>
+                        <div class="row container-form">
+                            <div class="col-4">
                                 <div class="row">
-                                    <div class="col" style={{ border: "black solid 2px", marginTop: "50px" }}>
-                                        <img src={Userimg} alt="customer image" />
+                                    <div class="col">
+                                        <img src={Reg_user} alt="customer image" class="register-image"/>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col" style={{ border: "black solid 2px", marginTop: "20px" }}>
-                                        <h1>upload pic</h1>
+                                    <div class=" btn btn-primary upload-btn">
+                                        <h4>Upload</h4>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-8" style={{ border: "red solid 2px" }}>
+                            <div class="col-8 container-inform">
                                 <Informationform />
                             </div>
                         </div>
@@ -50,13 +37,7 @@ const Register = () => {
                 </div>
 
             </div>
-
-
-
-            {/* end body part */}
-
         </div>
-
     );
 };
 
