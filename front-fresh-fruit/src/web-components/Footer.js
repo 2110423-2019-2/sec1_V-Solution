@@ -4,7 +4,7 @@ import '../styles/_footer.css'
 function Footerbar() {
     return (
 
-        <footer class="page-footer font-medium pt-4">
+        <footer class="page-footer font-medium pt-4 ">
           <div class="container container-footer">
               
             <ul class="list-unstyled list-inline text-center">

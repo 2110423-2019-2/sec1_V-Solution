@@ -15,16 +15,16 @@ function Navigationbar() {
         <img src={Nav_logo} width="50" height="50"></img>FreshFruit
       </a>
       <Nav className="justify-content-center">
-          <Nav.Link exact to="/" className="main-nav" activeClassName="main-nav-active">Home</Nav.Link>
-          <Nav.Link exact to="/Profile" className="main-nav" activeClassName="main-nav-active">Profile</Nav.Link>
-          <Nav.Link exact to="/Order" className="main-nav" activeClassName="main-nav-active">Your Order</Nav.Link>
-          <Nav.Link exact to="/Report" className="main-nav" activeClassName="main-nav-active">Report</Nav.Link>
+          <Nav.Link href ="/" className="main-nav" activeClassName="main-nav-active">Home</Nav.Link>
+          <Nav.Link href="/profile" className="main-nav" activeClassName="main-nav-active">Profile</Nav.Link>
+          <Nav.Link href="/Order" className="main-nav" activeClassName="main-nav-active">Your Order</Nav.Link>
+          <Nav.Link href="/Report" className="main-nav" activeClassName="main-nav-active">Report</Nav.Link>
       </Nav>
       <Nav className="justify-content-end">
-          <Nav.Link exact to="/"><img src={Nav_search} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
-          <Nav.Link exact to="/Cart"><img src={Nav_cart} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
-          <Nav.Link exact to="/"><img src={Nav_bell} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
-          <Nav.Link exact to="/User"><img src={Nav_user} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+          <Nav.Link href="/"><img src={Nav_search} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+          <Nav.Link href="/Cart"><img src={Nav_cart} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+          <Nav.Link href="/"><img src={Nav_bell} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+          <Nav.Link href="/profile"><img src={Nav_user} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
       </Nav>
     </nav>
   );
