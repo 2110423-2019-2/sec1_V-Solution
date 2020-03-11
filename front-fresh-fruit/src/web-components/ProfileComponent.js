@@ -1,79 +1,86 @@
-import React, { useState, useEffect } from 'react';
+import React,{useState,useEffect} from 'react';
 import '../App.scss';
 import axios from 'axios';
-import background from '../pictures/background.png';
-import ProfilePic from '../pictures/user.png';
-import UserContext from '../Context/UserContext';
-import EditProfile from '../Page/EditStore';
+import Background from '../pictures/seller.jpg'
+import Mond from '../pictures/profile pic.png'
+import EditPic from '../pictures/edit.png'
 import { useHistory } from 'react-router-dom';
 const Profile = (props) => {
     const history = useHistory();
     console.log(props.id);
-    const [data,setDate] = useState({
-        "user_type":'customer',
-        "first_name":"vachirachat",
-        "last_name":"sawaddiwat",
-        "address":'bangkok',
-        "tel":'xxx-xxx-xxxx',
-        "birth_date":"12/10/2062",
-        "gender":"male"
-
-
-
-    })
-
+    
     return (
         //style={{backgroundImage:`url(${background})`}}
-        <div>
-            <div>
-                <img class='profileCover' src={background} />
-                <img class='profilePic' src={ProfilePic} />
-            </div>
-            <div class='container thaifont'>
-                <div class='row'>
-                    <h1 class='col-lg-10 col-6'>{props.username}</h1>
-                    <div class='logoAndEditInProfile col-lg-2 col-6'>
-                        <button type="button" class="btn btn-outline-info">Logo</button>
-                        <button id='editInProfile' class="btn btn-outline-info" onClick={()=>history.push("/EditProfile")}>Edit</button>
-                    </div>
-                </div>
-                <div class='row'>
-                    <h2>{data['first_name']}</h2>
-                    <h2 style={{ marginLeft: '10px' }}>{data['last_name']}</h2>
-                </div>
-                <div class='row'>
-                    <div class='col-lg-2 thaifont'>
-                        <h3>Address :</h3>
-                        <h3>Tel :</h3>
-                        <h3>Birthdate :</h3>
-                        <h3>Gender :</h3>
-                    </div>
-                    <div>{props.id}</div>
-                    <div class='col-lg-10'>
-                        <h3>{data['address']}</h3>
-                        <h3>{data['tel']}</h3>
-                        <h3>{data['birth_date']}</h3>
-                        <h3>{data['gender']}</h3>
-                    </div>
+        <div style={{backgroundColor:"#6AC17D", width: "1520px", height: "995px"}}>
+            
+            
+            <div style={{width: "1200px", marginLeft: "160px"}}>
+                
+                {/* head */}
+
+                <div style={{backgroundColor:"#6AC17D", height:"100px"}}>
+
                 </div>
 
-                <UserContext.Consumer>
-                    {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
-                        <div>
-                            <h1>{String(isloggedin)}</h1>
-                            <h1>{getToken()}</h1>
+                
+                {/* body */}
 
-                            <button class='btn btn-primary' onClick={(e) => {
-                                e.preventDefault();
-                                clearToken()
-                                history.push('/')
+                <div style={{height: "995px", backgroundColor: "#E6FFEC"}}>
+                    
+                    <div class="row">
 
-                            }}>Log out</button>
+                        <div class="col-3">
+                            <img src={Mond} style={{width: "200px", marginTop: "-70px", marginLeft: "50px"}} />
                         </div>
-                    )}
-                </UserContext.Consumer>
+                        <div class="col">
+                            <h1 style={{fontFamily: "Marker Felt", color:"#36368D", fontSize:"50px", marginTop:"50px", marginLeft:"30px"}}>
+                                Mondlnmza007</h1> 
+                        </div>
+
+                        <div class="col-3">
+                            <div class="row" style={{marginTop:"50px"}}>
+                                <div class="col">
+                                    <h1 style={{marginLeft: "80px"}}><img src={EditPic}/></h1>
+                                </div>
+                                <div class="col">
+                                    <h1 style={{fontFamily: "Marker Felt", color:"#36368D"}}>Edit</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div style={{marginTop:"35px", marginLeft: "350px"}}>
+                        <h2 style={{fontFamily: "Marker Felt", color:"#36368D"}}>Mawin Siangyai</h2>
+                    </div>
+
+                    <div style={{ height: "350px"}}>
+                        
+                        <div style={{marginTop: "60px"}}>
+                            <div style={{marginLeft: "180px"}}>
+                                <h1 style={{fontFamily: "Marker Felt", color:"#36368D", fontSize:"40px"}}>Address : Ihouse</h1>
+                            </div>
+                            <br/><br/>
+                            <div style={{marginLeft: "260px"}}>
+                                <h1 style={{fontFamily: "Marker Felt", color:"#36368D", fontSize:"40px"}}> Tel : 084-xxxxxxx</h1>
+                            </div>
+                            <br/><br/>
+                            <div style={{marginLeft: "155px"}}>
+                                <h1 style={{fontFamily: "Marker Felt", color:"#36368D", fontSize:"40px"}}> Birthdate : 31 February 1998</h1>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    
+
+                </div>
+
             </div>
-        </div>
+            
+
+
+        </div>  
 
     );
 };
