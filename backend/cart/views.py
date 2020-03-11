@@ -140,8 +140,8 @@ def clear_cart(request):
 
     ##
     cart = Cart.objects.get(user=user)
-    data = clear_cart_entry(cart)
-    return Response(data, status=HTTP_200_OK)
+    clear_cart_entry(cart)
+    return Response({'result': 'Successful'}, status=HTTP_200_OK)
 
 ## checkout - Sprint 3
 @api_view(["POST"])
@@ -155,4 +155,4 @@ def cart_checkout(request):
     ## NOT FININSED
 
     data = clear_cart_entry(cart)
-    return Response(data, status=HTTP_200_OK)
+    return Response({'result': 'Successful'}, status=HTTP_200_OK)
