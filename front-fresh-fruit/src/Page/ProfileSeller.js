@@ -1,10 +1,11 @@
 import React from 'react';
 import Background from '../pictures/seller.jpg'
 import Logo from '../pictures/fruitfarm.png'
+import EditPic from '../pictures/edit.png'
 
-const EditProfile = () => {
+const ProfileSeller = () => {
     return (
-        <div style={{backgroundColor:"#6AC17D", width: "1920px", height: "1985px"}}>
+        <div style={{backgroundColor:"#6AC17D", width: "1520px", height: "1985px"}}>
             
             
             <div style={{width: "1200px", marginLeft: "160px"}}>
@@ -61,14 +62,14 @@ const EditProfile = () => {
                         
                         <div class = "row" style={{textAlign: "center", marginTop: "30px"}}>
                             <div class="col">
-                                <div style={{border: "solid black 4px", width: "400px", marginTop: "20px", marginLeft:"40px"}}></div>
+                                <div style={{border: "solid black 3px", width: "400px", marginTop: "20px", marginLeft:"40px"}}></div>
                             </div>
                             <div class="col" style={{marginRight: "50px"}}>
                                 <h1 style={{marginLeft: "20px", fontFamily: "Marker Felt", color:"#36368D", fontSize:"40px"}}>
                                 My Store</h1>
                             </div>
                             <div class="col">
-                                <div style={{border: "solid black 4px", width: "400px", marginTop: "20px", marginRight:"40px"}}></div>
+                                <div style={{border: "solid black 3px", width: "400px", marginTop: "20px", marginRight:"40px"}}></div>
                             </div>
                         </div>
 
@@ -85,4 +86,4 @@ const EditProfile = () => {
     );
 };
 
-export default EditProfile;
+export default ProfileSeller;

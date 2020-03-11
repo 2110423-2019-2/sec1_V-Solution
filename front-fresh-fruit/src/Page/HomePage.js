@@ -75,22 +75,13 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="row" style={{height: "50px"}}>
-          <div class="col">
-            <h4 style={{fontsize: "2px", color: "white", marginTop: "12px"}}>Fresh Fruit @ 2020 All Right Reserved</h4>
           </div>
-          <div class="col">
-            <h4 style={{fontsize: "2px", color: "white", textAlign:"right", marginTop: "12px"}}>Privacy Term</h4>
-          </div>
-        </div>
 
+        </div>
 
       </div>
 
-      
     </div>
 
     );

@@ -1,0 +1,35 @@
+.nav {
+    padding: 10px;
+    padding-right: 50px;
+}
+
+.nav-title {
+    padding-left: 50px;
+}
+
+.main-nav {
+    color: #707070;
+}
+
+.main-nav:hover {
+    color: #35356D !important;
+    border-bottom: 3px solid #35356D;
+}
+
+.main-nav-active {
+    color: #35356D;
+    border-bottom: 3px solid #35356D;
+}
+
+.side-nav {
+    width: 30px;
+    height: 30px;
+}
+
+.side-nav:hover {
+    filter: invert(21%) sepia(11%) saturate(3360%) hue-rotate(202deg) brightness(40%) contrast(92%);
+}
+
+.side-nav-active {
+    filter: invert(21%) sepia(11%) saturate(3360%) hue-rotate(202deg) brightness(40%) contrast(92%);
+}

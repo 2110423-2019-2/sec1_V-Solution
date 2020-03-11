@@ -3,7 +3,7 @@ import '../App.scss';
 import ProfileComponent from '../web-components/ProfileComponent';
 import UserContext from '../Context/UserContext';
 
-const Profile = (props) => {
+const ProfileCus = (props) => {
     //for setup fetch data
     return (
         //style={{backgroundImage:`url(${background})`}}
@@ -20,4 +20,4 @@ const Profile = (props) => {
     );
 };
 
-export default Profile;
+export default ProfileCus;
