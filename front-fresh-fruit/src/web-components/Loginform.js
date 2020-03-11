@@ -50,9 +50,9 @@ const Loginform = (props) => {
 
     return (
 
-        <div class="card col-lg-5 col-sm-12">
+        <div class="card  card-login col-lg-5 col-sm-12">
             <div class="card-body">
-                <h3 class="card-title">Login to FreshFruit</h3>
+                <h3 class="card-title card-title-login ">Login to FreshFruit</h3>
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address / Username</label>

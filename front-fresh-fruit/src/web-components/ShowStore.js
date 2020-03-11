@@ -5,7 +5,7 @@ import {useHistory} from "react-router-dom";
 function Item(img, name) {
     return (
         <div>
-            <div class="card card-a col" >
+            <div class="card  card-a " >
                 <img src={img} class="card-img-top pic-card" alt="..." />
                 <div class="card-body">
                     <h5 class="card-title">{name}</h5>
@@ -33,8 +33,7 @@ const ShowStore = () => {
     function LastItem() {
         return (
             <div>
-                <div class="card card-a col" >
-    
+                <div class="card card-a " >
                     <div class="card-body">
                         <div style={{ color: "#ffec62" }}>
                             <i class="fas fa-plus-circle fa-5x vertical-center" onClick={addNewItem}></i>
@@ -77,7 +76,6 @@ const ShowStore = () => {
 
     return (
         <div >
-
             <div class="container">
                 <div class="edit-store-title underline ">Products(5)</div>
                 <div class="row row-card">

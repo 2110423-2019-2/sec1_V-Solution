@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 import UserContext from '../Context/UserContext'
 import editIcon from '../pictures/edit.png'
 
+import Store from '../web-components/ShowStore'
 
 const url = "http://127.0.0.1:8000/api/getuser/";
 
@@ -19,7 +20,7 @@ const Profile = (props) => {
     const [last_name, setLast_name] = useState();
     const [address, setAddress] = useState();
     const [tel, setTel] = useState();
-    const [use_type, setUse_type] = useState();
+    const [user_type, setUser_type] = useState();
     //for setup fetch data
 
     const fetchUser = async () => {
@@ -30,7 +31,7 @@ const Profile = (props) => {
                 setLast_name(res.data.last_name)
                 setAddress(res.data.address)
                 setTel(res.data.tel)
-                sellerOrBuyer(res.data.use_type)
+                sellerOrBuyer(res.data.user_type)
             })
             .catch((err) => console.log(err))
 
@@ -41,58 +42,63 @@ const Profile = (props) => {
     })
 
     const sellerOrBuyer = (status) => {
-        status === "S" ? setUse_type("Seller") : setUse_type("Buyer")
+        console.log("status", status)
+        status === "S" ? setUser_type("Seller") : setUser_type("Buyer")
     }
 
     return (
         //style={{backgroundImage:`url(${background})`}}
+        <div>
+            <div class="container-fluid" style={{ backgroundColor: "#6AC17D" }}>
 
-        <div class="container-fluid" style={{ backgroundColor: "#6AC17D" }}>
+                <div class="row" style={{ backgroundColor: "#6AC17D", height: "auto" }}>
 
-            <div class="row" style={{ backgroundColor: "#6AC17D", height: "auto" }}>
-
-                {/* body */}
-                <div class="card w-75">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <img src={Mond} class="profile-pic img-fluid  rounded " alt="Mond" />
-                        </div>
-                        <div class="card-body col-sm-6">
-                            <div class="row">
-                                <h5 class="card-title">{first_name}  {last_name} ( {use_type} )</h5>
-                                <a href="/editProfile" class="icon-block edit-icon">
-                                    <i class="far fa-edit  " ></i>
-                                </a>
-                                
+                    {/* body */}
+                    <div class="card card-login w-75">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12">
+                                <img src={Mond} class="profile-pic img-fluid  rounded " alt="Mond" />
                             </div>
+                            <div class="card-body col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <h5 class="card-title card-title-login ">{first_name}  {last_name} ( {user_type} )</h5>
+                                    <a href="/editProfile" class="icon-block edit-icon">
+                                        <i class="far fa-edit  " ></i>
+                                    </a>
 
-                            <p class="card-text">Address : {address}</p>
-                            <p class="card-text">Tel : {tel}</p>
-                            <p class="card-text">Address : {address}</p>
-                            <UserContext.Consumer>
-                                {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
-                                    <div>
-                                        <p class="card-text">Login status : {String(isloggedin)}</p>
-                                        <p class="card-text">token : {getToken()}</p>
+                                </div>
 
-                                        <button class='btn btn-secondary' onClick={(e) => {
-                                            e.preventDefault();
-                                            clearToken()
-                                            history.push('/')
+                                <p class="card-text">Address : {address}</p>
+                                <p class="card-text">Tel : {tel}</p>
+                                <p class="card-text">Address : {address}</p>
+                                <UserContext.Consumer>
+                                    {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
+                                        <div>
+                                            <p class="card-text">Login status : {String(isloggedin)}</p>
+                                            <p class="card-text">token : {getToken()}</p>
 
-                                        }}>Log out</button>
-                                    </div>
-                                )}
-                            </UserContext.Consumer>
+                                            <button class='btn btn-secondary' onClick={(e) => {
+                                                e.preventDefault();
+                                                clearToken()
+                                                history.push('/')
+
+                                            }}>Log out</button>
+                                        </div>
+                                    )}
+                                </UserContext.Consumer>
+                            </div>
                         </div>
+
                     </div>
 
+
+
+
                 </div>
-
-
-
             </div>
+            <Store/>
         </div>
+
 
 
 
