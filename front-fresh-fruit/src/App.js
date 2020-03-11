@@ -66,7 +66,7 @@ function App() {
           clearToken:clearToken,
           getToken:getToken,getId:getId
           }}>
-          <Route exact path='/' component={ProfileCus} />
+          <Route exact path='/' component={HomePage} />
           {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={ProfileSeller} />):(<Route path='/profile' component={Seller} />)}
           
           <Route path='/seller' component={Seller} />
