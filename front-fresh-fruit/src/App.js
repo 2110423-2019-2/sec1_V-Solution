@@ -13,6 +13,7 @@ import Store from './Page/Store';
 import AddItem from './Page/AddItem';
 import ProfileSeller from './Page/ProfileSeller';
 import EditStore from './Page/EditStore';
+import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 
 
@@ -70,7 +71,7 @@ function App() {
         {/* body part */}
         <Switch>
           
-          <Route exact path='/' component={ProfileCus} />
+          <Route exact path='/' component={Cart} />
           {token!=null ? (<Route path='/profile' component={ProfileSeller} />):(<Route path='/profile' component={Signin} />)}
           
           <Route path='/seller' component={Seller} />
