@@ -13,6 +13,7 @@ import Store from './Page/Store';
 import AddItem from './Page/AddItem';
 import ProfileSeller from './Page/ProfileSeller';
 import EditStore from './Page/EditStore';
+import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'

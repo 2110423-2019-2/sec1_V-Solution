@@ -14,8 +14,8 @@ const EditProfile = () => {
         "email":"jkadjl@gmail.com",
         "nat_id":'1231313113'
     })
+
     useEffect(()=>{
-        
         axios.get('/api/getuser/test/').then((res)=>{
             console.log(res)
         }).catch((err)=>{
@@ -23,8 +23,6 @@ const EditProfile = () => {
         })
         
         //have to fetch data with token and use useState for set up data
-    
-    
     })
     
     return (

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import '../App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
+
+
 const url = "http://127.0.0.1:8000/api/register"
 
 function Informationform(props) {
