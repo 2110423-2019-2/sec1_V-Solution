@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import Navi from './web-components/Navigationbar';
 import Footer from './web-components/Footer';
+import AddItemform from './web-components/AddItemform';
 import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
@@ -16,10 +17,11 @@ import UserContext from './Context/UserContext';
 
 import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import AddItemform from './web-components/AddItemform';
 function App() {
   const [isloggedin,setIsloggedin] = useState(null)
   const [token,setToken] = useState("")
+  const [userid,setUserid] = useState("")
+
   function handleIsloggedin(){
     if (localStorage.getItem('Token')==null){
       setIsloggedin(false)
@@ -31,13 +33,16 @@ function App() {
   function handleSetUsername(username){
     // setUsername(username);
   }
-  function handleSetToken(token){
+  function handleSetToken(token,userid){
     setToken(token);
     localStorage.setItem('Token',token);
+    setUserid(userid)
+    localStorage.setItem('Userid',userid);
   }
   function clearToken(){
-    localStorage.removeItem('Token');
+    localStorage.clear();
     setToken("");
+    setUserid("");
   }
   useEffect(()=>{
     handleIsloggedin()
@@ -45,7 +50,9 @@ function App() {
   function getToken(){
     return String(localStorage.getItem('Token'))
   }
-  
+  function getId(){
+    return String(localStorage.getItem('Userid'))
+  }
   return (
     <div>
 
@@ -53,9 +60,24 @@ function App() {
       <Router>
         {/* body part */}
         <Switch>
+<<<<<<< HEAD
           <UserContext.Provider value={{isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,clearToken:clearToken,getToken:getToken}}>
           <Route exact path='/' component={ProfileCus} />
           {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={ProfileSeller} />):(<Route path='/profile' component={Seller} />)}
+||||||| merged common ancestors
+          <UserContext.Provider value={{isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,clearToken:clearToken,getToken:getToken}}>
+          <Route exact path='/' component={Home} />
+          {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
+=======
+          <UserContext.Provider value={{isloggedin:`${isloggedin}`,
+          setLogin:handleIsloggedin,
+          setToken:handleSetToken,
+          clearToken:clearToken,
+          getToken:getToken,getId:getId
+          }}>
+          <Route exact path='/' component={Home} />
+          {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
+>>>>>>> cb46f1c716a0e0f3e1c5981eb5bd1073fd7804a6
           
           <Route path='/seller' component={Seller} />
           <Route path='/register' component={Register} />

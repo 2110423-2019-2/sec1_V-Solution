@@ -34,7 +34,7 @@ const Profile = (props) => {
                         </div>
                         <div class="col">
                             <h1 style={{fontFamily: "Marker Felt", color:"#36368D", fontSize:"50px", marginTop:"50px", marginLeft:"30px"}}>
-                                Mondlnwza007</h1> 
+                                Mondlnmza007</h1> 
                         </div>
 
                         <div class="col-3">

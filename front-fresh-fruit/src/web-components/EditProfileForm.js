@@ -6,7 +6,6 @@ const url = "http://127.0.0.1:8000/api/register"
 
 function Informationform(props) {
     const [data, setData] = useState({
-        "username": "",
         "password": "",
         "email": "",
         "first_name": "",
@@ -53,14 +52,7 @@ function Informationform(props) {
                 Error MSG:
                
       </label>*/}
-                <div class="form-group row">
-                    <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
-                        <label style={{ color: "red" }}>*</label><label>Username:</label></div>
-                    <div class="col-sm-6">
-                        <input class="form-control" type="text" name="username" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.username}/>
-                    </div>
-                </div>
-
+                <h3>{props.username}</h3>
                 <div class="form-group row">
                     <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
                         <label style={{ color: "red" }}>*</label><label>Name:</label></div>
@@ -110,20 +102,7 @@ function Informationform(props) {
                     <div class='col-sm-6'>
                         <input class="form-control" type="date" name="birth_date" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.birth_date}/>
                     </div></div>
-                <div class='form-group row'>
-                    <legend class="col-form-label col-sm-2">Sex</legend>
-                    <div class="col-sm-3">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="M" onChange={handleChange} />
-                            <label class="form-check-label" for="inlineRadio1">Male</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="F" onChange={handleChange} />
-                            <label class="form-check-label" for="inlineRadio2">Female</label>
-                        </div>
-                    </div>
-                </div>
-
+                
                 <div class="form-group row">
                     <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
                         <label style={{ color: "red" }}>*</label><label>NationalID:</label></div>
