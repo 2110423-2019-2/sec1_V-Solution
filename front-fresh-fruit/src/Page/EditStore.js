@@ -1,92 +1,99 @@
-import React, { useState } from 'react';
+import React,{useState,useEffect} from 'react';
+import Background from '../pictures/seller.jpg';
 
-import {useHistory} from "react-router-dom";
-
-function Item(img, name) {
-    return (
-        <div>
-            <div class="card card-a col" >
-                <img src={img} class="card-img-top pic-card" alt="..." />
-                <div class="card-body">
-                    <h5 class="card-title">{name}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <div class="edit-store-button">
-                        <button href="" class="btn btn-edit btn-outline-success edit-launch-botton">Launch</button>
-                        <button href="" class="btn btn-edit btn-outline-warning">Reserve</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    )
-}
-
-
+import ShowStore from '../web-components/ShowStore';
+import Logo from '../pictures/fruitfarm.png';
 
 const EditStore = () => {
-    let history = useHistory();
-
-    function addNewItem() {
-        history.push('/addItem')
-    }
-
-    function LastItem() {
-        return (
-            <div>
-                <div class="card card-a col" >
-    
-                    <div class="card-body">
-                        <div style={{ color: "#ffec62" }}>
-                            <i class="fas fa-plus-circle fa-5x vertical-center" onClick={addNewItem}></i>
-                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
-    const items = [
-        {
-            'img': 'https://f.btwcdn.com/store-34660/product/49e0623f-5e1d-9c4f-d254-5b7f69a49e9a.jpg',
-            'name': 'mango',
-            'isReservable': true,
-            'isLaunch': false
-        }, {
-            'img': 'https://www.spcosmeticsplus.com/wp-content/uploads/2018/02/banana-extract.jpg',
-            'name': 'banana',
-            'isReservable': false,
-            'isLaunch': false
-        }, {
-            'img': 'https://f.btwcdn.com/store-34660/product/466d4abc-625b-1010-6822-58a2ec549146.jpg',
-            'name': 'grape',
-            'isReservable': false,
-            'isLaunch': false
-        }, {
-            'img': 'https://cd.lnwfile.com/vkzco5.jpg',
-            'name': 'papaya',
-            'isReservable': false,
-            'isLaunch': false
-        }, {
-            'img': 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTNlsCsrIpGEwT5RKBZA1L9IfTyuCMut0xpGMdVRpL8N_g_6aoV',
-            'name': 'orange',
-            'isReservable': false,
-            'isLaunch': false
-        }
-    ]
-
+    const [data,setData] = useState({
+        "user_type":'customer',
+        "first_name":"vachirachat",
+        "last_name":"sawaddiwat",
+        "address":'bangkok',
+        "tel":'xxx-xxx-xxxx',
+        "birth_date":"12/10/2062",
+        "gender":"male"
+    })
     return (
-        <div >
+        <div style={{backgroundColor:"#6AC17D", width: "1920px", height: "1985px"}}>
+            
+            
+            <div style={{width: "1200px", marginLeft: "160px"}}>
+                
+                {/* head */}
 
-            <div class="container">
-                <div class="edit-store-title underline ">Products(5)</div>
-                <div class="row row-card">
-                    {items.map((item) => Item(item.img, item.name))}
-                    {LastItem()}
+                <div style={{border: "solid black 2px", height: "293px", backgroundImage: `url(${Background})`,
+                            backgroundRepeat: "no-repeat", backgroundSize: 'cover'}}>
 
                 </div>
+        
+                {/* body */}
+
+                <div style={{border: "solid red 2px", height: "1650px", backgroundColor: "#E6FFEC"}}>
+                    
+                    <div class="row">
+
+                        <div class="col-3" style={{border: "solid black 2px"}}>
+                            <img src={Logo} style={{width: "200px", marginTop: "-70px", marginLeft: "50px"}} />
+                        </div>
+                        <div class="col"  style={{border: "solid black 2px",}}>
+                            <h1 style={{fontFamily: "Marker Felt", color:"#36368D", fontSize:"50px", marginTop:"40px", marginLeft:"30px"}}>
+                                GreatStorer</h1> 
+                        </div>
+
+                        <div class="col-3"  style={{border: "solid black 2px",}}>
+                            <div class="row">
+                                <div class="col" style={{border:"solid black 2px"}}>
+                                    <h1 style={{marginLeft: "80px"}}>a</h1>
+                                </div>
+                                <div class="col" style={{border:"solid black 2px"}}>
+                                    <h1>b</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div style={{border: "solid black 2px", height: "350px"}}>
+                        
+                        <div style={{marginTop: "50px"}}>
+                            <div style={{marginLeft: "100px"}}>
+                                <h1 style={{fontFamily: "Marker Felt", color:"#36368D", fontSize:"40px"}}>Address : Ihouse</h1>
+                            </div>
+                            <br/><br/>
+                            <div style={{marginLeft: "185px"}}>
+                                <h1 style={{fontFamily: "Marker Felt", color:"#36368D", fontSize:"40px"}}> Tel : 084-xxxxxxx</h1>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div style={{border: "solid black 2px", height: "350px"}}>
+                        
+                        <div class = "row" style={{textAlign: "center", marginTop: "30px"}}>
+                            <div class="col">
+                                <div style={{border: "solid black 4px", width: "400px", marginTop: "20px", marginLeft:"40px"}}></div>
+                            </div>
+                            <div class="col" style={{marginRight: "50px"}}>
+                                <h1 style={{marginLeft: "20px", fontFamily: "Marker Felt", color:"#36368D", fontSize:"40px"}}>
+                                My Store</h1>
+                            </div>
+                            <div class="col">
+                                <div style={{border: "solid black 4px", width: "400px", marginTop: "20px", marginRight:"40px"}}></div>
+                            </div>
+                        </div>
+                        <ShowStore />
+
+                    </div>
+                    
+
+                </div>
+
             </div>
-        </div>
+        
+
+
+        </div>  
     );
 };
 

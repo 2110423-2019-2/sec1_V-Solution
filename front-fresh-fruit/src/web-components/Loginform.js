@@ -74,7 +74,6 @@ const Loginform = (props) => {
                                     t.then((val) => {
                                         setToken(val.data.token)
                                         setLogin()
-                                        setUsername(username)
                                     })
                                     history.push('/Profile')
 

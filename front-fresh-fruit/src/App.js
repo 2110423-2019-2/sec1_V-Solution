@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import Navi from './web-components/Navigationbar';
 import Footer from './web-components/Footer';
+import AddItemform from './web-components/AddItemform';
 import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
@@ -16,7 +17,6 @@ import UserContext from './Context/UserContext';
 
 import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import AddItemform from './web-components/AddItemform';
 function App() {
   const [isloggedin,setIsloggedin] = useState(null)
   const [token,setToken] = useState("")
