@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import UserContext from '../Context/UserContext';
+import '../styles/_loginform.css';
 
 /*const option = {
     methods: "POST",
@@ -49,9 +50,9 @@ const Loginform = (props) => {
 
     return (
 
-        <div class="card col-lg-4 col-sm-12" style={{ margin: 'auto', marginTop: '10%', borderRadius: '20px' }}>
+        <div class="card col-lg-5 col-sm-12">
             <div class="card-body">
-                <h3 class="card-title">Login</h3>
+                <h3 class="card-title">Login to FreshFruit</h3>
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address / Username</label>
@@ -66,9 +67,9 @@ const Loginform = (props) => {
 
                     <UserContext.Consumer>
                         {({ isloggedin, setLogin, setToken, setUsername }) => (
-                            <div style={{ float: 'right' }}>
-                                <button type="submit" class="btn btn-outline-primary" style={{ marginRight: '10px' }}>Register</button>
-                                <button class="btn btn-primary" onClick={() => {
+                            <div class="btn-login">
+                                <button type="submit" class="btn btn-outline-primary btn-register">Register</button>
+                                <button class="btn btn-primary btn-signin" onClick={() => {
                                     const t = OnSignIn()
                                     t.then((val) => {
                                         setToken(val.data.token)
