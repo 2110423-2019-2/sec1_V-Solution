@@ -44,25 +44,30 @@ def add_entry(cart, product, amount):
     cart.count += amount
     cart.total_price += (calculate_product_price(product) * amount)
     cart.total_deliver_price += (product.deliverPrice * amount)
-
+    cart.save()
     return cart
 
 def decrease_entry(cart, product, amount):
     try:
-        old_entry = Entry.objects.filter(cart=cart, product=product)
+        old_entry = Entry.objects.get(cart=cart, product=product)
     except Entry.DoesNotExist:
         return cart
     
     new_amount = old_entry.quantity - amount
-    if new_amount < 0: 
+    if new_amount <= 0: 
         new_amount = 0
         old_entry.delete()
-    amount_de = amount - new_amount
+        return cart
+
+    ## FIX HERE
+    amount_de = old_entry.quantity - new_amount
+    old_entry.quantity = new_amount
+    old_entry.save()
 
     cart.count -= amount_de
     cart.total_price -= calculate_product_price(product) * amount_de
     cart.total_deliver_price -= product.deliverPrice * amount_de
-
+    cart.save()
     return cart
 
 
@@ -96,16 +101,16 @@ def remove_product_from_cart(request):
     user = token.user
     json_data = json.loads(request.body)
     
-    # Data
     try:
         product_id = json_data['id']
-        amount = json_data['amount']
+        amount = int(json_data['amount'])
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
+    ##
     cart = Cart.objects.get(user=user)
     product = Product.objects.get(pk=product_id)
-    add_entry(cart, product, amount)
+    decrease_entry(cart, product, amount)
     data = cart_to_list(cart)
 
     return Response(data, status=HTTP_200_OK)
@@ -123,4 +128,6 @@ def get_cart(request):
 
 ## remove entry
 
-## checkout
+
+
+## checkout - Sprint 3

@@ -75,7 +75,7 @@ def create_product(request):
 @permission_classes((AllowAny,))
 def get_product(request, product_id):
     product = Product.objects.get(pk=product_id)
-    product_to_dict(product)
+    data = product_to_dict(product)
     return Response(data, status=HTTP_200_OK)
 
 @api_view(["POST"])

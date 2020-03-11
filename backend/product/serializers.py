@@ -46,6 +46,7 @@ def product_to_dict(product):
     except ValueError:
         image = ''
     data = {
+        "id" : product.id,
         "productName" : product.productName,
         "productDesc" : product.proDuctDesc,
         "category" : product.category,
