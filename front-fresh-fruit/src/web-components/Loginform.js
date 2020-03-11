@@ -71,7 +71,7 @@ const Loginform = (props) => {
                                 <button class="btn btn-primary" onClick={() => {
                                     const t = OnSignIn()
                                     t.then((val) => {
-                                        setToken(val.data.token)
+                                        setToken(val.data.token,val.data.id)
                                         setLogin()
                                     })
                                     history.push('/Profile')

@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import ShowStore from '../web-components/ShowStore';
 import EditProfileForm from '../web-components/EditProfileForm';
+import axios from 'axios';
 const EditProfile = () => {
     const [data,setData] = useState({
         "user_type":'customer',
@@ -15,7 +16,11 @@ const EditProfile = () => {
     })
     useEffect(()=>{
         
-        
+        axios.get('/api/getuser/test/').then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
         
         
         
