@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import Navi from './web-components/Navigationbar';
 import Footer from './web-components/Footer';
-import AddItemform from './web-components/AddItemform';
+import AddItemform from './web-components/AddItemform.js';
 import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
@@ -66,7 +66,7 @@ function App() {
           clearToken:clearToken,
           getToken:getToken,getId:getId
           }}>
-          <Route exact path='/' component={Home} />
+          <Route exact path='/' component={ProfileCus} />
           {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={ProfileSeller} />):(<Route path='/profile' component={Seller} />)}
           
           <Route path='/seller' component={Seller} />
