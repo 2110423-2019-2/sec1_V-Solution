@@ -80,7 +80,7 @@ const Profile = (props) => {
                                             <button class='btn btn-secondary' onClick={(e) => {
                                                 e.preventDefault();
                                                 clearToken()
-                                                history.push('/')
+                                                history.push('/signin')
 
                                             }}>Log out</button>
                                         </div>

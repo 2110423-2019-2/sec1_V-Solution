@@ -68,11 +68,14 @@ const Loginform = (props) => {
                     <UserContext.Consumer>
                         {({ isloggedin, setLogin, setToken, setUsername }) => (
                             <div class="btn-login">
-                                <button type="submit" class="btn btn-outline-primary btn-register">Register</button>
+                                <button type="submit" class="btn btn-outline-primary btn-register"
+                                    onClick={() => {
+                                        history.push('/register')
+                                    }}>Register</button>
                                 <button class="btn btn-primary btn-signin" onClick={() => {
                                     const t = OnSignIn()
                                     t.then((val) => {
-                                        setToken(val.data.token,val.data.id)
+                                        setToken(val.data.token, val.data.id)
                                         setLogin()
                                         setUsername(val.data.username)
                                     })
