@@ -70,8 +70,8 @@ function App() {
         {/* body part */}
         <Switch>
           
-          <Route exact path='/' component={EditProfile} />
-          {token!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Signin} />)}
+          <Route exact path='/' component={ProfileCus} />
+          {token!=null ? (<Route path='/profile' component={ProfileSeller} />):(<Route path='/profile' component={Signin} />)}
           
           <Route path='/seller' component={Seller} />
           <Route path='/register' component={Register} />

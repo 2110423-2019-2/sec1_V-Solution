@@ -11,22 +11,15 @@ const Profile = (props) => {
     
     return (
         //style={{backgroundImage:`url(${background})`}}
-        <div>
-            <div>
-                <img class='profileCover' src={background} />
-                <img class='profilePic' src={ProfilePic} />
-            </div>
-            <div class='container thaifont'>
-                <div class='row'>
-                    <h1 class='col-lg-10 col-6'>{props.username}</h1>
-                    <div class='logoAndEditInProfile col-lg-2 col-6'>
-                        <button type="button" class="btn btn-outline-info">Logo</button>
-                        <button id='editInProfile' type="button" class="btn btn-outline-info">Edit</button>
-                    </div>
-                </div>
-                 <div class='row'>
-                    <h2>{props.firstname}</h2>
-                    <h2 style={{ marginLeft: '10px' }}>{props.lastname}</h2>
+        <div style={{backgroundColor:"#6AC17D", width: "1520px", height: "995px"}}>
+            
+            
+            <div style={{width: "1200px", marginLeft: "160px"}}>
+                
+                {/* head */}
+
+                <div style={{backgroundColor:"#6AC17D", height:"100px"}}>
+
                 </div>
 
                 
