@@ -37,19 +37,22 @@ function AddItemform() {
     const history = useHistory();
     const onSubmit = async (e, usertoken) => {
         console.log(usertoken)
-        await axios.post(url, 
+        await axios.post(url,
             product
-        , {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Token 898b5ef457a2c88780d50f2926aa2e7e5d5d10c8`
-            }
-        })
+            , {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token `+localStorage.getItem('Token')
+                }
+            })
             .then((res) => {
                 checkState()
+                console.log(res.status)
+                res.status === 200 ? alert("Add Item Successful"): alert("Error on add Item")
             })
             .catch((err) => {
                 console.log(err)
+                alert("Error on add Item")
             })
 
     }
@@ -57,13 +60,13 @@ function AddItemform() {
     return (
         <div>
             <UserContext.Consumer>
-                {({ usertoken, username }) => (
+                {({ usertoken, getUsername }) => (
                     <Container >
                         <Col md={{ span: 6, offset: 3 }}>
-                            {username ? <h1 class="head-newitem">สวัสดีครับคุณ {username}</h1> : <h1 class="head-newitem">Please login again</h1>}
+                            {getUsername ? <h1 class="head-newitem">สวัสดีครับคุณ {getUsername()}</h1> : <h1 class="head-newitem">Please login again</h1>}
 
                             <Form>
-                                <h3 class="head-newitem">สร้างรายการสินค้าใหม่</h3>
+                                <h5 class="head-newitem">สร้างรายการสินค้าใหม่</h5>
 
                                 <Form.Group controlId="">
                                     <Form.Label>Product Name</Form.Label>
@@ -154,7 +157,7 @@ function AddItemform() {
 
                                 <Button variant="primary" type="button" onClick={(e, usertoken) => {
                                     onSubmit()
-                                    history.push("/EditStore")
+                                    history.push("/profile")
                                 }}>
                                     Submit
                                 </Button>
