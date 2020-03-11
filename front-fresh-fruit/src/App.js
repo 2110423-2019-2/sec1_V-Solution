@@ -60,15 +60,6 @@ function App() {
       <Router>
         {/* body part */}
         <Switch>
-<<<<<<< HEAD
-          <UserContext.Provider value={{isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,clearToken:clearToken,getToken:getToken}}>
-          <Route exact path='/' component={ProfileCus} />
-          {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={ProfileSeller} />):(<Route path='/profile' component={Seller} />)}
-||||||| merged common ancestors
-          <UserContext.Provider value={{isloggedin:`${isloggedin}`,setLogin:handleIsloggedin,setToken:handleSetToken,clearToken:clearToken,getToken:getToken}}>
-          <Route exact path='/' component={Home} />
-          {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
-=======
           <UserContext.Provider value={{isloggedin:`${isloggedin}`,
           setLogin:handleIsloggedin,
           setToken:handleSetToken,
@@ -76,8 +67,7 @@ function App() {
           getToken:getToken,getId:getId
           }}>
           <Route exact path='/' component={Home} />
-          {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
->>>>>>> cb46f1c716a0e0f3e1c5981eb5bd1073fd7804a6
+          {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={ProfileSeller} />):(<Route path='/profile' component={Seller} />)}
           
           <Route path='/seller' component={Seller} />
           <Route path='/register' component={Register} />
