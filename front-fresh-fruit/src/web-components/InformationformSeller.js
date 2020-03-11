@@ -1,95 +1,127 @@
 import React from 'react';
-import '../App.scss';
+import '../styles/_informationform.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function InformationformSeller() {
-      
       return (
-
         <div>
+            <form className="container" style={{ padding: '2%' }}>
+                {/* <div class="row">
+                    <div class="col" style={{textAlign: "left"}}>
+                        <label style={{marginLeft:"6px"} }>
+                            Error MSG:
+                        </label>
+                    </div>
+                </div> */}
+                <div class="form-group row">
+                    <div class='col-form-label col-sm-2' style={{textAlign: "left"}}>
+                        <label style={{ color: "red" }}>*</label><label>Username:</label>
+                    </div>
+                    <div class="col-sm-6">
+                            <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }} placeholder=""/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-form-label col-sm-2" style={{textAlign: "left"}}>
+                        <label style={{ color: "red" }}>*</label><label>Name:</label>
+                    </div>
+                    <div class="col-sm-6">
+                            <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }} />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-form-label col-sm-2" style={{textAlign: "left"}}>
+                        <label style={{ color: "red" }}>*</label><label>Surname:</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }} />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-form-label col-sm-2" style={{textAlign: "left"}}>
+                        <label style={{color:"red"}}>*</label><label>Email:</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input className = "form-control" type="email" name="name" style={{ marginLeft: '10px' }} placeholder = "someone@hotmail.com" />
+                    </div>
+                </div>
 
-        <form className="container" style={{fontSize:'16px'}}>
+                <div class="form-group row">
+                    <div class="col-form-label col-sm-2" style={{textAlign: "left"}}>
+                        <label style={{color:"red"}}>*</label><label>Password:</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input  className = "form-control" type="password" name="name" style={{ marginLeft: '10px' }} />
+                        <small id='passwordHelp' class="form-text text-muted">between 6 - 30 characters including alphabet and number</small>
+                    </div>
+                </div>
 
-        <div class="row"><div class="col" style={{textAlign: "left"}}><label style={{marginLeft:"6px"} }>
-                Error MSG:
-               
-            </label></div></div>
+                <div class="form-group row">
+                    <div class="col-form-label col-sm-3" style={{textAlign: "left"}}>
+                        <label style={{color:"red"}}>*</label><label>Store name:</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }}/>
+                    </div>
+                </div>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                <span style={{color:"red"}}>*</span>Username:
-                <input style = {{marginLeft:"22px"}} className = "inputfield" type="text" name="name" 
-                placeholder=""/>
-            </label></div></div>
+                <div class="form-group row">
+                    <div class="col-form-label col-sm-3" style={{textAlign: "left"}}>
+                        <label style={{color:"red"}}>*</label><label>Address:</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" style={{ marginLeft: '10px' }} rows="3"></textarea>
+                    </div>
+                </div>
 
+                <div class="form-group row">
+                    <div class="col-form-label col-sm-3" style={{textAlign: "left"}}>
+                        <label style={{color:"red"}}>*</label><label>Tel:</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }} />
+                    </div>
+                </div>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                <span style={{color:"red", marginTop: "5px"}}>*</span>Name:
-                <input style = {{marginLeft:"50px"}} className = "inputfield" type="text" name="name" />
-            </label></div></div>
+                <div class="form-group row">
+                    <div class="col-sm-3" style={{textAlign: "left"}}>
+                        <label style={{color:"red"}}>*</label><label>Birthdate:</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input className = "form-control" type='date' style={{ marginLeft: '10px' }}/>
+                    </div>   
+                </div>
 
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                <span style={{color:"red"}}>*</span>Surname:
-                <input  style = {{marginLeft:"30px"}} className = "inputfield" type="text" name="name" />
-            </label></div></div>
+                <div class='form-group row'>
+                    <div class="col-form-label col-sm-2" style={{textAlign:"left"}}>
+                        <label style={{color:"red"}}>*</label><label>Gender</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-check form-check-inline" style={{paddingRight:'18px'}}>
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline" style={{marginTop:'10px'}}>
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+                    </div>
+                </div>
 
-
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                <span style={{color:"red"}}>*</span>Email:
-                <input style = {{marginLeft:"55px"}} className = "inputfield" type="email" name="name"
-                placeholder = "someone@hotmail.com" />
-            </label></div></div>
-
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-               <span style={{color:"red"}}>*</span>Password:
-                <input style = {{marginLeft:"27px"}} className = "inputfield" type="password" name="name" />
-                <label style={{marginLeft: "6px", color:"grey"}}>between 6 - 30 characters including alphabet and number</label>
-            </label></div></div>
-
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                <span style={{color:"red"}}>*</span>Store name:
-                <input style = {{marginLeft:"13px"}} className = "inputfield" type="text" name="name"/>
-            </label></div></div>
-
-            <div class="row"><div class="col" style={{textAlign: "left"}}> <label style={{marginLeft: "7px"}}>
-                Address:
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </label></div></div>
-
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                <span style={{color:"red"}}>*</span>Tel:
-                <input style = {{marginLeft:"74px"}} className = "inputfield" type="text" name="name" />
-            </label></div></div>
-
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-                <span style={{color:"red"}}>*</span>Birthdate:
-                <input type='date'/>
-            </label></div></div>
-
-            <div class="row"><div class="col" style={{textAlign: "left"}}><label>
-            <span style={{color:"red"}}>*</span>Gender:
-               <span style={{marginLeft: "70px"}}>
-               <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-  <label class="form-check-label" for="inlineRadio1">Male</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-  <label class="form-check-label" for="inlineRadio2">Female</label>
-</div>
-               </span>
-            </label></div></div>
-
-            <div class="row" ><div class="col" style={{textAlign: "left"}}><label>
-            <span style={{color:"red"}}>*</span>National ID:
-                <input style = {{marginLeft:"14px",right:'65%'}} className = "inputfield" type="text" name="name" />
-            </label></div></div>
+                <div class="form-group row" >
+                    <div class="col-form-label col-sm-3" style={{textAlign: "left"}}>
+                        <label style={{color:"red"}}>*</label><label>National ID:</label>
+                    </div>
+                    <div class="col-sm-6">
+                            <input className = "form-control" type="text" name="name" style={{ marginLeft: '10px' }} />
+                    </div>
+                </div>
             
-            <button type='submit' class='btn btn-primary' style={{position:'absolute',left:'30px'}}>Register</button>
-            
-        </form>
-
+                <div class="col-sm-9">
+                    <button type='submit' class='btn btn-primary register-btn-seller'>Register</button>
+                </div>
+            </form>
         </div>
-        
       );
   }
   

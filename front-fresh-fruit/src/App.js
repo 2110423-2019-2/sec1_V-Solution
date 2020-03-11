@@ -7,11 +7,13 @@ import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
 import ProfileCus from './Page/ProfileCus';
 import Seller from './Page/Seller';
+import SignUp from './Page/SignUp'
 import Signin from './Page/Signin';
 import Store from './Page/Store';
 import AddItem from './Page/AddItem';
 import ProfileSeller from './Page/ProfileSeller';
 import EditStore from './Page/EditStore';
+import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 
 
@@ -31,6 +33,7 @@ function App() {
     console.log(isloggedin)
   }
   function handleSetUsername(username){
+    //setUsername(username);
     // setUsername(username);
   }
   function handleSetToken(token,userid){
@@ -57,17 +60,19 @@ function App() {
     <div>
 
       <Navi />
+      {/* navigation bar */}
+
+
+
+      {/* body part */}
+
+    
       <Router>
         {/* body part */}
         <Switch>
-          <UserContext.Provider value={{isloggedin:`${isloggedin}`,
-          setLogin:handleIsloggedin,
-          setToken:handleSetToken,
-          clearToken:clearToken,
-          getToken:getToken,getId:getId
-          }}>
-          <Route exact path='/' component={HomePage} />
-          {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={ProfileSeller} />):(<Route path='/profile' component={Seller} />)}
+          
+          <Route exact path='/' component={Cart} />
+          {token!=null ? (<Route path='/profile' component={ProfileSeller} />):(<Route path='/profile' component={Signin} />)}
           
           <Route path='/seller' component={Seller} />
           <Route path='/register' component={Register} />
@@ -77,7 +82,7 @@ function App() {
           <Route path='/ProfileSeller' component={ProfileSeller} />
           <Route path='/EditStore' component={EditStore} />
           <Route path='/addItem' component={AddItemform} />
-          </UserContext.Provider>
+          
         </Switch>
       </Router>
       <Footer/>
