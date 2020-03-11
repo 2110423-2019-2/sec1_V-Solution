@@ -6,6 +6,8 @@ import Mond from '../pictures/profile pic.png'
 import EditPic from '../pictures/edit.png'
 import { useHistory } from 'react-router-dom';
 import UserContext from '../Context/UserContext'
+import editIcon from '../pictures/edit.png'
+
 
 const url = "http://127.0.0.1:8000/api/getuser/";
 
@@ -13,20 +15,34 @@ const Profile = (props) => {
     const history = useHistory();
     console.log(props);
 
-    const [userProfile, setUserProfile] = useState();
+    const [first_name, setFirst_name] = useState();
+    const [last_name, setLast_name] = useState();
+    const [address, setAddress] = useState();
+    const [tel, setTel] = useState();
+    const [use_type, setUse_type] = useState();
     //for setup fetch data
 
     const fetchUser = async () => {
         const data = axios.get(url + props.username)
-            .then((res) => setUserProfile(data.json))
+            .then(function (res) {
+                console.log(res.data)
+                setFirst_name(res.data.first_name)
+                setLast_name(res.data.last_name)
+                setAddress(res.data.address)
+                setTel(res.data.tel)
+                sellerOrBuyer(res.data.use_type)
+            })
             .catch((err) => console.log(err))
-        
-        
+
     }
 
     useEffect(() => {
         fetchUser();
     })
+
+    const sellerOrBuyer = (status) => {
+        status === "S" ? setUse_type("Seller") : setUse_type("Buyer")
+    }
 
     return (
         //style={{backgroundImage:`url(${background})`}}
@@ -42,15 +58,24 @@ const Profile = (props) => {
                             <img src={Mond} class="profile-pic img-fluid  rounded " alt="Mond" />
                         </div>
                         <div class="card-body col-sm-6">
-                            <h5 class="card-title">{userProfile}</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <div class="row">
+                                <h5 class="card-title">{first_name}  {last_name} ( {use_type} )</h5>
+                                <a href="/editProfile" class="icon-block edit-icon">
+                                    <i class="far fa-edit  " ></i>
+                                </a>
+                                
+                            </div>
+
+                            <p class="card-text">Address : {address}</p>
+                            <p class="card-text">Tel : {tel}</p>
+                            <p class="card-text">Address : {address}</p>
                             <UserContext.Consumer>
                                 {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
                                     <div>
                                         <p class="card-text">Login status : {String(isloggedin)}</p>
                                         <p class="card-text">token : {getToken()}</p>
 
-                                        <button class='btn btn-primary' onClick={(e) => {
+                                        <button class='btn btn-secondary' onClick={(e) => {
                                             e.preventDefault();
                                             clearToken()
                                             history.push('/')

@@ -1,6 +1,14 @@
 .profile-pic {
-    position: inherit;
-    margin-top: -60px;
-    outline:none;
-    border:0;
+  position: inherit;
+  margin-top: -60px;
+  outline: none;
+  border: 0;
+}
+
+.edit-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  color:#35356D;
 }

@@ -4,9 +4,6 @@ import UserContext from '../Context/UserContext'
 import { Redirect } from 'react-router-dom'
 const Signin = () => {
 
-  useEffect(() => {
-
-  })
 
   return (
     <UserContext.Consumer>
