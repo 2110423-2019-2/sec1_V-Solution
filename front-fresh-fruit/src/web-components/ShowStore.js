@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-function Item(img, name) {
+function Item(img, name, desc) {
     return (
         <div>
             <div class="card  card-a " >
                 <img src={img} class="card-img-top pic-card" alt="..." />
                 <div class="card-body">
                     <h5 class="card-title">{name}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text">{desc}</p>
                     <div class="edit-store-button">
                         <button href="" class="btn btn-edit btn-outline-success edit-launch-botton">Launch</button>
                         <button href="" class="btn btn-edit btn-outline-warning">Reserve</button>
@@ -23,9 +23,15 @@ function Item(img, name) {
 
 
 
-const ShowStore = () => {
-    let history = useHistory();
+const ShowStore = (props) => {
+    const [product, setProduct] = useState([]);
 
+    useEffect(() => {
+        setProduct(props.product)
+    }, [props])
+
+
+    let history = useHistory();
     function addNewItem() {
         history.push('/addItem')
     }
@@ -37,7 +43,7 @@ const ShowStore = () => {
                     <div class="card-body">
                         <div style={{ color: "#ffec62" }}>
                             <i class="fas fa-plus-circle fa-5x vertical-center" onClick={addNewItem}></i>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -74,12 +80,13 @@ const ShowStore = () => {
         }
     ]
 
+    console.log("store", product)
     return (
         <div >
             <div class="container">
                 <div class="edit-store-title underline ">Products(5)</div>
                 <div class="row row-card">
-                    {items.map((item) => Item(item.img, item.name))}
+                    {product.map((item) => Item(item.productType, item.productName, item.productDesc))}
                     {LastItem()}
 
                 </div>

@@ -11,22 +11,22 @@ import editIcon from '../pictures/edit.png'
 import Store from '../web-components/ShowStore'
 
 const url = "http://127.0.0.1:8000/api/getuser/";
+const productUrl = "http://127.0.0.1:8000/api/getuserproduct/"
 
 const Profile = (props) => {
     const history = useHistory();
-    console.log(props);
 
     const [first_name, setFirst_name] = useState();
     const [last_name, setLast_name] = useState();
     const [address, setAddress] = useState();
     const [tel, setTel] = useState();
     const [user_type, setUser_type] = useState();
+    const [product, setProduct] = useState([]);
     //for setup fetch data
 
     const fetchUser = async () => {
         const data = await axios.get(url + localStorage.getItem('Username'))
             .then(function (res) {
-                console.log(res.data)
                 setFirst_name(res.data.first_name)
                 setLast_name(res.data.last_name)
                 setAddress(res.data.address)
@@ -34,12 +34,24 @@ const Profile = (props) => {
                 sellerOrBuyer(res.data.user_type)
             })
             .catch((err) => console.log(err))
+        await getProduct();
 
     }
 
+    async function getProduct() {
+        try {
+          const response = await axios.get(productUrl + localStorage.getItem('Username'));
+          console.log("product",response.data);
+          setProduct(response.data)
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
     useEffect(() => {
         fetchUser();
-    })
+        
+    },[])
 
     const sellerOrBuyer = (status) => {
         console.log("status", status)
@@ -96,7 +108,8 @@ const Profile = (props) => {
 
                 </div>
             </div>
-            <Store/>
+
+            <Store product={product}/>
         </div>
 
 
