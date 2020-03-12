@@ -1,11 +1,31 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import homefruit from '../pictures/homefruit.png';
 import buttoncus from '../pictures/buttoncus.png';
 import buttonsell from '../pictures/buttonsell.png';
 import Store from '../web-components/ShowStore';
+import axios from 'axios';
+
+
+const productUrl = "http://127.0.0.1:8000/api/allproduct"
 
 const HomePage = () => {
+  const [product, setProduct] = useState([]);
+
+  async function getProduct() {
+    try {
+      const response = await axios.get(productUrl);
+      console.log("product",response.data);
+      setProduct(response.data)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+useEffect(() => {
+    getProduct();
+    
+},[])
 
   return (
 
@@ -36,7 +56,7 @@ const HomePage = () => {
 
       {/* -------------- Store part --------------------*/}
 
-      <Store/>
+      <Store product={product}/>
 
     </div>
 

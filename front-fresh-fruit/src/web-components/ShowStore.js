@@ -11,7 +11,7 @@ function Item(img, name, desc) {
                     <h5 class="card-title">{name}</h5>
                     <p class="card-text">{desc}</p>
                     <div class="edit-store-button">
-                        <button href="" class="btn btn-edit btn-outline-success edit-launch-botton">Launch</button>
+                        <button href="" class="btn btn-edit btn-outline-success edit-launch-botton">Purchase</button>
                         <button href="" class="btn btn-edit btn-outline-warning">Reserve</button>
                     </div>
 
