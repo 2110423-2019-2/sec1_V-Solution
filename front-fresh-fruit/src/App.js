@@ -63,7 +63,8 @@ function App() {
           setLogin:handleIsloggedin,
           setToken:handleSetToken,
           clearToken:clearToken,
-          getToken:getToken,getId:getId
+          getToken:getToken,
+          getId:getId
           }}>
           <Route exact path='/' component={Home} />
           {localStorage.getItem('Token')!=null ? (<Route path='/profile' component={Profile} />):(<Route path='/profile' component={Seller} />)}
