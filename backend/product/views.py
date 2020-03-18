@@ -151,6 +151,8 @@ def edit_product(request, product_id):
     product.unitOfAmount = unitOfAmount
     product.deliverCompany = deliverCompany
     product.deliverPrice = deliverPrice
+    
+    product.save()
 
     return Response({'result': 'Successfully update product status'},status=HTTP_200_OK)
 
