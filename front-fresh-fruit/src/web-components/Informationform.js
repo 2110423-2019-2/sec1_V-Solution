@@ -92,7 +92,7 @@ function Informationform(props) {
                         <label style={{ color: "red" }}>*</label><label>Username:</label></div>
                     <div class="col-sm-6">
                         
-                        <input class="form-control" type="text" name="username" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.username}/>
+                        <input class="form-control" type="text" name="username" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.username} required/>
 
                         {error.username.length > 0 && <small class='errorInForm'>{error.username}</small>}
                     </div>
@@ -102,7 +102,7 @@ function Informationform(props) {
                     <div class='col-form-label col-sm-2' style={{textAlign:"left"}}>
                         <label style={{ color: "red" }}>*</label><label>Name:</label></div>
                     <div class='col-sm-6'>
-                        <input class="form-control" type="text" name="first_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.first_name}/>
+                        <input class="form-control" type="text" name="first_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.first_name} required/>
 
                         {error.first_name.length > 0 && <small class='errorInForm'>{error.first_name}</small>}
                     </div></div>
@@ -111,7 +111,7 @@ function Informationform(props) {
                     <div class='col-form-label col-sm-2' style={{textAlign:"left"}}>
                         <label style={{ color: "red" }}>*</label><label>Surname:</label></div>
                     <div class='col-sm-6'>
-                        <input class="form-control" type="text" name="last_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.last_name}/>
+                        <input class="form-control" type="text" name="last_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.last_name} required/>
 
                         {error.last_name.length > 0 && <small class='errorInForm'>{error.last_name}</small>}
                     </div></div>
@@ -120,14 +120,14 @@ function Informationform(props) {
                     <div class='col-form-label col-sm-2' style={{textAlign:"left"}}>
                         <label style={{ color: "red" }}>*</label><label>Email:</label></div>
                     <div class='col-sm-6'>
-                        <input class="form-control" type="email" name="email" style={{ marginLeft: '10px' }} placeholder="someone@outlook.com" onChange={handleChange} value={props.email}/>
+                        <input class="form-control" type="email" name="email" style={{ marginLeft: '10px' }} placeholder="someone@outlook.com" onChange={handleChange} value={props.email} required/>
                     </div></div>
 
                 <div class="form-group row">
                     <div class='col-form-label col-sm-2' style={{textAlign:"left"}}>
                         <label style={{ color: "red" }}>*</label><label>Password:</label></div>
                     <div class='col-sm-6'>
-                        <input class="form-control" type="password" name="password" style={{ marginLeft: '10px' }} placeholder="" aria-describedby="passwordHelp" onChange={handleChange} value={props.password} maxlength='20'/>
+                        <input class="form-control" type="password" name="password" style={{ marginLeft: '10px' }} aria-describedby="passwordHelp" onChange={handleChange} value={props.password} maxlength='20' required/>
                         
                         {error.password.length > 0 && <small class='errorInForm'>{error.password}</small>}
                     </div></div>
@@ -136,14 +136,14 @@ function Informationform(props) {
                     <div class='col-form-label col-sm-2' style={{textAlign:"left"}}>
                         <label style={{ color: "red" }}>*</label><label>Address:</label></div>
                     <div class='col-sm-6'>
-                        <textarea class="form-control" name='address' rows="3" style={{ marginLeft: '10px' }} onChange={handleChange} value={props.address}></textarea>
+                        <textarea class="form-control" name='address' rows="3" style={{ marginLeft: '10px' }} onChange={handleChange} value={props.address} required></textarea>
                     </div></div>
 
                 <div class="form-group row">
                     <div class='col-form-label col-sm-2' style={{textAlign:"left"}}>
                         <label style={{ color: "red" }}>*</label><label>Tel:</label></div>
                     <div class='col-sm-6'>
-                        <input class="form-control" type="tel" name="tel" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} maxlength="10" value={props.tel}/>
+                        <input class="form-control" type="tel" name="tel" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} maxlength="10" value={props.tel} required/>
                         {error.tel.length > 0 && <small class='errorInForm'>{error.tel}</small>}
                     </div></div>
 
@@ -151,7 +151,7 @@ function Informationform(props) {
                     <div class='col-form-label col-sm-2' style={{textAlign:"left"}}>
                         <label style={{ color: "red" }}>*</label><label>Birthdate:</label></div>
                     <div class='col-sm-6'>
-                        <input class="form-control" type="date" name="birth_date" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.birth_date}/>
+                        <input class="form-control" type="date" name="birth_date" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.birth_date} required/>
                     </div></div>
                 <div class='form-group row'>
                     <legend class="col-form-label col-sm-2" style={{textAlign:"left"}}>Gender</legend>
@@ -171,7 +171,7 @@ function Informationform(props) {
                     <div class='col-form-label col-sm-2' style={{textAlign:"left"}}>
                         <label style={{ color: "red" }}>*</label><label>NationalID:</label></div>
                     <div class='col-sm-6'>
-                        <input class="form-control" type='tel' name="nat_id" onChange={handleChange} style={{ marginLeft: '10px' }} placeholder="x-xxxx-xxxxx-xx-x" maxlength='13' value={props.nat_id} />
+                        <input class="form-control" type='tel' name="nat_id" onChange={handleChange} style={{ marginLeft: '10px' }} placeholder="x-xxxx-xxxxx-xx-x" maxlength='13' value={props.nat_id} required/>
                         {error.nat_id.length > 0 && <small class='errorInForm'>{error.nat_id}</small>}
                     </div></div>
 
