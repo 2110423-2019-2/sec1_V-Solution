@@ -18,14 +18,26 @@ function Informationform(props) {
     });
     const [user_token, setUser_token] = useState()
 
+    const [error,setError] = useState({
+        'username':'',
+        'name': '',
+        'surname':'',
+        'email':'',
+        'password':'',
+        'address':'',
+        'tel':'',
+        'nat_id':''
+    })
+
     const fetchUser = async () => {
-        const data = await axios.get(urlGet + localStorage.getItem('Username'))
+        console.log('This is Username'+localStorage.getItem('Username'))
+        const data = await axios.get(urlGet + localStorage.getItem('Username')+'/')
             .then(function (res) {
                 console.log(res.data)
                 return res.data
             })
             .catch((err) => console.log(err))
-
+        
         setUser({
             user_type: data.user_type,
             first_name: data.first_name,
@@ -52,6 +64,16 @@ function Informationform(props) {
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
         console.log(user)
+
+        let error2 = error;
+        switch(e.target.name){
+            
+            case 'first_name':
+            
+            case 'email':
+            
+        }
+
     }
 
     const onSubmit = async (e) => {
