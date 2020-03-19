@@ -17,7 +17,6 @@ import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
-
 import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
@@ -102,6 +101,7 @@ function App() {
             <Route path='/editProfile' component={EditProfile} />
             <Route path='/editStore' component={EditStore} />
             <Route path='/addItem' component={AddItemform} />
+            <Route path='/cart' component={Cart} />
           </UserContext.Provider>
         </Switch>
       </Router>
