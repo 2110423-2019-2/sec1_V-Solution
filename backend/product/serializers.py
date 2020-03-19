@@ -47,19 +47,19 @@ def product_to_dict(product):
         image = ''
     data = {
         "id" : product.id,
-        "productName" : product.productName,
-        "productDesc" : product.proDuctDesc,
+        "product_name" : product.productName,
+        "product_desc" : product.proDuctDesc,
         "category" : product.category,
         "subcategory" : product.subcategory,
         "province" : product.province,
         "district" : product.district,
-        "productType" : product.productType,
+        "product_type" : product.productType,
         "harvest_date" : product.harvest_date,
         "price" : product.price,
         "amount" : product.amount,
-        "unitOfAmount" : product.unitOfAmount,
-        "deliverCompany" : product.deliverCompany,
-        "deliverPrice" : product.deliverPrice,
+        "unit_of_amount" : product.unitOfAmount,
+        "deliver_company" : product.deliverCompany,
+        "deliver_price" : product.deliverPrice,
         "image" : image,
         "product_type" : product.productType
     }

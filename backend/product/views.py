@@ -122,6 +122,7 @@ def edit_product(request, product_id):
     if user_profile != product.seller:
         return Response({'error': 'Invalid credentials'}, status=HTTP_400_BAD_REQUEST)
     try:
+        json_data = json.loads(request.body)
         productName = json_data['product_name']
         proDuctDesc = json_data['product_desc']
         category = json_data['category']
@@ -171,6 +172,48 @@ def get_product_from_user(request, username):
 @permission_classes((AllowAny,))
 def get_all_product(request):
     products = Product.objects.all().exclude(productType__in=['A', 'N']).order_by('pk')
+    data = []
+    for product in products: 
+        data.append(product_to_dict(product))
+    return Response(data, status=HTTP_200_OK)
+
+@api_view(['POST'])
+@permission_classes((AllowAny,))
+def search_product(request):
+
+    try:
+        json_data = json.loads(request.body)
+        productName = json_data['product_name']
+        proDuctDesc = json_data['product_desc']
+        category = json_data['category']
+        subcategory = json_data['subcategory']
+        province = json_data['province']
+        district = json_data['district']
+        productType = json_data['product_type']
+        harvest_date = json_data['harvest_date']
+        price = json_data['price']
+        amount = json_data['amount']
+        unitOfAmount = json_data['unit_of_amount']
+        deliverCompany = json_data['deliver_company']
+        deliverPrice  = json_data['deliver_price']
+    except KeyError:
+        return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
+
+    products = Product.objects.filter(
+        productName__contains = productName,
+        proDuctDesc__contains = proDuctDesc,
+        category__contains = category,
+        subcategory__contains = subcategory,
+        province__contains = province,
+        district__contains = district,
+        productType__contains = productType,
+        harvest_date = harvest_date,
+        price__lte = price,
+        #amount__contains = amount,
+        #unitOfAmount__contains = unitOfAmount,
+        #deliverCompany__contains = deliverCompany,
+        #deliverPrice__contains  = deliverPrice
+    ).exclude(productType__in=['A', 'N']).order_by('pk')
     data = []
     for product in products: 
         data.append(product_to_dict(product))
