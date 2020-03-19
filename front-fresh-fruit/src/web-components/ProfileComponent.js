@@ -1,79 +1,121 @@
 import React, { useState, useEffect } from 'react';
 import '../App.scss';
 import axios from 'axios';
-import background from '../pictures/background.png';
-import ProfilePic from '../pictures/user.png';
-import UserContext from '../Context/UserContext';
-import EditProfile from '../Page/EditStore';
+import Background from '../pictures/seller.jpg'
+import Mond from '../pictures/profile pic.png'
+import EditPic from '../pictures/edit.png'
 import { useHistory } from 'react-router-dom';
+import UserContext from '../Context/UserContext'
+import editIcon from '../pictures/edit.png'
+
+import Store from '../web-components/ShowStore'
+
+const url = "http://127.0.0.1:8000/api/getuser/";
+const productUrl = "http://127.0.0.1:8000/api/getuserproduct/"
+
 const Profile = (props) => {
     const history = useHistory();
-    console.log(props.id);
-    const [data,setDate] = useState({
-        "user_type":'customer',
-        "first_name":"vachirachat",
-        "last_name":"sawaddiwat",
-        "address":'bangkok',
-        "tel":'xxx-xxx-xxxx',
-        "birth_date":"12/10/2062",
-        "gender":"male"
 
+    const [first_name, setFirst_name] = useState();
+    const [last_name, setLast_name] = useState();
+    const [address, setAddress] = useState();
+    const [tel, setTel] = useState();
+    const [user_type, setUser_type] = useState();
+    const [product, setProduct] = useState([]);
+    //for setup fetch data
 
+    const fetchUser = async () => {
+        const data = await axios.get(url + localStorage.getItem('Username'))
+            .then(function (res) {
+                setFirst_name(res.data.first_name)
+                setLast_name(res.data.last_name)
+                setAddress(res.data.address)
+                setTel(res.data.tel)
+                sellerOrBuyer(res.data.user_type)
+            })
+            .catch((err) => console.log(err))
+        await getProduct();
 
-    })
+    }
+
+    async function getProduct() {
+        try {
+          const response = await axios.get(productUrl + localStorage.getItem('Username'));
+          console.log("product",response.data);
+          setProduct(response.data)
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+    useEffect(() => {
+        fetchUser();
+        
+    },[])
+
+    const sellerOrBuyer = (status) => {
+        console.log("status", status)
+        status === "S" ? setUser_type("Seller") : setUser_type("Buyer")
+    }
 
     return (
         //style={{backgroundImage:`url(${background})`}}
         <div>
-            <div>
-                <img class='profileCover' src={background} />
-                <img class='profilePic' src={ProfilePic} />
-            </div>
-            <div class='container thaifont'>
-                <div class='row'>
-                    <h1 class='col-lg-10 col-6'>{props.username}</h1>
-                    <div class='logoAndEditInProfile col-lg-2 col-6'>
-                        <button type="button" class="btn btn-outline-info">Logo</button>
-                        <button id='editInProfile' class="btn btn-outline-info" onClick={()=>history.push("/EditProfile")}>Edit</button>
-                    </div>
-                </div>
-                <div class='row'>
-                    <h2>{data['first_name']}</h2>
-                    <h2 style={{ marginLeft: '10px' }}>{data['last_name']}</h2>
-                </div>
-                <div class='row'>
-                    <div class='col-lg-2 thaifont'>
-                        <h3>Address :</h3>
-                        <h3>Tel :</h3>
-                        <h3>Birthdate :</h3>
-                        <h3>Gender :</h3>
-                    </div>
-                    <div>{props.id}</div>
-                    <div class='col-lg-10'>
-                        <h3>{data['address']}</h3>
-                        <h3>{data['tel']}</h3>
-                        <h3>{data['birth_date']}</h3>
-                        <h3>{data['gender']}</h3>
-                    </div>
-                </div>
+            <div class="container-fluid" style={{ backgroundColor: "#6AC17D" }}>
 
-                <UserContext.Consumer>
-                    {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
-                        <div>
-                            <h1>{String(isloggedin)}</h1>
-                            <h1>{getToken()}</h1>
+                <div class="row" style={{ backgroundColor: "#6AC17D", height: "auto" }}>
 
-                            <button class='btn btn-primary' onClick={(e) => {
-                                e.preventDefault();
-                                clearToken()
-                                history.push('/')
+                    {/* body */}
+                    <div class="card card-login w-75">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12">
+                                <img src={Mond} class="profile-pic img-fluid  rounded " alt="Mond" />
+                            </div>
+                            <div class="card-body col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <h5 class="card-title card-title-login ">{first_name}  {last_name} ( {user_type} )</h5>
+                                    <a href="/editProfile" class="icon-block edit-icon">
+                                        <i class="far fa-edit  " ></i>
+                                    </a>
 
-                            }}>Log out</button>
+                                </div>
+
+                                <p class="card-text">Address : {address}</p>
+                                <p class="card-text">Tel : {tel}</p>
+                                <p class="card-text">Address : {address}</p>
+                                <UserContext.Consumer>
+                                    {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
+                                        <div>
+                                            <p class="card-text">Login status : {String(isloggedin)}</p>
+                                            <p class="card-text">token : {getToken()}</p>
+
+                                            <button class='btn btn-secondary' onClick={(e) => {
+                                                e.preventDefault();
+                                                clearToken()
+                                                history.push('/signin')
+
+                                            }}>Log out</button>
+                                        </div>
+                                    )}
+                                </UserContext.Consumer>
+                            </div>
                         </div>
-                    )}
-                </UserContext.Consumer>
+
+                    </div>
+
+
+
+
+                </div>
             </div>
+
+            <Store product={product}/>
         </div>
+
+
+
+
+
 
     );
 };

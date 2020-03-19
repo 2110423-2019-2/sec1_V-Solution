@@ -50,9 +50,9 @@ const Loginform = (props) => {
 
     return (
 
-        <div class="card col-lg-5 col-sm-12">
+        <div class="card  card-login col-lg-5 col-sm-12">
             <div class="card-body">
-                <h3 class="card-title">Login to FreshFruit</h3>
+                <h3 class="card-title card-title-login ">Login to FreshFruit</h3>
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address / Username</label>
@@ -68,12 +68,16 @@ const Loginform = (props) => {
                     <UserContext.Consumer>
                         {({ isloggedin, setLogin, setToken, setUsername }) => (
                             <div class="btn-login">
-                                <button type="submit" class="btn btn-outline-primary btn-register">Register</button>
+                                <button type="submit" class="btn btn-outline-primary btn-register"
+                                    onClick={() => {
+                                        history.push('/register')
+                                    }}>Register</button>
                                 <button class="btn btn-primary btn-signin" onClick={() => {
                                     const t = OnSignIn()
                                     t.then((val) => {
-                                        setToken(val.data.token,val.data.id)
+                                        setToken(val.data.token, val.data.id)
                                         setLogin()
+                                        setUsername(val.data.username)
                                     })
                                     history.push('/Profile')
 

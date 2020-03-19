@@ -1,4 +1,4 @@
-.card {
+.card-login {
     margin: auto;
     margin-top: 7%;
     margin-bottom: 9%;
@@ -7,7 +7,7 @@
     border-radius: 20px;
 }
 
-.card-title {
+.card-title-login {
     color: #35356D;
     margin-top: 10%;
     margin-bottom: 10%;
