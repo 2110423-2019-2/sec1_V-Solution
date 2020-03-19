@@ -132,10 +132,10 @@ def edit_product(request, product_id):
         productType = json_data['product_type']
         harvest_date = json_data['harvest_date']
         price = json_data['price']
-        amount = json_data['amount']
-        unitOfAmount = json_data['unit_of_amount']
-        deliverCompany = json_data['deliver_company']
-        deliverPrice  = json_data['deliver_price']
+        #amount = json_data['amount']
+        #unitOfAmount = json_data['unit_of_amount']
+        #deliverCompany = json_data['deliver_company']
+        #deliverPrice  = json_data['deliver_price']
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 

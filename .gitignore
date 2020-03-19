@@ -6,5 +6,6 @@ backend/product/__pycache__/
 backend/email_sys/__pycache__/
 backend/comment/__pycache__/
 backend/report/__pycache__/
+backend/purchase/__pycache__/
 backend/email_sys/config.py
 .vscode/
