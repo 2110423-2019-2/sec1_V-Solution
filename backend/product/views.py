@@ -121,6 +121,8 @@ def edit_product(request, product_id):
     product = Product.objects.get(pk=product_id)
     if user_profile != product.seller:
         return Response({'error': 'Invalid credentials'}, status=HTTP_400_BAD_REQUEST)
+        
+    json_data = json.loads(request.body)
     try:
         productName = json_data['product_name']
         proDuctDesc = json_data['product_desc']
