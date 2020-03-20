@@ -1,8 +1,15 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import '../styles/_informationform.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function InformationformSeller() {
+    const [error,setError] = ({
+        'username' : '',
+        'password' : '',
+        'tel' : '',
+        'nat_id' : ''
+
+    })
       return (
         <div>
             <form className="container" style={{ padding: '2%' }}>
@@ -99,7 +106,7 @@ function InformationformSeller() {
                     <div class="col-sm-3">
                         <div class="form-check form-check-inline" style={{paddingRight:'18px'}}>
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                            <label class="form-check-label" for="inlineRadio1" checked>Male</label>
                         </div>
                         <div class="form-check form-check-inline" style={{marginTop:'10px'}}>
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
