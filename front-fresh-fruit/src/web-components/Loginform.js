@@ -26,7 +26,7 @@ const Loginform = (props) => {
             username, password
         })
 
-
+        console.log(`Statue error: ${res.error}`);
         console.log(`Status code: ${res.status}`);
         console.log(`Status text: ${res.statusText}`);
         console.log(`Request method: ${res.request.method}`);
@@ -36,8 +36,10 @@ const Loginform = (props) => {
         console.log(`Data: ${res.data.token}`);
 
 
-        if (res.status) {
+        if (res.status==200) {
             return res
+        }else{
+            alert('error')
         }
         //ยังไม่ได้เชค status checkแล้วพัง
 
@@ -78,8 +80,12 @@ const Loginform = (props) => {
                                         setToken(val.data.token, val.data.id)
                                         setLogin()
                                         setUsername(val.data.username)
+                                    }).then(history.push('/Profile'))
+                                    .catch((err) =>{
+                                        
+                                        alert('Please enter username and password again')
                                     })
-                                    history.push('/Profile')
+                                    
 
                                 }}>Sign in</button>
                             </div>
