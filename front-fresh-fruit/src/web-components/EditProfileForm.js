@@ -19,12 +19,6 @@ function Informationform(props) {
     const [user_token, setUser_token] = useState()
 
     const [error,setError] = useState({
-        'username':'',
-        'name': '',
-        'surname':'',
-        'email':'',
-        'password':'',
-        'address':'',
         'tel':'',
         'nat_id':''
     })
@@ -68,13 +62,15 @@ function Informationform(props) {
         let error2 = error;
         switch(e.target.name){
             
-            case 'first_name':
-            
-            case 'email':
-            
+            case 'tel':
+                error2.tel = e.target.value.length == 10 ? '' : 'Telephone number should be 10 character'
+            case 'nat_id':
+                error2.nat_id = e.target.value.length == 13 ? '' : 'National ID should be 13 character'
         }
 
     }
+
+    var checkSubmit = error.tel == '' && error.nat_id == ''
 
     const onSubmit = async (e) => {
         await axios.post(url + localStorage.getItem('Username'), user, {
@@ -102,6 +98,7 @@ function Informationform(props) {
                         <label style={{ color: "red" }}>*</label><label>Name:</label></div>
                     <div class='col-sm-6'>
                         <input class="form-control" type="text" name="first_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={user.first_name} />
+                        {user.first_name.length == 0 && <small>please enter you first name</small>}
                     </div></div>
 
                 <div class="form-group row">
@@ -109,6 +106,7 @@ function Informationform(props) {
                         <label style={{ color: "red" }}>*</label><label>Surname:</label></div>
                     <div class='col-sm-6'>
                         <input class="form-control" type="text" name="last_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={user.last_name} />
+                        {user.last_name.length == 0 && <small>Please enter your last name</small>}
                     </div></div>
 
                 {/* <div class="form-group row">
@@ -138,6 +136,8 @@ function Informationform(props) {
                         <label style={{ color: "red" }}>*</label><label>Tel:</label></div>
                     <div class='col-sm-6'>
                         <input class="form-control" type="number" name="tel" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={user.tel} />
+                        
+                        {user.tel.length!=10 && <small class='errorInForm'>Telephone number should be 10 character</small>}
                     </div></div>
 
                 <div class="form-group row">
@@ -152,10 +152,14 @@ function Informationform(props) {
                         <label style={{ color: "red" }}>*</label><label>NationalID:</label></div>
                     <div class='col-sm-6'>
                         <input class="form-control" type="number" name="nat_id" onChange={handleChange} style={{ marginLeft: '10px' }} placeholder="x-xxxx-xxxxx-xx-x" value={user.nat_id} />
+                        {user.nat_id.length!=13 && <small class='errorInForm'>National number should be 13 character</small>}
                     </div></div>
 
                 <div class='form-group row col-sm-8'>
-                    <button type='submit' class='btn btn-primary' style={{ position: 'absolute', right: '0px' }} onClick={onSubmit}>Submit</button>
+                    {checkSubmit ? <small class='errorInForm' style={{ position: 'absolute', right: '20%' }}>Please fill form with correct data</small> : ''}
+                    {checkSubmit ? 
+                    <button type='submit' class='btn btn-primary' style={{ position: 'absolute', right: '0px' }} onClick={onSubmit}disabled>Submit</button> : 
+                    <button type='submit' class='btn btn-primary' style={{ position: 'absolute', right: '0px' }} onClick={onSubmit}>Submit</button>}
                 </div>
 
             </form>
