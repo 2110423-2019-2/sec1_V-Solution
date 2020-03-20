@@ -69,7 +69,7 @@ function Informationform(props) {
     }
 
     const onSubmit = async (e) => {
-        if (checkSubmit == false) alert('please enter correct value')
+        if (checkSubmit === false) alert('please enter correct value')
         await axios.post(url, data)
             .then((res) => {
                 setUser_token(res.data)
