@@ -18,7 +18,6 @@ import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
 
-import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -89,7 +88,7 @@ function App() {
             getId: getId,
             getUsername: getUsername
           }}>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/ProfileCus' component={Home} />
             {/* {localStorage.getItem('Token') !== null ? (<Route path='/profile' component={Profile} />)
               : (<Route path='/signin' component={Signin} />)} */}
             <Route path='/profile' component={Profile} />
