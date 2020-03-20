@@ -69,7 +69,9 @@ function Informationform(props) {
     }
 
     const onSubmit = async (e) => {
-        if (checkSubmit == false) alert('please enter correct value')
+        if (checkSubmit==false){
+            alert('Please enter correct')
+        }else{
         await axios.post(url, data)
             .then((res) => {
                 setUser_token(res.data)
@@ -78,7 +80,7 @@ function Informationform(props) {
             .catch((err) => {
                 console.log(err)
             })
-        
+        }
     }
 
     return (
@@ -176,7 +178,8 @@ function Informationform(props) {
                     </div></div>
 
                 <div class='col-sm-8'>
-                    <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit}>Register</button>
+                    {checkSubmit==false && <small class='errorInForm'>Please enter correct value</small>}
+                    {checkSubmit==false ? <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} disabled>Register</button> : <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} >Register</button>}
                 </div>
             </form>
 
