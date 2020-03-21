@@ -6,6 +6,8 @@ import Notifications, { notify } from 'react-notify-toast'
 import axios from 'axios'
 
 const API_URL = "http://127.0.0.1:8000/api/user/uploadimage/"
+
+
 const toastColor = {
     background: '#505050',
     text: '#fff'
@@ -16,30 +18,10 @@ const UploadComponent = (props) => {
     const [images, setImages] = useState([])
 
     useEffect(() => {
-        console.log(props)
-        setImages([{ 0:props.avatar}])
-    },[])
+        setImages(props.avatar)
+    }, [props])
 
     const toast = notify.createShowQueue()
-
-    const filter = id => {
-        return images.filter(image => image.public_id !== id)
-    }
-
-    const removeImage = id => {
-        setImages(filter(id))
-    }
-
-    const onError = id => {
-        toast('Oops, something went wrong', 'custom', 2000, toastColor)
-        setImages(filter(id))
-
-    }
-
-    const checkState = () =>{
-        console.log("images", images)
-        console.log("props", props)
-    }
 
     const onChange = async e => {
         const errs = []
@@ -54,7 +36,7 @@ const UploadComponent = (props) => {
         const types = ['image/png', 'image/jpeg', 'image/gif']
 
         files.forEach((file, i) => {
-            
+
             if (types.every(type => file.type !== type)) {
                 errs.push(`'${file.type}' is not a supported format`)
             }
@@ -100,7 +82,12 @@ const UploadComponent = (props) => {
             case uploading:
                 return <Spinner />
             case images.length > 0:
-                return <Images images={images} removeImage={() => removeImage()} onError={onError()} />
+                return <div className='button-upload'>
+                    <label for="file-input">
+                        <img className='img-upload fadein' src={images} alt="" />
+                    </label>
+                    <input id="file-input" type="file" onChange={(e) => onChange(e)}/>
+                </div>
             default:
                 return <UploadButton single="true" onChange={(e) => onChange(e)} />
         }
@@ -112,9 +99,6 @@ const UploadComponent = (props) => {
             <Notifications />
             <div class="buttons ">
                 {content()}
-            </div>
-            <div>
-                <button onClick={()=> checkState()}>check</button>
             </div>
         </div>
     )

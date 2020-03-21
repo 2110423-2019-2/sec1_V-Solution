@@ -38,7 +38,7 @@ const Informationform = () => {
                 birth_date: data.birth_date,
                 gender: data.gender,
                 nat_id: data.nat_id,
-                image: "localhost:8000" + data.image
+                image: "http://localhost:8000" + data.image
             })
         } catch (error) {
             console.log(error)

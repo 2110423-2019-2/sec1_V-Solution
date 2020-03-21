@@ -27,6 +27,15 @@
     right: 15px
 }
 
+.img-upload {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    height: auto;
+    padding: 10px;
+    border: 1px dashed #999;
+}
+
 footer svg, .button-upload svg, .delete-upload svg {
     filter: drop-shadow(3px 3px 3px #999);
     transition: 0.3s;
