@@ -164,7 +164,7 @@ def edit_product(request, product_id):
 def get_product_from_user(request, username):
     user = User.objects.get(username=username)
     profile = Profile.objects.get(user=user)
-    products = Product.objects.filter(seller=profile).exclude(productType__in=['A', 'N'])
+    products = Product.objects.filter(seller=profile)
     data = []
     for product in products: 
         data.append(product_to_dict(product))
@@ -192,12 +192,8 @@ def search_product(request):
         province = json_data['province']
         district = json_data['district']
         productType = json_data['product_type']
-        harvest_date = json_data['harvest_date']
-        price = json_data['price']
-        amount = json_data['amount']
-        unitOfAmount = json_data['unit_of_amount']
-        deliverCompany = json_data['deliver_company']
-        deliverPrice  = json_data['deliver_price']
+        price_low = json_data['price_low']
+        price_high = json_data['price_high']
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
@@ -209,12 +205,8 @@ def search_product(request):
         province__contains = province,
         district__contains = district,
         productType__contains = productType,
-        harvest_date = harvest_date,
-        price__lte = price,
-        #amount__contains = amount,
-        #unitOfAmount__contains = unitOfAmount,
-        #deliverCompany__contains = deliverCompany,
-        #deliverPrice__contains  = deliverPrice
+        price__gte = price_low,
+        price__lte = prcie_high
     ).exclude(productType__in=['A', 'N']).order_by('pk')
     data = []
     for product in products: 
