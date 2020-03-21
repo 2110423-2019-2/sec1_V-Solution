@@ -5,7 +5,7 @@ import UserContext from '../Context/UserContext'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 
-const url = "http://127.0.0.1:8000/api/createproduct"
+const url = "http://127.0.0.1:8000/api/createproduct/"
 
 function AddItemform() {
     const [product, setProduct] = useState({
@@ -118,19 +118,19 @@ function AddItemform() {
 
                                     <Form.Group as={Col} controlId="formDate">
                                         <Form.Label>Harvest Date</Form.Label>
-                                        <Form.Control name="harvest_date" onChange={e => handleChange(e)} />
+                                        <Form.Control type='Date' name="harvest_date" onChange={e => handleChange(e)} />
                                     </Form.Group>
                                 </Form.Row>
 
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formPrice">
                                         <Form.Label>Price</Form.Label>
-                                        <Form.Control name="price" onChange={e => handleChange(e)} />
+                                        <Form.Control type='number' name="price" onChange={e => handleChange(e)} />
                                     </Form.Group>
 
                                     <Form.Group as={Col} controlId="formAmount">
                                         <Form.Label>Amount</Form.Label>
-                                        <Form.Control name="amount" onChange={e => handleChange(e)} />
+                                        <Form.Control type='number' name="amount" onChange={e => handleChange(e)} />
                                     </Form.Group>
 
                                     <Form.Group as={Col} controlId="unit">
@@ -146,8 +146,8 @@ function AddItemform() {
                                     </Form.Group>
 
                                     <Form.Group as={Col} controlId="del_price">
-                                        <Form.Label>Deliver Price></Form.Label>
-                                        <Form.Control name="deliver_price" onChange={e => handleChange(e)} />
+                                        <Form.Label>Deliver Price</Form.Label>
+                                        <Form.Control type='number' name="deliver_price" onChange={e => handleChange(e)} />
                                     </Form.Group>
                                 </Form.Row>
 

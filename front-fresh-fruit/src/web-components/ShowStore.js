@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { useHistory } from "react-router-dom";
+import UserContext from '../Context/UserContext';
 
 function Item(img, name, desc) {
     return (
@@ -87,7 +88,10 @@ const ShowStore = (props) => {
                 <div class="edit-store-title underline ">Products(5)</div>
                 <div class="row row-card">
                     {product.map((item) => Item(item.productType, item.productName, item.productDesc))}
-                    {LastItem()}
+                    <UserContext.Consumer>
+    {()=> localStorage.getItem('Token')!==null ? <div>{LastItem()}</div> : <div></div>  }
+                    </UserContext.Consumer>
+                    
 
                 </div>
             </div>

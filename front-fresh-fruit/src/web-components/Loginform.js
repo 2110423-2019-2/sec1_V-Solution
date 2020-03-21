@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
+import { useHistory,Redirect } from "react-router-dom";
 import UserContext from '../Context/UserContext';
 import '../styles/_loginform.css';
-
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 /*const option = {
     methods: "POST",
     body: JSON.stringify({'name': "great", 'age': 21})
@@ -80,13 +80,12 @@ const Loginform = (props) => {
                                         setToken(val.data.token, val.data.id)
                                         setLogin()
                                         setUsername(val.data.username)
-                                    }).then(history.push('/Profile'))
+                                    }).then(<Redirect to='/profile' />)
                                     .catch((err) =>{
                                         
                                         alert('Please enter username and password again')
                                     })
                                     
-
                                 }}>Sign in</button>
                             </div>
                         )}

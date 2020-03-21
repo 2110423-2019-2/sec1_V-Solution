@@ -7,7 +7,7 @@ import Store from '../web-components/ShowStore';
 import axios from 'axios';
 
 
-const productUrl = "http://127.0.0.1:8000/api/allproduct"
+const productUrl = "http://127.0.0.1:8000/api/allproduct/"
 
 const HomePage = () => {
   const [product, setProduct] = useState([]);
@@ -56,7 +56,7 @@ useEffect(() => {
 
       {/* -------------- Store part --------------------*/}
 
-      <Store product={product}/>
+      {product.length == 0 ? <h1>Dont have any product on ours system</h1> : <Store product={product}/>}
 
     </div>
 

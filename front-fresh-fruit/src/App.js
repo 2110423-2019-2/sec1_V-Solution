@@ -6,7 +6,7 @@ import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
 import ProfileCus from './Page/ProfileCus';
-import Seller from './Page/Seller';
+
 import SignUp from './Page/SignUp'
 import Signin from './Page/Signin';
 import Store from './Page/Store';
@@ -92,9 +92,8 @@ function App() {
             <Route exact path='/' component={Home} />
             {/* {localStorage.getItem('Token') !== null ? (<Route path='/profile' component={Profile} />)
               : (<Route path='/signin' component={Signin} />)} */}
-            <Route path='/profile' component={Profile} />
+            <Route exect path='/profile' component={Profile}/>
             <Route path='/signin' component={Signin} />
-            <Route path='/seller' component={Seller} />
             <Route path='/register' component={Register} />
             <Route path='/registerSeller' component={RegisterSeller} />
 
