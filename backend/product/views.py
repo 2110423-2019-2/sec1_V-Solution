@@ -212,3 +212,4 @@ def search_product(request):
     for product in products: 
         data.append(product_to_dict(product))
     return Response(data, status=HTTP_200_OK)
+
