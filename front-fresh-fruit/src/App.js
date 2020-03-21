@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navi from './web-components/Navigationbar';
 import Footer from './web-components/Footer';
-import AddItemform from './web-components/additemform.js';
+import AddItemform from './web-components/AddItemform';
 import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
