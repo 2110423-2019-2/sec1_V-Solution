@@ -17,6 +17,7 @@ import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
+import Report from './Page/Report'
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
@@ -88,7 +89,7 @@ function App() {
             getId: getId,
             getUsername: getUsername
           }}>
-            <Route exact path='/ProfileCus' component={Home} />
+            <Route exact path='/' component={Home} />
             {/* {localStorage.getItem('Token') !== null ? (<Route path='/profile' component={Profile} />)
               : (<Route path='/signin' component={Signin} />)} */}
             <Route path='/profile' component={Profile} />
@@ -96,7 +97,7 @@ function App() {
             <Route path='/seller' component={Seller} />
             <Route path='/register' component={Register} />
             <Route path='/registerSeller' component={RegisterSeller} />
-
+            <Route path='/report' component={Report} />
             <Route path='/store' component={Store} />
             <Route path='/editProfile' component={EditProfile} />
             <Route path='/editStore' component={EditStore} />
