@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navi from './web-components/Navigationbar';
 import Footer from './web-components/Footer';
-import AddItemform from './web-components/AddItemform';
+import AddItemform from './web-components/additemform.js';
 import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
@@ -17,6 +17,7 @@ import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
+import YourOrder from './Page/YourOrder';
 import Report from './Page/Report'
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';

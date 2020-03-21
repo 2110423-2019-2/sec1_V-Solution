@@ -1,6 +1,5 @@
 import React from 'react';
-import Nav from 'react-bootstrap/Nav'
-import { Route, Switch, NavLink } from 'react-router-dom'
+import { Nav, NavDropdown, Dropdown } from 'react-bootstrap'
 import "../styles/_navbar.css"
 import Nav_logo from '../pictures/Nav_logo.png';
 import Nav_user from '../pictures/Nav_user.png';
@@ -22,7 +21,20 @@ function Navigationbar() {
           <Nav.Link href="/Report" className="main-nav" activeClassName="main-nav-active">Report</Nav.Link>
       </Nav>
       <Nav className="justify-content-end">
-          <Nav.Link href="/"><img src={Nav_search} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+        <div className="dropdown-nav">
+          <NavDropdown eventKey={1} 
+            title={
+              <div className="pull-left">
+                <img className="side-nav" activeClassName="side-nav-active"src={Nav_search} alt="Search"/>
+              </div>
+            } 
+            id="nav-dropdown">
+              <form class="form-inline md-form mr-auto mb-4">
+                <input class="form-control" type="text" placeholder="Search" id="mySearch" onkeyup="filterFunction()"/>
+                <button id="search-button" type="submit" class='btn btn-primary'>Search</button>
+              </form>
+          </NavDropdown>
+        </div>
           <Nav.Link href="/Cart"><img src={Nav_cart} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
           <Nav.Link href="/"><img src={Nav_bell} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
           <Nav.Link href="/profile"><img src={Nav_user} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
