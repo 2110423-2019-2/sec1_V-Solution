@@ -1,5 +1,5 @@
 import React from 'react';
-import AddItemform from '../web-components/AddItemform';
+import AddItemform from '../web-components/additemform.js';
 
 const AddItem = () => {
     return (
