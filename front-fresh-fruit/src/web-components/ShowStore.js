@@ -51,42 +51,13 @@ const ShowStore = (props) => {
         )
     }
 
-    const items = [
-        {
-            'img': 'https://f.btwcdn.com/store-34660/product/49e0623f-5e1d-9c4f-d254-5b7f69a49e9a.jpg',
-            'name': 'mango',
-            'isReservable': true,
-            'isLaunch': false
-        }, {
-            'img': 'https://www.spcosmeticsplus.com/wp-content/uploads/2018/02/banana-extract.jpg',
-            'name': 'banana',
-            'isReservable': false,
-            'isLaunch': false
-        }, {
-            'img': 'https://f.btwcdn.com/store-34660/product/466d4abc-625b-1010-6822-58a2ec549146.jpg',
-            'name': 'grape',
-            'isReservable': false,
-            'isLaunch': false
-        }, {
-            'img': 'https://cd.lnwfile.com/vkzco5.jpg',
-            'name': 'papaya',
-            'isReservable': false,
-            'isLaunch': false
-        }, {
-            'img': 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTNlsCsrIpGEwT5RKBZA1L9IfTyuCMut0xpGMdVRpL8N_g_6aoV',
-            'name': 'orange',
-            'isReservable': false,
-            'isLaunch': false
-        }
-    ]
-
     console.log("store", product)
     return (
         <div >
             <div class="container">
                 <div class="edit-store-title underline ">Products(5)</div>
                 <div class="row row-card">
-                    {product.map((item) => Item(item.productType, item.productName, item.productDesc))}
+                    {product.map((item) => Item(item.product_type, item.produc_ame, item.product_desc))}
                     {LastItem()}
 
                 </div>

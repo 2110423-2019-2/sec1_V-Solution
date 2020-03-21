@@ -7,7 +7,7 @@ import Store from '../web-components/ShowStore';
 import axios from 'axios';
 
 
-const productUrl = "http://127.0.0.1:8000/api/allproduct"
+const productUrl = "http://127.0.0.1:8000/api/allproduct/"
 
 const HomePage = () => {
   const [product, setProduct] = useState([]);

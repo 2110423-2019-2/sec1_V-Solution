@@ -5,7 +5,7 @@ import UserContext from '../Context/UserContext'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 
-const url = "http://127.0.0.1:8000/api/createproduct"
+const url = "http://127.0.0.1:8000/api/createproduct/"
 
 function AddItemform() {
     const [product, setProduct] = useState({
