@@ -17,8 +17,8 @@ import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
+import Report from './Page/Report'
 
-import HomePage from './Page/HomePage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -96,7 +96,7 @@ function App() {
             <Route path='/signin' component={Signin} />
             <Route path='/register' component={Register} />
             <Route path='/registerSeller' component={RegisterSeller} />
-
+            <Route path='/report' component={Report} />
             <Route path='/store' component={Store} />
             <Route path='/editProfile' component={EditProfile} />
             <Route path='/editStore' component={EditStore} />
