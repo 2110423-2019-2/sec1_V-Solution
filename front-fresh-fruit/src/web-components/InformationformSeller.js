@@ -3,13 +3,7 @@ import '../styles/_informationform.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function InformationformSeller() {
-    const [error,setError] = ({
-        'username' : '',
-        'password' : '',
-        'tel' : '',
-        'nat_id' : ''
-
-    })
+    
       return (
         <div>
             <form className="container" style={{ padding: '2%' }}>

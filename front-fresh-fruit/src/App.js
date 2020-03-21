@@ -95,6 +95,7 @@ function App() {
               : (<Route path='/signin' component={Signin} />)} */}
             <Route path='/profile' component={Profile} />
             <Route path='/signin' component={Signin} />
+            <Route path='/signup' component={SignUp} />
             <Route path='/seller' component={Seller} />
             <Route path='/register' component={Register} />
             <Route path='/registerSeller' component={RegisterSeller} />
