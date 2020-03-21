@@ -38,7 +38,7 @@ const Report = () => {
                         </div>
 
                         <div class='container containerAdjust' style={{paddingTop: '30px', textAlign: 'center'}}>
-                            <button type="button" class="btn btn-warning btn">Submit</button>
+                            <button type="button" class="btn btn-warning btn-report">Submit</button>
                         </div>
 
                     </div>
