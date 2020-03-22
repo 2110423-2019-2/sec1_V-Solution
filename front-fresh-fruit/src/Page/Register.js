@@ -8,7 +8,7 @@ const Register = () => {
 
     return (
         <div>
-            <div class="container-fluid container-register">
+            <div class="container-fluid container-register-seller">
                 <div class="row">
                     <div class="col col-info">
                         <div class="row form-title">
@@ -16,10 +16,10 @@ const Register = () => {
                                 <h2>Register as customer</h2>
                             </div>
                         </div>
-                        <div class="row container-form">
+                        <div class="row container-form-seller">
                             
                             <div class="col container-inform">
-                                <Informationform />
+                                <Informationform user_type="C"/>
                             </div>
                         </div>
                     </div>
