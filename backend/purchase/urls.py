@@ -5,5 +5,6 @@ from .views import *
 
 urlpatterns = [
     path('get/seller', get_seller_order_api),
-    path('get/allorder', get_all_order)
+    path('get/allorder', get_all_order),
+    path('get/order/<str:order_id>', get_order),
 ]

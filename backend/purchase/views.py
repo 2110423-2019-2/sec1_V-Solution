@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
+    HTTP_401_UNAUTHORIZED,
     HTTP_404_NOT_FOUND,
     HTTP_200_OK
 )
@@ -49,5 +50,15 @@ def get_all_order(request):
         data.append(order_serializer(order))
     return Response(data, status=HTTP_200_OK)
 
+## NOT TESTED YET 
+@api_view(["GET"])
+def get_order(request, order_id):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
 
-
+    order = Order.objects.get(id=order_id)
+    if order.buyer == user:
+        data = order_serializer(order)
+        return Response(data, status=HTTP_200_OK)
+    return Response({'error': 'Authorization failed'}, status=HTTP_401_UNAUTHORIZED)
