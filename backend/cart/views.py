@@ -23,6 +23,7 @@ from product.models import Product
 from cart.models import Cart
 from cart.serializers import cart_to_list
 from product.utility import calculate_product_price
+import purchase
 
 ##
 def add_entry(cart, product, amount):
@@ -143,7 +144,7 @@ def clear_cart(request):
     clear_cart_entry(cart)
     return Response({'result': 'Successful'}, status=HTTP_200_OK)
 
-## checkout - Sprint 3
+## checkout
 @api_view(["POST"])
 def cart_checkout(request):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
@@ -151,8 +152,7 @@ def cart_checkout(request):
     user = token.user
 
     cart = Cart.objects.get(user=user)
-    entries = Entry.objects.filter(cart=cart)
-    ## NOT FININSED
-
-    data = clear_cart_entry(cart)
-    return Response({'result': 'Successful'}, status=HTTP_200_OK)
+    order = purchase.utils.create_customer_order(user)
+    clear_cart_entry(cart)
+    data = purchase.serializers.order_serializer(order)
+    return Response(data, status=HTTP_200_OK)
