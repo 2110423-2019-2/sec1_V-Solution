@@ -7,11 +7,11 @@ import EditPic from '../pictures/edit.png'
 import { useHistory } from 'react-router-dom';
 import UserContext from '../Context/UserContext'
 import editIcon from '../pictures/edit.png'
-
 import Store from '../web-components/ShowStore'
+import {api} from '../config'
 
-const url = "http://127.0.0.1:8000/api/getuser/";
-const productUrl = "http://127.0.0.1:8000/api/getuserproduct/"
+const userUrl = api+"/getuser/";
+const productUrl = api+"/getuserproduct/"
 
 const Profile = (props) => {
     const history = useHistory();
@@ -25,7 +25,7 @@ const Profile = (props) => {
     //for setup fetch data
 
     const fetchUser = async () => {
-        const data = await axios.get(url + localStorage.getItem('Username') + '/')
+        const data = await axios.get(userUrl + localStorage.getItem('Username'))
             .then(function (res) {
                 setFirst_name(res.data.first_name)
                 setLast_name(res.data.last_name)
@@ -40,7 +40,7 @@ const Profile = (props) => {
 
     async function getProduct() {
         try {
-          const response = await axios.get(productUrl + localStorage.getItem('Username') + '/');
+          const response = await axios.get(productUrl + localStorage.getItem('Username'));
           console.log("product",response.data);
           setProduct(response.data)
         } catch (error) {

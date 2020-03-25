@@ -82,7 +82,7 @@ const Store = () => {
                                 <div style={{border: "solid black 4px", width: "400px", marginTop: "20px", marginRight:"40px"}}></div>
                             </div>
                         </div>
-                        <ShowStore />
+                        <ShowStore product={[]}/>
 
                     </div>
                     

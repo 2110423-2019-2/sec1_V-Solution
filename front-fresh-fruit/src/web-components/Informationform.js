@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import '../styles/_informationform.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
+import {api} from '../config'
 
-const url = "http://127.0.0.1:8000/api/register"
+const url = api+"/register"
 
 function Informationform(props) {
     const [data, setData] = useState({
