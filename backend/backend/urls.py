@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -23,12 +23,27 @@ from profile.views import *
 from product.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('verify/<str:token>', verify_email),
+    path('admin', admin.site.urls),
+    # User
     path('api/login', login),
     path('api/register', register),
-    path('api/getuser/<str:username>/', get_user_data),
-    path('api/edituser/<str:username>/', edit_user_data),
-    path('api/user/uploadimage/', upload_user_profile),
-    path('verify/<str:token>/', verify_email),
-    path('api/createproduct/', create_product)
+    path('api/getuser/<str:username>', get_user_data),
+    path('api/edituser/<str:username>', edit_user_data),
+    path('api/user/token', get_token_data),
+    path('api/user/uploadimage', upload_user_profile),
+    # Product
+    path('api/product/uploadimage', upload_product_image),
+    path('api/createproduct', create_product),
+    path('api/allproduct', get_all_product),
+    path('api/searchproduct', search_product),
+    path('api/searchstore', search_store),
+    path('api/getproduct/<str:product_id>', get_product),
+    path('api/getuserproduct/<str:username>', get_product_from_user),
+    path('api/updateproduct/<str:product_id>/<str:status>', update_product),
+    path('api/editproduct/<str:product_id>', edit_product),
+    # Cart
+    path('api/comment/', include('comment.urls')),
+    # path('api/report/', include('report.urls')),
+    path('api/cart/', include('cart.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
