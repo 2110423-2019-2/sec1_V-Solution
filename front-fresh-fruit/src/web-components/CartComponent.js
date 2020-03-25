@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.scss';
+import '../styles/_cart.css'
 import ProfileComponent from '../web-components/ProfileComponent';
 import UserContext from '../Context/UserContext';
 import pineapple from '../pictures/pineapple.png';
@@ -12,16 +12,16 @@ const CartComponent = (props) => {
     
             <div style={{paddingTop:"50px"}}>
                 
-                <div class="container-fluid" style={{backgroundColor:"white", height:"200px", width:"900px"}}>
+                <div class="container-fluid" style={{backgroundColor:"white", height:"200px", width:"80%"}}>
 
                     <div class='row' style={{textAlign:"center", paddingTop:"80px"}}>
-                        <div class='col' style = {{marginTop:"-40px"}}>
+                        <div class='col-sm-2' style = {{marginTop:"-40px"}}>
                             <img src={pineapple} style={{height:'120px',width:'70px'}}/>
                         </div>
-                        <div class='col-6'>
+                        <div class='col-sm-6'>
                             <h1 style={{fontFamily:"Marker Felt", fontSize:"25px"}}>ProductName: {props.name}</h1>
                         </div>
-                        <div class='col-4'>
+                        <div class='col-sm-4'>
                             <h1 style={{fontFamily:"Marker Felt", fontSize:"25px", float:'left'}}>price {props.price}</h1>
                             <div class="dropdown"  style={{float:'left', marginLeft:'20px'}}>
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
