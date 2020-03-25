@@ -20,6 +20,9 @@ const Cart = (props) => {
             price: 70
         }
     ]
+
+    var totalPrice = 0;
+    prod.forEach(i=> totalPrice+=i.price)
  
     return (
  
@@ -39,7 +42,7 @@ const Cart = (props) => {
                 {prod.map(i=> <CartComponent name={i.name} price={i.price}/>)}
 
                 <div class='cart-footer'>
-                    <h1 style={{ fontFamily: "Marker Felt", fontSize: "40px" }}>Total = val</h1>
+                    <h1 style={{ fontFamily: "Marker Felt", fontSize: "40px" }}>Total = {totalPrice}</h1>
                 </div>
 
                 <div class='cart-footer' style={{paddingBottom:"20px"}}>
