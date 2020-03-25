@@ -28,22 +28,22 @@ const Cart = (props) => {
             <div class="cart-background">
                 
                 <div class="container cart-header">
-                    <h1 style={{ fontFamily: "Marker Felt", fontSize: "50px", color: 'white' }}>Shopping Cart</h1>
+                    <h1 class='cart-header-font'>Shopping Cart</h1>
                 </div>
 
             </div>
 
-            <div style={{ backgroundColor: "#E6FFEC", width: "80%", height: "100%", marginLeft: "10%" }}>
+            <div class='cart-inside-background'>
 
 
                 {prod.map(i=> <CartComponent name={i.name} price={i.price}/>)}
 
-                <div style={{ marginRight: "200px", marginTop: "50px", textAlign: "right" }}>
+                <div class='cart-footer'>
                     <h1 style={{ fontFamily: "Marker Felt", fontSize: "40px" }}>Total = val</h1>
                 </div>
-                
-                <div style={{ marginRight: "200px", marginTop: "50px", paddingBottom:"20px", textAlign: "right" }}>
-                    <button style={{ width: '130px', height: '50px', borderRadius: "20px", backgroundColor: "orange" }}>Checkout</button>
+
+                <div class='cart-footer' style={{paddingBottom:"20px"}}>
+                    <button class='cart-button'>Checkout</button>
                 </div>
 
             </div>
