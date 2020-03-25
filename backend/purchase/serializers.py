@@ -4,14 +4,13 @@ from profile.serializers import profile_to_dict
 from profile.models import Profile
 import product
 
-
 def order_serializer(order):
     order_items = OrderItem.objects.filter(order=order)
     buyer = order.buyer
     buyer_profile = Profile.objects.get(user=buyer)
     status = order.status
     data = {
-        "id" : order.id,
+        "order_id" : order.id,
         "user" : profile_to_dict(buyer_profile),
         "status" : status,
         "items" : [],
