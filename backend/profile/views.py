@@ -45,7 +45,7 @@ def register(request):
         if not (user_type in ['C', 'S']):
             return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
-        if not User.objects.filter(username=username).exists():
+        if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
             user = User.objects.create_user(
                 username = username,
                 password = password,
@@ -54,8 +54,6 @@ def register(request):
                 last_name = last_name
             )
             user.save()
-
-            # models that are linked with user
 
             new_profile = Profile.objects.create(
                 user = user,
@@ -83,7 +81,7 @@ def register(request):
             '''
 
             return Response({'result': 'Registeration complete'},status=HTTP_200_OK)
-        return Response({'result': 'Username already existed.'},status=HTTP_200_OK)
+        return Response({'result': 'Username or email already existed.'},status=HTTP_200_OK)
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
@@ -178,7 +176,22 @@ def upload_user_profile(request):
     file = request.FILES['image']
     user_profile.avatar = file
     user_profile.save()
-    return Response(status=HTTP_200_OK)
+    image = user_profile.avatar.url
+    return Response({'url': image}, status=HTTP_200_OK)
+
+@api_view(["GET"])
+@permission_classes((AllowAny,))
+def search_store(request):
+    try:
+        json_data = json.loads(request.body)
+        store_name = json_data['store_name']
+        store_filtered = Profile.objects.filter(store_name__icontains = store_filtered)
+    except KeyError:
+        return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
+    data = []
+    for profile in store_filtered:
+        data.append(profile_to_dict(profile))
+    return Response(data, status=HTTP_200_OK)
 
 @api_view(["GET"])
 @permission_classes((AllowAny,))

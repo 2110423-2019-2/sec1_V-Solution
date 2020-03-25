@@ -134,10 +134,10 @@ def edit_product(request, product_id):
         productType = json_data['product_type']
         harvest_date = json_data['harvest_date']
         price = json_data['price']
-        #amount = json_data['amount']
-        #unitOfAmount = json_data['unit_of_amount']
-        #deliverCompany = json_data['deliver_company']
-        #deliverPrice  = json_data['deliver_price']
+        amount = json_data['amount']
+        unitOfAmount = json_data['unit_of_amount']
+        deliverCompany = json_data['deliver_company']
+        deliverPrice  = json_data['deliver_price']
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
@@ -186,7 +186,6 @@ def search_product(request):
     try:
         json_data = json.loads(request.body)
         productName = json_data['product_name']
-        proDuctDesc = json_data['product_desc']
         category = json_data['category']
         subcategory = json_data['subcategory']
         province = json_data['province']
@@ -198,13 +197,12 @@ def search_product(request):
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
     products = Product.objects.filter(
-        productName__contains = productName,
-        proDuctDesc__contains = proDuctDesc,
-        category__contains = category,
-        subcategory__contains = subcategory,
-        province__contains = province,
-        district__contains = district,
-        productType__contains = productType,
+        productName__icontains = productName,
+        category__icontains = category,
+        subcategory__icontains = subcategory,
+        province__icontains = province,
+        district__icontains = district,
+        productType__icontains = productType,
         price__gte = price_low,
         price__lte = prcie_high
     ).exclude(productType__in=['A', 'N']).order_by('pk')

@@ -37,6 +37,7 @@ urlpatterns = [
     path('api/createproduct', create_product),
     path('api/allproduct', get_all_product),
     path('api/searchproduct', search_product),
+    path('api/searchstore', search_store),
     path('api/getproduct/<str:product_id>', get_product),
     path('api/getuserproduct/<str:username>', get_product_from_user),
     path('api/updateproduct/<str:product_id>/<str:status>', update_product),
