@@ -4,8 +4,8 @@ import Images from '../web-components/Images'
 import UploadButton from '../web-components/UploadButton'
 import Notifications, { notify } from 'react-notify-toast'
 import axios from 'axios'
-
-const API_URL = "http://127.0.0.1:8000/api/user/uploadimage/"
+import {api} from '../config'
+const API_URL = api+"/user/uploadimage"
 
 
 const toastColor = {

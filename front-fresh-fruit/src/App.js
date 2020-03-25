@@ -17,9 +17,9 @@ import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
+import HomePage from './Page/HomePage';
 import YourOrder from './Page/YourOrder';
 import Report from './Page/Report'
-
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -95,6 +95,9 @@ function App() {
               : (<Route path='/signin' component={Signin} />)} */}
             <Route path='/profile' component={Profile} />
             <Route path='/signin' component={Signin} />
+            <Route path='/seller' component={Seller} />
+            <Route path='/register' component={Register} />
+            <Route path='/registerSeller' component={RegisterSeller} />
             <Route path='/signup' component={SignUp} />
             <Route path='/seller' component={Seller} />
             <Route path='/register' component={Register} />

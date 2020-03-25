@@ -3,9 +3,10 @@ import '../App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 import Upload from '../web-components/UploadComponent'
+import {api} from '../config'
 
-const url = "http://127.0.0.1:8000/api/edituser/"
-const urlGet = "http://127.0.0.1:8000/api/getuser/";
+const urlEdit = api+"/edituser/"
+const urlGet = api+"/getuser/";
 
 const Informationform = () => {
     const [user, setUser] = useState({
@@ -27,7 +28,7 @@ const Informationform = () => {
 
     async function fetchUser() {
         try {
-            const res = await axios.get(urlGet + localStorage.getItem('Username') + '/')
+            const res = await axios.get(urlGet + localStorage.getItem('Username'))
             const data = res.data
             await setUser({
                 user_type: data.user_type,
@@ -73,7 +74,7 @@ const Informationform = () => {
     var checkSubmit = error.tel == '' && error.nat_id == ''
 
     const onSubmit = async (e) => {
-        await axios.post(url + localStorage.getItem('Username') + '/', user, {
+        await axios.post(urlEdit + localStorage.getItem('Username'), user, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Token ` + localStorage.getItem('Token')

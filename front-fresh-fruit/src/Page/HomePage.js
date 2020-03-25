@@ -5,9 +5,9 @@ import buttoncus from '../pictures/buttoncus.png';
 import buttonsell from '../pictures/buttonsell.png';
 import Store from '../web-components/ShowStore';
 import axios from 'axios';
+import {api} from '../config'
 
-
-const productUrl = "http://127.0.0.1:8000/api/allproduct/"
+const productUrl = api+"/allproduct"
 
 const HomePage = () => {
   const [product, setProduct] = useState([]);
