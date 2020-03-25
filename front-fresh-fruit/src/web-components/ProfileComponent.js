@@ -101,12 +101,7 @@ const Profile = (props) => {
                                 </UserContext.Consumer>
                             </div>
                         </div>
-
                     </div>
-
-
-
-
                 </div>
             </div>
 
