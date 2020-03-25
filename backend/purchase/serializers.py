@@ -11,7 +11,7 @@ def order_serializer(order):
     buyer_profile = Profile.objects.get(user=buyer)
     status = order.status
     data = {
-        "id" : order.id
+        "id" : order.id,
         "user" : profile_to_dict(buyer_profile),
         "status" : status,
         "items" : [],
