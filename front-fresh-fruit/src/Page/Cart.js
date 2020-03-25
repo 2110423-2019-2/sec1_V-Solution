@@ -3,8 +3,11 @@ import '../styles/_cart.css'
 import ProfileComponent from '../web-components/ProfileComponent';
 import UserContext from '../Context/UserContext';
 import CartComponent from '../web-components/CartComponent'
+import {api} from '../config'
 
 const Cart = (props) => {
+
+    const productUrl = api+"/getuserproduct/"
 
     const prod = [
         {
