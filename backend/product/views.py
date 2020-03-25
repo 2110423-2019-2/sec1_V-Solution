@@ -34,8 +34,8 @@ def create_product(request):
     if user_profile.user_type != 'S':
         return Response({'result': 'User is not a Seller.'}, status=HTTP_200_OK)
 
-    json_data = json.loads(request.body)
     try:
+        json_data = json.loads(request.body)
         productName = json_data['product_name']
         proDuctDesc = json_data['product_desc']
         category = json_data['category']
@@ -204,7 +204,7 @@ def search_product(request):
         district__icontains = district,
         productType__icontains = productType,
         price__gte = price_low,
-        price__lte = prcie_high
+        price__lte = price_high
     ).exclude(productType__in=['A', 'N']).order_by('pk')
     data = []
     for product in products: 
