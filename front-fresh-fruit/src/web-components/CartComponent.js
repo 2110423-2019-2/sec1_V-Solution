@@ -7,8 +7,8 @@ import trash from '../pictures/recycle-bin.png';
 
 const CartComponent = (props) => {
     //for setup fetch data
+
     return (
-        //style={{backgroundImage:`url(${background})`}}
     
             <div style={{paddingTop:"50px"}}>
                 
@@ -19,11 +19,11 @@ const CartComponent = (props) => {
                             <img src={pineapple} style={{height:'120px',width:'70px'}}/>
                         </div>
                         <div class='col-6'>
-                            <h1 style={{fontFamily:"Marker Felt", fontSize:"25px"}}>ProductName From StoreName</h1>
+                            <h1 style={{fontFamily:"Marker Felt", fontSize:"25px"}}>ProductName: {props.name}</h1>
                         </div>
                         <div class='col-4'>
-                            <h1 style={{fontFamily:"Marker Felt", fontSize:"25px", float:'left'}}>price x</h1>
-                            <div class="dropdown"  style={{float:'left'}}>
+                            <h1 style={{fontFamily:"Marker Felt", fontSize:"25px", float:'left'}}>price {props.price}</h1>
+                            <div class="dropdown"  style={{float:'left', marginLeft:'20px'}}>
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Quantity</button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
