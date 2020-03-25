@@ -17,6 +17,7 @@ import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
+import YourOrder from './Page/YourOrder';
 import Report from './Page/Report'
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
@@ -94,6 +95,7 @@ function App() {
               : (<Route path='/signin' component={Signin} />)} */}
             <Route path='/profile' component={Profile} />
             <Route path='/signin' component={Signin} />
+            <Route path='/signup' component={SignUp} />
             <Route path='/seller' component={Seller} />
             <Route path='/register' component={Register} />
             <Route path='/registerSeller' component={RegisterSeller} />
@@ -102,6 +104,7 @@ function App() {
             <Route path='/editProfile' component={EditProfile} />
             <Route path='/editStore' component={EditStore} />
             <Route path='/addItem' component={AddItemform} />
+            <Route path='/cart' component={Cart} />
           </UserContext.Provider>
         </Switch>
       </Router>

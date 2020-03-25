@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/_register.css';
-import Informationform from '../web-components/InformationformSeller'
+import Informationform from '../web-components/Informationform'
 import Reg_user from '../pictures/Reg_user.png'
 import Reg_shop from '../pictures/Reg_shop.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -18,7 +18,7 @@ const Register = () => {
                             </div>  
                         </div>
                         <div class="row container-form-seller">
-                            <div class="col-4">
+                            {/* <div class="col-4">
                                 <div class="row">
                                     <div class="col">
                                         <img src={Reg_user} alt="customer image" class="register-image"/>
@@ -39,9 +39,9 @@ const Register = () => {
                                         <h4>Upload</h4>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-8 container-inform">
-                                <Informationform />
+                            </div> */}
+                            <div class="col container-inform-seller">
+                                <Informationform user_type="S"/>
                             </div>
                         </div>
                     </div>

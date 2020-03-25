@@ -72,7 +72,7 @@ const Loginform = (props) => {
                             <div class="btn-login">
                                 <button type="submit" class="btn btn-outline-primary btn-register"
                                     onClick={() => {
-                                        history.push('/register')
+                                        history.push('/signup')
                                     }}>Register</button>
                                 <button class="btn btn-primary btn-signin" onClick={() => {
                                     const t = OnSignIn()
