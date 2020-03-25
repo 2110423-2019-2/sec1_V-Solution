@@ -1,14 +1,11 @@
-* {
-    box-sizing: border-box;
-    margin: 0; 
-    padding: 0;
-}
 
-.container{
+
+.container-footer{
     display: flex;
     justify-content: space-evenly;
     font-size: 30px;
     padding-top: 1.25rem;
+    
 }
 
 footer {

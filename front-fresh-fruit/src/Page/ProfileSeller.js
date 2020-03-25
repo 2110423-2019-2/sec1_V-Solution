@@ -1,60 +1,50 @@
-import React,{useState,useEffect} from 'react';
-import Background from '../pictures/seller.jpg';
+import React from 'react';
+import Background from '../pictures/seller.jpg'
+import Logo from '../pictures/fruitfarm.png'
+import EditPic from '../pictures/edit.png'
 
-import ShowStore from '../web-components/ShowStore';
-import Logo from '../pictures/fruitfarm.png';
-
-const Store = () => {
-    const [data,setData] = useState({
-        "user_type":'customer',
-        "first_name":"vachirachat",
-        "last_name":"sawaddiwat",
-        "address":'bangkok',
-        "tel":'xxx-xxx-xxxx',
-        "birth_date":"12/10/2062",
-        "gender":"male"
-    })
+const ProfileSeller = () => {
     return (
-        <div style={{backgroundColor:"#6AC17D", width: "1920px", height: "1985px"}}>
+        <div style={{backgroundColor:"#6AC17D", width: "1520px", height: "1985px"}}>
             
             
             <div style={{width: "1200px", marginLeft: "160px"}}>
                 
                 {/* head */}
 
-                <div style={{border: "solid black 2px", height: "293px", backgroundImage: `url(${Background})`,
+                <div style={{height: "293px", backgroundImage: `url(${Background})`,
                             backgroundRepeat: "no-repeat", backgroundSize: 'cover'}}>
 
                 </div>
         
                 {/* body */}
 
-                <div style={{border: "solid red 2px", height: "1650px", backgroundColor: "#E6FFEC"}}>
+                <div style={{height: "1650px", backgroundColor: "#E6FFEC"}}>
                     
                     <div class="row">
 
-                        <div class="col-3" style={{border: "solid black 2px"}}>
+                        <div class="col-3">
                             <img src={Logo} style={{width: "200px", marginTop: "-70px", marginLeft: "50px"}} />
                         </div>
-                        <div class="col"  style={{border: "solid black 2px",}}>
+                        <div class="col" >
                             <h1 style={{fontFamily: "Marker Felt", color:"#36368D", fontSize:"50px", marginTop:"40px", marginLeft:"30px"}}>
                                 GreatStorer</h1> 
                         </div>
 
-                        <div class="col-3"  style={{border: "solid black 2px",}}>
+                        <div class="col-3" >
                             <div class="row">
-                                <div class="col" style={{border:"solid black 2px"}}>
-                                    <h1 style={{marginLeft: "80px"}}>a</h1>
+                                <div class="col" >
+                                    <h1 style={{marginLeft: "80px"}}>pic</h1>
                                 </div>
-                                <div class="col" style={{border:"solid black 2px"}}>
-                                    <h1>b</h1>
+                                <div class="col" >
+                                    <h1>Edit</h1>
                                 </div>
                             </div>
                         </div>
 
                     </div>
 
-                    <div style={{border: "solid black 2px", height: "350px"}}>
+                    <div style={{height: "350px"}}>
                         
                         <div style={{marginTop: "50px"}}>
                             <div style={{marginLeft: "100px"}}>
@@ -68,21 +58,20 @@ const Store = () => {
                         
                     </div>
 
-                    <div style={{border: "solid black 2px", height: "350px"}}>
+                    <div style={{height: "350px"}}>
                         
                         <div class = "row" style={{textAlign: "center", marginTop: "30px"}}>
                             <div class="col">
-                                <div style={{border: "solid black 4px", width: "400px", marginTop: "20px", marginLeft:"40px"}}></div>
+                                <div style={{border: "solid black 3px", width: "400px", marginTop: "20px", marginLeft:"40px"}}></div>
                             </div>
                             <div class="col" style={{marginRight: "50px"}}>
                                 <h1 style={{marginLeft: "20px", fontFamily: "Marker Felt", color:"#36368D", fontSize:"40px"}}>
                                 My Store</h1>
                             </div>
                             <div class="col">
-                                <div style={{border: "solid black 4px", width: "400px", marginTop: "20px", marginRight:"40px"}}></div>
+                                <div style={{border: "solid black 3px", width: "400px", marginTop: "20px", marginRight:"40px"}}></div>
                             </div>
                         </div>
-                        <ShowStore product={[]}/>
 
                     </div>
                     
@@ -90,11 +79,11 @@ const Store = () => {
                 </div>
 
             </div>
-        
+            
 
 
         </div>  
     );
 };
 
-export default Store;
+export default ProfileSeller;

@@ -1,0 +1,42 @@
+.card-login {
+    margin: auto;
+    margin-top: 7%;
+    margin-bottom: 9%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 20px;
+}
+
+.card-title-login {
+    color: #35356D;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding-left: 2%;
+}
+
+.form-group {
+    padding: 2%;
+}
+
+.btn-login {
+    float: right;
+    padding-top: 3%;
+}
+
+.btn-register {
+    margin-right: 40px;
+    color: #707070;
+    background-color: #FFFFFF;
+    border-color: transparent;
+    border-radius: 4px;
+}
+
+.btn-signin {
+    color: white;
+    margin-right: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #FFA000;
+    border-color: transparent;
+    border-radius: 20px;
+}
