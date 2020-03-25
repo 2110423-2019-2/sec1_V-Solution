@@ -11,8 +11,28 @@ function Item(img, name, desc) {
                     <h5 class="card-title">{name}</h5>
                     <p class="card-text">{desc}</p>
                     <div class="edit-store-button">
-                        <button href="" class="btn btn-edit btn-outline-success edit-launch-botton">Purchase</button>
-                        <button href="" class="btn btn-edit btn-outline-warning">Reserve</button>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="purchase-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Purchase
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <form class="form-inline md-form mr-auto mb-4">
+                                    <input class="form-control" type="text" placeholder="Amount" id="mySearch" onkeyup="filterFunction()"/>
+                                    <button id="purchase-button" type="submit" class='btn btn-primary'>Purchase</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="reserve-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Purchase
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <form class="form-inline md-form mr-auto mb-4">
+                                    <input class="form-control" type="text" placeholder="Amount" id="mySearch" onkeyup="filterFunction()"/>
+                                    <button id="reserve-button" type="submit" class='btn btn-primary'>Reserve</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
