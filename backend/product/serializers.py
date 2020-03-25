@@ -40,6 +40,29 @@ class ProductSerializer(serializers.Serializer) :
         instance.save()
         return instance
 
-
+def product_to_dict(product):
+    try:
+        image = product.image.url
+    except ValueError:
+        image = ''
+    data = {
+        "id" : product.id,
+        "product_name" : product.productName,
+        "product_desc" : product.proDuctDesc,
+        "category" : product.category,
+        "subcategory" : product.subcategory,
+        "province" : product.province,
+        "district" : product.district,
+        "product_type" : product.productType,
+        "harvest_date" : product.harvest_date,
+        "price" : product.price,
+        "amount" : product.amount,
+        "unit_of_amount" : product.unitOfAmount,
+        "deliver_company" : product.deliverCompany,
+        "deliver_price" : product.deliverPrice,
+        "image" : image,
+        "product_type" : product.productType
+    }
+    return data
 
 

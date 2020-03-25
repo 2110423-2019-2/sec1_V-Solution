@@ -18,11 +18,10 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.http import request
 from django.http import HttpResponse , JsonResponse
 from .models import Product
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer, product_to_dict
+from django.contrib.auth.models import User
 from profile.models import Profile
 
-# Create your views here.
-@csrf_exempt
 @api_view(["POST"])
 def create_product(request):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
@@ -31,12 +30,12 @@ def create_product(request):
     user_profile = Profile.objects.get(user=user)
 
     if not user_profile.is_active:
-        return Response({'result': 'User is not authenticate.'}, status=HTTP_200_OK)
+        return Response({'result': 'User is not verify.'}, status=HTTP_200_OK)
     if user_profile.user_type != 'S':
         return Response({'result': 'User is not a Seller.'}, status=HTTP_200_OK)
 
-    json_data = json.loads(request.body)
     try:
+        json_data = json.loads(request.body)
         productName = json_data['product_name']
         proDuctDesc = json_data['product_desc']
         category = json_data['category']
@@ -72,83 +71,143 @@ def create_product(request):
 
     return Response({'result': 'Successfully create product'},status=HTTP_200_OK)
 
-"""def home(request) :
-    if request.method == 'GET' :
-        product_data = Product.objects.all()
-        responseData = list()
-        for field in product_data :
-            Datas = {
-                    "sellerID" : field.sellerID ,
-                    "productID" : field.productID ,
-                    "productName" : field.productName ,
-                    "proDuctDesc" :  field.proDuctDesc ,
-                    "category" : field.category ,
-                    "subcategory" : field.subcategory ,
-                    "province" : field.province ,
-                    "district" : field.district ,
-                    "productType" : field.productType ,
-                    "harvest_date" :field.harvest_date ,
-                    "price" : field.price ,
-                    "amount" :  field.amount , 
-                    "unitOfAmount" : field.unitOfAmount ,
-                    "deliverCompany" : field.deliverCompany ,
-                    "deliverPrice" : field.deliverPrice
-            }
-            responseData.append(Datas)
-        return JsonResponse({ "allproduct" : responseData })
+@api_view(['GET'])
+@permission_classes((AllowAny,))
+def get_product(request, product_id):
+    product = Product.objects.get(pk=product_id)
+    data = product_to_dict(product)
+    return Response(data, status=HTTP_200_OK)
+
+@api_view(["POST"])
+def upload_product_image(request, product_id):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+    user_profile = Profile.objects.get(user=user)
+
+    file = request.FILES['image']
+    product = Product.objects.get(pk=product_id)
+    if user_profile != product.seller:
+        return Response(status=HTTP_400_BAD_REQUEST)
+    product.image = file
+    product.save()
+    return Response(status=HTTP_200_OK)
+
+@api_view(["POST"])
+def update_product(request, product_id, status):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+    user_profile = Profile.objects.get(user=user)
+
+    product = Product.objects.get(pk=product_id)
+    if user_profile != product.seller:
+        return Response({'error': 'Invalid credentials'}, status=HTTP_400_BAD_REQUEST)
+    if status.upper() in ['L', 'R', 'N']:
+        if product.productType == 'A' or status.upper() == 'N':
+            product.productType = status.upper()
+            product.save()
+            return Response({'result': 'Successfully update product status'},status=HTTP_200_OK)
+
+    return Response({'error': 'Invalid request'}, status=HTTP_400_BAD_REQUEST)
+
+@api_view(["POST"])
+def edit_product(request, product_id):
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+    user_profile = Profile.objects.get(user=user)
+
+    product = Product.objects.get(pk=product_id)
+    if user_profile != product.seller:
+        return Response({'error': 'Invalid credentials'}, status=HTTP_400_BAD_REQUEST)
+        
+    json_data = json.loads(request.body)
+    try:
+        json_data = json.loads(request.body)
+        productName = json_data['product_name']
+        proDuctDesc = json_data['product_desc']
+        category = json_data['category']
+        subcategory = json_data['subcategory']
+        province = json_data['province']
+        district = json_data['district']
+        productType = json_data['product_type']
+        harvest_date = json_data['harvest_date']
+        price = json_data['price']
+        amount = json_data['amount']
+        unitOfAmount = json_data['unit_of_amount']
+        deliverCompany = json_data['deliver_company']
+        deliverPrice  = json_data['deliver_price']
+    except KeyError:
+        return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
+
+    product.productName = productName
+    product.proDuctDesc = proDuctDesc
+    product.category = category
+    product.subcategory = subcategory
+    product.province = province
+    product.district = district
+    product.productType = productType
+    product.harvest_date = harvest_date
+    product.price = price
+    product.amount = amount
+    product.unitOfAmount = unitOfAmount
+    product.deliverCompany = deliverCompany
+    product.deliverPrice = deliverPrice
     
-    elif request.method == 'POST' :
-        sellerID = request.data.get("sellerID")
-        productID = request.data.get("productID")
-        productName = request.data.get("productName")
-        proDuctDesc = request.data.get("proDuctDesc")
-        category = models.CharField(max_length=20)
-        subcategory = models.CharField(max_length=20)
-        province = models.CharField(max_length=30)
-        district = models.CharField(max_length=30)
-        productType = models.CharField(max_length=1)
-        harvest_date = models.DateField()
-        price = models.FloatField()
-        amount = models.FloatField()
-        unitOfAmount = models.CharField(max_length=20)
-        deliverCompany = models.CharField(max_length=20)
-        deliverPrice  = models.FloatField()"""
+    product.save()
 
-'''
-def product_list(request) :
-    if request.method == "GET" :
-        product = Product.objects.all()
-        serializer = ProductSerializer(product, many=True)
-        return JsonResponse(serializer.data , safe=False)
-    
-    elif request.method == "POST" :
-        data = JSONParser().parse(request)
-        serializer = ProductSerializer(data=data)
-        if serializer.is_valid() :
-            serializer.save()
-            return JsonResponse(data , status=201)
-        return JsonResponse(serializer.errors , status=400)
+    return Response({'result': 'Successfully update product status'},status=HTTP_200_OK)
 
-def product_detail(request,pk):
+@api_view(['GET'])
+@permission_classes((AllowAny,))
+def get_product_from_user(request, username):
+    user = User.objects.get(username=username)
+    profile = Profile.objects.get(user=user)
+    products = Product.objects.filter(seller=profile)
+    data = []
+    for product in products: 
+        data.append(product_to_dict(product))
+    return Response(data, status=HTTP_200_OK)
 
-    try :
-        product = Product.objects.get(pk=pk)
-    except Product.DoesNotExist :
-        return HttpResponse(status=404)
+@api_view(['GET'])
+@permission_classes((AllowAny,))
+def get_all_product(request):
+    products = Product.objects.all().exclude(productType__in=['A', 'N']).order_by('pk')
+    data = []
+    for product in products: 
+        data.append(product_to_dict(product))
+    return Response(data, status=HTTP_200_OK)
 
-    if request.method == 'GET' :
-        serializer = ProductSerializer(product)
-        return JsonResponse(serializer.data)
-    
-    elif request.method == 'PUT' :
-        data = JSONParser().parse(request)
-        serializer = ProductSerializer(product, data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data)
-        return JsonResponse(serializer.errors, status=400 )
+@api_view(['POST'])
+@permission_classes((AllowAny,))
+def search_product(request):
 
-    elif request.method == 'DELETE':
-        product.delete()
-        return HttpResponse(status=204)
-'''
+    try:
+        json_data = json.loads(request.body)
+        productName = json_data['product_name']
+        category = json_data['category']
+        subcategory = json_data['subcategory']
+        province = json_data['province']
+        district = json_data['district']
+        productType = json_data['product_type']
+        price_low = json_data['price_low']
+        price_high = json_data['price_high']
+    except KeyError:
+        return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
+
+    products = Product.objects.filter(
+        productName__icontains = productName,
+        category__icontains = category,
+        subcategory__icontains = subcategory,
+        province__icontains = province,
+        district__icontains = district,
+        productType__icontains = productType,
+        price__gte = price_low,
+        price__lte = price_high
+    ).exclude(productType__in=['A', 'N']).order_by('pk')
+    data = []
+    for product in products: 
+        data.append(product_to_dict(product))
+    return Response(data, status=HTTP_200_OK)
+
