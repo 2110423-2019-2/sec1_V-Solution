@@ -18,17 +18,18 @@ const productUrl = api + "/getuserproduct/"
 const Profile = (props) => {
     const history = useHistory();
 
-    const [first_name, setFirst_name] = useState();
+    /*const [first_name, setFirst_name] = useState();
     const [last_name, setLast_name] = useState();
     const [address, setAddress] = useState();
     const [tel, setTel] = useState();
     const [user_type, setUser_type] = useState();
     const [product, setProduct] = useState([]);
-    const [image, setImage] = useState();
+    */
+    const [image, setImage] = useState("http://localhost:8000" + localStorage.getItem('image'));
     //for setup fetch data
 
 
-
+    /*
     const [user_data,setUser_data] = useState();
     const fetchUser = async () => {
         const data = await axios.get(userUrl + localStorage.getItem('Username'))
@@ -55,18 +56,19 @@ const Profile = (props) => {
             console.error(error);
         }
     }
-
+    */
     useEffect(() => {
         //fetchUser();
         
         
 
     }, [])
-
+        /*
     const sellerOrBuyer = (status) => {
         console.log("status", status)
         status === "S" ? setUser_type("Seller") : setUser_type("Buyer")
     }
+    */
 
     const profilePic = () => {
         switch (true) {
@@ -126,7 +128,7 @@ const Profile = (props) => {
                 </div>
             </div>
 
-            <Store product={product} />
+            <Store product={localStorage.getItem('product')===null ? [] : localStorage.getItem('product')} />
         </div>
 
 

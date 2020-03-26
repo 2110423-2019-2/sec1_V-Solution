@@ -14,7 +14,7 @@ function Navigationbar() {
       <a className="nav-title">
         <img src={Nav_logo} width="50" height="50"></img>FreshFruit
       </a>
-      {localStorage.getItem('UserType')==null ? 
+      {localStorage.getItem('first_name')==null ? 
       (<Nav className="justify-content-center"></Nav>) :
       (<Nav className="justify-content-center">
           <Nav.Link href="/" className="main-nav" activeClassName="main-nav-active">Home</Nav.Link>
@@ -38,10 +38,11 @@ function Navigationbar() {
               </form>
           </NavDropdown>
         </div>
-          <h1>`{window.localStorage.getItem('UserData')}`</h1>
+          
           <Nav.Link href="/Cart"><img src={Nav_cart} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
           <Nav.Link href="/"><img src={Nav_bell} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
           <Nav.Link href="/profile"><img src={Nav_user} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+          <Nav.Link href="/profile"><h6>{localStorage.getItem('first_name')} {localStorage.getItem('last_name')}</h6></Nav.Link>
       </Nav>
     </nav>
   );
