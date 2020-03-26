@@ -102,7 +102,9 @@ def cart_checkout(request):
     user = token.user
 
     cart = Cart.objects.get(user=user)
-    order = purchase.utils.create_customer_order(user)
-    clear_cart_entry(cart)
-    data = purchase.serializers.order_serializer(order)
-    return Response(data, status=HTTP_200_OK)
+    if cart.count != 0:
+        order = purchase.utils.create_customer_order(user)
+        clear_cart_entry(cart)
+        data = purchase.serializers.order_serializer(order)
+        return Response(data, status=HTTP_200_OK)
+    return Response({}, status=HTTP_200_OK)

@@ -13,6 +13,8 @@ def order_serializer(order):
         "order_id" : order.id,
         "user" : profile_to_dict(buyer_profile),
         "status" : status,
+        "price" : order.total_price,
+        "deliver_price" : order.total_deliver_price,
         "items" : [],
     }
     for item in order_items:

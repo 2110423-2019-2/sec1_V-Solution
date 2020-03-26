@@ -20,6 +20,8 @@ def create_customer_order(user):
     order = Order.objects.create(
         buyer = user,
         status = "O",
+        total_price = user_cart.total_price,
+        total_deliver_price = user_cart.total_deliver_price
     )
     order.save()
 

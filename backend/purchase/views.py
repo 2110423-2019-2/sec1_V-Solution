@@ -50,7 +50,6 @@ def get_all_order(request):
         data.append(order_serializer(order))
     return Response(data, status=HTTP_200_OK)
 
-## NOT TESTED YET 
 @api_view(["GET"])
 def get_order(request, order_id):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
