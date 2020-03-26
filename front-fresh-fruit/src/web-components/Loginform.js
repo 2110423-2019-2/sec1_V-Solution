@@ -80,7 +80,7 @@ const Loginform = (props) => {
                                         setToken(val.data.token, val.data.id)
                                         setLogin()
                                         setUsername(val.data.username)
-                                    }).then(<Redirect to='/profile' />)
+                                    }).then(history.push('/profile'))
                                     .catch((err) =>{
                                         
                                         alert('Please enter username and password again')

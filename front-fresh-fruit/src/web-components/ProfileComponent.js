@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.scss';
 import axios from 'axios';
 import Background from '../pictures/seller.jpg'
@@ -15,61 +15,51 @@ const productUrl = "http://127.0.0.1:8000/api/getuserproduct/"
 
 const Profile = (props) => {
     const history = useHistory();
-    const [userdata,setUserdata] = useState({})
-    const [isloading,setIsloading] = useState(true)
-    const [demo,setDemo] = useState(false)
-    //const [first_name, setFirst_name] = useState();
-    //const [last_name, setLast_name] = useState();
-    //const [address, setAddress] = useState();
-    //const [tel, setTel] = useState();
-    //const [user_type, setUser_type] = useState();
+
+    const [first_name, setFirst_name] = useState();
+    const [last_name, setLast_name] = useState();
+    const [address, setAddress] = useState();
+    const [tel, setTel] = useState();
+    const [user_type, setUser_type] = useState();
     const [product, setProduct] = useState([]);
     //for setup fetch data
 
-   
+    const fetchUser = async () => {
+        const data = await axios.get(url + localStorage.getItem('Username'))
+            .then(function (res) {
+                setFirst_name(res.data.first_name)
+                setLast_name(res.data.last_name)
+                setAddress(res.data.address)
+                setTel(res.data.tel)
+                sellerOrBuyer(res.data.user_type)
+            })
+            .catch((err) => console.log(err))
+        await getProduct();
+
+    }
 
     async function getProduct() {
         try {
-          const response = await axios.get(productUrl + localStorage.getItem('Username')+'/');
+          const response = await axios.get(productUrl + localStorage.getItem('Username'));
           console.log("product",response.data);
           setProduct(response.data)
-          console.log(userdata)
-          
         } catch (error) {
-            console.log(userdata)
           console.error(error);
         }
       }
 
     useEffect(() => {
-        const fetchUser = async () => {
-            const data2 = await fetch(url + localStorage.getItem('Username') +'/');
-            
-            data2.json()
-            .then(data2=>setUserdata(data2))
-            .catch((err) => console.log(err))
-
-            console.log(userdata)
-            await getProduct();
-
-            
-    
-        }
-        
-        setIsloading(false)
         fetchUser();
-        return fetchUser()
         
-    },[0])
+    },[])
 
     const sellerOrBuyer = (status) => {
         console.log("status", status)
-        //status === "S" ? setUser_type("Seller") : setUser_type("Buyer")
+        status === "S" ? setUser_type("Seller") : setUser_type("Buyer")
     }
 
     return (
         //style={{backgroundImage:`url(${background})`}}
-        
         <div>
             <div class="container-fluid" style={{ backgroundColor: "#6AC17D" }}>
 
@@ -83,17 +73,16 @@ const Profile = (props) => {
                             </div>
                             <div class="card-body col-sm-6 col-xs-12">
                                 <div class="row">
-                                    <h1>{userdata.first_name}</h1>
-                                    <h5 class="card-title card-title-login ">{JSON.stringify(userdata['first_name'])}  {userdata.last_name} ( {userdata.user_type} )</h5>
+                                    <h5 class="card-title card-title-login ">{first_name}  {last_name} ( {user_type} )</h5>
                                     <a href="/editProfile" class="icon-block edit-icon">
                                         <i class="far fa-edit  " ></i>
                                     </a>
 
                                 </div>
 
-                                <p class="card-text">Address : {userdata.address}</p>
-                                <p class="card-text">Tel : {userdata.tel}</p>
-                                <p class="card-text">Address : {userdata.address}</p>
+                                <p class="card-text">Address : {address}</p>
+                                <p class="card-text">Tel : {tel}</p>
+                                <p class="card-text">Address : {address}</p>
                                 <UserContext.Consumer>
                                     {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
                                         <div>
@@ -122,6 +111,7 @@ const Profile = (props) => {
 
             <Store product={product}/>
         </div>
+
 
 
 

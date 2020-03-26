@@ -22,7 +22,7 @@ function Navigationbar() {
       </Nav>
       <Nav className="justify-content-end">
         <div className="dropdown-nav">
-          <NavDropdown eventKey={1} 
+          <NavDropdown eventKey={1}  class='dropdown-toggle'
             title={
               <div className="pull-left">
                 <img className="side-nav" activeClassName="side-nav-active"src={Nav_search} alt="Search"/>
