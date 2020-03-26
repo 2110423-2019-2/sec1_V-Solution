@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import '../styles/_informationform.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
-import {api} from '../config'
+import { api } from '../config'
 
-const url = api+"/register"
+const url = api + "/register"
 
 function Informationform(props) {
     const [data, setData] = useState({
@@ -21,7 +22,7 @@ function Informationform(props) {
         "user_type": props.user_type
     });
     const [user_token, setUser_token] = useState()
-
+    const history = useHistory();
 
     const [error, setError] = useState({
         'username': '',
@@ -87,8 +88,10 @@ function Informationform(props) {
             })
                 .then((res) => {
                     setUser_token(res.data)
-                    checkState()
                 })
+                .then(
+                    history.push('/signin')
+                )
                 .catch((err) => {
                     console.log(err)
                 })
@@ -101,7 +104,7 @@ function Informationform(props) {
                 <div class='col-form-label col-sm-2' style={{ textAlign: "left" }}>
                     <label style={{ color: "red" }}>*</label><label>StoreName:</label></div>
                 <div class='col-sm-6'>
-                    <input class="form-control" type="text" name='store_name' style={{ marginLeft: '10px' }}  placeholder=""  onChange={handleChange} value={props.store_name} required/>
+                    <input class="form-control" type="text" name='store_name' style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.store_name} required />
                 </div></div>)
         } else {
             return

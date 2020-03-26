@@ -100,8 +100,6 @@ function App() {
             <Route path='/registerSeller' component={RegisterSeller} />
             <Route path='/signup' component={SignUp} />
             <Route path='/seller' component={Seller} />
-            <Route path='/register' component={Register} />
-            <Route path='/registerSeller' component={RegisterSeller} />
             <Route path='/report' component={Report} />
             <Route path='/store' component={Store} />
             <Route path='/editProfile' component={EditProfile} />

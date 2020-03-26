@@ -18,7 +18,9 @@ const UploadComponent = (props) => {
     const [images, setImages] = useState([])
 
     useEffect(() => {
-        setImages(props.avatar)
+        if(props.avatar){
+            setImages("http://localhost:8000" +props.avatar)
+        }
     }, [props])
 
     const toast = notify.createShowQueue()
