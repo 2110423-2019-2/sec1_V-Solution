@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
+    HTTP_401_UNAUTHORIZED,
     HTTP_404_NOT_FOUND,
     HTTP_200_OK
 )
@@ -30,9 +31,9 @@ def create_product(request):
     user_profile = Profile.objects.get(user=user)
 
     if not user_profile.is_active:
-        return Response({'result': 'User is not verify.'}, status=HTTP_200_OK)
+        return Response({'result': 'User is not verify.'}, status=HTTP_401_UNAUTHORIZED)
     if user_profile.user_type != 'S':
-        return Response({'result': 'User is not a Seller.'}, status=HTTP_200_OK)
+        return Response({'result': 'User is not a Seller.'}, status=HTTP_401_UNAUTHORIZED)
 
     try:
         json_data = json.loads(request.body)
