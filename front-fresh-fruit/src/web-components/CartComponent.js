@@ -27,11 +27,11 @@ const CartComponent = (props) => {
                         <div class='col-lg-4'>
                             <div class='row'>
 
-                                <div class='col-lg-6'>
+                                <div class='col-md-6'>
                                     <h1 style={{fontFamily:"Marker Felt", fontSize:"25px"}}>price {props.price}</h1>
                                 </div>
 
-                                <div class='col-lg-6'>
+                                <div class='col-md-6'>
                                     <div class="dropdown"  style={{marginLeft:'20px'}}>
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Quantity</button>
