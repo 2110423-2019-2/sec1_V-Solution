@@ -3,7 +3,7 @@ import "../styles/_reservebtn.css"
 
 function ReserveButton() {
     return(
-        <div class="dropup">
+        <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="reserve-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Reserve
             </button>
