@@ -12,6 +12,8 @@ class Order(models.Model):
 
     buyer = models.ForeignKey(User, null=True, blank=True, on_delete='CASCADE')
     status = models.CharField(max_length=1, choices=STATUS_TYPES)
+    total_price = models.FloatField(default=0)
+    total_deliver_price = models.FloatField(default=0)
 
     def __str__(self):
         return "User {}'s order".format(self.user)

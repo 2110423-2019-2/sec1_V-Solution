@@ -63,11 +63,13 @@ def remove_product_from_cart(request):
 
     ##
     cart = Cart.objects.get(user=user)
-    product = Product.objects.get(pk=product_id)
-    decrease_entry(cart, product, amount)
-    data = cart_to_list(cart)
-
-    return Response(data, status=HTTP_200_OK)
+    try:
+        product = Product.objects.get(pk=product_id)
+        decrease_entry(cart, product, amount)
+        data = cart_to_list(cart)
+        return Response(data, status=HTTP_200_OK)
+    except Product.DoesNotExist:
+        return Response(cart_to_list(cart), status=HTTP_200_OK)
 
 ## get cart
 @api_view(["GET"])
