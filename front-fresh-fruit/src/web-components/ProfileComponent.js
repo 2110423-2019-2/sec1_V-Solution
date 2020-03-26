@@ -8,10 +8,10 @@ import { useHistory } from 'react-router-dom';
 import UserContext from '../Context/UserContext'
 import editIcon from '../pictures/edit.png'
 import Store from '../web-components/ShowStore'
-import {api} from '../config'
+import { api } from '../config'
 
-const userUrl = api+"/getuser/";
-const productUrl = api+"/getuserproduct/"
+const userUrl = api + "/getuser/";
+const productUrl = api + "/getuserproduct/"
 
 const Profile = (props) => {
     const history = useHistory();
@@ -22,6 +22,7 @@ const Profile = (props) => {
     const [tel, setTel] = useState();
     const [user_type, setUser_type] = useState();
     const [product, setProduct] = useState([]);
+    const [image, setImage] = useState();
     //for setup fetch data
 
     const fetchUser = async () => {
@@ -32,6 +33,7 @@ const Profile = (props) => {
                 setAddress(res.data.address)
                 setTel(res.data.tel)
                 sellerOrBuyer(res.data.user_type)
+                setImage("http://localhost:8000" + res.data.image)
             })
             .catch((err) => console.log(err))
         await getProduct();
@@ -40,18 +42,18 @@ const Profile = (props) => {
 
     async function getProduct() {
         try {
-          const response = await axios.get(productUrl + localStorage.getItem('Username'));
-          console.log("product",response.data);
-          setProduct(response.data)
+            const response = await axios.get(productUrl + localStorage.getItem('Username'));
+            console.log("product", response.data);
+            setProduct(response.data)
         } catch (error) {
-          console.error(error);
+            console.error(error);
         }
-      }
+    }
 
     useEffect(() => {
         fetchUser();
-        
-    },[])
+
+    }, [])
 
     const sellerOrBuyer = (status) => {
         console.log("status", status)
@@ -69,7 +71,7 @@ const Profile = (props) => {
                     <div class="card card-login w-75">
                         <div class="row">
                             <div class="col-sm-3 col-xs-12">
-                                <img src={Mond} class="profile-pic img-fluid  rounded " alt="Mond" />
+                                    <img className='profile-pic img-fluid  rounded fadein' src={image} alt="profilePic" />
                             </div>
                             <div class="card-body col-sm-6 col-xs-12">
                                 <div class="row">
@@ -80,7 +82,6 @@ const Profile = (props) => {
 
                                 </div>
 
-                                <p class="card-text">Address : {address}</p>
                                 <p class="card-text">Tel : {tel}</p>
                                 <p class="card-text">Address : {address}</p>
                                 <UserContext.Consumer>
@@ -100,16 +101,11 @@ const Profile = (props) => {
                                 </UserContext.Consumer>
                             </div>
                         </div>
-
                     </div>
-
-
-
-
                 </div>
             </div>
 
-            <Store product={product}/>
+            <Store product={product} />
         </div>
 
 

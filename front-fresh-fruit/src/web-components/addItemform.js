@@ -68,18 +68,18 @@ function AddItemform() {
                             <Form>
                                 <h5 class="head-newitem">สร้างรายการสินค้าใหม่</h5>
 
-                                <Form.Group controlId="">
+                                <Form.Group controlId="basic-form">
                                     <Form.Label>Product Name</Form.Label>
                                     <Form.Control placeholder="" name="product_name" onChange={e => handleChange(e)} />
                                 </Form.Group>
 
-                                <Form.Group controlId="">
+                                <Form.Group controlId="basic-form">
                                     <Form.Label>Describtion</Form.Label>
                                     <Form.Control placeholder="" name="product_desc" onChange={e => handleChange(e)} />
                                 </Form.Group>
 
                                 <Form.Row>
-                                    <Form.Group as={Col} controlId="formCategory">
+                                    <Form.Group as={Col} controlId="basic-form">
                                         <Form.Label>Category</Form.Label>
                                         <Form.Control as="select" name="category" onChange={e => handleChange(e)}>
                                             <option>Choose...</option>
