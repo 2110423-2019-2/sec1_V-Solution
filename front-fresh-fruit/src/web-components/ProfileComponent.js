@@ -8,6 +8,8 @@ import { useHistory } from 'react-router-dom';
 import UserContext from '../Context/UserContext'
 import editIcon from '../pictures/edit.png'
 import Store from '../web-components/ShowStore'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faImages, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { api } from '../config'
 
 const userUrl = api + "/getuser/";
@@ -60,6 +62,17 @@ const Profile = (props) => {
         status === "S" ? setUser_type("Seller") : setUser_type("Buyer")
     }
 
+    const profilePic = () => {
+        switch (true) {
+            case image !== "http://localhost:8000":
+                return <img className='profile-pic img-fluid  rounded fadein' src={image} alt="profilePic" />
+            default:
+                return <div className='button-upload '>
+                        <FontAwesomeIcon icon={faUserCircle} color='#3B5998' size='10x' />
+                </div>
+        }
+    }
+
     return (
         //style={{backgroundImage:`url(${background})`}}
         <div>
@@ -71,7 +84,7 @@ const Profile = (props) => {
                     <div class="card card-login w-75">
                         <div class="row">
                             <div class="col-sm-3 col-xs-12">
-                                    <img className='profile-pic img-fluid  rounded fadein' src={image} alt="profilePic" />
+                                {profilePic()}
                             </div>
                             <div class="card-body col-sm-6 col-xs-12">
                                 <div class="row">
