@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navi from './web-components/Navigationbar';
 import Footer from './web-components/Footer';
-import AddItemform from './web-components/AddItemform.js';
+import AddItemform from './web-components/AddItemform';
 import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
@@ -17,8 +17,9 @@ import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
-import Report from './Page/Report'
+import HomePage from './Page/HomePage';
 
+import Report from './Page/Report'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -97,11 +98,15 @@ function App() {
             <Route path='/register' component={Register} />
             <Route path='/order' component={YourOrder}/>
             <Route path='/registerSeller' component={RegisterSeller} />
+            <Route path='/signup' component={SignUp} />
+            <Route path='/register' component={Register} />
+            <Route path='/registerSeller' component={RegisterSeller} />
             <Route path='/report' component={Report} />
             <Route path='/store' component={Store} />
             <Route path='/editProfile' component={EditProfile} />
             <Route path='/editStore' component={EditStore} />
             <Route path='/addItem' component={AddItemform} />
+            <Route path='/cart' component={Cart} />
           </UserContext.Provider>
         </Switch>
       </Router>

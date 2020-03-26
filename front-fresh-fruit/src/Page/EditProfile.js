@@ -24,7 +24,7 @@ const EditProfile = () => {
     return (
         <div style={{ paddingLeft: '25%', paddingRight: 'auto', paddingTop:'20px' }}>
             <h3>Edit Profile : {localStorage.getItem('Username')}</h3>
-            <div class='.col-lg-8 .col-sm-12'>
+            <div>
                 <EditProfileForm
                     first_name={data['first_name']}
                     last_name={data['last_name']}

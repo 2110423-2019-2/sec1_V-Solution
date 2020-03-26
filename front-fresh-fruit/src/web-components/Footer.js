@@ -42,25 +42,6 @@ function Footerbar() {
           </div>
         
         </footer>     
-        // <body>
-        //     <footer>
-        //         <section className="ft-contact">
-        //             <p className="ft-title">Contact Us</p>
-        //             <p>Tel: 08X-XXX-XXXX Fax: 08X-XXX-XXXX</p>
-        //             <div className="ft-social">
-        //                 <ul>
-        //                     <li>facebook</li>
-        //                     <li>twitter</li>
-        //                     <li>google</li>
-        //                     <li>instagram</li>
-        //                 </ul>
-        //             </div>
-        //         </section>
-        //         <section className="ft-copyright">
-        //             <p>Copyright 2019 - 2020. All right reserved. Powered by V-Solution</p>
-        //         </section>
-        //     </footer>
-        // </body>
     );
 }
 

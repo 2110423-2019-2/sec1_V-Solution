@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, NavDropdown, Dropdown } from 'react-bootstrap'
+import { Nav, NavDropdown } from 'react-bootstrap'
 import "../styles/_navbar.css"
 import Nav_logo from '../pictures/Nav_logo.png';
 import Nav_user from '../pictures/Nav_user.png';

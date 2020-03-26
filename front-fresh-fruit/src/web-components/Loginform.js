@@ -3,15 +3,14 @@ import axios from 'axios';
 import { useHistory,Redirect } from "react-router-dom";
 import UserContext from '../Context/UserContext';
 import '../styles/_loginform.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {api} from '../config'
 /*const option = {
     methods: "POST",
     body: JSON.stringify({'name': "great", 'age': 21})
 }
-
 const send = new Request('http://nutpattara.pythonanywhere.com/api/login', option)
 */
-
+const urlLogin = api+"/login"
 
 const Loginform = (props) => {
     const [username, setUsername] = useState("");
@@ -22,7 +21,7 @@ const Loginform = (props) => {
 
     async function OnSignIn() {
 
-        let res = await axios.post('http://127.0.0.1:8000/api/login', {
+        let res = await axios.post(urlLogin, {
             username, password
         })
 
@@ -72,7 +71,7 @@ const Loginform = (props) => {
                             <div class="btn-login">
                                 <button type="submit" class="btn btn-outline-primary btn-register"
                                     onClick={() => {
-                                        history.push('/register')
+                                        history.push('/signup')
                                     }}>Register</button>
                                 <button class="btn btn-primary btn-signin" onClick={() => {
                                     const t = OnSignIn()

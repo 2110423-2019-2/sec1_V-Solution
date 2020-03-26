@@ -12,8 +12,28 @@ function Item(img, name, desc) {
                     <h5 class="card-title">{name}</h5>
                     <p class="card-text">{desc}</p>
                     <div class="edit-store-button">
-                        <button href="" class="btn btn-edit btn-outline-success edit-launch-botton">Purchase</button>
-                        <button href="" class="btn btn-edit btn-outline-warning">Reserve</button>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="purchase-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Purchase
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <form class="form-inline md-form mr-auto mb-4">
+                                    <input class="form-control" type="text" placeholder="Amount" id="mySearch" onkeyup="filterFunction()"/>
+                                    <button id="purchase-button" type="submit" class='btn btn-primary'>Purchase</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="reserve-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Purchase
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <form class="form-inline md-form mr-auto mb-4">
+                                    <input class="form-control" type="text" placeholder="Amount" id="mySearch" onkeyup="filterFunction()"/>
+                                    <button id="reserve-button" type="submit" class='btn btn-primary'>Reserve</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -52,46 +72,14 @@ const ShowStore = (props) => {
         )
     }
 
-    const items = [
-        {
-            'img': 'https://f.btwcdn.com/store-34660/product/49e0623f-5e1d-9c4f-d254-5b7f69a49e9a.jpg',
-            'name': 'mango',
-            'isReservable': true,
-            'isLaunch': false
-        }, {
-            'img': 'https://www.spcosmeticsplus.com/wp-content/uploads/2018/02/banana-extract.jpg',
-            'name': 'banana',
-            'isReservable': false,
-            'isLaunch': false
-        }, {
-            'img': 'https://f.btwcdn.com/store-34660/product/466d4abc-625b-1010-6822-58a2ec549146.jpg',
-            'name': 'grape',
-            'isReservable': false,
-            'isLaunch': false
-        }, {
-            'img': 'https://cd.lnwfile.com/vkzco5.jpg',
-            'name': 'papaya',
-            'isReservable': false,
-            'isLaunch': false
-        }, {
-            'img': 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTNlsCsrIpGEwT5RKBZA1L9IfTyuCMut0xpGMdVRpL8N_g_6aoV',
-            'name': 'orange',
-            'isReservable': false,
-            'isLaunch': false
-        }
-    ]
-
     console.log("store", product)
     return (
         <div >
             <div class="container">
                 <div class="edit-store-title underline ">Products(5)</div>
                 <div class="row row-card">
-                    {product.map((item) => Item(item.productType, item.productName, item.productDesc))}
-                    <UserContext.Consumer>
-    {()=> localStorage.getItem('Token')!==null ? <div>{LastItem()}</div> : <div></div>  }
-                    </UserContext.Consumer>
-                    
+                    {product.map((item) => Item(item.product_type, item.produc_ame, item.product_desc))}
+                    {LastItem()}
 
                 </div>
             </div>
