@@ -25,6 +25,9 @@ const Profile = (props) => {
     const [image, setImage] = useState();
     //for setup fetch data
 
+
+
+    const [user_data,setUser_data] = useState();
     const fetchUser = async () => {
         const data = await axios.get(userUrl + localStorage.getItem('Username'))
             .then(function (res) {
@@ -45,13 +48,16 @@ const Profile = (props) => {
             const response = await axios.get(productUrl + localStorage.getItem('Username'));
             console.log("product", response.data);
             setProduct(response.data)
+            
         } catch (error) {
             console.error(error);
         }
     }
 
     useEffect(() => {
-        fetchUser();
+        //fetchUser();
+        
+        
 
     }, [])
 
@@ -64,6 +70,7 @@ const Profile = (props) => {
         //style={{backgroundImage:`url(${background})`}}
         <div>
             <div class="container-fluid" style={{ backgroundColor: "#6AC17D" }}>
+                
 
                 <div class="row" style={{ backgroundColor: "#6AC17D", height: "auto" }}>
 
@@ -75,15 +82,16 @@ const Profile = (props) => {
                             </div>
                             <div class="card-body col-sm-6 col-xs-12">
                                 <div class="row">
-                                    <h5 class="card-title card-title-login ">{first_name}  {last_name} ( {user_type} )</h5>
+                                    <h5 class="card-title card-title-login ">{localStorage.getItem('first_name')}  {localStorage.getItem('last_name')} ( {localStorage.getItem('user_type')} )</h5>
+                                    <h5>{localStorage.getItem('product_list')}</h5>
                                     <a href="/editProfile" class="icon-block edit-icon">
                                         <i class="far fa-edit  " ></i>
                                     </a>
 
                                 </div>
 
-                                <p class="card-text">Tel : {tel}</p>
-                                <p class="card-text">Address : {address}</p>
+                                <p class="card-text">Tel : {localStorage.getItem('tel')}</p>
+                                <p class="card-text">Address : {localStorage.getItem('address')}</p>
                                 <UserContext.Consumer>
                                     {({ isloggedin, setLogin, clearToken, usertoken, getToken }) => (
                                         <div>

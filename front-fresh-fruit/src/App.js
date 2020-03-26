@@ -27,6 +27,8 @@ function App() {
   const [token, setToken] = useState("")
   const [userid, setUserid] = useState("")
   const [username, setUsername] = useState("")
+  const [userType,setUserType] = useState("")
+  const [userData,setUserData] = useState()
 
   function handleIsloggedin() {
     if (localStorage.getItem('Token') == null) {
@@ -50,11 +52,27 @@ function App() {
     localStorage.clear();
     setToken(null);
     setUserid(null);
+    setUserType(null);
     setIsloggedin(false);
   }
   useEffect(() => {
     handleIsloggedin()
   })
+  function setUserTypeInContext(usertype){
+    setUserType(usertype)
+    localStorage.setItem('UserType', usertype);
+  }
+  function setUserDataInContext(userdata){
+    setUserData(userdata)
+    localStorage.setItem('UserData', userdata);
+    console.log('This is first name in App')
+    console.log(userdata)
+    console.log('This is in UserData')
+    console.log(localStorage.getItem('UserData'))
+  }
+  function getUserData(){
+    return localStorage.getItem('UserData')
+  }
   function getToken() {
     return String(localStorage.getItem('Token'))
   }
@@ -63,6 +81,9 @@ function App() {
   }
   function getUsername() {
     return String(localStorage.getItem('Username'))
+  }
+  function getUserType(){
+    return String(localStorage.getItem('UserType'))
   }
 
 
@@ -88,7 +109,11 @@ function App() {
             clearToken: clearToken,
             getToken: getToken,
             getId: getId,
-            getUsername: getUsername
+            getUsername: getUsername,
+            setUserTypeInContext:setUserTypeInContext,
+            getUserType: getUserType,
+            setUserDataInContext:setUserDataInContext,
+            getUserData:getUserData,
           }}>
             <Route exact path='/' component={Home} />
             {/* {localStorage.getItem('Token') !== null ? (<Route path='/profile' component={Profile} />)
@@ -99,7 +124,6 @@ function App() {
             <Route path='/order' component={YourOrder}/>
             <Route path='/registerSeller' component={RegisterSeller} />
             <Route path='/signup' component={SignUp} />
-            <Route path='/seller' component={Seller} />
             <Route path='/report' component={Report} />
             <Route path='/store' component={Store} />
             <Route path='/editProfile' component={EditProfile} />
