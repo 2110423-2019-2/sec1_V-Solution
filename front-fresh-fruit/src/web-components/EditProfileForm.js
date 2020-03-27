@@ -162,13 +162,13 @@ const Informationform = () => {
                     <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
                         <label style={{ color: "red" }}>*</label><label>NationalID:</label></div>
                     <div class='col-sm-6'>
-                        <input class="form-control" type="number" name="nat_id" onChange={handleChange} style={{ marginLeft: '10px' }} placeholder="x-xxxx-xxxxx-xx-x" value={user.nat_id} />
+                        <input class="form-control" type="number" name="nat_id" onChange={handleChange} style={{ marginLeft: '10px' }} placeholder="x-xxxx-xxxxx-xx-x" value={user.nat_id} maxlength='13'/>
                         {user.nat_id.length != 13 && <small class='errorInForm'>National number should be 13 character</small>}
                     </div></div>
 
                 <div class='form-group row col-sm-8'>
                     {checkSubmit ? <small class='errorInForm' style={{ position: 'absolute', right: '20%' }}>Please fill form with correct data</small> : ''}
-                    {checkSubmit ?
+                    {checkSubmit==true ?
                         <button type='submit' class='btn btn-primary' style={{ position: 'absolute', right: '0px' }} onClick={onSubmit} disabled>Submit</button> :
                         <button type='submit' class='btn btn-primary' style={{ position: 'absolute', right: '0px' }} onClick={onSubmit}>Submit</button>}
                 </div>

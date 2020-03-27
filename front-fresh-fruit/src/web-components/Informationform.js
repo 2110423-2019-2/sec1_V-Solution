@@ -208,7 +208,7 @@ function Informationform(props) {
                     </div></div>
 
                 <div class='col-sm-8'>
-                    {checkSubmit == false && <small class='errorInForm'>Please enter correct value</small>}
+                    {checkSubmit == true && <small class='errorInForm'>Please enter correct value</small>}
                     {checkSubmit == false ? <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} disabled>Register</button> : <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} >Register</button>}
                 </div>
             </form>

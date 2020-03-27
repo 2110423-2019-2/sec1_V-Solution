@@ -56,7 +56,7 @@ useEffect(() => {
 
       {/* -------------- Store part --------------------*/}
 
-      <Store product={product}/>
+      {product.length == 0 ? <h1>Dont have any product on ours system</h1> : <Store product={product}/>}
 
     </div>
 
