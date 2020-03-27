@@ -143,10 +143,6 @@ const Loginform = (props) => {
                                     })
                                     
                                 }}>Sign in</button>
-
-
-                                <h1>{userData}</h1>
-                                <h1>{username}</h1>
                             </div>
                         )}
                     </UserContext.Consumer>

@@ -8,15 +8,37 @@ import axios from 'axios';
 import {api} from '../config'
 
 const productUrl = api+"/allproduct"
+const searchProductUrl = api+"/searchproduct"
 
 const HomePage = () => {
   const [product, setProduct] = useState([]);
-
+  const [searchQuery,setSearchQuery] = useState({
+    'product_name':'',
+    'category':'',
+    'subcategory':'',
+    'province':'',
+    'district':'',
+    'product_type':'',
+    'price_low':0,
+    'price_high':9999
+  })
+  const handleChange = (e) =>{
+    setSearchQuery({...searchQuery,['product_name']:e.target.value})
+  }
   async function getProduct() {
     try {
-      const response = await axios.get(productUrl);
-      console.log("product",response.data);
-      setProduct(response.data)
+      if(searchQuery['product_name']==''){
+        const response = await axios.get(productUrl);
+        console.log("product",response.data);
+        console.log(searchQuery)
+        setProduct(response.data)
+      }else{
+        const response = await axios.post(searchProductUrl,searchQuery);
+        console.log(searchQuery['product_name'],'this is searchQuery')
+        console.log("searchProduct",response.data);
+        setProduct(response.data)
+      }
+      
     } catch (error) {
       console.error(error);
     }
@@ -25,7 +47,7 @@ const HomePage = () => {
 useEffect(() => {
     getProduct();
     
-},[])
+},[searchQuery])
 
   return (
 
@@ -43,8 +65,8 @@ useEffect(() => {
               <div class="col" style={{ textAlign: "center" }}><img src={homefruit} style={{ height: '400px', width: '600px' }} /></div>
               <div class="col" style={{ textAlign: "center", color: "white" }}><h1>Find Daily & Organic fruit</h1>
                 <h2>with</h2><h1>FRESHFRUIT</h1>
-                <input type="text" name="search" style={{ marginTop: "40px", width: "500px", height: "45px", borderRadius: "20px" }} />
-                <div style={{ marginTop: "40px" }}><button style={{ width: '120px', height: '40px', borderRadius: "20px" }}><a href='/SignUp'>Search</a></button></div>
+                <input type="text" name="search" style={{ marginTop: "40px", width: "500px", height: "45px", borderRadius: "20px"}}  onChange={handleChange} />
+                <div style={{ marginTop: "40px" }}><button style={{ width: '120px', height: '40px', borderRadius: "20px" }} onClick={getProduct}>Search</button></div>
               </div>
             </div>
           </div>
