@@ -4,8 +4,8 @@ import { Form, Col, Row, Button, Container } from 'react-bootstrap'
 import UserContext from '../Context/UserContext'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
-import {api} from '../config'
-const url = api+"/createproduct"
+import { api } from '../config'
+const url = api + "/createproduct"
 
 function AddItemform() {
     const [product, setProduct] = useState({
@@ -42,13 +42,13 @@ function AddItemform() {
             , {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Token `+localStorage.getItem('Token')
+                    'Authorization': `Token ` + localStorage.getItem('Token')
                 }
             })
             .then((res) => {
                 checkState()
                 console.log(res.status)
-                res.status === 200 ? alert("Add Item Successful"): alert("Error on add Item")
+                res.status === 200 ? alert("Add Item Successful") : alert("Error on add Item")
             })
             .catch((err) => {
                 console.log(err)
@@ -64,9 +64,9 @@ function AddItemform() {
                     <Container >
                         <Col md={{ span: 6, offset: 3 }}>
                             {getUsername ? <h1 class="head-newitem">สวัสดีครับคุณ {getUsername()}</h1> : <h1 class="head-newitem">Please login again</h1>}
-
+                            <h5 class="head-newitem">สร้างรายการสินค้าใหม่</h5>
                             <Form>
-                                <h5 class="head-newitem">สร้างรายการสินค้าใหม่</h5>
+
 
                                 <Form.Group controlId="basic-form">
                                     <Form.Label>Product Name</Form.Label>
