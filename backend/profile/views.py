@@ -11,6 +11,7 @@ from rest_framework.status import (
 from rest_framework.response import Response
 
 import json
+import email_sys
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
@@ -38,7 +39,6 @@ def register(request):
         birth_date = json_data['birth_date']
         gender = json_data['gender']
         nat_id = json_data['nat_id']
-        #Optional
 
         #META
         user_type = json_data['user_type']
@@ -74,12 +74,12 @@ def register(request):
 
             token, _ = Token.objects.get_or_create(user=user)
 
-            '''
-            #email verification is in here BUGGED
-            text = "http://127.0.0.1:8000/verify/" + token.key
-            send_email.send_email(email, 'Confirm your Freshfruit registeration', text, text)
-            '''
-
+            if email_sys.config.ENABLE:
+                text = "http://127.0.0.1:8000/verify/" + token.key
+                send_email.send_email(email, 'Confirm your Freshfruit registeration', text, text)
+            else:
+                new_profile.is_active = True
+                new_profile.save()
             return Response({'result': 'Registeration complete'},status=HTTP_200_OK)
         return Response({'result': 'Username or email already existed.'},status=HTTP_200_OK)
     except KeyError:
