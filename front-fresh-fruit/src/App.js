@@ -90,7 +90,7 @@ function App() {
   return (
     <div>
 
-      <Navi />
+      
       {/* navigation bar */}
 
 
@@ -100,6 +100,7 @@ function App() {
 
       <Router>
         {/* body part */}
+        <Navi />
         <Switch>
           <UserContext.Provider value={{
             isloggedin: `${isloggedin}`,
@@ -118,14 +119,13 @@ function App() {
             <Route exact path='/' component={Home} />
             {/* {localStorage.getItem('Token') !== null ? (<Route path='/profile' component={Profile} />)
               : (<Route path='/signin' component={Signin} />)} */}
-            <Route exect path='/profile' component={Profile}/>
+            {localStorage.getItem('user_type') == 'Seller' ? (<Route path='/profile' component={Store} />) : (<Route path='/profile' component={Profile}/>)}
             <Route path='/signin' component={Signin} />
             <Route path='/register' component={Register} />
             <Route path='/order' component={YourOrder}/>
             <Route path='/registerSeller' component={RegisterSeller} />
             <Route path='/signup' component={SignUp} />
             <Route path='/report' component={Report} />
-            <Route path='/store' component={Store} />
             <Route path='/editProfile' component={EditProfile} />
             <Route path='/editStore' component={EditStore} />
             <Route path='/addItem' component={AddItemform} />

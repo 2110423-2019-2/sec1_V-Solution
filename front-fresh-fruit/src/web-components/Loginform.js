@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory,Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import UserContext from '../Context/UserContext';
 import '../styles/_loginform.css';
 import {api} from '../config'
@@ -132,6 +132,7 @@ const Loginform = (props) => {
                                         setUsername(val.data.username)
                                         await fetchUser(val.data.username)
                                         setToken(val.data.token)
+                                        localStorage.setItem('token',val.data.token)
                                         setLogin(true)
 
                                     })
