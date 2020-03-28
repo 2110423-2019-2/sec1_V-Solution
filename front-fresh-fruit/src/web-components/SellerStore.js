@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { api } from '../config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
+import EditProductModal from '../web-components/EditProductModal'
 
 const reserveURL = api + '/updateproduct/'
 const launchURL = api + '/updateproduct/'
@@ -44,15 +47,22 @@ const ShowStore = (props) => {
                 })
         }
 
-        const clickCard = () => { }
-
         return (
             <div>
                 <div class="card  card-a " >
                     <img src={img} class="card-img-top pic-card" alt="..." />
                     <div class="card-body">
-                        <h5 class="card-title">{name}</h5>
+                        <div class="row">
+                            <div class="col-9">
+                                <h5 class="card-title">{name}</h5>
+
+                            </div>
+                            <div class="col-3">
+                                <EditProductModal/>
+                            </div>
+                        </div>
                         <p class="card-text">{desc}</p>
+
                     </div>
 
                     <div class="edit-store-button-seller card-footer bg-transparent ">
