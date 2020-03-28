@@ -66,7 +66,7 @@ useEffect(() => {
               <div class="col" style={{ textAlign: "center", color: "white" }}><h1>Find Daily & Organic fruit</h1>
                 <h2>with</h2><h1>FRESHFRUIT</h1>
                 <input type="text" name="search" style={{ marginTop: "40px", width: "500px", height: "45px", borderRadius: "20px"}}  onChange={handleChange} />
-                <div style={{ marginTop: "40px" }}><button style={{ width: '120px', height: '40px', borderRadius: "20px" }} onClick={getProduct}>Search</button></div>
+                {/*<div style={{ marginTop: "40px" }}><button style={{ width: '120px', height: '40px', borderRadius: "20px" }} onClick={getProduct}>Search</button></div>*/}
               </div>
             </div>
           </div>
