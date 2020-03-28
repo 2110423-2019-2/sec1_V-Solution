@@ -82,6 +82,7 @@ const Store = () => {
                                 <div style={{border: "solid black 4px", width: "400px", marginTop: "20px", marginRight:"40px"}}></div>
                             </div>
                         </div>
+                        <h1>{localStorage.getItem('Token')}</h1>
                         <ShowStore product={[]}/>
 
                     </div>

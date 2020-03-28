@@ -19,7 +19,8 @@ function Informationform(props) {
         "birth_date": "",
         "gender": "M",
         "nat_id": "",
-        "user_type": props.user_type
+        "user_type": props.user_type,
+        "store_name": ""
     });
     const [user_token, setUser_token] = useState()
     const history = useHistory();
@@ -208,8 +209,8 @@ function Informationform(props) {
                     </div></div>
 
                 <div class='col-sm-8'>
-                    {checkSubmit == false && <small class='errorInForm'>Please enter correct value</small>}
-                    {checkSubmit == false ? <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} disabled>Register</button> : <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit}   >Register</button>}
+                    {checkSubmit == true && <small class='errorInForm'>Please enter correct value</small>}
+                    {checkSubmit == false ? <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} disabled>Register</button> : <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} >Register</button>}
                 </div>
             </form>
 

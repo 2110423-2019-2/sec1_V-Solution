@@ -8,17 +8,23 @@
 
 #reserve-input {
     border-bottom: 1px;
-    margin-bottom: 40px;
+    width:250px;
+    {/*margin-bottom: 40px;*/}
 }
 
 #reserve-button {
-    position: absolute;
-    margin-bottom: 40px;
+    {/*position: absolute;
     top: 52px;
     right: 58px;
+    */}
+    margin-bottom: 40px;
+    margin: 0 auto;
     width: 100px;
     color: white;
     background-color: #6AC17D;
     border-color: transparent;
     border-radius: 50px;
+}
+#amount{
+    margin-left:10px;
 }
