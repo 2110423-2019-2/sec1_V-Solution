@@ -7,6 +7,8 @@ import { api } from '../config'
 import CreateStoreButton from '../web-components/CreateStoreButton'
 import ProfilePicture from '../web-components/ProfilePicture'
 import SellerStore from '../web-components/SellerStore'
+import AddCommentform from '../web-components/AddCommentform'
+import ShowComment from '../web-components/ShowComment'
 import axios from 'axios'
 
 const userProductUrl = api+"/getuserproduct/"+localStorage.getItem('Username')
@@ -62,6 +64,14 @@ const ProfileSeller = () => {
                     </div>
                     <div class="card seller-card w-75">
                         <SellerStore product={product} />
+                    </div>
+                    <div class="card seller-card w-75">
+                        <div id="add-comment" >
+                            <AddCommentform/>
+                        </div>
+                        <div id="all-comment">
+                            <ShowComment/>
+                        </div>
                     </div>
                 </div>
             </div>
