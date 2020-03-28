@@ -125,6 +125,7 @@ function App() {
             <Route path='/register' component={Register} />
             <Route path='/order' component={YourOrder}/>
             <Route path='/registerSeller' component={RegisterSeller} />
+            <Route path='/getproduct/:id' component={ProductDetail}/>
             <Route path='/signup' component={SignUp} />
             <Route path='/report' component={Report} />
             <Route path='/editProfile' component={EditProfile} />
