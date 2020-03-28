@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { api } from '../config';
 
-const reserveURL = 'updateproduct/'
+const reserveURL = api+ 'updateproduct/'
 const launchURL = api+ '/updateproduct/'
 
 const ShowStore = (props) => {
