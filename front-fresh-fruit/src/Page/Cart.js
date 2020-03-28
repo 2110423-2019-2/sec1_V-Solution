@@ -6,7 +6,7 @@ import {api} from '../config'
 
 const Cart = () => {
 
-    const productUrl = ""
+    const productUrl = api + "/cart/get"
     const [product, setProduct] = useState([])
     
 
