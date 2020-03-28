@@ -110,7 +110,7 @@ def get_user_data(request, username):
         'gender' : user_profile.gender,
         'bio' : user_profile.bio,
         'store_name' : user_profile.store_name,
-        'nat_id' : user_profile.is_active,
+        'nat_id' : user_profile.nat_id,
         'user_type' : user_profile.user_type,
         'image' : image,
     }
