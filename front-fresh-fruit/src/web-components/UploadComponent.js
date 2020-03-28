@@ -4,8 +4,8 @@ import Images from '../web-components/Images'
 import UploadButton from '../web-components/UploadButton'
 import Notifications, { notify } from 'react-notify-toast'
 import axios from 'axios'
-import {api} from '../config'
-const API_URL = api+"/user/uploadimage"
+import { api } from '../config'
+const API_URL = api + "/user/uploadimage"
 
 
 const toastColor = {
@@ -18,8 +18,8 @@ const UploadComponent = (props) => {
     const [images, setImages] = useState([])
 
     useEffect(() => {
-        if(props.avatar){
-            setImages("http://localhost:8000" +props.avatar)
+        if (props.avatar) {
+            setImages("http://localhost:8000" + props.avatar)
         }
     }, [props])
 
@@ -63,21 +63,18 @@ const UploadComponent = (props) => {
             }
         })
             .then(res => {
-                if (!res.ok) {
-                    throw res
-                }
-                return res.json()
-            })
-            .then(images => {
-                setImages(images)
+                console.log("res", res)
+                setImages("http://localhost:8000" +res.data.url)
                 setUploading(false)
-                
+                localStorage.setItem("image",res.data.url)
+                return toast( "upload success", 'custom', 200, toastColor)
             })
             .catch(err => {
                 toast(err.message, 'custom', 2000, toastColor)
                 setUploading(false)
 
             })
+
     }
 
     const content = () => {
@@ -89,7 +86,7 @@ const UploadComponent = (props) => {
                     <label for="file-input">
                         <img className='img-upload fadein' src={images} alt="" />
                     </label>
-                    <input id="file-input" type="file" onChange={(e) => onChange(e)}/>
+                    <input id="file-input" type="file" onChange={(e) => onChange(e)} />
                 </div>
             default:
                 return <UploadButton single="true" onChange={(e) => onChange(e)} />

@@ -1,10 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import '../App.scss';
 
 const ProfilePicture = () => {
-    const [image, setImage] = useState("http://localhost:8000" + localStorage.getItem('image'));
+    const [image, setImage] = useState("");
     const profilePic = () => {
         switch (true) {
             case image !== "http://localhost:8000":
@@ -15,6 +15,10 @@ const ProfilePicture = () => {
                 </div>
         }
     }
+    useEffect(() => {
+        console.log("image",localStorage.getItem('image') )
+        setImage("http://localhost:8000" + localStorage.getItem('image'))
+    },[image])
     return (
         <div>
             {profilePic()}
