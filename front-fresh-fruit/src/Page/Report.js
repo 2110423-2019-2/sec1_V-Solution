@@ -1,11 +1,25 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+
 import '../styles/_report.css'
 import '../web-components/ReportFormComponent'
 import ReportFormComponent from '../web-components/ReportFormComponent'
 import upload from '../pictures/upload.png'
+import axios from 'axios'
+import {api} from '../config'
 
 const Report = () => {
+    const [data,setData] = useState({
+        'subject':'',
+        'report_user':'',
+        'descrption':'',
+    });
+    const handleChange = (e) =>{
+        setData({...data,[e.target.name]:e.target.value})
+    }
 
+    const submitF = () =>{
+
+    }
 
     return (
         
@@ -21,9 +35,9 @@ const Report = () => {
                     
                     <div class='container' style={{paddingTop: '50px'}}>
 
-                        <ReportFormComponent title='Subject' inputType='text'/>
-                        <ReportFormComponent title='Report user' inputType='text'/>
-                        <ReportFormComponent title='Description' inputType='textArea'/>
+                        <ReportFormComponent title='Subject' name="subject" inputType='text'/>
+                        <ReportFormComponent title='Report user' name="report_user" inputType='text'/>
+                        <ReportFormComponent title='Description' name='description' inputType='textArea'/>
 
                         <div class='container containerAdjust' style={{paddingTop: '10px'}}>
                             <div class='row' containerAdjust>
