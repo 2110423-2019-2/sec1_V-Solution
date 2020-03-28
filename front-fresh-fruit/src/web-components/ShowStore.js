@@ -14,6 +14,7 @@ function Item(img, name, desc,price,amount) {
                     <p class="card-text">{desc}</p>
 
                 </div>
+
                 
                 {localStorage.getItem('user_type')=='Buyer' ? 
                 (<div class="card-footer edit-store-button">
@@ -63,6 +64,7 @@ const ShowStore = (props) => {
             <div class="container">
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
+
                     {product.map((item) => Item(item.product_type, item.product_name, item.product_desc,item.price,item.amount,item.product_id))}
                     {localStorage.getItem('user_type')=='Seller' ? (LastItem()) : (<div></div>)}
 
