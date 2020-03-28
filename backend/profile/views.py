@@ -39,6 +39,8 @@ def register(request):
         birth_date = json_data['birth_date']
         gender = json_data['gender']
         nat_id = json_data['nat_id']
+        store_name = json_data['store_name']
+        bio = json_data['bio']
 
         #META
         user_type = json_data['user_type']
@@ -64,6 +66,8 @@ def register(request):
                 birth_date = birth_date,
                 gender = gender,
                 nat_id = nat_id,
+                store_name = store_name,
+                bio = bio,
                 user_type = user_type,
             )
             new_profile.save()
@@ -140,6 +144,8 @@ def edit_user_data(request, username):
         birth_date = json_data['birth_date']
         gender = json_data['gender']
         nat_id = json_data['nat_id']
+        store_name = json_data['store_name']
+        bio = json_data['bio']
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
@@ -149,6 +155,8 @@ def edit_user_data(request, username):
     user_profile.tel = tel
     user_profile.birth_date = birth_date
     user_profile.gender = gender
+    user_profile.store_name = store_name
+    user_profile.bio = bio
     user_profile.nat_id = nat_id
     user_profile.save()
 
