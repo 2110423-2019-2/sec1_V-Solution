@@ -80,6 +80,13 @@ const Informationform = () => {
         })
             .then((res) => {
                 setUser_token(res.data)
+                localStorage.setItem('id',user.id)
+                localStorage.setItem('first_name',user.first_name)
+                localStorage.setItem('last_name',user.last_name)
+                localStorage.setItem('address',user.address)
+                localStorage.setItem('birth_date',user.birth_date)
+                localStorage.setItem('tel',user.tel)
+                localStorage.setItem('store_name',user.store_name)
                 checkState()
             })
             .catch((err) => {
