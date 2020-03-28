@@ -25,8 +25,9 @@ export default function CreateStoreButton() {
                 birth_date: data.birth_date,
                 gender: data.gender,
                 nat_id: data.nat_id,
-                image:  data.image,
-                store_name: data.store_name
+                image: data.image,
+                store_name:data.store_name,
+                bio:data.bio
             })
         } catch (error) {
             console.log(error)
