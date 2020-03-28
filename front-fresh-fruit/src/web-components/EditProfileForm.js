@@ -3,10 +3,10 @@ import '../App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 import Upload from '../web-components/UploadComponent'
-import {api} from '../config'
+import { api } from '../config'
 
-const urlEdit = api+"/edituser/"
-const urlGet = api+"/getuser/";
+const urlEdit = api + "/edituser/"
+const urlGet = api + "/getuser/";
 
 const Informationform = () => {
     const [user, setUser] = useState({
@@ -17,14 +17,13 @@ const Informationform = () => {
         "birth_date": "",
         "gender": "",
         "nat_id": "",
-        "image": ""
+        "image": "",
+        "store_name":"",
+        "bio":""
     });
     const [user_token, setUser_token] = useState()
 
-    const [error, setError] = useState({
-        'tel': '',
-        'nat_id': ''
-    })
+    const [error, setError] = useState(false)
 
     async function fetchUser() {
         try {
@@ -39,7 +38,9 @@ const Informationform = () => {
                 birth_date: data.birth_date,
                 gender: data.gender,
                 nat_id: data.nat_id,
-                image:  data.image
+                image: data.image,
+                store_name:data.store_name,
+                bio:data.bio
             })
         } catch (error) {
             console.log(error)
@@ -48,6 +49,7 @@ const Informationform = () => {
 
     useEffect(() => {
         fetchUser();
+        console.log("user-token: ", localStorage.getItem("Token"))
     }, [])
 
 
@@ -60,18 +62,14 @@ const Informationform = () => {
         setUser({ ...user, [e.target.name]: e.target.value })
         console.log(user)
 
-        let error2 = error;
         switch (e.target.name) {
-
             case 'tel':
-                error2.tel = e.target.value.length == 10 ? '' : 'Telephone number should be 10 character'
-            case 'nat_id':
-                error2.nat_id = e.target.value.length == 13 ? '' : 'National ID should be 13 character'
+                e.target.value.length === 10 ? setError(false) : setError(true)
+                break
+            default:
         }
 
     }
-
-    var checkSubmit = error.tel == '' && error.nat_id == ''
 
     const onSubmit = async (e) => {
         await axios.post(urlEdit + localStorage.getItem('Username'), user, {
@@ -162,13 +160,13 @@ const Informationform = () => {
                     <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
                         <label style={{ color: "red" }}>*</label><label>NationalID:</label></div>
                     <div class='col-sm-6'>
-                        <input class="form-control" type="number" name="nat_id" onChange={handleChange} style={{ marginLeft: '10px' }} placeholder="x-xxxx-xxxxx-xx-x" value={user.nat_id} maxlength='13'/>
-                        {user.nat_id.length != 13 && <small class='errorInForm'>National number should be 13 character</small>}
+                        <input disabled class="form-control" type="number" name="nat_id" onChange={handleChange} style={{ marginLeft: '10px' }} placeholder="x-xxxx-xxxxx-xx-x" value={user.nat_id} maxlength='13' />
+
                     </div></div>
 
                 <div class='form-group row col-sm-8'>
-                    {checkSubmit ? <small class='errorInForm' style={{ position: 'absolute', right: '20%' }}>Please fill form with correct data</small> : ''}
-                    {checkSubmit==true ?
+                    {error ? <small class='errorInForm' style={{ position: 'absolute', right: '20%' }}>Please fill form with correct data</small> : ''}
+                    {error ?
                         <button type='submit' class='btn btn-primary' style={{ position: 'absolute', right: '0px' }} onClick={onSubmit} disabled>Submit</button> :
                         <button type='submit' class='btn btn-primary' style={{ position: 'absolute', right: '0px' }} onClick={onSubmit}>Submit</button>}
                 </div>

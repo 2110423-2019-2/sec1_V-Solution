@@ -14,13 +14,13 @@ function Item(img, name, desc) {
                     <p class="card-text">{desc}</p>
 
                 </div>
-                
-                {localStorage.getItem('user_type')=='Buyer' ? 
-                (<div class="card-footer edit-store-button">
-                    <ReserveButton />
-                    <PurchaseButton />
-                </div>) :
-                (<div></div>)
+
+                {localStorage.getItem('user_type') == 'Buyer' ?
+                    (<div class="card-footer edit-store-button">
+                        <ReserveButton />
+                        <PurchaseButton />
+                    </div>) :
+                    (<div></div>)
                 }
             </div>
         </div>
@@ -64,7 +64,7 @@ const ShowStore = (props) => {
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
                     {product.map((item) => Item(item.product_type, item.produc_ame, item.product_desc))}
-                    {localStorage.getItem('user_type')=='Seller' ? (LastItem()) : (<div></div>)}
+                    {localStorage.getItem('user_type') == 'Seller' ? (LastItem()) : (<div></div>)}
 
                 </div>
             </div>
