@@ -28,7 +28,7 @@ export default function CreateStoreButton() {
                 image: data.image,
                 store_name:data.store_name,
                 bio:data.bio
-            })
+            }).then(() => localStorage.setItem('store_name', data.store_name))
         } catch (error) {
             console.log(error)
         }

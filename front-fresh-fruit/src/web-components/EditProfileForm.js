@@ -18,8 +18,8 @@ const Informationform = () => {
         "gender": "",
         "nat_id": "",
         "image": "",
-        "store_name":"",
-        "bio":""
+        "store_name": "",
+        "bio": ""
     });
     const [user_token, setUser_token] = useState()
 
@@ -39,8 +39,8 @@ const Informationform = () => {
                 gender: data.gender,
                 nat_id: data.nat_id,
                 image: data.image,
-                store_name:data.store_name,
-                bio:data.bio
+                store_name: data.store_name,
+                bio: data.bio
             })
         } catch (error) {
             console.log(error)
@@ -97,6 +97,14 @@ const Informationform = () => {
                         <Upload avatar={user.image} />
                     </div>
                     <div class="col-md-9">
+                        <div class="form-group row">
+                            <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
+                                <label style={{ color: "red" }}>*</label><label>Store:</label></div>
+                            <div class='col-sm-6'>
+                                <input class="form-control" type="text" name="store_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={user.store_name} />
+                                {user.store_name.length == 0 && <small>please enter you store name</small>}
+                            </div></div>
+
                         <div class="form-group row">
                             <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
                                 <label style={{ color: "red" }}>*</label><label>Name:</label></div>

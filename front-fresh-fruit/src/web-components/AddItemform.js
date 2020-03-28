@@ -15,7 +15,7 @@ function AddItemform() {
         "subcategory": "",
         "province": "",
         "district": "",
-        "product_type": "",
+        "product_type": "A",
         "harvest_date": "",
         "price": "",
         "amount": "",
@@ -67,16 +67,19 @@ function AddItemform() {
                             <h5 class="head-newitem">สร้างรายการสินค้าใหม่</h5>
                             <Form>
 
+                                <Form.Row>
+                                    <Form.Group as={Col} controlId="basic-form">
+                                        <Form.Label>Product Name</Form.Label>
+                                        <Form.Control placeholder="" name="product_name" onChange={e => handleChange(e)} />
+                                    </Form.Group>
+                                </Form.Row>
 
-                                <Form.Group controlId="basic-form">
-                                    <Form.Label>Product Name</Form.Label>
-                                    <Form.Control placeholder="" name="product_name" onChange={e => handleChange(e)} />
-                                </Form.Group>
-
-                                <Form.Group controlId="basic-form">
-                                    <Form.Label>Describtion</Form.Label>
-                                    <Form.Control placeholder="" name="product_desc" onChange={e => handleChange(e)} />
-                                </Form.Group>
+                                <Form.Row>
+                                    <Form.Group as={Col} controlId="basic-form">
+                                        <Form.Label>Describtion</Form.Label>
+                                        <Form.Control placeholder="" name="product_desc" onChange={e => handleChange(e)} />
+                                    </Form.Group>
+                                </Form.Row>
 
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="basic-form">
@@ -100,22 +103,21 @@ function AddItemform() {
                                     </Form.Group>
                                 </Form.Row>
 
-                                <Form.Group controlId="formGridAddress1">
-                                    <Form.Label>Province</Form.Label>
-                                    <Form.Control placeholder="" name="province" onChange={e => handleChange(e)} />
-                                </Form.Group>
-
-                                <Form.Group controlId="formGridAddress2">
-                                    <Form.Label>District</Form.Label>
-                                    <Form.Control placeholder="" name="district" onChange={e => handleChange(e)} />
-                                </Form.Group>
+                                <Form.Row>
+                                    <Form.Group as={Col} controlId="formGridAddress1">
+                                        <Form.Label>Province</Form.Label>
+                                        <Form.Control placeholder="" name="province" onChange={e => handleChange(e)} />
+                                    </Form.Group>
+                                </Form.Row>
 
                                 <Form.Row>
-                                    <Form.Group as={Col} controlId="formType">
-                                        <Form.Label>Type</Form.Label>
-                                        <Form.Control name="product_type" onChange={e => handleChange(e)} />
+                                    <Form.Group as={Col} controlId="formGridAddress2">
+                                        <Form.Label>District</Form.Label>
+                                        <Form.Control placeholder="" name="district" onChange={e => handleChange(e)} />
                                     </Form.Group>
+                                </Form.Row>
 
+                                <Form.Row>
                                     <Form.Group as={Col} controlId="formDate">
                                         <Form.Label>Harvest Date</Form.Label>
                                         <Form.Control type='Date' name="harvest_date" onChange={e => handleChange(e)} />

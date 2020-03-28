@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import homefruit from '../pictures/homefruit.png';
 import buttoncus from '../pictures/buttoncus.png';
 import buttonsell from '../pictures/buttonsell.png';
-import Store from '../web-components/ShowStore';
+import HomeStore from '../web-components/ShowStore';
 import axios from 'axios';
 import {api} from '../config'
 
@@ -56,7 +56,7 @@ useEffect(() => {
 
       {/* -------------- Store part --------------------*/}
 
-      {product.length == 0 ? <h1>Dont have any product on ours system</h1> : <Store product={product}/>}
+      {product.length == 0 ? <h1>Dont have any product on ours system</h1> : <HomeStore product={product}/>}
 
     </div>
 
