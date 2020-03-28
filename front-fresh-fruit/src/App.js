@@ -9,7 +9,6 @@ import ProfileCus from './Page/ProfileCus';
 import YourOrder from './Page/YourOrder';
 import SignUp from './Page/SignUp'
 import Signin from './Page/Signin';
-import Store from './Page/Store';
 import AddItem from './Page/AddItem';
 import ProfileSeller from './Page/ProfileSeller';
 import EditStore from './Page/EditStore';
@@ -120,7 +119,8 @@ function App() {
             <Route exact path='/' component={Home} />
             {/* {localStorage.getItem('Token') !== null ? (<Route path='/profile' component={Profile} />)
               : (<Route path='/signin' component={Signin} />)} */}
-            {localStorage.getItem('user_type') == 'Seller' ? (<Route path='/profile' component={Store} />) : (<Route path='/profile' component={Profile}/>)}
+            {localStorage.getItem('user_type') == 'Seller' ? (<Route path='/profile' component={ProfileSeller} />) : (<Route path='/profile' component={Profile}/>)}
+            {/* <Route path='/profile' component={Profile}/> */}
             <Route path='/signin' component={Signin} />
             <Route path='/register' component={Register} />
             <Route path='/order' component={YourOrder}/>

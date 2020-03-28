@@ -69,8 +69,9 @@ const UploadComponent = (props) => {
                 return res.json()
             })
             .then(images => {
-                setUploading(false)
                 setImages(images)
+                setUploading(false)
+                
             })
             .catch(err => {
                 toast(err.message, 'custom', 2000, toastColor)
@@ -99,7 +100,7 @@ const UploadComponent = (props) => {
     return (
         <div class="container">
             <Notifications />
-            <div class="buttons ">
+            <div class="buttons-upload ">
                 {content()}
             </div>
         </div>

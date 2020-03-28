@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import homefruit from '../pictures/homefruit.png';
 import buttoncus from '../pictures/buttoncus.png';
 import buttonsell from '../pictures/buttonsell.png';
-import Store from '../web-components/ShowStore';
+import HomeStore from '../web-components/ShowStore';
 import axios from 'axios';
 import {api} from '../config'
 
@@ -66,7 +66,7 @@ useEffect(() => {
               <div class="col" style={{ textAlign: "center", color: "white" }}><h1>Find Daily & Organic fruit</h1>
                 <h2>with</h2><h1>FRESHFRUIT</h1>
                 <input type="text" name="search" style={{ marginTop: "40px", width: "500px", height: "45px", borderRadius: "20px"}}  onChange={handleChange} />
-                <div style={{ marginTop: "40px" }}><button style={{ width: '120px', height: '40px', borderRadius: "20px" }} onClick={getProduct}>Search</button></div>
+                {/*<div style={{ marginTop: "40px" }}><button style={{ width: '120px', height: '40px', borderRadius: "20px" }} onClick={getProduct}>Search</button></div>*/}
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@ useEffect(() => {
 
       {/* -------------- Store part --------------------*/}
 
-      {product.length == 0 ? <h1>Dont have any product on ours system</h1> : <Store product={product}/>}
+      {product.length == 0 ? <h1>Dont have any product on ours system</h1> : <HomeStore product={product}/>}
 
     </div>
 

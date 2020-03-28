@@ -4,8 +4,8 @@ import { Form, Col, Row, Button, Container } from 'react-bootstrap'
 import UserContext from '../Context/UserContext'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
-import {api} from '../config'
-const url = api+"/createproduct"
+import { api } from '../config'
+const url = api + "/createproduct"
 
 function AddItemform() {
     const [product, setProduct] = useState({
@@ -15,7 +15,7 @@ function AddItemform() {
         "subcategory": "",
         "province": "",
         "district": "",
-        "product_type": "",
+        "product_type": "A",
         "harvest_date": "",
         "price": "",
         "amount": "",
@@ -42,13 +42,13 @@ function AddItemform() {
             , {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Token `+localStorage.getItem('Token')
+                    'Authorization': `Token ` + localStorage.getItem('Token')
                 }
             })
             .then((res) => {
                 checkState()
                 console.log(res.status)
-                res.status === 200 ? alert("Add Item Successful"): alert("Error on add Item")
+                res.status === 200 ? alert("Add Item Successful") : alert("Error on add Item")
             })
             .catch((err) => {
                 console.log(err)
@@ -64,19 +64,22 @@ function AddItemform() {
                     <Container >
                         <Col md={{ span: 6, offset: 3 }}>
                             {getUsername ? <h1 class="head-newitem">สวัสดีครับคุณ {getUsername()}</h1> : <h1 class="head-newitem">Please login again</h1>}
-
+                            <h5 class="head-newitem">สร้างรายการสินค้าใหม่</h5>
                             <Form>
-                                <h5 class="head-newitem">สร้างรายการสินค้าใหม่</h5>
 
-                                <Form.Group controlId="basic-form">
-                                    <Form.Label>Product Name</Form.Label>
-                                    <Form.Control placeholder="" name="product_name" onChange={e => handleChange(e)} />
-                                </Form.Group>
+                                <Form.Row>
+                                    <Form.Group as={Col} controlId="basic-form">
+                                        <Form.Label>Product Name</Form.Label>
+                                        <Form.Control placeholder="" name="product_name" onChange={e => handleChange(e)} />
+                                    </Form.Group>
+                                </Form.Row>
 
-                                <Form.Group controlId="basic-form">
-                                    <Form.Label>Describtion</Form.Label>
-                                    <Form.Control placeholder="" name="product_desc" onChange={e => handleChange(e)} />
-                                </Form.Group>
+                                <Form.Row>
+                                    <Form.Group as={Col} controlId="basic-form">
+                                        <Form.Label>Describtion</Form.Label>
+                                        <Form.Control placeholder="" name="product_desc" onChange={e => handleChange(e)} />
+                                    </Form.Group>
+                                </Form.Row>
 
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="basic-form">
@@ -100,22 +103,21 @@ function AddItemform() {
                                     </Form.Group>
                                 </Form.Row>
 
-                                <Form.Group controlId="formGridAddress1">
-                                    <Form.Label>Province</Form.Label>
-                                    <Form.Control placeholder="" name="province" onChange={e => handleChange(e)} />
-                                </Form.Group>
-
-                                <Form.Group controlId="formGridAddress2">
-                                    <Form.Label>District</Form.Label>
-                                    <Form.Control placeholder="" name="district" onChange={e => handleChange(e)} />
-                                </Form.Group>
+                                <Form.Row>
+                                    <Form.Group as={Col} controlId="formGridAddress1">
+                                        <Form.Label>Province</Form.Label>
+                                        <Form.Control placeholder="" name="province" onChange={e => handleChange(e)} />
+                                    </Form.Group>
+                                </Form.Row>
 
                                 <Form.Row>
-                                    <Form.Group as={Col} controlId="formType">
-                                        <Form.Label>Type</Form.Label>
-                                        <Form.Control name="product_type" onChange={e => handleChange(e)} />
+                                    <Form.Group as={Col} controlId="formGridAddress2">
+                                        <Form.Label>District</Form.Label>
+                                        <Form.Control placeholder="" name="district" onChange={e => handleChange(e)} />
                                     </Form.Group>
+                                </Form.Row>
 
+                                <Form.Row>
                                     <Form.Group as={Col} controlId="formDate">
                                         <Form.Label>Harvest Date</Form.Label>
                                         <Form.Control type='Date' name="harvest_date" onChange={e => handleChange(e)} />

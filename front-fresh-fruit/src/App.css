@@ -1,0 +1,334 @@
+@import url(c:\Users\Waragon\Web\front_V-Solution\sec1_V-Solution\front-fresh-fruit\src\styles\_upload.css);
+.home-text-alignment {
+  text-align: center;
+}
+
+.home-pic-bg {
+  position: relative;
+  text-align: center;
+  color: white;
+  max-height: auto;
+  max-width: 100%;
+  opacity: 90%;
+}
+
+.text-content1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #4e4e4e;
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+.text-content2 {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #8b8b8b;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.text-content3 {
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #585858;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.text-block1 {
+  position: absolute;
+  top: 60%;
+  left: 30%;
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.text-block2 {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.heading {
+  font-size: 8rem;
+  letter-spacing: 6px;
+  margin: 2rem 0;
+}
+
+.heading--stroke {
+  -webkit-text-stroke-width: 2px;
+  -moz-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #ffffff;
+  -moz-text-stroke-color: #ffffff;
+  color: transparent;
+}
+
+.heading--shadow {
+  text-shadow: 6px 6px #d1d4d2;
+}
+
+.heading--stroke-shadow {
+  color: #f37272;
+  text-shadow: -2px 0 #ffffff, 0 -2px #ffffff, 2px 0 #ffffff, 0 2px #ffffff, 2px 2px #ffffff, -2px -2px #ffffff, -2px 2px #ffffff, 2px -2px #ffffff, 6px 6px #d1d4d2;
+}
+
+.heading--halftone {
+  position: relative;
+}
+
+.heading--halftone:after {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAHElEQVQYV2NUVFT8f//+fUYGBgYGMAEDcA5IBQCKJQVmn76DhAAAAABJRU5ErkJggg==") repeat;
+  -webkit-text-stroke-width: 0;
+  -moz-text-stroke-width: 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  font-size: 8rem;
+  letter-spacing: 6px;
+  left: calc(50% + 6px);
+  top: calc(50% + 6px);
+  content: "Hello";
+  z-index: -1;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.heading--halftone-color:after {
+  background-color: #d1d4d2;
+}
+
+.head-newitem {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  color: #5e5757;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.card-a {
+  width: 16rem;
+  height: 25rem;
+  margin-left: 10px;
+  margin-bottom: 25px;
+  margin-right: 10px;
+}
+
+.pic-card {
+  max-height: 10rem;
+}
+
+.edit-store-title {
+  display: block;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.underline {
+  border-bottom: 2px solid #414142;
+}
+
+.edit-store-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.btn-edit {
+  margin-bottom: 15px;
+}
+
+.edit-launch-botton {
+  margin-right: 20px;
+}
+
+.row-card {
+  margin-top: 30px;
+}
+
+.col-form-width {
+  width: 50px;
+}
+
+.profile-pic {
+  position: inherit;
+  margin-top: -60px;
+  margin-left: 10%;
+  outline: none;
+  border: 0;
+}
+
+.edit-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+  color: #35356d;
+}
+
+.sell-bg {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 337px;
+}
+
+.seller-card {
+  margin: auto;
+  border-radius: 20px;
+}
+
+.icon-profile {
+  margin-left: 15%;
+  margin-top: 15%;
+}
+
+.card-title-profile {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.create-button {
+  color: #fff;
+  background-color: #6ac17d;
+  border-color: #6ac17d;
+}
+
+.bg {
+  min-height: 100%;
+  min-width: 1024px;
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.thaifont {
+  font-family: 'Kanit', sans-serif;
+}
+
+.page {
+  min-height: 100%;
+  min-width: 960px;
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#logoInNavbar {
+  max-height: 50px;
+  max-width: 50px;
+}
+
+.inputfield {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+a {
+  color: white;
+}
+
+.uploadPic {
+  color: white;
+}
+
+.profileCover {
+  max-height: 30%;
+  min-width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.profilePic {
+  border: 0.5px solid black;
+  background-color: #FFFFFF;
+  height: 150px;
+  border-radius: 50%;
+  width: 150px;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+.logoAndEditInProfile {
+  float: right;
+}
+
+#editInProfile {
+  margin-left: 5px;
+}
+
+#edit-icon {
+  margin-left: 0.1 rem;
+}
+
+#spaceRegForm {
+  position: absolute;
+  right: 65%;
+}
+/*# sourceMappingURL=App.css.map */
