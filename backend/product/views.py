@@ -70,8 +70,8 @@ def create_product(request):
         deliverCompany = deliverCompany,
         deliverPrice  = deliverPrice,
     )
-
-    return Response({'result': 'Successfully create product'},status=HTTP_200_OK)
+    data = product_to_dict(product)
+    return Response(data ,status=HTTP_200_OK)
 
 @api_view(['GET'])
 @permission_classes((AllowAny,))
