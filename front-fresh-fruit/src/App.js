@@ -17,7 +17,7 @@ import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
 import HomePage from './Page/HomePage';
-
+import Payment from './Page/Payment'
 import Report from './Page/Report'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
@@ -120,6 +120,7 @@ function App() {
               : (<Route path='/signin' component={Signin} />)} */}
             {localStorage.getItem('user_type') == 'Seller' ? (<Route path='/profile' component={ProfileSeller} />) : (<Route path='/profile' component={Profile}/>)}
             {/* <Route path='/profile' component={Profile}/> */}
+            <Route path='/payment' component={Payment}/>
             <Route path='/signin' component={Signin} />
             <Route path='/register' component={Register} />
             <Route path='/order' component={YourOrder}/>
