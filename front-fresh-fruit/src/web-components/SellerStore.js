@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { api } from '../config';
 
-const reserveURL = api+ '/updateproduct/'
-const launchURL = api+ '/updateproduct/'
+const reserveURL = api + '/updateproduct/'
+const launchURL = api + '/updateproduct/'
 
 const ShowStore = (props) => {
     const [product, setProduct] = useState([]);
@@ -21,7 +21,7 @@ const ShowStore = (props) => {
 
     function Item(img, name, desc, id) {
         const onLaunch = () => {
-            axios.post(launchURL+id+'/L', [],{
+            axios.post(launchURL + id + '/L', [], {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ` + localStorage.getItem('Token')
@@ -33,7 +33,7 @@ const ShowStore = (props) => {
         }
 
         const onReserve = () => {
-            axios.post(reserveURL+id+'/R', [],{
+            axios.post(reserveURL + id + '/R', [], {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ` + localStorage.getItem('Token')
@@ -44,6 +44,8 @@ const ShowStore = (props) => {
                 })
         }
 
+        const clickCard = () => { }
+
         return (
             <div>
                 <div class="card  card-a " >
@@ -52,6 +54,7 @@ const ShowStore = (props) => {
                         <h5 class="card-title">{name}</h5>
                         <p class="card-text">{desc}</p>
                     </div>
+
                     <div class="edit-store-button-seller card-footer bg-transparent ">
                         <button type="button" class="btn btn-outline-warning" onClick={onReserve}>Reserve</button>
                         <button type="button" class="btn btn-outline-success" onClick={onLaunch}>Launch</button>
@@ -76,13 +79,12 @@ const ShowStore = (props) => {
         )
     }
 
-    console.log("store", product)
     return (
         <div >
             <div class="container">
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
-                    {product.map((item) => Item(item.product_type, item.product_name, item.product_desc,item.id))}
+                    {product.map((item) => Item(item.product_type, item.product_name, item.product_desc, item.id))}
                     {LastItem()}
 
                 </div>
