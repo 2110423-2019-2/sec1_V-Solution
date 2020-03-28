@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import ReserveButton from './ReserveButton';
 import PurchaseButton from './PurchaseButton';
 
-function Item(img, name, desc) {
+function Item(img, name, desc,price,amount) {
     return (
         <div>
             <div class="card  card-a " >
@@ -15,12 +15,13 @@ function Item(img, name, desc) {
 
                 </div>
 
-                {localStorage.getItem('user_type') == 'Buyer' ?
-                    (<div class="card-footer edit-store-button">
-                        <ReserveButton />
-                        <PurchaseButton />
-                    </div>) :
-                    (<div></div>)
+                
+                {localStorage.getItem('user_type')=='Buyer' ? 
+                (<div class="card-footer edit-store-button">
+                    <ReserveButton amount={amount}/>
+                    <PurchaseButton amount={amount}/>
+                </div>) :
+                (<div></div>)
                 }
             </div>
         </div>
@@ -63,8 +64,9 @@ const ShowStore = (props) => {
             <div class="container">
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
-                    {product.map((item) => Item(item.product_type, item.produc_ame, item.product_desc))}
-                    {localStorage.getItem('user_type') == 'Seller' ? (LastItem()) : (<div></div>)}
+
+                    {product.map((item) => Item(item.product_type, item.product_name, item.product_desc,item.price,item.amount,item.product_id))}
+                    {localStorage.getItem('user_type')=='Seller' ? (LastItem()) : (<div></div>)}
 
                 </div>
             </div>

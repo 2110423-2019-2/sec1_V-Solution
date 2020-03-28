@@ -17,6 +17,7 @@ import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
 import HomePage from './Page/HomePage';
+import ProductDetail from './Page/ProductDetail';
 
 import Report from './Page/Report'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
