@@ -6,18 +6,20 @@ import {api} from '../config'
 
 const Cart = () => {
 
-    const productUrl = ""
+    const productUrl = api + "/allproduct" // ++++ ไออันนี้ต้องเป็น cart แต่ใน cart ยังไม่เข้ากุเลยดึงมาจากหน้า product มาก่อนน ++++
     const [product, setProduct] = useState([])
     
+    var price = 0
+    product.map(p=>{price += p.price})
 
     useEffect(() => {
         axios.get(productUrl).then(res =>{
             const {data} = res
-            alert(JSON.stringify(data))
             setProduct(data)
         })
         
     },[])
+    
 
     function renderSwitch(cnt) {
 
@@ -42,7 +44,7 @@ const Cart = () => {
                         {product.map(i=> <CartComponent name={i.name} price={i.price}/>)}
 
                         <div class='cart-footer'>
-                            <h1 style={{ fontFamily: "Marker Felt", fontSize: "40px" }}>Total = a}</h1>
+                <h1 style={{ fontFamily: "Marker Felt", fontSize: "40px" }}>Total = {price}</h1>
                         </div>
 
                         <div class='cart-footer' style={{paddingBottom:"20px"}}>

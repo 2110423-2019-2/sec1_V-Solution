@@ -17,7 +17,12 @@ import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
 import HomePage from './Page/HomePage';
+
 import Payment from './Page/Payment'
+
+import ProductDetail from './Page/ProductDetail';
+
+>>>>>>> ef02e4d009099082f3d08fd675ed0771d3ade67b
 import Report from './Page/Report'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
