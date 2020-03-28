@@ -6,7 +6,7 @@ import { faImages, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { api } from '../config'
 import CreateStoreButton from '../web-components/CreateStoreButton'
 import ProfilePicture from '../web-components/ProfilePicture'
-import ShowStore from '../web-components/ShowStore'
+import SellerStore from '../web-components/SellerStore'
 import axios from 'axios'
 
 const userProductUrl = api+"/getuserproduct/"+localStorage.getItem('Username')
@@ -61,7 +61,7 @@ const ProfileSeller = () => {
                         </div>
                     </div>
                     <div class="card seller-card w-75">
-                        <ShowStore product={product} />
+                        <SellerStore product={product} />
                     </div>
                 </div>
             </div>
