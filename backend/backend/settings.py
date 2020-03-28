@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'report',
     'comment',
     'purchase',
+    'payment',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

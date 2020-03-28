@@ -12,6 +12,7 @@ from rest_framework.status import (
     HTTP_200_OK
 )
 from rest_framework.response import Response
+from django.utils.datastructures import MultiValueDictKeyError
 
 import json
 from rest_framework.parsers import JSONParser
@@ -86,13 +87,18 @@ def upload_product_image(request, product_id):
     user = token.user
     user_profile = Profile.objects.get(user=user)
 
-    file = request.FILES['image']
+    try:
+        file = request.FILES['image']
+    except MultiValueDictKeyError:
+        return Response({'error': 'Invalid request'}, status=HTTP_400_BAD_REQUEST)
+
     product = Product.objects.get(pk=product_id)
     if user_profile != product.seller:
-        return Response(status=HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Invalid credentials'}, status=HTTP_401_UNAUTHORIZED)
     product.image = file
     product.save()
-    return Response(status=HTTP_200_OK)
+    image_url = product.image.url
+    return Response({'url': image_url},status=HTTP_200_OK)
 
 @api_view(["POST"])
 def update_product(request, product_id, status):
@@ -103,7 +109,7 @@ def update_product(request, product_id, status):
 
     product = Product.objects.get(pk=product_id)
     if user_profile != product.seller:
-        return Response({'error': 'Invalid credentials'}, status=HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Invalid credentials'}, status=HTTP_401_UNAUTHORIZED)
     if status.upper() in ['L', 'R', 'N']:
         if product.productType == 'A' or status.upper() == 'N':
             product.productType = status.upper()
@@ -165,7 +171,7 @@ def edit_product(request, product_id):
 def get_product_from_user(request, username):
     user = User.objects.get(username=username)
     profile = Profile.objects.get(user=user)
-    products = Product.objects.filter(seller=profile)
+    products = Product.objects.filter(seller=profile).exclude(productType='N')
     data = []
     for product in products: 
         data.append(product_to_dict(product))

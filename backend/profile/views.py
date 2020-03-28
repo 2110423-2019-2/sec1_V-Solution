@@ -9,6 +9,7 @@ from rest_framework.status import (
     HTTP_200_OK
 )
 from rest_framework.response import Response
+from django.utils.datastructures import MultiValueDictKeyError
 
 import json
 import email_sys
@@ -180,8 +181,10 @@ def upload_user_profile(request):
     token = Token.objects.get(key=token_string)
     user = token.user
     user_profile = Profile.objects.get(user=user)
-
-    file = request.FILES['image']
+    try:
+        file = request.FILES['image']
+    except MultiValueDictKeyError:
+        return Response({'error': 'Invalid request'}, status=HTTP_400_BAD_REQUEST)
     user_profile.avatar = file
     user_profile.save()
     image = user_profile.avatar.url
