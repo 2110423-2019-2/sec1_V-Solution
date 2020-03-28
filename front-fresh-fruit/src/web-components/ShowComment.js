@@ -26,7 +26,6 @@ const ShowComment = (props) => {
     return (
         <div >
             <div class="container">
-                <div class="edit-store-title underline ">Comment</div>
                 <div class="row row-card">
                     {comment.map((item) => Comment(item.poster_user,item.text))}
                 </div>

@@ -1,5 +1,15 @@
+#add-comment {
+    margin-bottom: 50px;
+}
+
+#comment-box {
+    height: 100px;
+    margin-bottom: 20px;
+    padding-bottom: 70px;
+}
+
 #submit-button {
-    /* position: ; */
+    float: right;
     width: 100px;
     color: white;
     background-color: #FFA000;

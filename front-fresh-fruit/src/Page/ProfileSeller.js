@@ -66,12 +66,7 @@ const ProfileSeller = () => {
                         <SellerStore product={product} />
                     </div>
                     <div class="card seller-card w-75">
-                        <div id="add-comment" >
-                            <AddCommentform/>
-                        </div>
-                        <div id="all-comment">
-                            <ShowComment/>
-                        </div>
+                        <AddCommentform/>
                     </div>
                 </div>
             </div>

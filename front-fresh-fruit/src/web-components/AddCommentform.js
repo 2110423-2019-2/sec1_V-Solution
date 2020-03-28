@@ -4,6 +4,7 @@ import { Form, Col, Button, Container } from 'react-bootstrap'
 import axios from 'axios'
 import '../styles/_addcommentform.css'
 import {api} from '../config'
+import ShowComment from "../web-components/ShowComment"
 const url = api+"/comment/postcomment/"
 
 function AddCommentform() {
@@ -48,11 +49,12 @@ function AddCommentform() {
         <div>
             <Container >
                 <Col class="card w-75">
-                    <div class="card-body">
+                    <div class="card-body" id="add-comment">
+                        <div class="edit-store-title underline ">Comment</div>
                         {localStorage.getItem('Username') ? <h5 class="head-newcomment card-title">{localStorage.getItem("Username")}</h5> : <h5 class="head-newcomment card-title">Please login again</h5>}
                         <Form>
                             <Form.Label>Comment</Form.Label>
-                            <Form.Control placeholder="" name="text" onChange={e => handleChange(e)} />
+                            <Form.Control placeholder="" name="text" id="comment-box" onChange={e => handleChange(e)} />
                             <Button id="submit-button" variant="primary" type="button" onClick={(e, usertoken) => {
                                 onSubmit()
                             }}>
@@ -60,7 +62,11 @@ function AddCommentform() {
                             </Button>
                         </Form>
                     </div>
+                    <div>
+                        {comment.length == 0 ? <h5>No comment</h5> : <ShowComment comment={[]}/>}
+                    </div>
                 </Col>
+                
             </Container>
         </div>
 
