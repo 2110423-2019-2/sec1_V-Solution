@@ -22,7 +22,7 @@ const ShowStore = (props) => {
         history.push('/addItem')
     }
 
-    function Item(img, name, desc, id) {
+    function Item(img, name, desc, id, item) {
         const onLaunch = () => {
             axios.post(launchURL + id + '/L', [], {
                 headers: {
@@ -50,7 +50,7 @@ const ShowStore = (props) => {
         return (
             <div>
                 <div class="card  card-a " >
-                    <img src={img} class="card-img-top pic-card" alt="..." />
+                    <img src={"http://localhost:8000" +img} class="card-img-top pic-card" alt="..." />
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
@@ -58,7 +58,7 @@ const ShowStore = (props) => {
 
                             </div>
                             <div class="col-3">
-                                <EditProductModal/>
+                                <EditProductModal item={item}/>
                             </div>
                         </div>
                         <p class="card-text">{desc}</p>
@@ -94,7 +94,7 @@ const ShowStore = (props) => {
             <div class="container">
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
-                    {product.map((item) => Item(item.product_type, item.product_name, item.product_desc, item.id))}
+                    {product.map((item) => Item(item.product_type, item.product_name, item.product_desc, item.id, item))}
                     {LastItem()}
 
                 </div>
