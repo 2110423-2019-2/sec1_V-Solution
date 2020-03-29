@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImages, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCarrot, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 export default props =>
   <div className='buttons-upload fadein'>
@@ -14,7 +14,7 @@ export default props =>
       :
       <div className='button-upload'>
         <label htmlFor='multi'>
-          <FontAwesomeIcon icon={faImages} color='#6d84b4' size='10x' />
+          <FontAwesomeIcon icon={faCarrot} color='#6d84b4' size='10x' />
         </label>
         <input type='file' id='multi' onChange={props.onChange} multiple />
       </div>

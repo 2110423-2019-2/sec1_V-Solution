@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { api } from '../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisV,faCarrot } from '@fortawesome/free-solid-svg-icons'
 import EditProductModal from '../web-components/EditProductModal'
 
 const reserveURL = api + '/updateproduct/'
@@ -50,7 +50,11 @@ const ShowStore = (props) => {
         return (
             <div>
                 <div class="card  card-a " >
-                    <img src={"http://localhost:8000" +img} class="card-img-top pic-card" alt="..." />
+                    {img?
+                    <img src={"http://localhost:8000" +img} class="card-img-top pic-card" alt="..." />:
+                    <FontAwesomeIcon class="card-img-top pic-card" alt="..." icon={faCarrot} color='#6d84b4' size='10x' />
+                    }
+                    
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">

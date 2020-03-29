@@ -99,13 +99,15 @@ const UploadComponent = (props) => {
                 return <Spinner />
             case images.length > 0:
                 return <div className='button-upload'>
-                    <label for="file-input">
+                    <label htmlFor="file-input">
                         <img className='img-upload fadein' src={images} alt="" />
                     </label>
                     <input id="file-input" type="file" onChange={(e) => onChange(e)} />
                 </div>
+            case props.type === "product":
+                return <UploadButton single={false} onChange={(e) => onChange(e)} />
             default:
-                return <UploadButton single="true" onChange={(e) => onChange(e)} />
+                return <UploadButton single={true} onChange={(e) => onChange(e)} />
         }
     }
 

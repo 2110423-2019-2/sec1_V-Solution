@@ -36,13 +36,6 @@ const EditProductModal = (props) => {
     const handleChange = (e) => {
         setProduct({ ...product, [e.target.name]: e.target.value })
         console.log(product)
-
-        switch (e.target.name) {
-            case 'tel':
-                e.target.value.length === 10 ? setError(false) : setError(true)
-                break
-            default:
-        }
     }
 
     const onSubmit = () => {
@@ -64,7 +57,7 @@ const EditProductModal = (props) => {
                 <FontAwesomeIcon icon={faEllipsisV} color='#AFAFAF' size='2x' />
             </button>
 
-            <div class="modal fade" id={"editModal" + product.id} tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal fade" id={"editModal" + product.id} tabIndex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
