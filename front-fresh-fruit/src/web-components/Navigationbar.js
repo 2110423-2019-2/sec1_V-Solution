@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Nav, NavDropdown } from 'react-bootstrap'
+import { Nav, NavDropdown ,Popover,Button,OverlayTrigger} from 'react-bootstrap'
 import "../styles/_navbar.css"
 import Nav_logo from '../pictures/Nav_logo.png';
 import Nav_user from '../pictures/Nav_user.png';
@@ -10,6 +10,19 @@ import UserContext from '../Context/UserContext'
 import { useHistory } from "react-router-dom";
 
 function Navigationbar() {
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Title as="h3">Popover right</Popover.Title>
+      <Popover.Content>
+        And here's some <strong>amazing</strong> content. It's very engaging.
+        right?
+      </Popover.Content>
+    </Popover>
+  );
+
+
+
   const history = useHistory();
   return (
     <nav class="navbar navbar-light bg-light">
@@ -40,9 +53,14 @@ function Navigationbar() {
               </form>
           </NavDropdown>
         </div>
-          
+        
+        
           <Nav.Link href="/Cart"><img src={Nav_cart} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
-          <Nav.Link href="/"><img src={Nav_bell} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
+          <Nav.Link >
+            <OverlayTrigger trigger="click" placement="bottom"   overlay={popover}>
+              <img src={Nav_bell} className="side-nav" activeClassName="side-nav-active"/>
+            </OverlayTrigger>
+          </Nav.Link>
           <Nav.Link href="/profile"><img src={Nav_user} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
           <Nav.Link>{localStorage.getItem('first_name')==null ? (<p></p>) : 
                     (
