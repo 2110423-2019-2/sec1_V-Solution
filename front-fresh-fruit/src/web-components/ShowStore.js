@@ -4,13 +4,13 @@ import { useHistory } from "react-router-dom";
 import ReserveButton from './ReserveButton';
 import PurchaseButton from './PurchaseButton';
 
-function Item(img, name, desc,price,amount) {
+function Item(id, img, name, desc,price,amount) {
     return (
         <div>
             <div class="card  card-a " >
                 <img src={img} class="card-img-top pic-card" alt="..." />
                 <div class="card-body">
-                    <h5 class="card-title">{name}</h5>
+                <h5 class="card-title"><a href={'/getproduct/'+id}>{name}</a></h5>
                     <p class="card-text">{desc}</p>
 
                 </div>
@@ -65,7 +65,7 @@ const ShowStore = (props) => {
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
 
-                    {product.map((item) => Item(item.product_type, item.product_name, item.product_desc,item.price,item.amount,item.product_id))}
+                    {product.map((item) => Item(item.id, item.product_type, item.product_name, item.product_desc,item.price,item.amount,item.product_id))}
                     {localStorage.getItem('user_type')=='Seller' ? (LastItem()) : (<div></div>)}
 
                 </div>
