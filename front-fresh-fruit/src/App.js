@@ -20,9 +20,8 @@ import HomePage from './Page/HomePage';
 
 import Payment from './Page/Payment'
 
-import ProductDetail from './Page/ProductDetail';
+import product_detail from './Page/ProductDetail';
 
->>>>>>> ef02e4d009099082f3d08fd675ed0771d3ade67b
 import Report from './Page/Report'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
@@ -125,7 +124,7 @@ function App() {
               : (<Route path='/signin' component={Signin} />)} */}
             {localStorage.getItem('user_type') == 'Seller' ? (<Route path='/profile' component={ProfileSeller} />) : (<Route path='/profile' component={Profile}/>)}
             {/* <Route path='/profile' component={Profile}/> */}
-            <Route path='/payment' component={Payment}/>
+            <Route path='/payment' component={Payment} paymentAmount={100000000}/>
             <Route path='/signin' component={Signin} />
             <Route path='/register' component={Register} />
             <Route path='/order' component={YourOrder}/>
@@ -136,6 +135,7 @@ function App() {
             <Route path='/editStore' component={EditStore} />
             <Route path='/addItem' component={AddItemform} />
             <Route path='/cart' component={Cart} />
+            <Route path='/getproduct/:id' component={product_detail}/>
           </UserContext.Provider>
         </Switch>
       </Router>

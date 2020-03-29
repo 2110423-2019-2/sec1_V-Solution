@@ -1,17 +1,35 @@
 import React,{useState} from 'react'
 import "../styles/_purchasebtn.css"
 import axios from 'axios'
-
+import {api} from '../config';
 function PurchaseButton(props) {
     const [amount,setAmount] = useState(0)
-
-    const submitReserve = () =>{
+    const [data,setData] = useState({
+        "id":'',
+        'amount':0,
+    })
+    const url = api+'/cart/add'
+    const submitReserve = async (e) =>{
         if (amount>props.amount){
             alert('we dont have enough amount that you want')
         }else{
-            
-            alert('do something about update database')
-            alert(amount)
+            setData({
+                'id': String(props.id),
+                'amount': amount
+            })
+            await axios.post(url,data,{
+                headers:{
+                    'Authorization': `Token `+localStorage.getItem('Token')
+                }
+            })
+            .then((res) => {
+                console.log(res.status)
+                alert('Already add to cart')
+            })
+            .catch((err) => {
+                console.log(err)
+                alert("Error on add  Item to cart")
+            })
         }
     }
     return(
@@ -22,11 +40,11 @@ function PurchaseButton(props) {
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <form class="form-inline xl-form mr-auto mb-8">
 
-
+                <h1>{props.id}</h1>
                 <p id='amount' style={{color:'orange'}}>we have {props.amount} in our stock</p>
-                    <input class="dropdown-item form-control" type="text" placeholder="Amount" id="reserve-input" onkeyup="filterFunction()" onChange={e => setAmount(e.target.value)}/>
+                    <input class="dropdown-item form-control" type="number" placeholder="Amount" id="reserve-input" onkeyup="filterFunction()" onChange={e => setAmount(e.target.value)}/>
                     
-                    <button class="dropdown-item" id="purchase-button" type="submit" class='btn btn-primary' onClick={submitReserve}>Purchase</button>
+                    <button class="dropdown-item" id="purchase-button" type="button" class='btn btn-primary' onClick={submitReserve}>Purchase</button>
                 </form>
             </div>
         </div>

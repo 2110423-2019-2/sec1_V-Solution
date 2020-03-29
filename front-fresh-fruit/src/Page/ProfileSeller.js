@@ -70,7 +70,7 @@ const ProfileSeller = () => {
                             <AddCommentform/>
                         </div>
                         <div id="all-comment">
-                            <ShowComment/>
+                            <ShowComment comment={[]}/>
                         </div>
                     </div>
                 </div>

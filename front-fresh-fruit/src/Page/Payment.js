@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 
 
-const Payment = () =>{
+const Payment = (props) =>{
     
 
     const {OmiseCard} = window;
@@ -9,13 +9,14 @@ const Payment = () =>{
     useEffect(()=>{
         
         OmiseCard.configure({
-            publicKey: 'OMISE_PUBLIC_KEY'
+            publicKey: 'pkey_test_5h0v8i1ah7jb8x13oxa',
+            amount: `${props.paymentAmount}`,
           });
           
           OmiseCard.configureButton('#checkout-button', {
-            amount: 3000,
-            currency: 'USD',
-            buttonLabel: 'Pay 30 USD'
+            amount: `${props.paymentAmount}`,
+            currency: 'THB',
+            buttonLabel: 'Pay',
           });
 
         OmiseCard.attach();
@@ -23,9 +24,12 @@ const Payment = () =>{
     
     return (
         <div>
+            <h1>{props.paymentAmount}</h1>
         <h1>payment page</h1>
-        <form action='/checkout.php' method='post'>
+        
+        <form action='/profile' method='post'>
             <input type='submit' value='Pay' id='checkout-button'/>
+            
         </form>
         </div>
     )

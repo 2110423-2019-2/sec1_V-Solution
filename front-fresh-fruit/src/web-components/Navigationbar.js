@@ -13,10 +13,9 @@ function Navigationbar() {
 
   const popover = (
     <Popover id="popover-basic">
-      <Popover.Title as="h3">Popover right</Popover.Title>
+      <Popover.Title as="h2">Notification</Popover.Title>
       <Popover.Content>
-        And here's some <strong>amazing</strong> content. It's very engaging.
-        right?
+        <div class='card' style={{width:'250px',height:'50px'}}>this is notification data</div>
       </Popover.Content>
     </Popover>
   );
@@ -57,7 +56,7 @@ function Navigationbar() {
         
           <Nav.Link href="/Cart"><img src={Nav_cart} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
           <Nav.Link >
-            <OverlayTrigger trigger="click" placement="bottom"   overlay={popover}>
+            <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
               <img src={Nav_bell} className="side-nav" activeClassName="side-nav-active"/>
             </OverlayTrigger>
           </Nav.Link>

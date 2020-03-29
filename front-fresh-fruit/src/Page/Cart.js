@@ -3,6 +3,7 @@ import '../styles/_cart.css'
 import CartComponent from '../web-components/CartComponent'
 import axios from 'axios';
 import {api} from '../config'
+import Payment from './Payment';
 
 const Cart = () => {
 
@@ -71,8 +72,9 @@ const Cart = () => {
             </div>
 
             {renderSwitch(product.length)}
-
+            <Payment paymentAmount={10000} />
         </div>
+        
 
     );
 };

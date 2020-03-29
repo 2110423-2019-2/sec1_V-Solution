@@ -21,6 +21,9 @@ const ShowComment = (props) => {
 
     useEffect(() => {
         setComment(props.comment)
+        console.log('this is comment')
+        console.log(comment)
+        console.log('this is comment')
     }, [props])
 
     return (
@@ -28,7 +31,9 @@ const ShowComment = (props) => {
             <div class="container">
                 <div class="edit-store-title underline ">Comment</div>
                 <div class="row row-card">
-                    {comment.map((item) => Comment(item.poster_user,item.text))}
+                    {comment.length!==0 ? 
+                    comment.map((item) => Comment(item.poster_user,item.text))
+                    : <div>Dont have any comment</div>}
                 </div>
             </div>
         </div>

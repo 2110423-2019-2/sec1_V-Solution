@@ -2,15 +2,16 @@ import React, { useState, useEffect } from 'react';
 import '../App.scss';
 import axios from 'axios';
 import Fruit from '../pictures/fruit.png';
-import purchasebutton from '../web-components/PurchaseButton'
-import reservebutton from '../web-components/ReserveButton'
+import Purchasebutton from '../web-components/PurchaseButton'
+import Reservebutton from '../web-components/ReserveButton'
 import { useHistory } from 'react-router-dom';
 import {api} from '../config'
+import { useParams} from "react-router";
 
-const productUrl= api+"/getuserproduct"
+const productUrl= api+"/getproduct/"
 
 const Product = (props) => {
-    const useHistory = useHistory();
+    const history = useHistory();
 
     const [productName, setProductName] = useState();
     const [productDes, setDescription] = useState();
@@ -23,8 +24,9 @@ const Product = (props) => {
     const [deliverPrice, setDeliverPrice] = useState();
     const [amount, setAmount] = useState();
 
+    let { id } = useParams();
     const fetchProduct = async () =>{
-        const data = await axios.get(productUrl).then(function (res){
+        const data = await axios.get(productUrl+id).then(function (res){
             setProductName(res.data.productName)
             setDescription(res.data.productDes)
             setHarvest(res.data.harvest_date)
@@ -35,10 +37,13 @@ const Product = (props) => {
             setDeliverCompany(res.data.deliverCompany)
             setDeliverPrice(res.data.deliverPrice)
             setAmount(res.data.amount)
+            
         })
         .catch((err) => console.log(err))
     }
-
+    useEffect(()=>{
+        fetchProduct()
+    },[])
 
     return (
         <div>
@@ -49,6 +54,8 @@ const Product = (props) => {
                 <div class="row" style={{height:"auto"}}>
                     <div class="col" style={{textAlign: "center", marginLeft:"20px"}}><img src={Fruit} style={{height:'250px',width:'150px'}}/></div>
                     <div class="col" style={{textAlign: "left"}}><h1>{productDes}</h1>
+                    <h1>this is props value</h1>
+                        <h1>{id}</h1>
                         <h1>{harvest_date}</h1>
                         <h1>{price} baht per {unitOfAmount}</h1>
                         <h1>{district}, {province}</h1>
@@ -58,8 +65,8 @@ const Product = (props) => {
                     </div>
                 </div>
                 <div class="row" style={{height:"auto"}}>
-                    <div class="col">{purchasebutton}</div>
-                    <div class="col">{reservebutton}</div>
+                    <div class="col"><Purchasebutton/></div>
+                    <div class="col"><Reservebutton/></div>
                 </div>
             </div>
         </div>
