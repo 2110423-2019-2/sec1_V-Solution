@@ -94,7 +94,7 @@ const ShowStore = (props) => {
             <div class="container">
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
-                    {product.map((item) => Item(item.product_type, item.product_name, item.product_desc, item.id, item))}
+                    {product.map((item) => Item(item.image, item.product_name, item.product_desc, item.id, item))}
                     {LastItem()}
 
                 </div>

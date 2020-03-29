@@ -7,6 +7,7 @@ import { api } from '../config'
 
 const urlEdit = api + "/edituser/"
 const urlGet = api + "/getuser/";
+const uploadUserAPI = api + "/user/uploadimage"
 
 const Informationform = () => {
     const [user, setUser] = useState({
@@ -98,7 +99,7 @@ const Informationform = () => {
             <form class="container" style={{ padding: '2%' }}>
                 <div class="from-group row">
                     <div class="col-md-3">
-                        <Upload avatar={user.image} />
+                        <Upload avatar={user.image} type="profile" api={uploadUserAPI}/>
                     </div>
                     <div class="col-md-9">
                         <div class="form-group row">

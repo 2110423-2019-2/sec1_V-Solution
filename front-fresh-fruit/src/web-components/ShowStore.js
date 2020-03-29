@@ -4,9 +4,9 @@ import { useHistory } from "react-router-dom";
 import ReserveButton from './ReserveButton';
 import PurchaseButton from './PurchaseButton';
 
-function Item(id, img, name, desc,price,amount) {
+function Item(id, img, name, desc,price,amount,product_id, index) {
     return (
-        <div>
+        <div key={index}>
             <div class="card  card-a " >
                 <img src={img} class="card-img-top pic-card" alt="..." />
                 <div class="card-body">
@@ -65,7 +65,7 @@ const ShowStore = (props) => {
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
 
-                    {product.map((item) => Item(item.id, item.product_type, item.product_name, item.product_desc,item.price,item.amount,item.product_id))}
+                    {product.map((item, index) => Item(item.id, item.product_type, item.product_name, item.product_desc,item.price,item.amount,item.product_id, index))}
                     {localStorage.getItem('user_type')=='Seller' ? (LastItem()) : (<div></div>)}
 
                 </div>
