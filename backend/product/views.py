@@ -59,7 +59,7 @@ def create_product(request):
         category = category,
         subcategory = subcategory,
         province = province,
-        district = district,
+        district = district ,
         productType = productType,
         harvest_date = harvest_date,
         price = price,

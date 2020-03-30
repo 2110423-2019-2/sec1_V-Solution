@@ -185,7 +185,7 @@ def search_store(request):
     try:
         json_data = json.loads(request.body)
         store_name = json_data['store_name']
-        store_filtered = Profile.objects.filter(store_name__icontains = store_filtered)
+        store_filtered = Profile.objects.filter(store_name__icontains = store_name)
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
     data = []

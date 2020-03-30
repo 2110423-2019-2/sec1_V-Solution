@@ -19,6 +19,7 @@ from django.http import HttpResponse , JsonResponse
 
 from .models import Comment
 from .serializers import comment_list
+from profile.models import Profile
 # Create your views here.
 
 @api_view(['GET'])
@@ -29,6 +30,10 @@ def get_all_comment(request,store_name):
 
 @api_view(['POST'])
 def post_comment(request) :
+    token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+    token = Token.objects.get(key=token_string)
+    user = token.user
+    user_profile = Profile.objects.get(user=user)
 
     json_data = json.loads(request.body)
     try :
