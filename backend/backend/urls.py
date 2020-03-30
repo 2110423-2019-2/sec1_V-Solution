@@ -44,7 +44,7 @@ urlpatterns = [
     path('api/editproduct/<str:product_id>', edit_product),
     # Cart
     path('api/comment/', include('comment.urls')),
-    # path('api/report/', include('report.urls')),
+    path('api/report/', include('report.urls')),
     path('api/cart/', include('cart.urls')),
     path('api/order/', include('purchase.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
