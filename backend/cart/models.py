@@ -12,7 +12,7 @@ class Cart(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return "User: {} has {} items in their cart. Their total is {} bath".format(self.user, self.count, self.total_price)
+        return "User {}'s cart".format(self.user)
     
 class Entry(models.Model):
     product = models.ForeignKey(Product, null=True, on_delete='CASCADE')

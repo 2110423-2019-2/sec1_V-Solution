@@ -33,7 +33,7 @@ urlpatterns = [
     path('api/user/token', get_token_data),
     path('api/user/uploadimage', upload_user_profile),
     # Product
-    path('api/product/uploadimage', upload_product_image),
+    path('api/product/uploadimage/<str:product_id>', upload_product_image),
     path('api/createproduct', create_product),
     path('api/allproduct', get_all_product),
     path('api/searchproduct', search_product),
@@ -45,5 +45,6 @@ urlpatterns = [
     # Cart
     path('api/comment/', include('comment.urls')),
     # path('api/report/', include('report.urls')),
-    path('api/cart/', include('cart.urls'))
+    path('api/cart/', include('cart.urls')),
+    path('api/order/', include('purchase.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

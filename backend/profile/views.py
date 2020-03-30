@@ -9,8 +9,10 @@ from rest_framework.status import (
     HTTP_200_OK
 )
 from rest_framework.response import Response
+from django.utils.datastructures import MultiValueDictKeyError
 
 import json
+import email_sys
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
@@ -38,7 +40,8 @@ def register(request):
         birth_date = json_data['birth_date']
         gender = json_data['gender']
         nat_id = json_data['nat_id']
-        #Optional
+        store_name = json_data['store_name']
+        bio = json_data['bio']
 
         #META
         user_type = json_data['user_type']
@@ -64,6 +67,8 @@ def register(request):
                 birth_date = birth_date,
                 gender = gender,
                 nat_id = nat_id,
+                store_name = store_name,
+                bio = bio,
                 user_type = user_type,
             )
             new_profile.save()
@@ -74,12 +79,12 @@ def register(request):
 
             token, _ = Token.objects.get_or_create(user=user)
 
-            '''
-            #email verification is in here BUGGED
-            text = "http://127.0.0.1:8000/verify/" + token.key
-            send_email.send_email(email, 'Confirm your Freshfruit registeration', text, text)
-            '''
-
+            if email_sys.config.ENABLE:
+                text = "http://127.0.0.1:8000/verify/" + token.key
+                send_email.send_email(email, 'Confirm your Freshfruit registeration', text, text)
+            else:
+                new_profile.is_active = True
+                new_profile.save()
             return Response({'result': 'Registeration complete'},status=HTTP_200_OK)
         return Response({'result': 'Username or email already existed.'},status=HTTP_200_OK)
     except KeyError:
@@ -106,7 +111,7 @@ def get_user_data(request, username):
         'gender' : user_profile.gender,
         'bio' : user_profile.bio,
         'store_name' : user_profile.store_name,
-        'nat_id' : user_profile.is_active,
+        'nat_id' : user_profile.nat_id,
         'user_type' : user_profile.user_type,
         'image' : image,
     }
@@ -140,6 +145,8 @@ def edit_user_data(request, username):
         birth_date = json_data['birth_date']
         gender = json_data['gender']
         nat_id = json_data['nat_id']
+        store_name = json_data['store_name']
+        bio = json_data['bio']
     except KeyError:
         return Response({'error': 'Invalid JSON'},status=HTTP_400_BAD_REQUEST)
 
@@ -149,6 +156,8 @@ def edit_user_data(request, username):
     user_profile.tel = tel
     user_profile.birth_date = birth_date
     user_profile.gender = gender
+    user_profile.store_name = store_name
+    user_profile.bio = bio
     user_profile.nat_id = nat_id
     user_profile.save()
 
@@ -172,8 +181,10 @@ def upload_user_profile(request):
     token = Token.objects.get(key=token_string)
     user = token.user
     user_profile = Profile.objects.get(user=user)
-
-    file = request.FILES['image']
+    try:
+        file = request.FILES['image']
+    except MultiValueDictKeyError:
+        return Response({'error': 'Invalid request'}, status=HTTP_400_BAD_REQUEST)
     user_profile.avatar = file
     user_profile.save()
     image = user_profile.avatar.url
