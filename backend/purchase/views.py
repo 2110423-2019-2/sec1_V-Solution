@@ -25,7 +25,6 @@ from profile.models import Profile
 from product.models import Product
 from cart.models import Cart, Entry
 
-### GETTER
 @api_view(["GET"])
 def get_seller_order_api(request):
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
