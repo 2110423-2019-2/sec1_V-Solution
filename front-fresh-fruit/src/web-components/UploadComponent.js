@@ -5,7 +5,7 @@ import UploadButton from '../web-components/UploadButton'
 import Notifications, { notify } from 'react-notify-toast'
 import axios from 'axios'
 import { api } from '../config'
-const API_URL = api + "/user/uploadimage"
+const userAPI = api + "/user/uploadimage"
 
 
 const toastColor = {
@@ -53,10 +53,14 @@ const UploadComponent = (props) => {
         if (errs.length) {
             return errs.forEach(err => toast(err, 'custom', 2000, toastColor))
         }
-
         setUploading(true)
+        await uploadUser(formData)
 
-        await axios.post(API_URL, formData, {
+
+    }
+
+    const uploadUser = async (formData) => {
+        await axios.post(userAPI, formData, {
             headers: {
                 'Authorization': `Token ` + localStorage.getItem('Token'),
                 'Content-Type': 'multipart/form-data'
@@ -64,17 +68,16 @@ const UploadComponent = (props) => {
         })
             .then(res => {
                 console.log("res", res)
-                setImages("http://localhost:8000" +res.data.url)
+                setImages("http://localhost:8000" + res.data.url)
                 setUploading(false)
-                localStorage.setItem("image",res.data.url)
-                return toast( "upload success", 'custom', 200, toastColor)
+                localStorage.setItem("image", res.data.url)
+                return toast("upload success", 'custom', 200, toastColor)
             })
             .catch(err => {
                 toast(err.message, 'custom', 2000, toastColor)
                 setUploading(false)
 
             })
-
     }
 
     const content = () => {

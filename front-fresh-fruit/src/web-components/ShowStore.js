@@ -4,13 +4,13 @@ import { useHistory } from "react-router-dom";
 import ReserveButton from './ReserveButton';
 import PurchaseButton from './PurchaseButton';
 
-function Item(id,img, name, desc,price,amount) {
+function Item(id, img, name, desc,price,amount) {
     return (
         <div>
             <div class="card  card-a " >
                 <img src={img} class="card-img-top pic-card" alt="..." />
                 <div class="card-body">
-                    <h5 class="card-title">{name}</h5>
+                <h5 class="card-title"><a href={'/getproduct/'+id}>{name}</a></h5>
                     <p class="card-text">{desc}</p>
 
                 </div>

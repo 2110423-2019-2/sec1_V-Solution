@@ -20,7 +20,7 @@ import HomePage from './Page/HomePage';
 
 import Payment from './Page/Payment'
 
-import product_detail from './Page/ProductDetail';
+import ProductDetail from './Page/ProductDetail';
 
 import Report from './Page/Report'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
@@ -129,13 +129,13 @@ function App() {
             <Route path='/register' component={Register} />
             <Route path='/order' component={YourOrder}/>
             <Route path='/registerSeller' component={RegisterSeller} />
+            <Route path='/getproduct/:id' component={ProductDetail}/>
             <Route path='/signup' component={SignUp} />
             <Route path='/report' component={Report} />
             <Route path='/editProfile' component={EditProfile} />
             <Route path='/editStore' component={EditStore} />
             <Route path='/addItem' component={AddItemform} />
             <Route path='/cart' component={Cart} />
-            <Route path='/getproduct/:id' component={product_detail}/>
           </UserContext.Provider>
         </Switch>
       </Router>

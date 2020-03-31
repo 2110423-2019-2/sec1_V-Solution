@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { api } from '../config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
+import EditProductModal from '../web-components/EditProductModal'
 
-const reserveURL = api+ '/updateproduct/'
-const launchURL = api+ '/updateproduct/'
+const reserveURL = api + '/updateproduct/'
+const launchURL = api + '/updateproduct/'
 
 const ShowStore = (props) => {
     const [product, setProduct] = useState([]);
@@ -19,9 +22,9 @@ const ShowStore = (props) => {
         history.push('/addItem')
     }
 
-    function Item(img, name, desc, id) {
+    function Item(img, name, desc, id, item) {
         const onLaunch = () => {
-            axios.post(launchURL+id+'/L', [],{
+            axios.post(launchURL + id + '/L', [], {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ` + localStorage.getItem('Token')
@@ -33,7 +36,7 @@ const ShowStore = (props) => {
         }
 
         const onReserve = () => {
-            axios.post(reserveURL+id+'/R', [],{
+            axios.post(reserveURL + id + '/R', [], {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ` + localStorage.getItem('Token')
@@ -47,11 +50,21 @@ const ShowStore = (props) => {
         return (
             <div>
                 <div class="card  card-a " >
-                    <img src={img} class="card-img-top pic-card" alt="..." />
+                    <img src={"http://localhost:8000" +img} class="card-img-top pic-card" alt="..." />
                     <div class="card-body">
-                        <h5 class="card-title">{name}</h5>
+                        <div class="row">
+                            <div class="col-9">
+                                <h5 class="card-title">{name}</h5>
+
+                            </div>
+                            <div class="col-3">
+                                <EditProductModal item={item}/>
+                            </div>
+                        </div>
                         <p class="card-text">{desc}</p>
+
                     </div>
+
                     <div class="edit-store-button-seller card-footer bg-transparent ">
                         <button type="button" class="btn btn-outline-warning" onClick={onReserve}>Reserve</button>
                         <button type="button" class="btn btn-outline-success" onClick={onLaunch}>Launch</button>
@@ -76,13 +89,12 @@ const ShowStore = (props) => {
         )
     }
 
-    console.log("store", product)
     return (
         <div >
             <div class="container">
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
-                    {product.map((item) => Item(item.product_type, item.product_name, item.product_desc,item.id))}
+                    {product.map((item) => Item(item.product_type, item.product_name, item.product_desc, item.id, item))}
                     {LastItem()}
 
                 </div>

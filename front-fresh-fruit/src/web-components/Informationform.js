@@ -20,7 +20,8 @@ function Informationform(props) {
         "gender": "M",
         "nat_id": "",
         "user_type": props.user_type,
-        "store_name": ""
+        "store_name": "",
+        "bio":""
     });
     const [user_token, setUser_token] = useState()
     const history = useHistory();

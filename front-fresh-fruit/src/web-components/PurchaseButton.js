@@ -5,7 +5,7 @@ import {api} from '../config';
 function PurchaseButton(props) {
     const [amount,setAmount] = useState(0)
     const [data,setData] = useState({
-        "id":'',
+        "id":0,
         'amount':0,
     })
     const url = api+'/cart/add'
@@ -14,12 +14,14 @@ function PurchaseButton(props) {
             alert('we dont have enough amount that you want')
         }else{
             setData({
-                'id': String(props.id),
-                'amount': amount
+                'id': parseInt(props.id),
+                'amount': parseInt(amount)
             })
             await axios.post(url,data,{
                 headers:{
-                    'Authorization': `Token `+localStorage.getItem('Token')
+                    
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Token '+localStorage.getItem('Token')
                 }
             })
             .then((res) => {
@@ -28,6 +30,10 @@ function PurchaseButton(props) {
             })
             .catch((err) => {
                 console.log(err)
+
+                alert(localStorage.getItem('Token'))
+                alert(typeof(parseInt(props.id)))
+                alert(typeof(parseInt(amount)))
                 alert("Error on add  Item to cart")
             })
         }
