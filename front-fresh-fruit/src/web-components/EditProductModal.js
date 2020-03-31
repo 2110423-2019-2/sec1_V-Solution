@@ -53,7 +53,7 @@ const EditProductModal = (props) => {
 
     return (
         <div>
-            <button type="button" class="btn " data-toggle="modal" data-target={"#editModal" + product.id}>
+            <button type="button" class="btn " data-toggle="modal" data-target={"#editModal" + product.id} onClick={()=>console.log(product)}>
                 <FontAwesomeIcon icon={faEllipsisV} color='#AFAFAF' size='2x' />
             </button>
 
@@ -68,7 +68,7 @@ const EditProductModal = (props) => {
                         </div>
                         <div class="modal-body">
                             <form class="container" style={{ padding: '2%' }}>
-                                <Upload avatar={product.image} type="product" api={uploadProductAPI+product.id}/>
+                                <Upload id={"editModal" + product.id} avatar={product.image} type="product" api={uploadProductAPI+product.id}/>
                                 <div class="form-group row">
                                     <div class='col-form-label col-sm-5' style={{ position: 'static', left: '0px' }}>
                                         <label style={{ color: "red" }}>*</label><label>Product Name:</label></div>

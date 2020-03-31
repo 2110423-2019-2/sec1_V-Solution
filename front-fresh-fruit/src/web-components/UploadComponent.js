@@ -21,6 +21,7 @@ const UploadComponent = (props) => {
     useEffect(() => {
         if (props.avatar) {
             setImages("http://localhost:8000" + props.avatar)
+            console.log(props)
         }
     }, [props])
 
@@ -99,10 +100,10 @@ const UploadComponent = (props) => {
                 return <Spinner />
             case images.length > 0:
                 return <div className='button-upload'>
-                    <label htmlFor="file-input">
-                        <img className='img-upload fadein' src={images} alt="" />
+                    <label htmlFor={"file-input"+props.id}>
+                        <img className='img-upload fadein ' src={images} alt="" />
                     </label>
-                    <input id="file-input" type="file" onChange={(e) => onChange(e)} />
+                    <input id={"file-input"+props.id} type="file" onChange={(e) => onChange(e)} />
                 </div>
             case props.type === "product":
                 return <UploadButton single={false} onChange={(e) => onChange(e)} />

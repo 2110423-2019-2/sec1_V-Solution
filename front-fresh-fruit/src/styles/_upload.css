@@ -29,6 +29,7 @@
 
 .img-upload {
     display: flex;
+    object-fit: cover;
     justify-content: center;
     max-width: 100%;
     height: auto;

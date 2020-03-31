@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { api } from '../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisV,faCarrot } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisV, faCarrot } from '@fortawesome/free-solid-svg-icons'
 import EditProductModal from '../web-components/EditProductModal'
 
 const reserveURL = api + '/updateproduct/'
@@ -50,11 +50,11 @@ const ShowStore = (props) => {
         return (
             <div>
                 <div class="card  card-a " >
-                    {img?
-                    <img src={"http://localhost:8000" +img} class="card-img-top pic-card" alt="..." />:
-                    <FontAwesomeIcon class="card-img-top pic-card" alt="..." icon={faCarrot} color='#6d84b4' size='10x' />
+                    {img ?
+                        <img src={"http://localhost:8000" + img} class="card-img-top pic-card" alt="..." /> :
+                        <FontAwesomeIcon class="card-img-top pic-card" alt="..." icon={faCarrot} color='#6d84b4' size='10x' />
                     }
-                    
+
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
@@ -62,7 +62,7 @@ const ShowStore = (props) => {
 
                             </div>
                             <div class="col-3">
-                                <EditProductModal item={item}/>
+                                <EditProductModal item={item} />
                             </div>
                         </div>
                         <p class="card-text">{desc}</p>
@@ -96,6 +96,23 @@ const ShowStore = (props) => {
     return (
         <div >
             <div class="container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                </div>
+                
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
                     {product.map((item) => Item(item.image, item.product_name, item.product_desc, item.id, item))}
