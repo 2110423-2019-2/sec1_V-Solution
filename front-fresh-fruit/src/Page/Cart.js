@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/_cart.css'
 import CartComponent from '../web-components/CartComponent'
 import axios from 'axios';
-import {api} from '../config'
+import { api } from '../config'
 import Payment from './Payment';
 
 const Cart = () => {
@@ -12,23 +12,26 @@ const Cart = () => {
     const [price, setPrice] = useState(0)
     const [deliver_price, setDeliverPrice] = useState(0)
     const [amount, setAmount] = useState(0)
-    
+
     useEffect(() => {
-        axios.get(cartUrl,{
+        axios.get(cartUrl, {
             headers: {
 
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + localStorage.getItem('Token')
             }
-        }).then(res =>{
-            const {data} = res
+        }).then(res => {
+            const { data } = res
             setProduct(data.entries)
+            setAmount(data.amount)
+            setDeliverPrice(data.deliver_price)
+            setPrice(data.price)
         })
-    },[cartUrl])
+    }, [cartUrl])
 
     function renderSwitch(cnt) {
         switch (cnt) {
-            case 0: 
+            case 0:
                 return (
                     <div class='cart-inside-background'>
                         <div class='cart-empty'>
@@ -37,43 +40,47 @@ const Cart = () => {
                     </div>
                 )
             default:
-                return(
+                return (
                     <div class='cart-inside-background'>
-                
-                        {product.map(i=> <CartComponent 
-                        key={i.product.id} 
-                        name={i.product.product_name} 
-                        price={i.product.price} 
-                        amount={i.amount}
+
+                        {product.map(i => <CartComponent
+                            key={i.product.id}
+                            name={i.product.product_name}
+                            price={i.product.price}
+                            amount={i.amount}
+                            img={i.product.image}
                         />)}
 
                         <div class='cart-footer'>
-                        <h1 style={{ fontFamily: "Marker Felt", fontSize: "40px" }}>Total = {price}</h1>
+                        <h5 style={{ fontFamily: "Marker Felt", fontSize: "25px" }}>Total = {price}</h5>
+                        
                         </div>
-                        <div class='cart-footer' style={{paddingBottom:"20px"}}>
-                            <button class='cart-button'>Checkout</button>
+                        <div class='cart-footer' style={{ paddingBottom: "20px" }}>
+                            {/* <button class='cart-button'>
+                                Checkout
+                            </button> */}
+                            <Payment  paymentAmount={amount} />
+                            
                         </div>
+
                     </div>
                 )
         }
     }
 
- 
+
     return (
         <div class="cart-background">
             <div class="cart-background">
-                
+
                 <div class="container cart-header">
                     <h1 class='cart-header-font'>Shopping Cart</h1>
+                    {renderSwitch(product.length)}
+
                 </div>
-
             </div>
-
-            {renderSwitch(product.length)}
-            <Payment paymentAmount={10000} />
-
         </div>
-        
+
 
     );
 };

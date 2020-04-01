@@ -14,13 +14,13 @@ const CartComponent = (props) => {
 
             <div class="container-fluid cart-product-background">
 
-                <div class='row' style={{ textAlign: "center", paddingTop: "80px" }}>
+                <div class='row' style={{ textAlign: "center", paddingTop: "40px" }}>
 
                     <div class='col-lg-1' style={{ marginTop: "-40px" }}>
-                        <img src={pineapple} style={{ height: '120px', width: '70px' }} />
+                        <img src={"http://localhost:8000"+ props.img} style={{ height: '120px', width: '70px',objectFit:'cover' }} />
                     </div>
                     <div class='col-lg-6'>
-                        <h1 style={{ fontFamily: "Marker Felt", fontSize: "25px" }}>ProductName: {props.name}</h1>
+                        <h1 style={{ fontFamily: "Marker Felt", fontSize: "25px" }}>Product Name: {props.name}</h1>
                     </div>
 
                     <div class='col-lg-4'>

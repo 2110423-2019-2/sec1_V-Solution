@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import ReserveButton from './ReserveButton';
 import PurchaseButton from './PurchaseButton';
 
-function Item(id, img, name, desc, amount, product_id, product_type, index) {
+function Item(id, img, name, desc, amount, product_id, product_type, price, delivery_price, index) {
     return (
         <div key={index}>
             <div class="card card-a" >
@@ -17,10 +17,8 @@ function Item(id, img, name, desc, amount, product_id, product_type, index) {
                 <div class="card-body">
                     <h5 class="card-title"><a href={'/getproduct/' + id}>{name}</a></h5>
                     <p class="card-text">{desc}</p>
-
+                    <p class="card-text">Price : {price}</p>
                 </div>
-
-
                 {localStorage.getItem('user_type') == 'Buyer' ?
                     (<div class="card-footer edit-store-button">
                         {product_type === "R" ?
@@ -73,14 +71,14 @@ const ShowStore = (props) => {
                 <div class="row row-card">
 
                     {product.filter((item) => { return item.product_type === "L" }).map((item, index) =>
-                        Item(item.id, item.image, item.product_name, item.product_desc, item.amount, item.product_id, item.product_type, index))}
+                        Item(item.id, item.image, item.product_name, item.product_desc, item.amount, item.product_id, item.product_type, item.price, index))}
 
                     {localStorage.getItem('user_type') == 'Seller' ? (LastItem()) : (<div></div>)}
                 </div>
                 <div class="edit-store-title underline ">Reserve Products</div>
                 <div class="row row-card">
                     {product.filter((item) => { return item.product_type === "R" }).map((item, index) =>
-                        Item(item.id, item.image, item.product_name, item.product_desc, item.amount, item.product_id, item.product_type, index))}
+                        Item(item.id, item.image, item.product_name, item.product_desc, item.amount, item.product_id, item.product_type, item.price, item.delivery_price, index))}
                 </div>
             </div>
         </div>

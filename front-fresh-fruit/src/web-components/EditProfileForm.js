@@ -99,17 +99,19 @@ const Informationform = () => {
             <form class="container" style={{ padding: '2%' }}>
                 <div class="from-group row">
                     <div class="col-md-3">
-                        <Upload avatar={user.image} type="profile" api={uploadUserAPI}/>
+                        <Upload avatar={user.image} type="profile" api={uploadUserAPI} />
                     </div>
                     <div class="col-md-9">
-                        <div class="form-group row">
-                            <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
-                                <label style={{ color: "red" }}>*</label><label>Store:</label></div>
-                            <div class='col-sm-6'>
-                                <input class="form-control" type="text" name="store_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={user.store_name} />
-                                {user.store_name.length == 0 && <small>please enter you store name</small>}
-                            </div></div>
-
+                        {localStorage.getItem('user_type') === 'Seller' ?
+                            <div class="form-group row">
+                                <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
+                                    <label style={{ color: "red" }}>*</label><label>Store:</label></div>
+                                <div class='col-sm-6'>
+                                    <input class="form-control" type="text" name="store_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={user.store_name} />
+                                    {user.store_name.length == 0 && <small>please enter you store name</small>}
+                                </div></div>
+                            : <div />
+                        }
                         <div class="form-group row">
                             <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
                                 <label style={{ color: "red" }}>*</label><label>Name:</label></div>

@@ -23,13 +23,9 @@ const Payment = (props) =>{
     })
     
     return (
-        <div>
-            <h1>{props.paymentAmount}</h1>
-        <h1>payment page</h1>
-        
+        <div >
         <form action='/profile' method='post'>
             <input type='submit' value='Pay' id='checkout-button'/>
-            
         </form>
         </div>
     )
