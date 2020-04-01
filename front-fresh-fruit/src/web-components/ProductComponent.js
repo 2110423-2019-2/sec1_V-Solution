@@ -65,7 +65,7 @@ const Product = (props) => {
                     </div>
                 </div>
                 <div class="row" style={{height:"auto"}}>
-                    <div class="col"><Purchasebutton/></div>
+                    <div class="col"><Purchasebutton id={props.id} amount={amount}/></div>
                     <div class="col"><Reservebutton/></div>
                 </div>
             </div>

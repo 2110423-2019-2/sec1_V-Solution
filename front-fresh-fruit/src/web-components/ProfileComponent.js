@@ -60,6 +60,7 @@ const Profile = (props) => {
                                 </div>
                                 <p class="card-text">Tel : {localStorage.getItem('tel')}</p>
                                 <p class="card-text">Address : {localStorage.getItem('address')}</p>
+                                
                             </div>
                         </div>
                     </div>

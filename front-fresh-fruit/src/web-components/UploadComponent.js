@@ -5,7 +5,8 @@ import UploadButton from '../web-components/UploadButton'
 import Notifications, { notify } from 'react-notify-toast'
 import axios from 'axios'
 import { api } from '../config'
-const userAPI = api + "/user/uploadimage"
+
+
 
 
 const toastColor = {
@@ -20,6 +21,7 @@ const UploadComponent = (props) => {
     useEffect(() => {
         if (props.avatar) {
             setImages("http://localhost:8000" + props.avatar)
+            console.log(props)
         }
     }, [props])
 
@@ -54,12 +56,24 @@ const UploadComponent = (props) => {
             return errs.forEach(err => toast(err, 'custom', 2000, toastColor))
         }
         setUploading(true)
-        await uploadUser(formData)
+
+        switch (props.type) {
+            case "profile":
+                await upload(formData,props.api)
+                break;
+
+            case "product":
+                await upload(formData,props.api)
+                break;
+            default:
+                break;
+        }
+
 
 
     }
 
-    const uploadUser = async (formData) => {
+    const upload = async (formData,userAPI) => {
         await axios.post(userAPI, formData, {
             headers: {
                 'Authorization': `Token ` + localStorage.getItem('Token'),
@@ -70,7 +84,7 @@ const UploadComponent = (props) => {
                 console.log("res", res)
                 setImages("http://localhost:8000" + res.data.url)
                 setUploading(false)
-                localStorage.setItem("image", res.data.url)
+                if(props.type === "profile") {localStorage.setItem("image", res.data.url)}
                 return toast("upload success", 'custom', 200, toastColor)
             })
             .catch(err => {
@@ -86,13 +100,17 @@ const UploadComponent = (props) => {
                 return <Spinner />
             case images.length > 0:
                 return <div className='button-upload'>
-                    <label for="file-input">
-                        <img className='img-upload fadein' src={images} alt="" />
+                    <label htmlFor={"file-input"+props.id}>
+                        <img className='img-upload fadein ' src={images} alt="" />
                     </label>
-                    <input id="file-input" type="file" onChange={(e) => onChange(e)} />
+                    <input id={"file-input"+props.id} type="file" onChange={(e) => onChange(e)} />
                 </div>
+            case props.type === "product":
+                return <UploadButton single='product' onChange={(e) => onChange(e)} />
+            case props.type === 'report':
+                return <UploadButton single='report' onChange={(e) => onChange(e)}/>
             default:
-                return <UploadButton single="true" onChange={(e) => onChange(e)} />
+                return <UploadButton single='single' onChange={(e) => onChange(e)} />
         }
     }
 

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import "../styles/_purchasebtn.css"
 import axios from 'axios'
 import {api} from '../config';
@@ -32,12 +32,16 @@ function PurchaseButton(props) {
                 console.log(err)
 
                 alert(localStorage.getItem('Token'))
-                alert(typeof(parseInt(props.id)))
-                alert(typeof(parseInt(amount)))
+                alert(props.id)
+               
                 alert("Error on add  Item to cart")
             })
         }
     }
+
+
+
+
     return(
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="purchase-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,7 +52,7 @@ function PurchaseButton(props) {
 
                 <h1>{props.id}</h1>
                 <p id='amount' style={{color:'orange'}}>we have {props.amount} in our stock</p>
-                    <input class="dropdown-item form-control" type="number" placeholder="Amount" id="reserve-input" onkeyup="filterFunction()" onChange={e => setAmount(e.target.value)}/>
+                    <input class="dropdown-item form-control" type="number" placeholder="Amount" id="reserve-input" onkeyup="filterFunction()" onChange={(e) => setAmount(amount+e.target.value)}/>
                     
                     <button class="dropdown-item" id="purchase-button" type="button" class='btn btn-primary' onClick={submitReserve}>Purchase</button>
                 </form>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
+import Upload from './UploadComponent'
 import axios from 'axios'
 import { api } from '../config'
 
+const uploadProductAPI = api + "/product/uploadimage/"
 const productURL = api + /editproduct/
 
 const EditProductModal = (props) => {
@@ -34,13 +36,6 @@ const EditProductModal = (props) => {
     const handleChange = (e) => {
         setProduct({ ...product, [e.target.name]: e.target.value })
         console.log(product)
-
-        switch (e.target.name) {
-            case 'tel':
-                e.target.value.length === 10 ? setError(false) : setError(true)
-                break
-            default:
-        }
     }
 
     const onSubmit = () => {
@@ -49,7 +44,7 @@ const EditProductModal = (props) => {
                 'Authorization': `Token ` + localStorage.getItem('Token')
             }
         }).then((res) => {
-            console.log("response edit",res.data)
+            console.log("response edit", res.data)
             alert('edit successful')
         }).catch((err) => {
             console.log(err)
@@ -58,11 +53,11 @@ const EditProductModal = (props) => {
 
     return (
         <div>
-            <button type="button" class="btn " data-toggle="modal" data-target={"#editModal" + product.id}>
+            <button type="button" class="btn " data-toggle="modal" data-target={"#editModal" + product.id} onClick={()=>console.log(product)}>
                 <FontAwesomeIcon icon={faEllipsisV} color='#AFAFAF' size='2x' />
             </button>
 
-            <div class="modal fade" id={"editModal" + product.id} tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal fade" id={"editModal" + product.id} tabIndex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -73,6 +68,7 @@ const EditProductModal = (props) => {
                         </div>
                         <div class="modal-body">
                             <form class="container" style={{ padding: '2%' }}>
+                                <Upload id={"editModal" + product.id} avatar={product.image} type="product" api={uploadProductAPI+product.id}/>
                                 <div class="form-group row">
                                     <div class='col-form-label col-sm-5' style={{ position: 'static', left: '0px' }}>
                                         <label style={{ color: "red" }}>*</label><label>Product Name:</label></div>
@@ -94,7 +90,7 @@ const EditProductModal = (props) => {
                                     <div class='col-sm-7'>
                                         <div class="input-group mb-3" type="text" name="category" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={product.category}>
                                             <select class="custom-select" id="inputGroupSelect02">
-                                                <option selected>{product.category}</option>
+                                                <option defaultValue>{product.category}</option>
                                                 <option value="1">Fruit</option>
                                                 <option value="2">Vegetable</option>
                                                 <option value="3">...</option>
@@ -107,7 +103,7 @@ const EditProductModal = (props) => {
                                     <div class='col-sm-7'>
                                         <div class="input-group mb-3" type="text" name="subcategory" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={product.subcategory}>
                                             <select class="custom-select" id="inputGroupSelect02">
-                                                <option selected>{product.subcategory}</option>
+                                                <option defaultValue>{product.subcategory}</option>
                                                 <option value="1">Daily</option>
                                                 <option value="2">Weekly</option>
                                                 <option value="3">Monthly</option>

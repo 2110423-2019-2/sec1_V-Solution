@@ -28,7 +28,8 @@ export default function CreateStoreButton() {
                 image: data.image,
                 store_name:data.store_name,
                 bio:data.bio
-            }).then(() => localStorage.setItem('store_name', data.store_name))
+            })
+            localStorage.setItem('store_name', data.store_name)
         } catch (error) {
             console.log(error)
         }
@@ -64,7 +65,7 @@ export default function CreateStoreButton() {
                 Create Store
             </button>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -87,7 +88,7 @@ export default function CreateStoreButton() {
                             </form>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" onClick={onCreate}>Create</button>
+                                <button type="button" class="btn btn-primary" onClick={onCreate} data-dismiss="modal">Create</button>
                             </div>
                         </div>
                     </div>
