@@ -9,7 +9,7 @@ import PurchaseButton from './PurchaseButton';
 function Item(id, img, name, desc, price, amount, product_id, index) {
     return (
         <div key={index}>
-            <div class="card  card-a " >
+            <div class="card card-a" >
                 {img ?
                     <img src={"http://localhost:8000" + img} class="card-img-top pic-card" alt="..." /> :
                     <FontAwesomeIcon class="card-img-top pic-card" alt="..." icon={faCarrot} color='#6d84b4' size='10x' />

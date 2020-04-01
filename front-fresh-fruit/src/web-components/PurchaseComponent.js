@@ -1,5 +1,5 @@
 import React from 'react';
-import _purchaseComponent from '../styles/_purchaseComponent.scss';
+import _purchaseComponent from '../styles/_purchaseComponent.css';
 const PurchaseComponent = (props) => {
 
     const cardBody = (name,price,deliveryDate,amount,status) => {
@@ -7,10 +7,10 @@ const PurchaseComponent = (props) => {
             <div class="card-body">
                 <h5 class="card-title">Product : {name}</h5>
                 <div style={{ display: 'flex', }}>
-                    <p class="card-text">Price : {price} Bath</p>
-                    <p class="card-text">Date : {deliveryDate}</p>
+                    <p class="card-text" id='cardText'>Price : {price} Bath</p>
+                    <p class="card-text" id='cardText'>Date : {deliveryDate}</p>
 
-                    <p class="card-text">Amount : {amount} </p>
+                    <p class="card-text" id='cardText'>Amount : {amount} </p>
                     
                 </div>
             </div>
@@ -18,8 +18,8 @@ const PurchaseComponent = (props) => {
     }
     return (
         <div>
-            <div class="card">
-                <div class="card-header">
+            <div class="card" id='cardPurchase'>
+                <div class="card-header" id='cardHeader'>
                     <h4>Transation number 1</h4>
                     <div class='status' style={{display:'flex'}}>
                         {props.status == 'padding' ? <h4><p class='badge badge-danger'>Padding...</p></h4> : <h4><p class='badge badge-success'>Already delivered</p></h4>}
