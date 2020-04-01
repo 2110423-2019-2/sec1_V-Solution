@@ -10,8 +10,6 @@ function ReserveButton(props) {
             alert('we dont have enough amount that you want')
         }else{
             
-            alert('do something about update database')
-            alert(amount)
         }
     }
     return(

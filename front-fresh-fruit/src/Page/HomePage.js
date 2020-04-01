@@ -27,7 +27,7 @@ const HomePage = () => {
   }
   async function getProduct() {
     try {
-      if(searchQuery['product_name']==''){
+      if(searchQuery['product_name']=='' || typeof(searchQuery['product_name'])=="undefined"){
         const response = await axios.get(productUrl);
         console.log("product",response.data);
         console.log(searchQuery)
@@ -66,6 +66,7 @@ useEffect(() => {
               <div class="col" style={{ textAlign: "center", color: "white" }}><h1>Find Daily & Organic fruit</h1>
                 <h2>with</h2><h1>FRESHFRUIT</h1>
                 <input type="text" name="search" style={{ marginTop: "40px", width: "500px", height: "45px", borderRadius: "20px"}}  onChange={handleChange} />
+                <h1>{searchQuery['product_name']}</h1>
                 {/*<div style={{ marginTop: "40px" }}><button style={{ width: '120px', height: '40px', borderRadius: "20px" }} onClick={getProduct}>Search</button></div>*/}
               </div>
             </div>
@@ -78,7 +79,7 @@ useEffect(() => {
 
       {/* -------------- Store part --------------------*/}
 
-      {product.length == 0 ? <h1>Dont have any product on ours system</h1> : <HomeStore product={product}/>}
+      {product.length == 0 ? <h1>{searchQuery['product_name']}</h1> : <HomeStore product={product}/>}
 
     </div>
 

@@ -23,8 +23,8 @@ function Item(id, img, name, desc, price, amount, product_id, index) {
 
                 {localStorage.getItem('user_type') == 'Buyer' ?
                     (<div class="card-footer edit-store-button">
-                        <ReserveButton amount={amount} />
-                        <PurchaseButton amount={amount} />
+                        <ReserveButton amount={amount} id={id}/>
+                        <PurchaseButton amount={amount} id={id} />
                     </div>) :
                     (<div></div>)
                 }

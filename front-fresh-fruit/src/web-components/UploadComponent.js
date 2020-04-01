@@ -106,9 +106,11 @@ const UploadComponent = (props) => {
                     <input id={"file-input"+props.id} type="file" onChange={(e) => onChange(e)} />
                 </div>
             case props.type === "product":
-                return <UploadButton single={false} onChange={(e) => onChange(e)} />
+                return <UploadButton single='product' onChange={(e) => onChange(e)} />
+            case props.type === 'report':
+                return <UploadButton single='report' onChange={(e) => onChange(e)}/>
             default:
-                return <UploadButton single={true} onChange={(e) => onChange(e)} />
+                return <UploadButton single='single' onChange={(e) => onChange(e)} />
         }
     }
 
