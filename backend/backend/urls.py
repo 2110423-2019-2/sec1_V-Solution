@@ -42,9 +42,10 @@ urlpatterns = [
     path('api/getuserproduct/<str:username>', get_product_from_user),
     path('api/updateproduct/<str:product_id>/<str:status>', update_product),
     path('api/editproduct/<str:product_id>', edit_product),
-    # Cart
+
     path('api/comment/', include('comment.urls')),
     path('api/report/', include('report.urls')),
     path('api/cart/', include('cart.urls')),
-    path('api/order/', include('purchase.urls'))
+    path('api/order/', include('purchase.urls')),
+    path('api/payment/', include('payment.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
