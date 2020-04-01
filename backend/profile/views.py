@@ -41,7 +41,6 @@ def register(request):
         gender = json_data['gender']
         nat_id = json_data['nat_id']
         store_name = json_data['store_name']
-        bio = json_data['bio']
 
         #META
         user_type = json_data['user_type']
@@ -68,7 +67,7 @@ def register(request):
                 gender = gender,
                 nat_id = nat_id,
                 store_name = store_name,
-                bio = bio,
+                bio = "",
                 user_type = user_type,
             )
             new_profile.save()

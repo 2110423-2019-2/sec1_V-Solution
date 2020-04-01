@@ -30,6 +30,15 @@ def create_customer_order(user):
 
     return order
 
+def delete_order(order):
+    if order.status != 'O':
+        return False
+    items = OrderItem.objects.filter(order=order)
+    for item in items:
+        item.delete()
+    order.delete()
+    return True
+
 def entry_to_item(order, entry):
     item = OrderItem.objects.create(
         product = entry.product,
