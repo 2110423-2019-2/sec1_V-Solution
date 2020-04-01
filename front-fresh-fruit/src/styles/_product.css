@@ -1,0 +1,26 @@
+.product-pic{
+    position: inherit;
+    margin-left: 10%;
+    outline: none;
+    border: 0;
+}
+
+.product-header{
+    margin-left: 10%;
+    margin-top: 20;
+    font-size: 50px;
+    font-family: "Marker Felt";
+    color:#36368D;
+}
+
+.product-detail{
+    font-size: 30px;
+    font-family: "Marker Felt";
+    color:#36368D;
+    margin-top: 15px;
+}
+
+.product-picture{
+    width: 200px;
+    height: 200px;
+}
