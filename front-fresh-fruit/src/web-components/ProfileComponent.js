@@ -24,7 +24,7 @@ const Profile = (props) => {
     useEffect(() => {
 
         console.log(image)
-
+        console.log(localStorage.getItem('Token'))
 
     }, [])
 
