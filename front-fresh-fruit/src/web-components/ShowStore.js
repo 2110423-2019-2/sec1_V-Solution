@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisV,faCarrot } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisV, faCarrot } from '@fortawesome/free-solid-svg-icons'
 
 import { useHistory } from "react-router-dom";
 import ReserveButton from './ReserveButton';
 import PurchaseButton from './PurchaseButton';
 
-function Item(id, img, name, desc, price, amount, product_id, index) {
+function Item(id, img, name, desc, amount, product_id, product_type, index) {
     return (
         <div key={index}>
             <div class="card  card-a " >
@@ -23,8 +23,10 @@ function Item(id, img, name, desc, price, amount, product_id, index) {
 
                 {localStorage.getItem('user_type') == 'Buyer' ?
                     (<div class="card-footer edit-store-button">
-                        <ReserveButton amount={amount} id={id}/>
-                        <PurchaseButton amount={amount} id={id} />
+                        {product_type === "R" ?
+                            <ReserveButton amount={amount} id={id} /> :
+                            <PurchaseButton amount={amount} id={id} />
+                        }
                     </div>) :
                     (<div></div>)
                 }
@@ -70,9 +72,15 @@ const ShowStore = (props) => {
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
 
-                    {product.map((item, index) => Item(item.id, item.image, item.product_name, item.product_desc, item.price, item.amount, item.product_id, index))}
-                    {localStorage.getItem('user_type') == 'Seller' ? (LastItem()) : (<div></div>)}
+                    {product.filter((item) => { return item.product_type === "L" }).map((item, index) =>
+                        Item(item.id, item.image, item.product_name, item.product_desc, item.amount, item.product_id, item.product_type, index))}
 
+                    {localStorage.getItem('user_type') == 'Seller' ? (LastItem()) : (<div></div>)}
+                </div>
+                <div class="edit-store-title underline ">Reserve Products</div>
+                <div class="row row-card">
+                    {product.filter((item) => { return item.product_type === "R" }).map((item, index) =>
+                        Item(item.id, item.image, item.product_name, item.product_desc, item.amount, item.product_id, item.product_type, index))}
                 </div>
             </div>
         </div>
