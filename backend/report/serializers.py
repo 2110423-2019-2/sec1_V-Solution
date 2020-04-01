@@ -7,7 +7,7 @@ def report_to_dict(report):
     except ValueError:
         image = ''
     data = {
-        'report_id' : report.report_id ,
+        'report_id' : report.id ,
         'subject' : report.subject ,
         'reported_user' : report.reported_user ,
         'description' : report.description ,
