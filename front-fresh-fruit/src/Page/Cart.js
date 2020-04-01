@@ -26,19 +26,16 @@ const Cart = () => {
         switch (cnt) {
             case 0: 
                 return (
-
                     <div class='cart-inside-background'>
                         <div class='cart-empty'>
                             <h1> Your Cart is now Empty! </h1>
                         </div>
                     </div>
-
                 )
                 break;
             
             default:
                 return(
-
                     <div class='cart-inside-background'>
                 
                         {product.map(i=> <CartComponent name={i.name} price={i.price}/>)}
@@ -46,15 +43,11 @@ const Cart = () => {
                         <div class='cart-footer'>
                 <h1 style={{ fontFamily: "Marker Felt", fontSize: "40px" }}>Total = {price}</h1>
                         </div>
-
                         <div class='cart-footer' style={{paddingBottom:"20px"}}>
                             <button class='cart-button'>Checkout</button>
                         </div>
-
                     </div>
-
                 )
-                break;
         }
     }
 

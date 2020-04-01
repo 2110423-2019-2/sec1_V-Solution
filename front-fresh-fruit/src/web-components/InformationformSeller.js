@@ -18,7 +18,8 @@ function InformationformSeller() {
         "birth_date": "",
         "gender": "",
         "nat_id": "",
-        "user_type": "C"
+        "user_type": "C",
+        "bio":""
     });
     const [user_token, setUser_token] = useState()
     const [error, setError] = useState({
