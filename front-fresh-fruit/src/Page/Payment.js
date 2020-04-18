@@ -24,7 +24,7 @@ const Payment = (props) =>{
     
     return (
         <div >
-        <form action='/profile' method='post'>
+        <form action='/api/payment/order/<str:order_id>' method='post'>
             <input type='submit' value='Pay' id='checkout-button'/>
         </form>
         </div>
