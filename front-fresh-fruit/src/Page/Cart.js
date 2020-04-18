@@ -8,6 +8,7 @@ import Payment from './Payment';
 const Cart = () => {
 
     const cartUrl = api + "/cart/get" // ++++ ไออันนี้ต้องเป็น cart แต่ใน cart ยังไม่เข้ากุเลยดึงมาจากหน้า product มาก่อนน ++++
+    const checkoutUrl = api + "/cart/checkout"
     const [product, setProduct] = useState([])
     const [price, setPrice] = useState(0)
     const [deliver_price, setDeliverPrice] = useState(0)
@@ -22,12 +23,29 @@ const Cart = () => {
             }
         }).then(res => {
             const { data } = res
+            console.log(data)
             setProduct(data.entries)
             setAmount(data.amount)
             setDeliverPrice(data.deliver_price)
             setPrice(data.price)
         })
+        .catch((err)=>{
+            alert(err)
+        })
     }, [cartUrl])
+    const checkout = () =>{
+        axios.post(checkoutUrl,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + localStorage.getItem('Token')
+            }
+        }).then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(localStorage.getItem('Token'))
+            console.log(err)
+        })
+    }
 
     function renderSwitch(cnt) {
         switch (cnt) {
@@ -56,9 +74,9 @@ const Cart = () => {
                         
                         </div>
                         <div class='cart-footer' style={{ paddingBottom: "20px" }}>
-                            {/* <button class='cart-button'>
+                            <button class='cart-button' onClick={checkout}>
                                 Checkout
-                            </button> */}
+                            </button>
                             <Payment  paymentAmount={amount} />
                             
                         </div>
@@ -67,7 +85,7 @@ const Cart = () => {
                 )
         }
     }
-
+    
 
     return (
         <div class="cart-background">
