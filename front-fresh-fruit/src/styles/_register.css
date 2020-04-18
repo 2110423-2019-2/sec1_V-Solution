@@ -5,14 +5,12 @@
 
 .container-register-seller {
     background-color: #6ac17d;
-    height: 1350px;
 }
 
 .col-info {
     text-align: center;
     margin-left: 10%;
     margin-right: 10%;
-    height: 1000px;
 }
 
 .form-title {
@@ -29,7 +27,6 @@
 
 .container-form-seller {
     background-color: rgb(255,255,255,0.7);
-    height: 1224px;
     margin-top: 30px;
 }
 
@@ -57,4 +54,5 @@
 
 .container-inform-seller {
     padding-left: 30px;
+    height: 100%;
 }

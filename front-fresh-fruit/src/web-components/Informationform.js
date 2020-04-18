@@ -209,7 +209,7 @@ function Informationform(props) {
                         {error.nat_id.length > 0 && <small class='errorInForm'>{error.nat_id}</small>}
                     </div></div>
 
-                <div class='col-sm-8'>
+                <div class='col-sm-8 col-reg-btn'>
                     {checkSubmit == true && <small class='errorInForm'>Please enter correct value</small>}
                     {checkSubmit == false ? <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} disabled>Register</button> : <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} >Register</button>}
                 </div>
