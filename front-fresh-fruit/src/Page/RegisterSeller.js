@@ -12,7 +12,7 @@ const Register = () => {
                 <div class="row">
                     <div class="col col-info">
                         <div class="row form-title">
-                            <div class="col-5">
+                            <div class="col-md-auto">
                                 <h2>Register as seller</h2>
                             </div>  
                         </div>

@@ -55,27 +55,71 @@ function Informationform(props) {
         let error2 = error;
         switch (e.target.name) {
             case 'username':
-                error2.username = e.target.value.length < 8 ? 'Username must be more than 8 character' : ''
+                error2.username = e.target.value.length < 8 ? 'Username must be more than 8 characters' : ''
                 break;
             case 'password':
                 var t = true
                 if (6 > e.target.value.length || e.target.value.length > 20) {
                     t = false
                 }
-                error2.password = t ? '' : 'Password must be between 6 and 20'
+                error2.password = t ? '' : 'Password must be between 6 and 20 characters'
                 break;
             case 'first_name':
-                error2.first_name = e.target.value.length < 0 ? 'You must input first name' : ''
-                break
+                if (e.target.value.length < 0) {
+                    error2.first_name = 'You must input your first name'
+                    break
+                } else if (!/^[a-zA-Z]+$/.test(e.target.value)) {
+                    error2.first_name = 'Your name must contain only a-z or A-Z'
+                    break
+                }else if (!/^[a-zA-Z]+$/.test(data.first_name) && e.target.value.length > 1) {
+                    error2.first_name = 'Your name must contain only a-z or A-Z'
+                    break
+                } else {
+                    error2.first_name = ""
+                    break
+                }
             case 'last_name':
-                error2.last_name = e.target.value.length < 0 ? 'You must input last name' : ''
-                break
+                if (e.target.value.length < 0) {
+                    error2.last_name = 'You must input surname'
+                    break
+                } else if (!/^[a-zA-Z]+$/.test(e.target.value)) {
+                    error2.last_name = 'Your surname must contain only a-z or A-Z'
+                    break
+                }else if (!/^[a-zA-Z]+$/.test(data.last_name) && e.target.value.length > 1) {
+                    error2.last_name = 'Your surname must contain only a-z or A-Z'
+                    break
+                } else {
+                    error2.last_name = ""
+                    break
+                }
             case 'tel':
-                error2.tel = e.target.value.length == 10 ? '' : 'telephone must be 10 character'
-                break
+                if (!/^[0-9]+$/.test(e.target.value)) {
+                    error2.tel = 'Your phone number must contain only 0-9'
+                    break
+                }else if (!/^[0-9]+$/.test(data.tel) && e.target.value.length > 1) {
+                    error2.tel = 'Your phone number must contain only 0-9'
+                    break
+                } else if (e.target.value.length < 10) {
+                    error2.tel = 'Phone number must have 10 characters'
+                    break
+                } else {
+                    error2.tel = ""
+                    break
+                }
             case 'nat_id':
-                error2.nat_id = e.target.value.length == 13 ? '' : 'national id must be 13 character'
-                break
+                if (!/^[0-9]+$/.test(e.target.value)) {
+                    error2.nat_id = 'Your National ID must contain only 0-9'
+                    break
+                }else if (!/^[0-9]+$/.test(data.nat_id) && e.target.value.length > 1) {
+                    error2.nat_id = 'Your National ID must contain only 0-9'
+                    break
+                } else if (e.target.value.length < 13) {
+                    error2.nat_id = 'National ID must have 13 characters'
+                    break
+                } else {
+                    error2.nat_id = ""
+                    break
+                }
         }
     }
 
@@ -117,9 +161,6 @@ function Informationform(props) {
     return (
         <div>
             <form style={{ padding: '2%' }}>
-                {/*<div class="row"><div class="col" style={{textAlign: "left"}}>
-                    <label style={{marginLeft:"6px"} }>Error MSG:</label>
-                    </div>*/}
                 <div class="form-group row">
                     <div class='col-form-label col-sm-2' style={{ textAlign: "left" }}>
                         <label style={{ color: "red" }}>*</label><label>Username:</label></div>
