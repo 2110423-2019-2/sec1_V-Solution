@@ -49,7 +49,7 @@ const ShowStore = (props) => {
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
-                                <h5 class="card-title">{name}</h5>
+                                <h5 class="card-title"><a href={'/getproduct/' + id}>{name}</a></h5>
                             </div>
                             <div class="col-3">
                                 <EditProductModal item={item} />
