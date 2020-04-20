@@ -47,6 +47,7 @@ def product_to_dict(product):
         image = ''
     data = {
         "id" : product.id,
+        "seller_id" : product.seller.id,
         "product_name" : product.productName,
         "product_desc" : product.proDuctDesc,
         "category" : product.category,

@@ -27,7 +27,7 @@ from backend import settings
 @permission_classes((AllowAny,))
 def test_payment(request):
     omise_token = request.data["omiseToken"]
-    omise_source = request.data["omiseSource"]
+    #omise_source = request.data["omiseSource"]
 
     return Response(omise_token , status=HTTP_200_OK)
 
@@ -35,7 +35,7 @@ def test_payment(request):
 @permission_classes((AllowAny,))
 def order_payment(request, order_id):
     omise_token = request.data["omiseToken"]
-    omise_source = request.data["omiseSource"]
+    #omise_source = request.data["omiseSource"]
     
     omise.api_secret = settings.OMISE_SECRET_KEY
 
@@ -52,14 +52,16 @@ def order_payment(request, order_id):
         )
 
     except omise.errors.BaseError as e:
-        return Response({'error': 'Payment failed.'}, status=HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Payment error'}, status=HTTP_400_BAD_REQUEST)
     except Exception as e:
-        return Response({'error': 'Fatal error.'}, status=HTTP_400_BAD_REQUEST)
+        return Response({'error': str(e)}, status=HTTP_400_BAD_REQUEST)
 
     if charge.status == "successful":
         order.status = 'P'
         order.save()
-    
+    else:
+        return Response({'error': 'Payment failed'}, status=HTTP_400_BAD_REQUEST)
+
     data = order_serializer(order)
 
     return Response(data, status=HTTP_200_OK)
