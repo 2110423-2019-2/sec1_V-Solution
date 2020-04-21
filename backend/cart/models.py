@@ -5,7 +5,7 @@ from pygments.lexers import get_all_lexers
 from pygments.styles import get_all_styles
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, null=True, blank=True, on_delete='CASCADE')
+    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     count = models.PositiveIntegerField(default=0)
     total_price = models.FloatField(default=0)
     total_deliver_price = models.FloatField(default=0)
@@ -15,8 +15,8 @@ class Cart(models.Model):
         return "User {}'s cart".format(self.user)
     
 class Entry(models.Model):
-    product = models.ForeignKey(Product, null=True, on_delete='CASCADE')
-    cart = models.ForeignKey(Cart, null=True, on_delete='CASCADE')
+    product = models.ForeignKey(Product, null=True, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, null=True, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
 
     def __str__(self):

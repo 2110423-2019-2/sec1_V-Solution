@@ -5,5 +5,6 @@ from .views import *
 
 urlpatterns = [
     path('test', test_payment),
-    path('order/<str:order_id>', order_payment)
+    path('order/<str:order_id>', order_payment),
+    path('torder/<str:order_id>', order_payment_fake)
 ]

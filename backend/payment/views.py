@@ -65,3 +65,32 @@ def order_payment(request, order_id):
     data = order_serializer(order)
 
     return Response(data, status=HTTP_200_OK)
+
+# For testing purposes
+@api_view(["POST"])
+@permission_classes((AllowAny,))
+def order_payment_fake(request, order_id):
+    omise_token = request.data["omiseToken"]
+    #omise_source = request.data["omiseSource"]
+    
+    omise.api_secret = settings.OMISE_SECRET_KEY
+
+    order = Order.objects.get(pk=order_id)
+    if order.status != 'O':
+        return Response({'error': 'Order can not be paid.'}, status=HTTP_400_BAD_REQUEST)
+    price = (int(order.total_price + order.total_deliver_price) * 100) + 2000
+
+    try:
+        charge = omise.Charge.create(
+            amount = price,
+            currency = 'thb',
+            card = omise_token,
+        )
+    except Exception as e:
+        pass
+
+    order.status = 'P'
+    order.save()
+    data = order_serializer(order)
+
+    return Response(data, status=HTTP_200_OK)

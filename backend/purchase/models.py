@@ -10,7 +10,7 @@ class Order(models.Model):
         ('F', 'Finished')
     }
 
-    buyer = models.ForeignKey(User, null=True, blank=True, on_delete='CASCADE')
+    buyer = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     status = models.CharField(max_length=1, choices=STATUS_TYPES)
     total_price = models.FloatField(default=0)
     total_deliver_price = models.FloatField(default=0)
@@ -28,7 +28,7 @@ class OrderItem(models.Model):
         ('A', 'Arrived'),
     }
 
-    product = models.ForeignKey(Product, null=True, on_delete='SET_NULL')
-    order = models.ForeignKey(Order, null=True, on_delete='CASCADE')
+    product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
+    order = models.ForeignKey(Order, null=True, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     status = models.CharField(max_length=1, choices=STATUS_TYPES)
