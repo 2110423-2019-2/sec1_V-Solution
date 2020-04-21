@@ -4,7 +4,7 @@ import CartComponent from '../web-components/CartComponent'
 import axios from 'axios';
 import { api } from '../config'
 import Payment from './Payment';
-
+import OmiseCreditCard from '../omise-prebuit/OmiseCreditCard';
 const Cart = () => {
 
     const cartUrl = api + "/cart/get" // ++++ ไออันนี้ต้องเป็น cart แต่ใน cart ยังไม่เข้ากุเลยดึงมาจากหน้า product มาก่อนน ++++
@@ -13,7 +13,7 @@ const Cart = () => {
     const [price, setPrice] = useState(0)
     const [deliver_price, setDeliverPrice] = useState(0)
     const [amount, setAmount] = useState(0)
-
+    const [order_id,setOrder_id] = useState(0)
     useEffect(() => {
         axios.get(cartUrl, {
             headers: {
@@ -34,13 +34,14 @@ const Cart = () => {
         })
     }, [cartUrl])
     const checkout = () =>{
-        axios.post(checkoutUrl,{
+        axios.post(checkoutUrl,{},{
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + localStorage.getItem('Token')
             }
         }).then((res)=>{
-            console.log(res)
+            setOrder_id(res.data.order_id)
+            console.log(order_id)
         }).catch((err)=>{
             console.log(localStorage.getItem('Token'))
             console.log(err)
@@ -74,10 +75,29 @@ const Cart = () => {
                         
                         </div>
                         <div class='cart-footer' style={{ paddingBottom: "20px" }}>
-                            <button class='cart-button' onClick={checkout}>
+                            <button class='cart-button' onClick={checkout} data-toggle="modal" data-target="#exampleModal">
                                 Checkout
                             </button>
-                            <Payment  paymentAmount={amount} />
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <OmiseCreditCard order_id={order_id}/>
+      </div>
+    </div>
+  </div>
+</div>
+                            
                             
                         </div>
 
