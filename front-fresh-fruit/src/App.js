@@ -17,7 +17,7 @@ import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
 import HomePage from './Page/HomePage';
-
+import Seller from './Page/Seller'
 import Payment from './Page/Payment'
 
 import ProductDetail from './Page/ProductDetail';
@@ -137,6 +137,7 @@ function App() {
             <Route path='/editStore' component={EditStore} />
             <Route path='/addItem' component={AddItemform} />
             <Route path='/cart' component={Cart} />
+            <Route path = '/seller/:username' component={Seller}/>
           </UserContext.Provider>
         </Switch>
       </Router>

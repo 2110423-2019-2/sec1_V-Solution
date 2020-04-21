@@ -29,6 +29,7 @@ const Product = (props) => {
     let { id } = useParams();
     const fetchProduct = async () =>{
         const data = await axios.get(productUrl+id).then(function (res){
+            console.log(res.data)
             setImage("http://localhost:8000" + res.data.image,[image])
             setProductName(res.data.product_name)
             setDescription(res.data.product_desc)
