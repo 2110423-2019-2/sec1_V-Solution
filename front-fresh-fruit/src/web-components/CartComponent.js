@@ -4,9 +4,31 @@ import ProfileComponent from '../web-components/ProfileComponent';
 import UserContext from '../Context/UserContext';
 import pineapple from '../pictures/pineapple.png';
 import trash from '../pictures/recycle-bin.png';
+import axios from 'axios'
+import { api } from '../config.json'
 
 const CartComponent = (props) => {
+
+    const removeUrl = api + "/cart/remove"
     //for setup fetch data
+    const removeFromCart = () => {
+        let timer = null;
+        console.log(props)
+        axios.post(removeUrl, {
+            id: props.id,
+            amount: props.amount
+        } ,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + localStorage.getItem('Token')
+            }
+        }).then((res) => {
+            console.log(res)
+        }).then(timer = setTimeout(() => window.location.reload(false), 500))
+        .catch((err) => {
+            console.log(err)
+        })
+    }
 
     return (
 
@@ -17,7 +39,7 @@ const CartComponent = (props) => {
                 <div class='row' style={{ textAlign: "center", paddingTop: "40px" }}>
 
                     <div class='col-lg-1' style={{ marginTop: "-40px" }}>
-                        <img src={"http://localhost:8000"+ props.img} style={{ height: '120px', width: '70px',objectFit:'cover' }} />
+                        <img src={"http://localhost:8000" + props.img} style={{ height: '120px', width: '70px', objectFit: 'cover' }} />
                     </div>
                     <div class='col-lg-6'>
                         <h1 style={{ fontFamily: "Marker Felt", fontSize: "25px" }}>Product Name: {props.name}</h1>
@@ -34,7 +56,7 @@ const CartComponent = (props) => {
                         </div>
                     </div>
                     <div class='col-lg-1'>
-                        <img src={trash} style={{ height: '30px', width: '30px' }} />
+                        <img src={trash} style={{ height: '30px', width: '30px' }} onClick={()=>removeFromCart()} />
                     </div>
                 </div>
             </div>

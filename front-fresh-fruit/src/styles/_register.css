@@ -1,18 +1,15 @@
 .container-register {
     background-color: #6ac17d;
-    height: 1250px;
 }
 
 .container-register-seller {
     background-color: #6ac17d;
-    height: 1350px;
 }
 
 .col-info {
     text-align: center;
     margin-left: 10%;
     margin-right: 10%;
-    height: 1000px;
 }
 
 .form-title {
@@ -23,13 +20,11 @@
 
 .container-form {
     background-color: rgb(255,255,255,0.7);
-    height: 1124px;
     margin-top: 30px;
 }
 
 .container-form-seller {
     background-color: rgb(255,255,255,0.7);
-    height: 1224px;
     margin-top: 30px;
 }
 
@@ -51,10 +46,11 @@
 }
 
 .container-inform {
-    margin-top: 50px;
+    margin-top: 20px;
     padding-left: 30px;
 }
 
 .container-inform-seller {
+    margin-top: 20px;
     padding-left: 30px;
 }

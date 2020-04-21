@@ -7,7 +7,7 @@ import Reservebutton from '../web-components/ReserveButton'
 import { useHistory } from 'react-router-dom';
 import {api} from '../config'
 import { useParams} from "react-router";
-
+import {Link} from 'react-router-dom'
 import ReserveButton from '../web-components/ReserveButton';
 import PurchaseButton from '../web-components/PurchaseButton';
 const productUrl= api+"/getproduct/"
@@ -25,10 +25,12 @@ const Product = (props) => {
     const [deliver_company, setDeliverCompany] = useState();
     const [deliver_price, setDeliverPrice] = useState();
     const [amount, setAmount] = useState();
+    const [seller_name, setSeller_name] = useState();
 
     let { id } = useParams();
     const fetchProduct = async () =>{
         const data = await axios.get(productUrl+id).then(function (res){
+            console.log(res.data)
             setImage("http://localhost:8000" + res.data.image,[image])
             setProductName(res.data.product_name)
             setDescription(res.data.product_desc)
@@ -40,6 +42,7 @@ const Product = (props) => {
             setDeliverCompany(res.data.deliver_company)
             setDeliverPrice(res.data.deliver_price)
             setAmount(res.data.amount)
+            setSeller_name(res.data.seller_name)
             
         })
         .catch((err) => console.log(err))
@@ -54,20 +57,21 @@ const Product = (props) => {
             <div class="container-fluid" style={{ backgroundColor: "#6AC17D" }}>
                 <div class="container-fluid" style={{backgroundColor: "#E6FFEC", width:"70%"}}>
                     <div class="row">
-                        <div class="product-header">{product_name}</div>
+                        <div class="product-header" style={{ marginLeft:"40 px"}}>{product_name}</div>
                     </div>
-                    <div class="row" style={{height:"auto", marginTop:"10px"}}>
-                        <div class="col" style={{textAlign: "center", marginLeft:"20px"}}><img src={image} style={{width:"300px", height:"300px"}}/></div>
-                        <div class="col">
+                    <div class="row" style={{height:"auto", marginTop:"20px", paddingBottom:"50px", fontSize:'20px'}}>
+                        <div class="col" style={{textAlign: "center"}}><img src={image} style={{width:"300px", height:"300px"}}/></div>
+                        <div class="col" style={{paddingTop: "20px", color:'#888888'}}>
+                            <Link to={'/seller/'+seller_name} >ติดต่อคนขาย</Link>
                             <div class="product-detail">{product_desc}</div>
                             <div class="product-detail">Harvest date: {harvest_date}</div>
                             <div class="product-detail">Price: {price}{props.id} bahts per {unit_of_amount}</div>
                             <div class="product-detail">{district}, {province}</div>
-                            <div class="product-detail" style={{color:'black'}}>Deliver Company: {deliver_company}</div>
-                            <div class="product-detail" style={{color:'black'}}>Deliver price: {deliver_price}</div>
+                            <div class="product-detail">Deliver Company: {deliver_company}</div>
+                            <div class="product-detail">Deliver price: {deliver_price}</div>
                             <div class="product-detail">In stock: {amount}</div>
                             <div class="product-detail">  </div>
-                            <div style={{display:'flex'}}>
+                            <div style={{display:'flex', paddingTop:'20px'}}>
                                 <ReserveButton amount={amount} id={id}/>
                                 <PurchaseButton amount={amount} id={id} />
                     </div>

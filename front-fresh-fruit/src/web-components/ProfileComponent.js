@@ -52,15 +52,15 @@ const Profile = (props) => {
                             </div>
                             <div class="card-body col-sm-9 col-xs-12">
                                 <div class="row">
-                                    <h5 class="card-title card-title-login ">{localStorage.getItem('store_name')}</h5>
-                                    <h5 class="card-title card-title-login ">{localStorage.getItem('first_name')}  {localStorage.getItem('last_name')} ( {localStorage.getItem('user_type')} )</h5>
+                                    <h5 class="card-title card-title-login ">{localStorage.getItem('first_name')}  {localStorage.getItem('last_name')} ({localStorage.getItem('user_type')})</h5>
                                     <a href="/editProfile" class="edit-icon">
                                         <i class="far fa-edit  " ></i>
                                     </a>
                                 </div>
-                                <p class="card-text">Tel : {localStorage.getItem('tel')}</p>
-                                <p class="card-text">Address : {localStorage.getItem('address')}</p>
-                                
+                                <div class="row-desc">
+                                    <p class="card-text profile-desc">Tel : {localStorage.getItem('tel')}</p>
+                                    <p class="card-text profile-desc">Address : {localStorage.getItem('address')}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

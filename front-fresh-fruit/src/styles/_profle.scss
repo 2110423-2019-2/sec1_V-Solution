@@ -20,6 +20,11 @@
   height: 337px;
 }
 
+.profile-sell{
+  object-fit: contain;
+  width: 100%;
+}
+
 .seller-card {
   margin: auto;
   border-radius: 20px;
@@ -39,4 +44,11 @@
   color: #fff;
   background-color: rgb(106, 193, 125);
   border-color: rgb(106, 193, 125);
+}
+
+.profile-desc{
+  font-size: 20px;
+}
+.row-desc{
+  padding-bottom: 5%;
 }

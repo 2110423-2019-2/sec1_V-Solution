@@ -32,7 +32,8 @@ const Cart = () => {
         .catch((err)=>{
             alert(err)
         })
-    }, [cartUrl])
+    }, [cartUrl],renderSwitch)
+
     const checkout = () =>{
         axios.post(checkoutUrl,{},{
             headers: {
@@ -64,6 +65,7 @@ const Cart = () => {
 
                         {product.map(i => <CartComponent
                             key={i.product.id}
+                            id={i.product.id}
                             name={i.product.product_name}
                             price={i.product.price}
                             amount={i.amount}
