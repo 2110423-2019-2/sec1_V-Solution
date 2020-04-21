@@ -7,7 +7,7 @@ import Reservebutton from '../web-components/ReserveButton'
 import { useHistory } from 'react-router-dom';
 import {api} from '../config'
 import { useParams} from "react-router";
-
+import {Link} from 'react-router-dom'
 import ReserveButton from '../web-components/ReserveButton';
 import PurchaseButton from '../web-components/PurchaseButton';
 const productUrl= api+"/getproduct/"
@@ -25,6 +25,7 @@ const Product = (props) => {
     const [deliver_company, setDeliverCompany] = useState();
     const [deliver_price, setDeliverPrice] = useState();
     const [amount, setAmount] = useState();
+    const [seller_name, setSeller_name] = useState();
 
     let { id } = useParams();
     const fetchProduct = async () =>{
@@ -41,6 +42,7 @@ const Product = (props) => {
             setDeliverCompany(res.data.deliver_company)
             setDeliverPrice(res.data.deliver_price)
             setAmount(res.data.amount)
+            setSeller_name(res.data.seller_name)
             
         })
         .catch((err) => console.log(err))
@@ -60,6 +62,7 @@ const Product = (props) => {
                     <div class="row" style={{height:"auto", marginTop:"20px", paddingBottom:"50px", fontSize:'20px'}}>
                         <div class="col" style={{textAlign: "center"}}><img src={image} style={{width:"300px", height:"300px"}}/></div>
                         <div class="col" style={{paddingTop: "20px", color:'#888888'}}>
+                            <Link to={'/seller/'+seller_name} >ติดต่อคนขาย</Link>
                             <div class="product-detail">{product_desc}</div>
                             <div class="product-detail">Harvest date: {harvest_date}</div>
                             <div class="product-detail">Price: {price}{props.id} bahts per {unit_of_amount}</div>
