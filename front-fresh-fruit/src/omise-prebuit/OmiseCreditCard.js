@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Script from 'react-load-script';
 import {api} from '../config.json';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 let OmiseCard
 
 const OmiseCreditCard = (props) =>{
-  
+    let history = useHistory()
     const handleLoadScript = () => {
       OmiseCard = window.OmiseCard
       OmiseCard.configure({
@@ -27,9 +28,9 @@ const OmiseCreditCard = (props) =>{
     }
 
     const omiseCardHandler = () =>{
-      const omiseUrl = api + '/payment/order/'+ props.order_id
+      const omiseUrl = api + '/payment/torder/'+ props.order_id
       OmiseCard.open({
-        amount: 10000,
+        amount: props.amount,
         submitFormTarget: '#checkout-form',
         onCreateTokenSuccess: (token) => {
           console.log(token)
@@ -47,6 +48,8 @@ const OmiseCreditCard = (props) =>{
 
           }).then((res)=>{
             console.log(res)
+            alert('Payment Already Success')
+            history.goBack()
           }).catch((err)=>{
             alert(err)
           })
@@ -54,6 +57,7 @@ const OmiseCreditCard = (props) =>{
         },
         onFormClosed: () => {
           /* Handler on form closure. */
+          history.push('/')
         },
       })
     }

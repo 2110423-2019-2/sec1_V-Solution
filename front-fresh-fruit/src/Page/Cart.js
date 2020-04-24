@@ -84,17 +84,17 @@ const Cart = () => {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Comfirm Payment</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+                        Please pay {price} Bath with Omise 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <OmiseCreditCard order_id={order_id}/>
+        <OmiseCreditCard order_id={order_id} amount={price} data-dismiss="modal"/>
       </div>
     </div>
   </div>
