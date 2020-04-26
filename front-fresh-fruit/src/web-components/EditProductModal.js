@@ -39,6 +39,7 @@ const EditProductModal = (props) => {
     }
 
     const onSubmit = () => {
+        let timer
         axios.post(productURL + product.id, product, {
             headers: {
                 'Authorization': `Token ` + localStorage.getItem('Token')
@@ -46,7 +47,8 @@ const EditProductModal = (props) => {
         }).then((res) => {
             console.log("response edit", res.data)
             alert('edit successful')
-        }).catch((err) => {
+        }).then(timer = setTimeout(() => window.location.reload(false), 1500))
+        .catch((err) => {
             console.log(err)
         })
     }

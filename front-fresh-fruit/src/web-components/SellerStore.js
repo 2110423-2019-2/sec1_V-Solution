@@ -17,15 +17,17 @@ const ShowStore = (props) => {
     }, [props])
 
     function Item(img, name, desc, id, item) {
+        let timer
         const onLaunch = () => {
             axios.post(launchURL + id + '/L', [], {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ` + localStorage.getItem('Token')
                 }
-            }).catch((err) => {
-                console.log(err)
-            })
+            }).then(timer = setTimeout(() => window.location.reload(false), 1500))
+                .catch((err) => {
+                    console.log(err)
+                })
         }
 
         const onReserve = () => {
@@ -34,9 +36,10 @@ const ShowStore = (props) => {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ` + localStorage.getItem('Token')
                 }
-            }).catch((err) => {
-                console.log(err)
-            })
+            }).then(timer = setTimeout(() => window.location.reload(false), 1500))
+                .catch((err) => {
+                    console.log(err)
+                })
         }
 
         return (
@@ -115,14 +118,14 @@ const ShowStore = (props) => {
                         </div>
                     </div>
                     <div class="tab-pane fade" id="reserve" role="tabpanel" aria-labelledby="reserve-tab">
-                    <div class="row row-card">
-                    {product.filter((item) => {return item.product_type === "R"})
-                    .map((item) => Item(item.image, item.product_name, item.product_desc, item.id, item))}
-                    {LastItem()}
-                </div>
+                        <div class="row row-card">
+                            {product.filter((item) => { return item.product_type === "R" })
+                                .map((item) => Item(item.image, item.product_name, item.product_desc, item.id, item))}
+                            {LastItem()}
                         </div>
+                    </div>
                 </div>
-{/* 
+                {/* 
                 <div class="edit-store-title underline ">Products({product.length})</div>
                 <div class="row row-card">
                     {product.filter((item) => { return item.product_type === "A" })

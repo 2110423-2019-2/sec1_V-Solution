@@ -5,7 +5,7 @@ import UserContext from '../Context/UserContext';
 import pineapple from '../pictures/pineapple.png';
 import trash from '../pictures/recycle-bin.png';
 import axios from 'axios'
-import { api, media } from '../config.json'
+import { api,media } from '../config.json'
 
 const CartComponent = (props) => {
 

@@ -32,7 +32,7 @@ function ReserveButton(props) {
             })
                 .then((res) => {
                     console.log(res.status)
-                    alert('Already add to cart')
+                    alert('Added to cart')
                 })
                 .catch((err) => {
                     console.log(err)
