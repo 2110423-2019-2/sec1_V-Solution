@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router";
-import { api } from '../config.json'
+import { api, media } from '../config.json'
 import axios from 'axios'
 import ProfilePicture from '../web-components/ProfilePicture'
 import SellerStore from '../web-components/SellerStore'
@@ -62,7 +62,7 @@ const Seller = () => {
                     <div class="card seller-card w-75">
                         <div class="row">
                             <div class="col-sm-3 col-xs-12">
-                                <img src={"http://localhost:8000" + user.image} class="profile-sell" alt="Responsive image" />
+                                <img src={media + user.image} class="profile-sell" alt="Responsive image" />
                             </div>
                             <div class="card-body col-sm-9 col-xs-12">
                                 <h5>{user.store_name}</h5>

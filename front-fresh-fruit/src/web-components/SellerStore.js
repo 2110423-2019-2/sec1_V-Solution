@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
-import { api } from '../config';
+import { api, media } from '../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 import EditProductModal from '../web-components/EditProductModal'
@@ -43,7 +43,7 @@ const ShowStore = (props) => {
             <div>
                 <div class="card  card-a " >
                     {img ?
-                        <img src={"http://localhost:8000" + img} class="card-img-top pic-card" alt="..." /> :
+                        <img src={media + img} class="card-img-top pic-card" alt="..." /> :
                         <FontAwesomeIcon class="card-img-top pic-card" alt="..." icon={faCarrot} color='#6d84b4' size='10x' />
                     }
                     <div class="card-body">

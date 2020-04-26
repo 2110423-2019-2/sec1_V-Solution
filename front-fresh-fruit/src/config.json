@@ -1,3 +1,4 @@
 {
-    "api":"http://nutpattara.pythonanywhere.com/api"
+    "api":"http://nutpattara.pythonanywhere.com/api",
+    "media": "http://nutpattara.pythonanywhere.com/"
 }

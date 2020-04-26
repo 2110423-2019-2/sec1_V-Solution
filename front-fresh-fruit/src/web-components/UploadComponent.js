@@ -4,7 +4,7 @@ import Images from '../web-components/Images'
 import UploadButton from '../web-components/UploadButton'
 import Notifications, { notify } from 'react-notify-toast'
 import axios from 'axios'
-import { api } from '../config'
+import { api, media } from '../config'
 
 
 
@@ -20,7 +20,7 @@ const UploadComponent = (props) => {
 
     useEffect(() => {
         if (props.avatar) {
-            setImages("http://localhost:8000" + props.avatar)
+            setImages( media  + props.avatar)
             console.log(props)
         }
     }, [props])
@@ -82,7 +82,7 @@ const UploadComponent = (props) => {
         })
             .then(res => {
                 console.log("res", res)
-                setImages("http://localhost:8000" + res.data.url)
+                setImages( media  + res.data.url)
                 setUploading(false)
                 if(props.type === "profile") {localStorage.setItem("image", res.data.url)}
                 return toast("upload success", 'custom', 200, toastColor)

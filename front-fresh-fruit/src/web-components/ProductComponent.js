@@ -5,7 +5,7 @@ import Fruit from '../pictures/fruit.png';
 import Purchasebutton from '../web-components/PurchaseButton'
 import Reservebutton from '../web-components/ReserveButton'
 import { useHistory } from 'react-router-dom';
-import {api} from '../config'
+import {api, media} from '../config'
 import { useParams} from "react-router";
 import {Link} from 'react-router-dom'
 import ReserveButton from '../web-components/ReserveButton';
@@ -31,7 +31,7 @@ const Product = (props) => {
     const fetchProduct = async () =>{
         const data = await axios.get(productUrl+id).then(function (res){
             console.log(res.data)
-            setImage("http://localhost:8000" + res.data.image,[image])
+            setImage(media + res.data.image,[image])
             setProductName(res.data.product_name)
             setDescription(res.data.product_desc)
             setHarvest(res.data.harvest_date)

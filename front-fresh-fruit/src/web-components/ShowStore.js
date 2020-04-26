@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisV, faCarrot } from '@fortawesome/free-solid-svg-icons'
-
+import {api, media} from '../config.json'
 import { useHistory } from "react-router-dom";
 import ReserveButton from './ReserveButton';
 import PurchaseButton from './PurchaseButton';
@@ -11,7 +11,7 @@ function Item(id, img, name, desc, amount, product_id, product_type, price, deli
         <div key={index}>
             <div class="card card-a" >
                 {img ?
-                    <img src={"http://localhost:8000" + img} class="card-img-top pic-card" alt="..." /> :
+                    <img src={media + img} class="card-img-top pic-card" alt="..." /> :
                     <FontAwesomeIcon class="card-img-top pic-card" alt="..." icon={faCarrot} color='#6d84b4' size='10x' />
                 }
                 <div class="card-body">

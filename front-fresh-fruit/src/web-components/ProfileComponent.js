@@ -8,7 +8,7 @@ import editIcon from '../pictures/edit.png'
 import Store from '../web-components/ShowStore'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages, faUserCircle } from '@fortawesome/free-solid-svg-icons'
-import { api } from '../config'
+import { api, media } from '../config'
 
 const userUrl = api + "/getuser/";
 const productUrl = api + "/getuserproduct/"
@@ -17,7 +17,7 @@ const Profile = (props) => {
     const history = useHistory();
 
 
-    const [image, setImage] = useState("http://localhost:8000" + localStorage.getItem('image'));
+    const [image, setImage] = useState(media + localStorage.getItem('image'));
     //for setup fetch data
 
 
@@ -30,7 +30,7 @@ const Profile = (props) => {
 
     const profilePic = () => {
         switch (true) {
-            case image !== "http://localhost:8000":
+            case image !== media:
                 return <img className='profile-pic img-fluid  rounded fadein' src={image} alt="profilePic" />
             default:
                 return <div className='button-upload icon-profile'>
