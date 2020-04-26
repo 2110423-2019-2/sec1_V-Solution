@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import '../App.scss';
 import { Form, Col, Button, Container } from 'react-bootstrap'
 import axios from 'axios'
 import '../styles/_addcommentform.css'
 import {api} from '../config'
-import ShowComment from "../web-components/ShowComment"
-const url = api+"/comment/postcomment/"
+const url = api+"/comment/postcomment"
 
-function AddCommentform() {
+function AddCommentform(props) {
     const [comment, setComment] = useState({
-        "store_name": localStorage.getItem('Storename'),
+        "store_name": "",
         "poster_user": localStorage.getItem('Username'),
         "text": ""
     });
@@ -17,6 +16,10 @@ function AddCommentform() {
     const checkState = () => {
         console.log("comment: ", comment)
     }
+
+    useEffect(() => {
+        comment.store_name = props.storename
+    }, [props])
 
     const handleChange = (e) => {
         setComment({ ...comment, [e.target.name]: e.target.value })
@@ -61,9 +64,6 @@ function AddCommentform() {
                                 Submit
                             </Button>
                         </Form>
-                    </div>
-                    <div>
-                        {comment.length == 0 ? <h5>No comment</h5> : <ShowComment comment={[]}/>}
                     </div>
                 </Col>
                 

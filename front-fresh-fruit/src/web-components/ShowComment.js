@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container,Col } from 'react-bootstrap'
+import axios from 'axios';
+import {api} from '../config'
 
 function Comment(name, desc) {
     return (
@@ -7,7 +9,7 @@ function Comment(name, desc) {
             <Container >
                 <Col class="card w-75">
                     <div class="card-body">
-                       <h5 class="card-title">{name}</h5>
+                       <h5 class="card-title"><b>Username :</b> {name}</h5>
                        <p class="card-text">{desc}</p>
                     </div>
                 </Col>
@@ -17,22 +19,43 @@ function Comment(name, desc) {
 }
 
 const ShowComment = (props) => {
-    const [comment, setComment] = useState([]);
+    const url = api+"/comment/get/" + props.storename
+
+    const [comment, setComment] = useState([
+        {name:'comment1',desc:'sdfasdfdsd'},
+        {name:'comment2',desc:'sdfasdfdsd'},
+        {name:'comment1',desc:'sdfasdfdsd'},
+        {name:'comment2',desc:'sdfasdfdsd'},
+        {name:'comment1',desc:'sdfasdfdsd'},
+        {name:'comment2',desc:'sdfasdfdsd'},
+    ]);
+
+    async function getComment() {
+        try {
+            const response = await axios.get(url);
+            setComment(response.data);
+        } catch(error) {
+            console.log(error)
+        }
+    }
 
     useEffect(() => {
-        setComment(props.comment)
-        console.log('this is comment')
-        console.log(comment)
-        console.log('this is comment')
-    }, [props])
+        getComment()
+    }, [])
 
     return (
         <div >
             <div class="container">
                 <div class="row row-card">
+                    
+                    <div>
+                    {comment.length !== 0 ? <h3>number of commnet : {comment.length}</h3> : '' }
+                    
                     {comment.length!==0 ? 
-                    comment.map((item) => Comment(item.poster_user,item.text))
-                    : <div>Dont have any comment</div>}
+                        comment.filter((item) => { return comment }).map((item) =>
+                        Comment(item.name,item.desc))
+                    : <div><h1>Dont have any comment</h1></div>}
+                    </div>
                 </div>
             </div>
         </div>

@@ -38,21 +38,7 @@ function Navigationbar() {
       </Nav>)
       }
       <Nav className="justify-content-end">
-        <div className="dropdown-nav">
-          <NavDropdown eventKey={1}  class='dropdown-toggle'
-            title={
-              <div className="pull-left">
-                <img className="side-nav" activeClassName="side-nav-active"src={Nav_search} alt="Search"/>
-              </div>
-            } 
-            id="nav-dropdown">
-              <form class="form-inline md-form mr-auto mb-4">
-                <input class="form-control" type="text" placeholder="Search" id="mySearch" onkeyup="filterFunction()"/>
-                <button id="search-button" type="submit" class='btn btn-primary'>Search</button>
-              </form>
-          </NavDropdown>
-        </div>
-        
+      
         
           <Nav.Link href="/Cart"><img src={Nav_cart} className="side-nav" activeClassName="side-nav-active"></img></Nav.Link>
           <Nav.Link >

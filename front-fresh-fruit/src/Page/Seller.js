@@ -14,7 +14,6 @@ const Seller = () => {
     let { username } = useParams()
     const url = api + '/getuser/' + username
     const userProductUrl = api + "/getuserproduct/" + username
-
     const [user, setUser] = useState({
         address: "",
         bio: "",
@@ -35,7 +34,7 @@ const Seller = () => {
         try {
             const response = await axios.get(userProductUrl)
                 .then(res => setProduct(res.data))
-            console.log(response)
+            
 
         } catch (error) {
             console.error(error);
@@ -46,7 +45,7 @@ const Seller = () => {
         const fetchData = async () => {
             const response = await axios.get(url);
             setUser(response.data);
-            console.log(response.data)
+            
         }
         fetchData()
         getProduct()
@@ -83,10 +82,10 @@ const Seller = () => {
                     </div>
                     <div class="card seller-card w-75">
                         <div id="add-comment" >
-                            <AddCommentform />
+                            <AddCommentform storename={user.store_name} />
                         </div>
                         <div id="all-comment">
-                            <ShowComment comment={[]} />
+                            <ShowComment storename={user.store_name} />
                         </div>
                     </div>
                 </div>
