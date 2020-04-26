@@ -29,13 +29,10 @@ const HomePage = () => {
     try {
       if(searchQuery['product_name']=='' || typeof(searchQuery['product_name'])=="undefined"){
         const response = await axios.get(productUrl);
-        console.log("product",response.data);
-        console.log(searchQuery)
+        
         setProduct(response.data)
       }else{
         const response = await axios.post(searchProductUrl,searchQuery);
-        console.log(searchQuery['product_name'],'this is searchQuery')
-        console.log("searchProduct",response.data);
         setProduct(response.data)
       }
       

@@ -19,7 +19,7 @@ const ProfileSeller = () => {
     async function getProduct() {
         try {
             const response = await axios.get(userProductUrl);
-            console.log("product", response.data);
+            
             setProduct(response.data)
         } catch (error) {
             console.error(error);

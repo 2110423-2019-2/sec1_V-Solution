@@ -23,7 +23,7 @@ const Cart = () => {
             }
         }).then(res => {
             const { data } = res
-            console.log(data)
+            
             setProduct(data.entries)
             setAmount(data.amount)
             setDeliverPrice(data.deliver_price)

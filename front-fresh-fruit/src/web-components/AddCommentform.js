@@ -23,11 +23,11 @@ function AddCommentform(props) {
 
     const handleChange = (e) => {
         setComment({ ...comment, [e.target.name]: e.target.value })
-        console.log(comment)
+        
     }
 
     const onSubmit = async (e, usertoken) => {
-        console.log(usertoken)
+        
         await axios.post(url,
             comment
             , {
@@ -37,8 +37,8 @@ function AddCommentform(props) {
                 }
             })
             .then((res) => {
-                checkState()
-                console.log(res.status)
+                
+                
                 res.status === 200 ? alert("Add Comment Successful"): alert("Error on add Comment")
             })
             .catch((err) => {
