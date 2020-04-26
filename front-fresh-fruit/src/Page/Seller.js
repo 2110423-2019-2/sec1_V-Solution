@@ -14,7 +14,6 @@ const Seller = () => {
     let { username } = useParams()
     const url = api + '/getuser/' + username
     const userProductUrl = api + "/getuserproduct/" + username
-
     const [user, setUser] = useState({
         address: "",
         bio: "",
@@ -83,10 +82,10 @@ const Seller = () => {
                     </div>
                     <div class="card seller-card w-75">
                         <div id="add-comment" >
-                            <AddCommentform />
+                            <AddCommentform storename={user.store_name} />
                         </div>
                         <div id="all-comment">
-                            <ShowComment comment={[]} />
+                            <ShowComment storename={user.store_name} />
                         </div>
                     </div>
                 </div>

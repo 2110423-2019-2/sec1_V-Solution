@@ -66,11 +66,8 @@ const ProfileSeller = () => {
                         <SellerStore product={product} />
                     </div>
                     <div class="card seller-card w-75">
-                        <div id="add-comment" >
-                            <AddCommentform/>
-                        </div>
                         <div id="all-comment">
-                            <ShowComment comment={[]}/>
+                            <ShowComment comment={localStorage.getItem('store_name')}/>
                         </div>
                     </div>
                 </div>
