@@ -34,7 +34,7 @@ const Seller = () => {
         try {
             const response = await axios.get(userProductUrl)
                 .then(res => setProduct(res.data))
-            console.log(response)
+            
 
         } catch (error) {
             console.error(error);
@@ -45,7 +45,7 @@ const Seller = () => {
         const fetchData = async () => {
             const response = await axios.get(url);
             setUser(response.data);
-            console.log(response.data)
+            
         }
         fetchData()
         getProduct()

@@ -45,75 +45,75 @@ function InformationformSeller() {
         && data.username.length > 0
 
     const handleChange = (e) => {
-        setData({ ...data, [e.target.name]: e.target.value })
+        setError({ ...error, [e.target.name]: e.target.value })
         console.log(data)
 
-        let error2 = error;
+        
         switch (e.target.name) {
             case 'username':
-                error2.username = e.target.value.length < 8 ? 'Username must be more than 8 characters' : ''
+                error.username = e.target.value.length < 8 ? 'Username must be more than 8 characters' : ''
                 break;
             case 'password':
                 var t = true
                 if (6 > e.target.value.length || e.target.value.length > 20) {
                     t = false
                 }
-                error2.password = t ? '' : 'Password must be between 6 and 20 characters'
+                error.password = t ? '' : 'Password must be between 6 and 20 characters'
                 break;
             case 'first_name':
                 if (e.target.value.length < 0) {
-                    error2.first_name = 'You must input your first name'
+                    error.first_name = 'You must input your first name'
                     break
                 } else if (!/^[a-zA-Z]+$/.test(e.target.value)) {
-                    error2.first_name = 'Your name must contain only a-z or A-Z'
+                    error.first_name = 'Your name must contain only a-z or A-Z'
                     break
                 }else if (!/^[a-zA-Z]+$/.test(data.first_name) && e.target.value.length > 1) {
-                    error2.first_name = 'Your name must contain only a-z or A-Z'
+                    error.first_name = 'Your name must contain only a-z or A-Z'
                     break
                 } else {
-                    error2.first_name = ""
+                    error.first_name = ""
                     break
                 }
             case 'last_name':
                 if (e.target.value.length < 0) {
-                    error2.last_name = 'You must input surname'
+                    error.last_name = 'You must input surname'
                     break
                 } else if (!/^[a-zA-Z]+$/.test(e.target.value)) {
-                    error2.last_name = 'Your surname must contain only a-z or A-Z'
+                    error.last_name = 'Your surname must contain only a-z or A-Z'
                     break
                 }else if (!/^[a-zA-Z]+$/.test(data.last_name) && e.target.value.length > 1) {
-                    error2.last_name = 'Your surname must contain only a-z or A-Z'
+                    error.last_name = 'Your surname must contain only a-z or A-Z'
                     break
                 } else {
-                    error2.last_name = ""
+                    error.last_name = ""
                     break
                 }
             case 'tel':
                 if (!/^[0-9]+$/.test(e.target.value)) {
-                    error2.tel = 'Your phone number must contain only 0-9'
+                    error.tel = 'Your phone number must contain only 0-9'
                     break
                 }else if (!/^[0-9]+$/.test(data.tel) && e.target.value.length > 1) {
-                    error2.tel = 'Your phone number must contain only 0-9'
+                    error.tel = 'Your phone number must contain only 0-9'
                     break
                 } else if (e.target.value.length < 10) {
-                    error2.tel = 'Phone number must have 10 characters'
+                    error.tel = 'Phone number must have 10 characters'
                     break
                 } else {
-                    error2.tel = ""
+                    error.tel = ""
                     break
                 }
             case 'nat_id':
                 if (!/^[0-9]+$/.test(e.target.value)) {
-                    error2.nat_id = 'Your National ID must contain only 0-9'
+                    error.nat_id = 'Your National ID must contain only 0-9'
                     break
                 }else if (!/^[0-9]+$/.test(data.nat_id) && e.target.value.length > 1) {
-                    error2.nat_id = 'Your National ID must contain only 0-9'
+                    error.nat_id = 'Your National ID must contain only 0-9'
                     break
                 } else if (e.target.value.length < 13) {
-                    error2.nat_id = 'National ID must have 13 characters'
+                    error.nat_id = 'National ID must have 13 characters'
                     break
                 } else {
-                    error2.nat_id = ""
+                    error.nat_id = ""
                     break
                 }
         }

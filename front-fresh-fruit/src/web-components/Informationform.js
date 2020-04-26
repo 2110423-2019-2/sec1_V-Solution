@@ -28,11 +28,11 @@ function Informationform(props) {
 
     const [error, setError] = useState({
         'username': '',
-        'password': '',
-        'first_name': '',
-        'last_name': '',
-        'tel': '',
-        'nat_id': ''
+        'password': 'null',
+        'first_name': 'null',
+        'last_name': 'null',
+        'tel': 'null',
+        'nat_id': 'null'
     })
 
     const checkState = () => {
@@ -168,7 +168,7 @@ function Informationform(props) {
 
                         <input class="form-control" type="text" name="username" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.username} required />
 
-                        {error.username.length > 0 && <small class='errorInForm'>{error.username}</small>}
+                        {error.username.length > 0 && <small class='errorInForm'>{error.username == 'null' ? '':error.username}</small>}
                     </div>
                 </div>
 
@@ -178,7 +178,7 @@ function Informationform(props) {
                     <div class='col-sm-6'>
                         <input class="form-control" type="text" name="first_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.first_name} required />
 
-                        {error.first_name.length > 0 && <small class='errorInForm'>{error.first_name}</small>}
+                        {error.first_name.length > 0 && <small class='errorInForm'>{error.first_name == 'null' ? '':error.first_name}</small>}
                     </div></div>
 
                 <div class="form-group row">
@@ -187,14 +187,14 @@ function Informationform(props) {
                     <div class='col-sm-6'>
                         <input class="form-control" type="text" name="last_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={props.last_name} required />
 
-                        {error.last_name.length > 0 && <small class='errorInForm'>{error.last_name}</small>}
+                        {error.last_name.length > 0 && <small class='errorInForm'>{error.last_name == 'null' ? '':error.last_name}</small>}
                     </div></div>
 
                 <div class="form-group row">
                     <div class='col-form-label col-sm-2' style={{ textAlign: "left" }}>
                         <label style={{ color: "red" }}>*</label><label>Email:</label></div>
                     <div class='col-sm-6'>
-                        <input class="form-control" type="email" name="email" style={{ marginLeft: '10px' }} placeholder="someone@outlook.com" onChange={handleChange} value={props.email} required />
+                        <input class="form-control" type="email" name="email" style={{ marginLeft: '10px' }} placeholder="someone@outlook.com" onChange={handleChange} value={props.email == 'null' ? '':error.email} required />
                     </div></div>
 
                 <div class="form-group row">
@@ -203,7 +203,7 @@ function Informationform(props) {
                     <div class='col-sm-6'>
                         <input class="form-control" type="password" name="password" style={{ marginLeft: '10px' }} aria-describedby="passwordHelp" onChange={handleChange} value={props.password} maxlength='20' required />
 
-                        {error.password.length > 0 && <small class='errorInForm'>{error.password}</small>}
+                        {error.password.length > 0 && <small class='errorInForm'>{error.password == 'null' ? '':error.password}</small>}
                     </div></div>
 
                 {storeName()}
@@ -219,7 +219,7 @@ function Informationform(props) {
                         <label style={{ color: "red" }}>*</label><label>Tel:</label></div>
                     <div class='col-sm-6'>
                         <input class="form-control" type="tel" name="tel" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} maxlength="10" value={props.tel} required />
-                        {error.tel.length > 0 && <small class='errorInForm'>{error.tel}</small>}
+                        {error.tel.length > 0 && <small class='errorInForm'>{error.tel == 'null' ? '':error.tel}</small>}
                     </div></div>
 
                 <div class="form-group row">
@@ -247,11 +247,11 @@ function Informationform(props) {
                         <label style={{ color: "red" }}>*</label><label>NationalID:</label></div>
                     <div class='col-sm-6'>
                         <input class="form-control" type='tel' name="nat_id" onChange={handleChange} style={{ marginLeft: '10px' }} placeholder="x-xxxx-xxxxx-xx-x" maxlength='13' value={props.nat_id} required />
-                        {error.nat_id.length > 0 && <small class='errorInForm'>{error.nat_id}</small>}
+                        {error.nat_id.length > 0 && <small class='errorInForm'>{error.nat_id == 'null' ? '':error.nat_id}</small>}
                     </div></div>
 
                 <div class='col-sm-8 col-reg-btn'>
-                    {checkSubmit == true && <small class='errorInForm'>Please enter correct value</small>}
+                    {checkSubmit == false && <small class='errorInForm'>Please enter correct value</small>}
                     {checkSubmit == false ? <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} disabled>Register</button> : <button type='submit' class='btn btn-primary register-btn' onClick={onSubmit} >Register</button>}
                 </div>
             </form>

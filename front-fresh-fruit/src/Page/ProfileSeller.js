@@ -57,7 +57,7 @@ const ProfileSeller = () => {
                                 </div>
                                 <p class="card-text">Tel : {localStorage.getItem('tel')}</p>
                                 <p class="card-text">Address : {localStorage.getItem('address')}</p>
-                                <CreateStoreButton />
+                                
                             </div>
 
                         </div>
