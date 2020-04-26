@@ -27,7 +27,7 @@ function Informationform(props) {
     const history = useHistory();
 
     const [error, setError] = useState({
-        'username': '',
+        'username': 'null',
         'password': 'null',
         'first_name': 'null',
         'last_name': 'null',
