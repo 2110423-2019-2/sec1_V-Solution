@@ -27,7 +27,7 @@ function AddCommentform(props) {
     }
 
     const onSubmit = async (e, usertoken) => {
-        
+        let timer
         await axios.post(url,
             comment
             , {
@@ -40,7 +40,7 @@ function AddCommentform(props) {
                 
                 
                 res.status === 200 ? alert("Add Comment Successful"): alert("Error on add Comment")
-            })
+            }).then(timer = setTimeout(() => window.location.reload(false), 1500))
             .catch((err) => {
                 console.log(err)
                 alert("Error on add Comment")
