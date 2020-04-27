@@ -10,7 +10,7 @@ def calculate_price(cart):
     entries = Entry.objects.filter(cart=cart)
     price = 0
     for entry in entries:
-        price += calculate_product_price(entry.product)
+        price += (entry.product.price * quantity)
     return price
 
 def add_entry(cart, product, amount):
