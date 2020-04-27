@@ -19,8 +19,9 @@ function Comment(name, desc) {
 }
 
 const ShowComment = (props) => {
-    const url = api+"/comment/get/" + props.storename
+    const url = api+"/comment/get/" 
 
+    const [store_name, setStore_name] = useState("")
     const [comment, setComment] = useState([
         {name:'comment1',desc:'sdfasdfdsd'},
         {name:'comment2',desc:'sdfasdfdsd'},
@@ -30,18 +31,20 @@ const ShowComment = (props) => {
         {name:'comment2',desc:'sdfasdfdsd'},
     ]);
 
-    async function getComment() {
+    async function getComment(store_name) {
         try {
-            const response = await axios.get(url);
+            const response = await axios.get(url+ store_name);
             setComment(response.data);
+            console.log(response.data)
         } catch(error) {
             console.log(error)
         }
     }
 
     useEffect(() => {
-        getComment()
-    }, [])
+        setStore_name(props.storename)
+        getComment(store_name)
+    }, [props])
 
     return (
         <div >
@@ -53,7 +56,7 @@ const ShowComment = (props) => {
                     
                     {comment.length!==0 ? 
                         comment.filter((item) => { return comment }).map((item) =>
-                        Comment(item.name,item.desc))
+                        Comment(item.poster_user,item.text))
                     : <div><h1>Dont have any comment</h1></div>}
                     </div>
                 </div>
