@@ -93,7 +93,7 @@ const Cart = () => {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <OmiseCreditCard order_id={order_id} amount={price} data-dismiss="modal"/>
+        <OmiseCreditCard order_id={order_id} amount={price*100} data-dismiss="modal"/>
       </div>
     </div>
   </div>
