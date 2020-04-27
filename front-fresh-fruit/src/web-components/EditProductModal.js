@@ -93,7 +93,6 @@ const EditProductModal = (props) => {
                                                 <option defaultValue>{product.category}</option>
                                                 <option value="1">Fruit</option>
                                                 <option value="2">Vegetable</option>
-                                                <option value="3">...</option>
                                             </select>
                                         </div>                                    </div></div>
 
