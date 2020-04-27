@@ -62,6 +62,10 @@ const Informationform = () => {
         console.log("user: ", user)
     }
 
+    var checkSubmit = error.first_name == ''
+        && error.last_name == ''
+        && error.tel == ''
+
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
         console.log(user)
@@ -75,7 +79,7 @@ const Informationform = () => {
                 } else if (!/^[a-zA-Z]+$/.test(e.target.value)) {
                     error2.first_name = 'Your name must contain only a-z or A-Z'
                     break
-                }else if (!/^[a-zA-Z]+$/.test(user.first_name) && e.target.value.length > 1) {
+                } else if (!/^[a-zA-Z]+$/.test(user.first_name) && e.target.value.length > 1) {
                     error2.first_name = 'Your name must contain only a-z or A-Z'
                     break
                 } else {
@@ -89,7 +93,7 @@ const Informationform = () => {
                 } else if (!/^[a-zA-Z]+$/.test(e.target.value)) {
                     error2.last_name = 'Your surname must contain only a-z or A-Z'
                     break
-                }else if (!/^[a-zA-Z]+$/.test(user.last_name) && e.target.value.length > 1) {
+                } else if (!/^[a-zA-Z]+$/.test(user.last_name) && e.target.value.length > 1) {
                     error2.last_name = 'Your surname must contain only a-z or A-Z'
                     break
                 } else {
@@ -100,7 +104,7 @@ const Informationform = () => {
                 if (!/^[0-9]+$/.test(e.target.value)) {
                     error2.tel = 'Your phone number must contain only 0-9'
                     break
-                }else if (!/^[0-9]+$/.test(user.tel) && e.target.value.length > 1) {
+                } else if (!/^[0-9]+$/.test(user.tel) && e.target.value.length > 1) {
                     error2.tel = 'Your phone number must contain only 0-9'
                     break
                 } else if (e.target.value.length != 10) {
@@ -110,8 +114,8 @@ const Informationform = () => {
                     error2.tel = ""
                     break
                 }
-            }
         }
+    }
 
     const onSubmit = async (e) => {
         await axios.post(urlEdit + localStorage.getItem('Username'), user, {
@@ -205,8 +209,8 @@ const Informationform = () => {
                     </div></div>
 
                 <div class='form-group row col-sm-8'>
-                    {error ? <small class='errorInForm' style={{ position: 'absolute', right: '20%' }}>Please fill form with correct data</small> : ''}
-                    {error ?
+                    {!checkSubmit ? <small class='errorInForm' style={{ position: 'absolute', right: '20%' }}>Please fill form with correct data</small> : ''}
+                    {!checkSubmit ?
                         <button type='submit' class='btn btn-primary' style={{ position: 'absolute', right: '0px' }} onClick={onSubmit} disabled>Submit</button> :
                         <button type='submit' class='btn btn-primary' style={{ position: 'absolute', right: '0px' }} onClick={onSubmit}>Submit</button>}
                 </div>
