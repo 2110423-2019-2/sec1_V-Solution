@@ -50,7 +50,7 @@ def decrease_entry(cart, product, amount):
         old_entry.save()
 
     cart.count -= amount_de
-    cart.total_price -= calculate_product_price(product) * amount_de
+    cart.total_price = calculate_price(cart)
     cart.total_deliver_price -= product.deliverPrice * amount_de
     cart.save()
     return cart
