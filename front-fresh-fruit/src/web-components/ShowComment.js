@@ -9,7 +9,7 @@ function Comment(name, desc) {
             <Container >
                 <Col class="card w-75">
                     <div class="card-body">
-                        <h5 class="card-title"><b>Username :</b> {name}</h5>
+                        <h5 class="card-title">{name}</h5>
                         <p class="card-text">{desc}</p>
                     </div>
                 </Col>
