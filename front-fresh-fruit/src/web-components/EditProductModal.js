@@ -35,7 +35,7 @@ const EditProductModal = (props) => {
 
     const handleChange = (e) => {
         setProduct({ ...product, [e.target.name]: e.target.value })
-        console.log(product)
+        
     }
 
     const onSubmit = () => {
@@ -53,7 +53,7 @@ const EditProductModal = (props) => {
 
     return (
         <div>
-            <button type="button" class="btn " data-toggle="modal" data-target={"#editModal" + product.id} onClick={()=>console.log(product)}>
+            <button type="button" class="btn " data-toggle="modal" data-target={"#editModal" + product.id}>
                 <FontAwesomeIcon icon={faEllipsisV} color='#AFAFAF' size='2x' />
             </button>
 

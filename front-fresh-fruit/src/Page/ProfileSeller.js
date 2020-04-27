@@ -19,7 +19,7 @@ const ProfileSeller = () => {
     async function getProduct() {
         try {
             const response = await axios.get(userProductUrl);
-            console.log("product", response.data);
+            
             setProduct(response.data)
         } catch (error) {
             console.error(error);
@@ -57,7 +57,7 @@ const ProfileSeller = () => {
                                 </div>
                                 <p class="card-text">Tel : {localStorage.getItem('tel')}</p>
                                 <p class="card-text">Address : {localStorage.getItem('address')}</p>
-                                <CreateStoreButton />
+                                
                             </div>
 
                         </div>

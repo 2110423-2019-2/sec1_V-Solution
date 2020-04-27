@@ -39,7 +39,6 @@ function App() {
     } else {
       setIsloggedin(true)
     }
-    console.log("Login ", isloggedin)
   }
   function handleSetUsername(username) {
     setUsername(username);
@@ -68,10 +67,7 @@ function App() {
   function setUserDataInContext(userdata){
     setUserData(userdata)
     localStorage.setItem('UserData', userdata);
-    console.log('This is first name in App')
-    console.log(userdata)
-    console.log('This is in UserData')
-    console.log(localStorage.getItem('UserData'))
+   
   }
   function getUserData(){
     return localStorage.getItem('UserData')

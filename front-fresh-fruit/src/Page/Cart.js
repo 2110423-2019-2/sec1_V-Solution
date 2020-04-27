@@ -23,14 +23,14 @@ const Cart = () => {
             }
         }).then(res => {
             const { data } = res
-            console.log(data)
+            
             setProduct(data.entries)
             setAmount(data.amount)
             setDeliverPrice(data.deliver_price)
             setPrice(data.price)
         })
         .catch((err)=>{
-            alert(err)
+            console.log(err)
         })
     }, [cartUrl],renderSwitch)
 
@@ -42,9 +42,8 @@ const Cart = () => {
             }
         }).then((res)=>{
             setOrder_id(res.data.order_id)
-            console.log(order_id)
         }).catch((err)=>{
-            console.log(localStorage.getItem('Token'))
+            
             console.log(err)
         })
     }
