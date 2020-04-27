@@ -36,7 +36,7 @@ function AddItemform() {
 
     const history = useHistory();
     const onSubmit = async (e, usertoken) => {
-        console.log(usertoken)
+        
         await axios.post(url,
             product
             , {
@@ -46,8 +46,7 @@ function AddItemform() {
                 }
             })
             .then((res) => {
-                checkState()
-                console.log(res.status)
+                
                 res.status === 200 ? alert("Add Item Successful") : alert("Error on add Item")
             })
             .catch((err) => {

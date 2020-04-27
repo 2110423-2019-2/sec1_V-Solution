@@ -13,7 +13,7 @@ const CartComponent = (props) => {
     //for setup fetch data
     const removeFromCart = () => {
         let timer = null;
-        console.log(props)
+        
         axios.post(removeUrl, {
             id: props.id,
             amount: props.amount
