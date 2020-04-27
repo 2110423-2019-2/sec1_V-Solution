@@ -13,7 +13,7 @@ const Cart = () => {
     const [price, setPrice] = useState(0)
     const [deliver_price, setDeliverPrice] = useState(0)
     const [amount, setAmount] = useState(0)
-    const [order_id,setOrder_id] = useState(0)
+    const [order_id, setOrder_id] = useState(0)
     useEffect(() => {
         axios.get(cartUrl, {
             headers: {
@@ -23,27 +23,27 @@ const Cart = () => {
             }
         }).then(res => {
             const { data } = res
-            
+
             setProduct(data.entries)
             setAmount(data.amount)
             setDeliverPrice(data.deliver_price)
             setPrice(data.price)
         })
-        .catch((err)=>{
-            console.log(err)
-        })
-    }, [cartUrl],renderSwitch)
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [cartUrl], renderSwitch)
 
-    const checkout = () =>{
-        axios.post(checkoutUrl,{},{
+    const checkout = () => {
+        axios.post(checkoutUrl, {}, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + localStorage.getItem('Token')
             }
-        }).then((res)=>{
+        }).then((res) => {
             setOrder_id(res.data.order_id)
-        }).catch((err)=>{
-            
+        }).catch((err) => {
+
             console.log(err)
         })
     }
@@ -72,41 +72,41 @@ const Cart = () => {
                         />)}
 
                         <div class='cart-footer'>
-                        <h5 style={{ fontFamily: "Marker Felt", fontSize: "25px" }}>Total = {price}</h5>
-                        
+                            <h5 style={{ fontFamily: "Marker Felt", fontSize: "25px" }}>Total = {price}</h5>
+
                         </div>
                         <div class='cart-footer' style={{ paddingBottom: "20px" }}>
                             <button class='cart-button' onClick={checkout} data-toggle="modal" data-target="#exampleModal">
                                 Checkout
                             </button>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Comfirm Payment</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Comfirm Payment</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Please pay {price} Bath with Omise
       </div>
-      <div class="modal-body">
-                        Please pay {price} Bath with Omise 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <OmiseCreditCard order_id={order_id} amount={price*100} data-dismiss="modal"/>
-      </div>
-    </div>
-  </div>
-</div>
-                            
-                            
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <OmiseCreditCard order_id={order_id} amount={price * 100} data-dismiss="modal" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
 
                     </div>
                 )
         }
     }
-    
+
 
     return (
         <div class="cart-background">

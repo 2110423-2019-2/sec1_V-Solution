@@ -42,7 +42,7 @@ const CartComponent = (props) => {
                         <img src={media + props.img} style={{ height: '120px', width: '70px', objectFit: 'cover' }} />
                     </div>
                     <div class='col-lg-6'>
-                        <h1 style={{ fontFamily: "Marker Felt", fontSize: "25px" }}>Product Name: {props.name}</h1>
+                        <h1 style={{ fontFamily: "Marker Felt", fontSize: "25px" }}>{props.name}</h1>
                     </div>
 
                     <div class='col-lg-4'>
