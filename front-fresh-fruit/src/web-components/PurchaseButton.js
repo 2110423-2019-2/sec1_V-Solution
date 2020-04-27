@@ -14,8 +14,8 @@ function PurchaseButton(props) {
     useEffect(() => {
         setData({
             'id': parseInt(props.id),
-            'amount': parseInt(props.amount)
         })
+        setAmount(parseInt(props.amount))
     }, [props])
 
     const submitReserve = async (e) => {
@@ -56,7 +56,15 @@ function PurchaseButton(props) {
                 <form class="form-inline xl-form mr-auto mb-8">
 
                     <p id='amount' style={{ color: 'orange' }}>we have {props.amount} in our stock</p>
-                    <input class="dropdown-item form-control" type="number" placeholder="Amount" id="reserve-input" onkeyup="filterFunction()" onChange={(e) => setAmount(amount + e.target.value)} />
+                    <input class="dropdown-item form-control" type="number" placeholder="Amount" id="reserve-input"
+                        onkeyup="filterFunction()"
+                        onChange={(e) => {
+                            setData({
+                                ...data,
+                                amount: e.target.value
+                            })
+                            console.log(data)
+                        }} />
 
                     <button class="dropdown-item" id="purchase-button" type="button" class='btn btn-primary' onClick={submitReserve}>Purchase</button>
                 </form>

@@ -11,7 +11,7 @@ import SignUp from './Page/SignUp'
 import Signin from './Page/Signin';
 import AddItem from './Page/AddItem';
 import ProfileSeller from './Page/ProfileSeller';
-import EditStore from './Page/EditStore';
+// import EditStore from './Page/EditStore';
 import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
@@ -130,7 +130,7 @@ function App() {
             <Route path='/signup' component={SignUp} />
             <Route path='/report' component={Report} />
             <Route path='/editProfile' component={EditProfile} />
-            <Route path='/editStore' component={EditStore} />
+            {/* <Route path='/editStore' component={EditStore} /> */}
             <Route path='/addItem' component={AddItemform} />
             <Route path='/cart' component={Cart} />
             <Route path = '/seller/:username' component={Seller}/>
