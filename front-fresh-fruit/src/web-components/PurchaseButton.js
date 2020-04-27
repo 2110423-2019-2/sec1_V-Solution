@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import "../styles/_purchasebtn.css"
 import axios from 'axios'
 import { api } from '../config';
+
 function PurchaseButton(props) {
     const [amount, setAmount] = useState(0)
     const [data, setData] = useState({
@@ -18,29 +19,22 @@ function PurchaseButton(props) {
         setAmount(parseInt(props.amount))
     }, [props])
 
-    const submitReserve = async (e) => {
+    const submitPurchase = async (e) => {
         if (amount > props.amount) {
             alert('we dont have enough amount that you want')
         } else {
             await axios.post(url, data, {
                 headers: {
-
                     'Content-Type': 'application/json',
                     'Authorization': 'Token ' + localStorage.getItem('Token')
                 }
+            }).then((res) => {
+                console.log(res.status)
+                alert('Added to cart')
+            }).catch((err) => {
+                console.log(err)
+                alert("Error on add  Item to cart")
             })
-                .then((res) => {
-                    console.log(res.status)
-                    alert('Already add to cart')
-                })
-                .catch((err) => {
-                    console.log(err)
-
-                    alert(localStorage.getItem('Token'))
-                    alert(props.id)
-
-                    alert("Error on add  Item to cart")
-                })
         }
     }
 
@@ -63,10 +57,9 @@ function PurchaseButton(props) {
                                 ...data,
                                 amount: e.target.value
                             })
-                            console.log(data)
                         }} />
 
-                    <button class="dropdown-item" id="purchase-button" type="button" class='btn btn-primary' onClick={submitReserve}>Purchase</button>
+                    <button class="dropdown-item" id="purchase-button" type="button" class='btn btn-primary' onClick={submitPurchase}>Purchase</button>
                 </form>
             </div>
         </div>
