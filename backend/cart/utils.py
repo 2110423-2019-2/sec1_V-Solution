@@ -30,7 +30,7 @@ def add_entry(cart, product, amount):
         )
     
     cart.count += amount
-    cart.total_price += (calculate_product_price(product) * amount)
+    cart.total_price += (product.price * amount)
     cart.total_deliver_price += (product.deliverPrice * amount)
     cart.save()
     return cart
