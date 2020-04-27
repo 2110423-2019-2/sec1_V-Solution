@@ -23,7 +23,7 @@ const PurchaseComponent = (props) => {
                 <div class="card-header" id='cardHeader'>
                     <h4>Transation number {props.order_id} Price: {props.price}</h4>
                     <div class='status' style={{display:'flex'}}>
-                        {props.status == 'P' ? <h4><p class='badge badge-danger'>Padding To Deliver...</p></h4> : <h4><p class='badge badge-success'>Already delivered</p></h4>}
+                        {props.status == 'P' ? <h4><p class='badge badge-success'>Paid</p></h4> : <h4><p class='badge badge-danger'>Waiting for payment</p></h4>}
                         {props.status == '' ? <button type="button" class="btn btn-success btn-sm" style={{height:'30px'}}>Pay now</button> : <p></p>}
                     </div>
                     
