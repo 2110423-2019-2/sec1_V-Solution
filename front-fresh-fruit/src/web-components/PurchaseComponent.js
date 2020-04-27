@@ -2,12 +2,13 @@ import React from 'react';
 import _purchaseComponent from '../styles/_purchaseComponent.css';
 const PurchaseComponent = (props) => {
     
-    const cardBody = (product_name,seller_name,deliver_price,amount) => {
+    const cardBody = (product_name,seller_name,deliver_price,amount, price) => {
         return (
             <div class="card-body">
                 <h5 class="card-title">Product : {product_name}</h5>
                 <div style={{ display: 'flex', }}>
-                    <p class="card-text" id='cardText'>Price : {deliver_price} Bath</p>
+                    <p class="card-text" id='cardText'>Price : {price} Bath</p>
+                    <p class="card-text" id='cardText'>Deliver Price : {deliver_price} Bath</p>
                     <p class="card-text" id='cardText'>Amount : {amount} </p>
                     <p class="card-text" id='cardText'>Seller : {seller_name} </p>
                     
@@ -15,7 +16,7 @@ const PurchaseComponent = (props) => {
             </div>
         )
     }
-    const listItem = props.items.map((item) => cardBody(item.product.product_name,item.product.seller_name,item.product.deliver_price,item.amount));
+    const listItem = props.items.map((item) => cardBody(item.product.product_name,item.product.seller_name,item.product.deliver_price,item.amount,item.product.price));
     return (
         <div>
             <div class="card" id='cardPurchase'>
