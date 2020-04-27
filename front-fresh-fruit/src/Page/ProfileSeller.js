@@ -67,7 +67,7 @@ const ProfileSeller = () => {
                     </div>
                     <div class="card seller-card w-75">
                         <div id="all-comment">
-                            <ShowComment comment={localStorage.getItem('store_name')}/>
+                            <ShowComment storename={localStorage.getItem('store_name')}/>
                         </div>
                     </div>
                 </div>
