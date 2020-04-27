@@ -68,9 +68,6 @@ const Seller = () => {
                                 <div class="row">
 
                                     <h5 class="card-title card-title-login-seller ">{user.first_name}  {user.last_name} ( {user.user_type} )</h5>
-                                    <a href="/editProfile" class="edit-icon">
-                                        <i class="far fa-edit  " ></i>
-                                    </a>
                                 </div>
                                 <p class="card-text">Tel : {user.tel}</p>
                                 <p class="card-text">Address : {user.address}</p>
