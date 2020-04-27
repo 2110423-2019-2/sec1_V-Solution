@@ -23,7 +23,12 @@ const Informationform = () => {
         "bio": ""
     });
 
-    const [error, setError] = useState(false)
+    const [error, setError] = useState({
+        'first_name': '',
+        'last_name': '',
+        'tel': '',
+        'nat_id': ''
+    })
 
     async function fetchUser() {
         try {
@@ -61,14 +66,52 @@ const Informationform = () => {
         setUser({ ...user, [e.target.name]: e.target.value })
         console.log(user)
 
+        let error2 = error;
         switch (e.target.name) {
+            case 'first_name':
+                if (e.target.value.length < 0) {
+                    error2.first_name = 'You must input your first name'
+                    break
+                } else if (!/^[a-zA-Z]+$/.test(e.target.value)) {
+                    error2.first_name = 'Your name must contain only a-z or A-Z'
+                    break
+                }else if (!/^[a-zA-Z]+$/.test(user.first_name) && e.target.value.length > 1) {
+                    error2.first_name = 'Your name must contain only a-z or A-Z'
+                    break
+                } else {
+                    error2.first_name = ""
+                    break
+                }
+            case 'last_name':
+                if (e.target.value.length < 0) {
+                    error2.last_name = 'You must input surname'
+                    break
+                } else if (!/^[a-zA-Z]+$/.test(e.target.value)) {
+                    error2.last_name = 'Your surname must contain only a-z or A-Z'
+                    break
+                }else if (!/^[a-zA-Z]+$/.test(user.last_name) && e.target.value.length > 1) {
+                    error2.last_name = 'Your surname must contain only a-z or A-Z'
+                    break
+                } else {
+                    error2.last_name = ""
+                    break
+                }
             case 'tel':
-                e.target.value.length === 10 ? setError(false) : setError(true)
-                break
-            default:
+                if (!/^[0-9]+$/.test(e.target.value)) {
+                    error2.tel = 'Your phone number must contain only 0-9'
+                    break
+                }else if (!/^[0-9]+$/.test(user.tel) && e.target.value.length > 1) {
+                    error2.tel = 'Your phone number must contain only 0-9'
+                    break
+                } else if (e.target.value.length != 10) {
+                    error2.tel = 'Phone number must have 10 characters'
+                    break
+                } else {
+                    error2.tel = ""
+                    break
+                }
+            }
         }
-
-    }
 
     const onSubmit = async (e) => {
         await axios.post(urlEdit + localStorage.getItem('Username'), user, {
@@ -115,7 +158,7 @@ const Informationform = () => {
                                 <label style={{ color: "red" }}>*</label><label>Name:</label></div>
                             <div class='col-sm-6'>
                                 <input class="form-control" type="text" name="first_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={user.first_name} />
-                                {user.first_name.length == 0 && <small>please enter you first name</small>}
+                                {user.first_name.length > 0 && <small class='errorInForm'>{error.first_name}</small>}
                             </div></div>
 
                         <div class="form-group row">
@@ -123,28 +166,12 @@ const Informationform = () => {
                                 <label style={{ color: "red" }}>*</label><label>Surname:</label></div>
                             <div class='col-sm-6'>
                                 <input class="form-control" type="text" name="last_name" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={user.last_name} />
-                                {user.last_name.length == 0 && <small>Please enter your last name</small>}
+                                {user.last_name.length > 0 && <small class='errorInForm'>{error.last_name}</small>}
                             </div>
                         </div>
                     </div>
 
                 </div>
-
-
-                {/* <div class="form-group row">
-                    <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
-                        <label style={{ color: "red" }}>*</label><label>Email:</label></div>
-                    <div class='col-sm-6'>
-                        <input class="form-control" type="email" name="email" style={{ marginLeft: '10px' }} placeholder="someone@outlook.com" onChange={handleChange} value={user.email} />
-                    </div></div> */}
-
-                {/* <div class="form-group row">
-                    <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
-                        <label style={{ color: "red" }}>*</label><label>Password:</label></div>
-                    <div class='col-sm-6'>
-                        <input class="form-control" type="password" name="password" style={{ marginLeft: '10px' }} placeholder="" aria-describedby="passwordHelp" onChange={handleChange} value={user.password} />
-                        <small id='passwordHelp' class="form-text text-muted">between 6 - 30 characters including alphabet and number</small>
-                    </div></div> */}
 
                 <div class="form-group row">
                     <div class='col-form-label col-sm-2' style={{ position: 'static', left: '0px' }}>
@@ -159,7 +186,7 @@ const Informationform = () => {
                     <div class='col-sm-6'>
                         <input class="form-control" type="number" name="tel" style={{ marginLeft: '10px' }} placeholder="" onChange={handleChange} value={user.tel} />
 
-                        {user.tel.length != 10 && <small class='errorInForm'>Telephone number should be 10 character</small>}
+                        {user.tel.length != 10 && <small class='errorInForm'>{error.tel}</small>}
                     </div></div>
 
                 <div class="form-group row">

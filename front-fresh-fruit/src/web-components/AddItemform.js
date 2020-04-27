@@ -87,7 +87,6 @@ function AddItemform() {
                                             <option>Choose...</option>
                                             <option>Fruit</option>
                                             <option>Vegetable</option>
-                                            <option>...</option>
                                         </Form.Control>
                                     </Form.Group>
 
@@ -97,7 +96,6 @@ function AddItemform() {
                                             <option>Choose...</option>
                                             <option>Daily</option>
                                             <option>Weekly</option>
-                                            <option>...</option>
                                         </Form.Control>
                                     </Form.Group>
                                 </Form.Row>
