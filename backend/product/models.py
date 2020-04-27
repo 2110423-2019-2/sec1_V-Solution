@@ -8,6 +8,12 @@ LEXERS = [item for item in get_all_lexers() if item[1]]
 LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
 STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
 
+class ProductManager(models.Manager):
+    def deduct_product(self, product, amount):
+        product.amount = max(0, product.amount - amount)
+        product.save()
+        return product
+
 class Product(models.Model):
     PRODUCT_TYPES = {
         ('A', 'Add'),
@@ -33,6 +39,7 @@ class Product(models.Model):
 
     # META
     productType = models.CharField(max_length=1, default='A', choices=PRODUCT_TYPES)
+    objects = ProductManager()
     
     def __str__(self):
         return f'{self.seller.first_name} {self.seller.last_name} : {self.productName}'

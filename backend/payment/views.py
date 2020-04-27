@@ -91,6 +91,7 @@ def order_payment_fake(request, order_id):
 
     order.status = 'P'
     order.save()
+    Order.objects.deduct_product(order)
     data = order_serializer(order)
 
     return Response(data, status=HTTP_200_OK)

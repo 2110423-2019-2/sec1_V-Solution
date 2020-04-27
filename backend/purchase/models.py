@@ -3,6 +3,13 @@ from django.contrib.auth.models import User
 from product.models import Product
 from cart.models import *
 
+class OrderManager(models.Manager):
+    def deduct_product(self, order):
+        items = OrderItem.objects.filter(order=order)
+        for item in items:
+            Product.objects.deduct_product(item.product, item.quantity)
+        return order
+
 class Order(models.Model):
     STATUS_TYPES = {
         ('O', 'Ordered'),
@@ -14,6 +21,8 @@ class Order(models.Model):
     status = models.CharField(max_length=1, choices=STATUS_TYPES)
     total_price = models.FloatField(default=0)
     total_deliver_price = models.FloatField(default=0)
+
+    objects = OrderManager()
 
     def __str__(self):
         return "User {}'s order".format(self.user)

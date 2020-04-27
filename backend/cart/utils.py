@@ -19,19 +19,27 @@ def add_entry(cart, product, amount):
     except Entry.DoesNotExist:
         old_entry = None
 
+    new_amount = 0
+    old_amount = 0
+
     if old_entry:
-        old_entry.quantity += amount
+        old_amount = old_entry.quantity
+        new_amount = min(old_amount + amount, product.amount)
+        old_entry.quantity = new_amount
         old_entry.save()
     else:
+        new_amount = min(amount, product.amount)
         entry = Entry.objects.create(
             product = product,
             cart = cart,
-            quantity = amount
+            quantity = new_amount
         )
+
+    amount_in = new_amount-old_amount
     
-    cart.count += amount
+    cart.count += amount_in
     cart.total_price = calculate_price(cart)
-    cart.total_deliver_price += (product.deliverPrice * amount)
+    cart.total_deliver_price += ( product.deliverPrice * amount_in )
     cart.save()
     return cart
 
