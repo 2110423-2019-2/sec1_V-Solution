@@ -58,25 +58,17 @@ def submit_report(request):
 
 @api_view(["POST"])
 def upload_report_pic(request,report_id):
-
-    """token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
-    try :
-        token = Token.objects.get(key=token_string)
-    except ObjectDoesNotExist :
-        return Response({'error': 'Invalid Credentials.'},status=HTTP_400_BAD_REQUEST)"""
     token_string = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
     token = Token.objects.get(key=token_string)
     user = token.user
-    user_profile = Profile.objects.get(user=user)
+    report = ReportForm.objects.get(id=report_id)
 
     try:
         file = request.FILES['image']
     except MultiValueDictKeyError:
         return Response({'error': 'Invalid request'}, status=HTTP_400_BAD_REQUEST)
 
-    report = ReportForm.objects.get(pk=report_id)
     report.image = file
-
     report.save()
     image_url = report.image.url
     
