@@ -29,6 +29,7 @@
 
 .pic-card {
   max-height: 10rem;
+  object-fit: cover;
 }
 
 .edit-store-title {
@@ -44,8 +45,14 @@ font-size: 20px;
 }
 
 .edit-store-button {
-  position: absolute;
-  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.edit-store-button-seller {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
 }
 
 .vertical-center {

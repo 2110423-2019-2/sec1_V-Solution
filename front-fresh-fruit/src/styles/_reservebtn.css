@@ -1,0 +1,28 @@
+#reserve-dropdown {
+    width: 100px;
+    color: white;
+    background-color: #6AC17D;
+    border-color: transparent;
+    border-radius: 50px;
+}
+
+#reserve-input {
+    border-bottom: 1px;
+    width:250px;
+    {/*margin-bottom: 40px;*/}
+}
+
+#reserve-button {
+    position: absolute;
+    margin-bottom: 40px;
+    top: 52px;
+    right: 58px;
+    width: 100px;
+    color: white;
+    background-color: #6AC17D;
+    border-color: transparent;
+    border-radius: 50px;
+}
+#amount{
+    margin-left:10px;
+}

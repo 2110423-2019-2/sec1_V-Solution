@@ -1,0 +1,18 @@
+#add-comment {
+    margin-bottom: 50px;
+}
+
+#comment-box {
+    height: 100px;
+    margin-bottom: 20px;
+    padding-bottom: 70px;
+}
+
+#submit-button {
+    float: right;
+    width: 100px;
+    color: white;
+    background-color: #FFA000;
+    border-color: transparent;
+    border-radius: 50px;
+}

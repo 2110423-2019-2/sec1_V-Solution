@@ -1,42 +1,124 @@
-import React from 'react';
-import '../App.scss';
-import ProfileComponent from '../web-components/ProfileComponent';
-import UserContext from '../Context/UserContext';
+import React, { useState, useEffect } from 'react';
+import '../styles/_cart.css'
 import CartComponent from '../web-components/CartComponent'
+import axios from 'axios';
+import { api } from '../config'
+import Payment from './Payment';
+import OmiseCreditCard from '../omise-prebuit/OmiseCreditCard';
+const Cart = () => {
 
-const Cart = (props) => {
-    //for setup fetch data
-    return (
-        //style={{backgroundImage:`url(${background})`}}
+    const cartUrl = api + "/cart/get" // ++++ ไออันนี้ต้องเป็น cart แต่ใน cart ยังไม่เข้ากุเลยดึงมาจากหน้า product มาก่อนน ++++
+    const checkoutUrl = api + "/cart/checkout"
+    const [product, setProduct] = useState([])
+    const [price, setPrice] = useState(0)
+    const [deliver_price, setDeliverPrice] = useState(0)
+    const [amount, setAmount] = useState(0)
+    const [order_id, setOrder_id] = useState(0)
+    useEffect(() => {
+        axios.get(cartUrl, {
+            headers: {
 
-        <div style={{ backgroundColor: "#6AC17D", width: "1520px", height: "1100px" }}>
-            <div style={{ backgroundColor: "#6AC17D", width: "1520px", height: "120px" }}>
-                <div class="row">
-                    <div class="col" style={{ marginTop: '30px' }}>
-                        <h1 style={{ fontFamily: "Marker Felt", fontSize: "50px", marginLeft: '150px', color: 'white' }}>Shopping Cart</h1>
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + localStorage.getItem('Token')
+            }
+        }).then(res => {
+            const { data } = res
+
+            setProduct(data.entries)
+            setAmount(data.amount)
+            setDeliverPrice(data.deliver_price)
+            setPrice(data.price)
+        })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [cartUrl], renderSwitch)
+
+    const checkout = () => {
+        axios.post(checkoutUrl, {}, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + localStorage.getItem('Token')
+            }
+        }).then((res) => {
+            setOrder_id(res.data.order_id)
+        }).catch((err) => {
+
+            console.log(err)
+        })
+    }
+
+    function renderSwitch(cnt) {
+        switch (cnt) {
+            case 0:
+                return (
+                    <div class='cart-inside-background'>
+                        <div class='cart-empty'>
+                            <h1> Your Cart is now Empty! </h1>
+                        </div>
                     </div>
+                )
+            default:
+                return (
+                    <div class='cart-inside-background'>
+
+                        {product.map(i => <CartComponent
+                            key={i.product.id}
+                            id={i.product.id}
+                            name={i.product.product_name}
+                            price={i.product.price}
+                            amount={i.amount}
+                            img={i.product.image}
+                        />)}
+
+                        <div class='cart-footer'>
+                            <h5 style={{ fontFamily: "Marker Felt", fontSize: "25px" }}>Total = {price}</h5>
+
+                        </div>
+                        <div class='cart-footer' style={{ paddingBottom: "20px" }}>
+                            <button class='cart-button' onClick={checkout} data-toggle="modal" data-target="#exampleModal">
+                                Checkout
+                            </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Comfirm Payment</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Please pay {price} Bath with Omise
+      </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <OmiseCreditCard order_id={order_id} amount={price * 100} data-dismiss="modal" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                )
+        }
+    }
+
+
+    return (
+        <div class="cart-background">
+            <div class="cart-background">
+
+                <div class="container cart-header">
+                    <h1 class='cart-header-font'>Shopping Cart</h1>
+                    {renderSwitch(product.length)}
+
                 </div>
             </div>
-            <div style={{ backgroundColor: "#E6FFEC", width: "1210px", height: "1020px", marginLeft: "160px" }}>
-
-
-                <CartComponent />
-                <CartComponent />
-                <CartComponent />
-
-                <div style={{ marginRight: "200px", marginTop: "50px", textAlign: "right" }}>
-                    <h1 style={{ fontFamily: "Marker Felt", fontSize: "40px" }}>Total = val</h1>
-                </div>
-                <div style={{ marginRight: "200px", marginTop: "50px", textAlign: "right" }}>
-                    <button style={{ width: '130px', height: '50px', borderRadius: "20px", backgroundColor: "orange" }}>Checkout</button>
-                </div>
-
-            </div>
-
-
-
         </div>
-
 
 
     );

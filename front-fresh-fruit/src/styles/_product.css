@@ -1,0 +1,25 @@
+.product-pic{
+    position: inherit;
+    margin-left: 10%;
+    outline: none;
+    border: 0;
+}
+
+.product-header{
+    margin-left: 15%;
+    margin-top: 20;
+    font-size: 50px;
+    color:#36368D;
+}
+
+.product-detail{
+    font-size: 20px;
+    font-family: "Arial";
+    color:#36368D;
+    margin-top: 15px;
+}
+
+.product-picture{
+    width: 200px;
+    height: 200px;
+}

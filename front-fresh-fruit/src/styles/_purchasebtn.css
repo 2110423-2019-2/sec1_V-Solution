@@ -1,28 +1,24 @@
-
-.register-btn {
-    position: absolute;
-    right: 0px;
-    width: 150px;
+#purchase-dropdown {
+    width: 100px;
     color: white;
     background-color: #FFA000;
     border-color: transparent;
     border-radius: 50px;
 }
 
-.register-btn-seller {
+#purchase-input {
+    border-bottom: 1px;
+    margin-bottom: 40px;
+}
+
+#purchase-button {
     position: absolute;
-    right: 20px;
-    width: 150px;
+    margin-bottom: 40px;
+    top: 52px;
+    right: 58px;
+    width: 100px;
     color: white;
     background-color: #FFA000;
     border-color: transparent;
     border-radius: 50px;
-}
-.errorInForm{
-    color: red;
-    size: 4px;
-}
-
-.col-reg-btn {
-    padding-bottom: 60px;
 }

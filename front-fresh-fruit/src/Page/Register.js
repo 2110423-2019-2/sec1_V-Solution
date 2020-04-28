@@ -12,12 +12,11 @@ const Register = () => {
                 <div class="row">
                     <div class="col col-info">
                         <div class="row form-title">
-                            <div class=" col-md-auto">
+                            <div class="col-md-auto">
                                 <h2>Register as customer</h2>
                             </div>
                         </div>
                         <div class="row container-form-seller">
-                            
                             <div class="col container-inform">
                                 <Informationform user_type="C"/>
                             </div>

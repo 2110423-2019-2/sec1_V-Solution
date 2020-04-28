@@ -4,8 +4,9 @@ import Images from '../web-components/Images'
 import UploadButton from '../web-components/UploadButton'
 import Notifications, { notify } from 'react-notify-toast'
 import axios from 'axios'
-import {api} from '../config'
-const API_URL = api+"/user/uploadimage"
+import { api, media } from '../config'
+
+
 
 
 const toastColor = {
@@ -18,7 +19,10 @@ const UploadComponent = (props) => {
     const [images, setImages] = useState([])
 
     useEffect(() => {
-        setImages(props.avatar)
+        if (props.avatar) {
+            setImages( media  + props.avatar)
+            console.log(props)
+        }
     }, [props])
 
     const toast = notify.createShowQueue()
@@ -51,24 +55,37 @@ const UploadComponent = (props) => {
         if (errs.length) {
             return errs.forEach(err => toast(err, 'custom', 2000, toastColor))
         }
-
         setUploading(true)
 
-        await axios.post(API_URL, formData, {
+        switch (props.type) {
+            case "profile":
+                await upload(formData,props.api)
+                break;
+
+            case "product":
+                await upload(formData,props.api)
+                break;
+            default:
+                break;
+        }
+
+
+
+    }
+
+    const upload = async (formData,userAPI) => {
+        await axios.post(userAPI, formData, {
             headers: {
                 'Authorization': `Token ` + localStorage.getItem('Token'),
                 'Content-Type': 'multipart/form-data'
             }
         })
             .then(res => {
-                if (!res.ok) {
-                    throw res
-                }
-                return res.json()
-            })
-            .then(images => {
+                console.log("res", res)
+                setImages( media  + res.data.url)
                 setUploading(false)
-                setImages(images)
+                if(props.type === "profile") {localStorage.setItem("image", res.data.url)}
+                return toast("upload success", 'custom', 200, toastColor)
             })
             .catch(err => {
                 toast(err.message, 'custom', 2000, toastColor)
@@ -83,13 +100,17 @@ const UploadComponent = (props) => {
                 return <Spinner />
             case images.length > 0:
                 return <div className='button-upload'>
-                    <label for="file-input">
-                        <img className='img-upload fadein' src={images} alt="" />
+                    <label htmlFor={"file-input"+props.id}>
+                        <img className='img-upload fadein ' src={images} alt="" />
                     </label>
-                    <input id="file-input" type="file" onChange={(e) => onChange(e)}/>
+                    <input id={"file-input"+props.id} type="file" onChange={(e) => onChange(e)} />
                 </div>
+            case props.type === "product":
+                return <UploadButton single='product' onChange={(e) => onChange(e)} />
+            case props.type === 'report':
+                return <UploadButton single='report' onChange={(e) => onChange(e)}/>
             default:
-                return <UploadButton single="true" onChange={(e) => onChange(e)} />
+                return <UploadButton single='single' onChange={(e) => onChange(e)} />
         }
     }
 
@@ -97,7 +118,7 @@ const UploadComponent = (props) => {
     return (
         <div class="container">
             <Notifications />
-            <div class="buttons ">
+            <div class="buttons-upload ">
                 {content()}
             </div>
         </div>

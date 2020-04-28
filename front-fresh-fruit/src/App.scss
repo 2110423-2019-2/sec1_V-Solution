@@ -2,6 +2,8 @@
 @import './styles/edit-store';
 @import './styles/profle';
 @import './styles/_upload.css';
+@import './styles/product-profile.scss';
+@import './styles/_product.css';
 
 .bg {
   min-height: 100%;
@@ -88,7 +90,9 @@ a {
 #editInProfile{
   margin-left:5px;
 }
-
+#edit-icon{
+  margin-left:0.1 rem;
+}
 
 
 //--------------------------------------end Profile page--------------------------------------------

@@ -6,19 +6,22 @@ import Home from './Page/HomePage';
 import Register from './Page/Register';
 import RegisterSeller from './Page/RegisterSeller';
 import ProfileCus from './Page/ProfileCus';
-import Seller from './Page/Seller';
+import YourOrder from './Page/YourOrder';
 import SignUp from './Page/SignUp'
 import Signin from './Page/Signin';
-import Store from './Page/Store';
 import AddItem from './Page/AddItem';
 import ProfileSeller from './Page/ProfileSeller';
-import EditStore from './Page/EditStore';
+// import EditStore from './Page/EditStore';
 import Cart from './Page/Cart'
 import UserContext from './Context/UserContext';
 import Profile from './Page/ProfileCus'
 import EditProfile from './Page/EditProfile'
 import HomePage from './Page/HomePage';
-import YourOrder from './Page/YourOrder';
+import Seller from './Page/Seller'
+import Payment from './Page/Payment'
+
+import ProductDetail from './Page/ProductDetail';
+
 import Report from './Page/Report'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
@@ -27,6 +30,8 @@ function App() {
   const [token, setToken] = useState("")
   const [userid, setUserid] = useState("")
   const [username, setUsername] = useState("")
+  const [userType,setUserType] = useState("")
+  const [userData,setUserData] = useState()
 
   function handleIsloggedin() {
     if (localStorage.getItem('Token') == null) {
@@ -34,7 +39,6 @@ function App() {
     } else {
       setIsloggedin(true)
     }
-    console.log("Login ", isloggedin)
   }
   function handleSetUsername(username) {
     setUsername(username);
@@ -50,11 +54,24 @@ function App() {
     localStorage.clear();
     setToken(null);
     setUserid(null);
+    setUserType(null);
     setIsloggedin(false);
   }
   useEffect(() => {
     handleIsloggedin()
   })
+  function setUserTypeInContext(usertype){
+    setUserType(usertype)
+    localStorage.setItem('UserType', usertype);
+  }
+  function setUserDataInContext(userdata){
+    setUserData(userdata)
+    localStorage.setItem('UserData', userdata);
+   
+  }
+  function getUserData(){
+    return localStorage.getItem('UserData')
+  }
   function getToken() {
     return String(localStorage.getItem('Token'))
   }
@@ -64,12 +81,15 @@ function App() {
   function getUsername() {
     return String(localStorage.getItem('Username'))
   }
+  function getUserType(){
+    return String(localStorage.getItem('UserType'))
+  }
 
 
   return (
     <div>
 
-      <Navi />
+      
       {/* navigation bar */}
 
 
@@ -79,6 +99,7 @@ function App() {
 
       <Router>
         {/* body part */}
+        <Navi />
         <Switch>
           <UserContext.Provider value={{
             isloggedin: `${isloggedin}`,
@@ -88,26 +109,31 @@ function App() {
             clearToken: clearToken,
             getToken: getToken,
             getId: getId,
-            getUsername: getUsername
+            getUsername: getUsername,
+            setUserTypeInContext:setUserTypeInContext,
+            getUserType: getUserType,
+            setUserDataInContext:setUserDataInContext,
+            getUserData:getUserData,
           }}>
             <Route exact path='/' component={Home} />
             {/* {localStorage.getItem('Token') !== null ? (<Route path='/profile' component={Profile} />)
               : (<Route path='/signin' component={Signin} />)} */}
-            <Route path='/profile' component={Profile} />
+            {localStorage.getItem('user_type') == 'Seller' ? (<Route path='/profile' component={ProfileSeller} />) : (<Route path='/profile' component={Profile}/>)}
+            {/* <Route path='/profile' component={Profile}/> */}
+            
+            <Route path='/payment' component={Payment} paymentAmount={100000000}/>
             <Route path='/signin' component={Signin} />
-            <Route path='/seller' component={Seller} />
             <Route path='/register' component={Register} />
+            <Route path='/order' component={YourOrder}/>
             <Route path='/registerSeller' component={RegisterSeller} />
+            <Route path='/getproduct/:id' component={ProductDetail}/>
             <Route path='/signup' component={SignUp} />
-            <Route path='/seller' component={Seller} />
-            <Route path='/register' component={Register} />
-            <Route path='/registerSeller' component={RegisterSeller} />
             <Route path='/report' component={Report} />
-            <Route path='/store' component={Store} />
             <Route path='/editProfile' component={EditProfile} />
-            <Route path='/editStore' component={EditStore} />
+            {/* <Route path='/editStore' component={EditStore} /> */}
             <Route path='/addItem' component={AddItemform} />
             <Route path='/cart' component={Cart} />
+            <Route path = '/seller/:username' component={Seller}/>
           </UserContext.Provider>
         </Switch>
       </Router>
