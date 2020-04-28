@@ -7,10 +7,12 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
+    HTTP_401_UNAUTHORIZED,
     HTTP_404_NOT_FOUND,
     HTTP_200_OK
 )
 from rest_framework.response import Response
+from django.utils.datastructures import MultiValueDictKeyError
 
 import json
 from rest_framework.parsers import JSONParser
@@ -30,9 +32,9 @@ def create_product(request):
     user_profile = Profile.objects.get(user=user)
 
     if not user_profile.is_active:
-        return Response({'result': 'User is not verify.'}, status=HTTP_200_OK)
+        return Response({'result': 'User is not verify.'}, status=HTTP_401_UNAUTHORIZED)
     if user_profile.user_type != 'S':
-        return Response({'result': 'User is not a Seller.'}, status=HTTP_200_OK)
+        return Response({'result': 'User is not a Seller.'}, status=HTTP_401_UNAUTHORIZED)
 
     try:
         json_data = json.loads(request.body)
@@ -59,7 +61,7 @@ def create_product(request):
         category = category,
         subcategory = subcategory,
         province = province,
-        district = district,
+        district = district ,
         productType = productType,
         harvest_date = harvest_date,
         price = price,
@@ -68,8 +70,8 @@ def create_product(request):
         deliverCompany = deliverCompany,
         deliverPrice  = deliverPrice,
     )
-
-    return Response({'result': 'Successfully create product'},status=HTTP_200_OK)
+    data = product_to_dict(product)
+    return Response(data ,status=HTTP_200_OK)
 
 @api_view(['GET'])
 @permission_classes((AllowAny,))
@@ -85,13 +87,18 @@ def upload_product_image(request, product_id):
     user = token.user
     user_profile = Profile.objects.get(user=user)
 
-    file = request.FILES['image']
+    try:
+        file = request.FILES['image']
+    except MultiValueDictKeyError:
+        return Response({'error': 'Invalid request'}, status=HTTP_400_BAD_REQUEST)
+
     product = Product.objects.get(pk=product_id)
     if user_profile != product.seller:
-        return Response(status=HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Invalid credentials'}, status=HTTP_401_UNAUTHORIZED)
     product.image = file
     product.save()
-    return Response(status=HTTP_200_OK)
+    image_url = product.image.url
+    return Response({'url': image_url},status=HTTP_200_OK)
 
 @api_view(["POST"])
 def update_product(request, product_id, status):
@@ -102,7 +109,7 @@ def update_product(request, product_id, status):
 
     product = Product.objects.get(pk=product_id)
     if user_profile != product.seller:
-        return Response({'error': 'Invalid credentials'}, status=HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Invalid credentials'}, status=HTTP_401_UNAUTHORIZED)
     if status.upper() in ['L', 'R', 'N']:
         if product.productType == 'A' or status.upper() == 'N':
             product.productType = status.upper()
@@ -164,7 +171,7 @@ def edit_product(request, product_id):
 def get_product_from_user(request, username):
     user = User.objects.get(username=username)
     profile = Profile.objects.get(user=user)
-    products = Product.objects.filter(seller=profile)
+    products = Product.objects.filter(seller=profile).exclude(productType='N')
     data = []
     for product in products: 
         data.append(product_to_dict(product))

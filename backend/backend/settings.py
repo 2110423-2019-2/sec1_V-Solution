@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'cart',
     'report',
     'comment',
+    'purchase',
+    'payment',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,3 +149,6 @@ MEDIA_URL = '/media/'
 # CORS
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+
+# OMISE
+OMISE_SECRET_KEY = ''
