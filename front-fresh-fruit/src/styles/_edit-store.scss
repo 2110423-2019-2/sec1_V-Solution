@@ -1,0 +1,72 @@
+@mixin text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #5e5757;
+}
+
+.head-newitem {
+  @include text();
+  margin-top: 30px;
+  margin-bottom: 40px;
+  justify-content: flex-start;
+}
+
+.card-a {
+  width: 16rem;
+  height: 25rem;
+  margin-left: 10px;
+  margin-bottom: 25px;
+  margin-right: 10px;
+}
+
+.pic-card {
+  max-height: 10rem;
+}
+
+.edit-store-title {
+display: block;
+font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}
+
+.underline {
+    border-bottom: 2px solid rgb(65, 65, 66);
+}
+
+.edit-store-button {
+  position: absolute;
+  bottom: 0;
+}
+
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.btn-edit {
+  margin-bottom: 15px;
+}
+
+.edit-launch-botton {
+  margin-right: 20px;
+}
+
+.row-card {
+  margin-top: 30px;
+}
+
+.col-form-width {
+  width: 50px;
+}
